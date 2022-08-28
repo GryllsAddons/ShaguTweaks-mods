@@ -1,6 +1,11 @@
 # ShaguTweaks-Mods
 Mods for the ShaguTweaks addon
 
+### Credit:<br>
+Credit to [shagu](https://github.com/shagu)
+<br>
+Code from [pfUI](https://shagu.org/pfUI/)
+
 ### Installation
 
 ##### 1: Copy the .lua files inside the mods folder to \Interface\AddOns\ShaguTweaks\mods
@@ -34,6 +39,9 @@ Mouseover to see the high and low ms for your WoW session<br>
 The display will be hidden unless your ms increases above the target ms (set at the top line of the minimap-ms.lua file - default 150)<br>
 The color will change in relation to the target ms<br>
 
+### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPS_MS.png" width=20% height=20%/><br>
+
 ### minimap-restyle
 Restyles the minimap (please also use the square minimap module)<br>
 Adds square Tracking and Mail icons<br>
@@ -43,8 +51,5 @@ Restyles the Zone Text, Clock, FPS and MS display<br>
 If you are using the [MinimapButtonBag](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon it will reposition the button below the minimap or clock<br>
 The button will be hidden unless you mouse over the button<br>
 
-
-### Credit:<br>
-Credit to [shagu](https://github.com/shagu)
-<br>
-Code from [pfUI](https://shagu.org/pfUI/)
+### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=20% height=20%/><br>
