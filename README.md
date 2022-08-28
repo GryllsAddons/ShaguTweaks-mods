@@ -13,6 +13,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ##### 2: Add the following lines to ShaguTweaks.toc:
 <i>
 mods\cursor-tooltip.lua<br>
+mods\hide-combat-tooltip.lua<br>
 mods\nameplate-lowhealth.lua<br>
 mods\minimap-fps.lua<br>
 mods\minimap-ms.lua<br>
@@ -24,6 +25,10 @@ You should now be able to enable the mods by selecting them in the ShaguTweaks m
 ### Description
 ### cursor-tooltip
 Attaches the tooltip to the cursor<br>
+
+### hide-combat-tooltip
+Hide the tooltip while in combat<br>
+While in combat, holding shift while mousing over a new target will show the tooltip<br>
 
 ### nameplate-lowhealth
 Recolors the nameplate when an enemy or friendly is at low health (20% or lower)<br>
