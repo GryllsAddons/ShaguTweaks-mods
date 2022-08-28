@@ -43,9 +43,8 @@ The color will change in relation to the target ms<br>
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPS_MS.png" width=20% height=20%/><br>
 
 ### minimap-restyle
-Restyles the minimap (please also use the square minimap module)<br>
-Adds square Tracking and Mail icons<br>
-Repositions the PVP icon<br>
+Restyles the minimap<br>
+Adds square Tracking and Mail icons and repositions the PVP icon when using the square minimap module<br>
 Restyles the Zone Text, Clock, FPS and MS display<br>
 
 If you are using the [MinimapButtonBag](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon it will reposition the button below the minimap or clock<br>
