@@ -49,7 +49,7 @@ The display will be hidden unless your FPS falls below the target FPS (set at th
 The color will change in relation to the target fps<br>
 
 ### minimap-ms
-Adds a ms display to the bottomleft of the minimap<br>
+Adds a ms display to the bottomright of the minimap<br>
 Mouseover to see the high and low ms for your WoW session<br>
 The display will be hidden unless your ms increases above the target ms (set at the top line of the minimap-ms.lua file - default 150)<br>
 The color will change in relation to the target ms<br>
