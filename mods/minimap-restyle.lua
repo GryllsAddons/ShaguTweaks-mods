@@ -47,21 +47,23 @@ module.enable = function(self)
         MinimapMS:SetPoint("RIGHT", styleFrame, "RIGHT")
     end
 
-    -- Tracking
-    MiniMapTrackingFrame:ClearAllPoints()
-    MiniMapTrackingFrame:SetPoint("TOPLEFT", Minimap, "TOPLEFT", -2, 1)
-    MiniMapTrackingFrame:SetScale(0.9)
-    MiniMapTrackingBorder:SetTexture(nil)
+    if Minimap.border then -- if using square minimap
+        -- Tracking
+        MiniMapTrackingFrame:ClearAllPoints()
+        MiniMapTrackingFrame:SetPoint("TOPLEFT", Minimap, "TOPLEFT", -2, 1)
+        MiniMapTrackingFrame:SetScale(0.9)
+        MiniMapTrackingBorder:SetTexture(nil)
 
-    -- Mail
-    MiniMapMailFrame:ClearAllPoints()
-    MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 4, 2)
-    MiniMapMailFrame:SetScale(1.2)
-    MiniMapMailBorder:SetTexture(nil)
+        -- Mail
+        MiniMapMailFrame:ClearAllPoints()
+        MiniMapMailFrame:SetPoint("TOPRIGHT", Minimap, "TOPRIGHT", 4, 2)
+        MiniMapMailFrame:SetScale(1.2)
+        MiniMapMailBorder:SetTexture(nil)
 
-    -- PVP
-    MiniMapBattlefieldFrame:ClearAllPoints()
-    MiniMapBattlefieldFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 2, -2)
+        -- PVP
+        MiniMapBattlefieldFrame:ClearAllPoints()
+        MiniMapBattlefieldFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 2, -2)
+    end
 
     -- MinimapButtonFrame    
     if MBB_MinimapButtonFrame then
