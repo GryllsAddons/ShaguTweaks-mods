@@ -38,7 +38,7 @@ module.enable = function(self)
       if unittype == "ENEMY_NPC" or "ENEMY_PLAYER" or "NEUTRAL_NPC" then        
         this.healthbar:SetStatusBarColor(255/255, 128/255, 0/255) -- legendary orange
       elseif unittype == "FRIENDLY_NPC" or "FRIENDLY_PLAYER" then
-        this.healthbar:SetStatusBarColor(0/255, 204/255, 255/255) -- Blizzard Blue
+        this.healthbar:SetStatusBarColor(0/255, 204/255, 255/255) -- Blizzard blue
       end
     else
       this.healthbar:SetStatusBarColor(red, green, blue)
