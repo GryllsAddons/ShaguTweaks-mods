@@ -12,6 +12,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 ##### 2: Add the following lines to ShaguTweaks.toc:
 <i>
+mods\cursor-tooltip.lua<br>
 mods\nameplate-lowhealth.lua<br>
 mods\minimap-fps.lua<br>
 mods\minimap-ms.lua<br>
@@ -21,6 +22,9 @@ mods\minimap-restyle.lua<br>
 You should now be able to enable the mods by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 
 ### Description
+### cursor-tooltip
+Attaches the tooltip to the cursor<br>
+
 ### nameplate-lowhealth
 Recolors the nameplate when an enemy or friendly is at low health (20% or lower)<br>
 Enemy health will be colored orange<br>
