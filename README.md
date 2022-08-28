@@ -26,6 +26,9 @@ You should now be able to enable the mods by selecting them in the ShaguTweaks m
 ### cursor-tooltip
 Attaches the tooltip to the cursor<br>
 
+### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png" width=20% height=20%/><br>
+
 ### hide-combat-tooltip
 Hide the tooltip while in combat<br>
 While in combat, holding shift while mousing over a new target will show the tooltip<br>
@@ -35,6 +38,9 @@ Recolors the nameplate when an enemy or friendly is at low health (20% or lower)
 Enemy health will be colored orange<br>
 Friendly health will be colored blue<br>
 The colors can be customised by editing the .lua file<br>
+
+### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth.png" width=20% height=20%/><br>
 
 ### minimap-fps
 Adds a fps display to the bottomleft of the minimap<br>
@@ -49,7 +55,7 @@ The display will be hidden unless your ms increases above the target ms (set at 
 The color will change in relation to the target ms<br>
 
 ### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPS_MS.png" width=20% height=20%/><br>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS.png" width=20% height=20%/><br>
 
 ### minimap-restyle
 Restyles the minimap<br>
