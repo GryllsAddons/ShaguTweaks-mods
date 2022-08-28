@@ -1,5 +1,5 @@
 # ShaguTweaks-Mods
-Mods for the ShaguTweaks addon
+Custom mods for the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon
 
 ### Credit:<br>
 Credit to [shagu](https://github.com/shagu)
