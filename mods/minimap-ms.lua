@@ -11,8 +11,8 @@ local module = ShaguTweaks:register({
 MinimapMS = CreateFrame("Frame", "MS", Minimap)
 MinimapMS:Hide()
 MinimapMS:SetFrameLevel(64)
-MinimapMS:SetPoint("BOTTOMRIGHT", MinimapCluster, "BOTTOMRIGHT", -24, 18)
-MinimapMS:SetWidth(42)
+MinimapMS:SetPoint("BOTTOMRIGHT", MinimapCluster, "BOTTOMRIGHT", -15, 18)
+MinimapMS:SetWidth(51)
 MinimapMS:SetHeight(23)
 MinimapMS:SetBackdrop({
   bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",

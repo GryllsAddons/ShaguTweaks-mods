@@ -11,8 +11,8 @@ local module = ShaguTweaks:register({
 MinimapFPS = CreateFrame("Frame", "FPS", Minimap)
 MinimapFPS:Hide()
 MinimapFPS:SetFrameLevel(64)
-MinimapFPS:SetPoint("BOTTOMLEFT", MinimapCluster, "BOTTOMLEFT", 40, 18)
-MinimapFPS:SetWidth(42)
+MinimapFPS:SetPoint("BOTTOMLEFT", MinimapCluster, "BOTTOMLEFT", 33, 18)
+MinimapFPS:SetWidth(49)
 MinimapFPS:SetHeight(23)
 MinimapFPS:SetBackdrop({
   bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
