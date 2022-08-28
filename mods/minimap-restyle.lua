@@ -95,6 +95,7 @@ module.enable = function(self)
             local hideTime = GetTime() + 5 -- hides in 5 seconds
             timerFrame:SetScript("OnUpdate", function()
                 if GetTime() >= hideTime then
+                    MBB_HideButtons() -- MBB function to hide buttons
                     MBB_MinimapButtonFrame:SetAlpha(0)
                     timerFrame:SetScript("OnUpdate", nil)
                 end
