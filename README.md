@@ -30,7 +30,7 @@ Attaches the tooltip to the cursor<br>
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png" width=20% height=20%/><br>
 
 ### hide-combat-tooltip
-Hide the tooltip while in combat<br>
+Hides the tooltip while in combat<br>
 While in combat, holding shift while mousing over a new target will show the tooltip<br>
 
 ### nameplate-lowhealth
