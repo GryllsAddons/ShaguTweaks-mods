@@ -28,7 +28,7 @@ You should now be able to enable the mods by selecting them in the ShaguTweaks m
 ### buff-restyle
 Restyles buff and debuff font and timer<br>
 ### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=20% height=20%/><br>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/><br>
 
 ### cursor-tooltip
 Attaches the tooltip to the cursor<br>
