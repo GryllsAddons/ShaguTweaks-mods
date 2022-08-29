@@ -10,7 +10,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 ##### 1: Copy the .lua files inside the mods folder to \Interface\AddOns\ShaguTweaks\mods
 
-##### 2: Add the following lines to ShaguTweaks.toc:
+##### 2: To enable the mod(s) add the appropriate line(s) below to \Interface\AddOns\ShaguTweaks\ShaguTweaks.toc:
 <i>
 mods\buff-restyle.lua<br>
 mods\cursor-tooltip.lua<br>
