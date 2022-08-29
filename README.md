@@ -72,12 +72,12 @@ Removes the background while in the Interface Options
 ### minimap-fps
 Adds a fps display to the bottomleft of the minimap<br>
 Mouseover to see the high and low fps for your WoW session<br>
-The color will change in relation to the target fps (set at the top line of the minimap-fps.lua file)
+The color will change in relation to the target fps (set at the top line of the minimap-fps.lua file - default 60)
 
 ### minimap-ms
 Adds a ms display to the bottomright of the minimap<br>
 Mouseover to see the high and low ms for your WoW session<br>
-The color will change in relation to the target ms (set at the top line of the minimap-ms.lua file)
+The color will change in relation to the target ms (set at the top line of the minimap-ms.lua file - default 150)
 
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png" width=20% height=20%/><br>
