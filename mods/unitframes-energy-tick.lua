@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Energy Tick",
-    description = "Adds a energy tick to the player frame",
+    description = "Adds an energy tick to the player frame",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Unit Frames",
     enabled = nil,
