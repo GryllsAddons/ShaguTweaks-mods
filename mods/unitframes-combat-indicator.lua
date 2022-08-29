@@ -9,7 +9,7 @@ local module = ShaguTweaks:register({
 module.enable = function(self)
 
     local f = CreateFrame("Frame", "TargetCombatIndicator", TargetFrame)
-    f.indicator = f:CreateTexture(nil, "BORDER")
+    f.indicator = f:CreateTexture(nil, "OVERLAY")
     --f.indicator:SetTexture("Interface\\Icons\\ABILITY_DUALWIELD")
     f.indicator:SetTexture("Interface\\CharacterFrame\\UI-StateIcon")
     f.indicator:SetTexCoord(0.50, 1.0, 0.0, 0.49)
@@ -19,7 +19,7 @@ module.enable = function(self)
     f.indicator:SetPoint("CENTER", TargetFrame, 65, -13)
     f.indicator:Hide()
 
-    f.glow = f:CreateTexture(nil, "BORDER")
+    f.glow = f:CreateTexture(nil, "OVERLAY")
     f.glow:SetTexture("Interface\\CharacterFrame\\UI-StateIcon")
     f.glow:SetBlendMode("ADD")
     f.glow:SetTexCoord(0.50, 1.0, 0.50, 1.0)
