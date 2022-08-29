@@ -25,7 +25,6 @@ mods\nameplate-lowhealth.lua<br>
 mods\unitframes-classportrait-tot.lua<br>
 mods\unitframes-combat-indicator.lua<br>
 mods\unitframes-energy-tick.lua<br>
-
 </i>
 <br>
 You should now be able to enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
