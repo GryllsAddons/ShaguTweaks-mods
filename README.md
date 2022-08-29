@@ -1,12 +1,12 @@
 # ShaguTweaks-Mods
 Custom mods for the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon
 
-### Credit:<br>
+## Credit:<br>
 Credit to [shagu](https://github.com/shagu)
 <br>
 Code from [pfUI](https://shagu.org/pfUI/)
 
-### Installation
+## Installation
 
 ##### 1: Copy the .lua files inside the mods folder to \Interface\AddOns\ShaguTweaks\mods
 
