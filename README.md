@@ -19,13 +19,14 @@ mods\hide-combat-tooltip.lua<br>
 mods\hide-ui-frames.lua<br>
 mods\improved-exp.lua<br>
 mods\improved-interface-options.lua<br>
-mods\lowhealth.lua<br>
 mods\minimap-fps.lua<br>
 mods\minimap-ms.lua<br>
 mods\minimap-restyle.lua<br>
 mods\unitframes-classportrait-tot.lua<br>
+mods\unitframes-colornames.lua<br>
 mods\unitframes-combat-indicator.lua<br>
 mods\unitframes-energy-tick.lua<br>
+mods\unitframes-lowhealth.lua<br>
 </i>
 
 ##### You should now be able to enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
@@ -63,15 +64,6 @@ Shows detailed exp, rested exp and rep values on mouseover
 
 ### improved-interface-options
 Removes the background while in the Interface Options
-
-### lowhealth
-Changes the nameplate and unitframe healthbar colors when at 20% health or lower<br>
-Enemy health will be colored orange<br>
-Friendly health will be colored blue<br>
-The colors can be customised by editing the .lua file
-
-##### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png" width=30% height=30%/>
 
 ### minimap-fps
 Adds a fps display to the bottomleft of the minimap<br>
@@ -116,3 +108,12 @@ Adds an energy tick to the player frame
 
 ##### Preview:
 <img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_EnergyTick.png" width=20% height=20%/>
+
+### unitframes-lowhealth
+Changes the nameplate and unitframe healthbar colors when at 20% health or lower<br>
+Enemy health will be colored orange<br>
+Friendly health will be colored blue<br>
+The colors can be customised by editing the .lua file
+
+##### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png" width=30% height=30%/>
