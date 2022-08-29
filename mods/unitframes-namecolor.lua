@@ -84,7 +84,6 @@ module.enable = function(self)
     end
     
     local function nameFont(name)
-        DEFAULT_CHAT_FRAME:AddMessage("HELLO")
         local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
         name:SetFont(font, size, outline)
     end
