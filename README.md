@@ -20,8 +20,10 @@ mods\minimap-fps.lua<br>
 mods\minimap-ms.lua<br>
 mods\minimap-restyle.lua<br>
 mods\nameplate-lowhealth.lua<br>
+mods\unitframes-classportrait-tot.lua<br>
 mods\unitframes-combat-indicator.lua<br>
 mods\unitframes-energy-tick.lua<br>
+
 </i>
 <br>
 You should now be able to enable the mods by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
@@ -80,6 +82,12 @@ The colors can be customised by editing the .lua file<br>
 
 ### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth.png" width=20% height=20%/><br>
+
+### unitframes-classportrait-tot
+Extends class portraits to Target of Target<br>
+
+### Preview:
+<img src=https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TOTPortrait.png" width=20% height=20%/><br>
 
 ### unitframes-combat-indicator
 Adds a combat indicator to the target frame<br>
