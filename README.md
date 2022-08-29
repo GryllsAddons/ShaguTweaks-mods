@@ -20,8 +20,7 @@ mods\hide-combat-tooltip.lua<br>
 mods\hide-ui-frames.lua<br>
 mods\improved-exp.lua<br>
 mods\improved-interface-options.lua<br>
-mods\minimap-fps.lua<br>
-mods\minimap-ms.lua<br>
+mods\minimap-framerate-latency.lua
 mods\minimap-restyle.lua<br>
 mods\unitframes-classportrait-tot.lua<br>
 mods\unitframes-combat-indicator.lua<br>
@@ -69,15 +68,10 @@ Shows detailed exp, rested exp and rep values on mouseover
 ### improved-interface-options
 Removes the background while in the Interface Options
 
-### minimap-fps
-Adds a fps display to the bottomleft of the minimap<br>
-Mouseover to see the high and low fps for your WoW session<br>
-The color will change in relation to the target fps (set at the top line of the minimap-fps.lua file - default 60)
-
-### minimap-ms
-Adds a ms display to the bottomright of the minimap<br>
-Mouseover to see the high and low ms for your WoW session<br>
-The color will change in relation to the target ms (set at the top line of the minimap-ms.lua file - default 150)
+### mods\minimap-framerate-latency.lua
+Adds a small Framerate & Latency display to the mini map.
+Mouseover to see the high and low framerate and latency for your WoW session<br>
+The color will change in relation to the target values set at the top line of the minimap-fps.lua file
 
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png" width=20% height=20%/><br>
