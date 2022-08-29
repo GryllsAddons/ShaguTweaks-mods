@@ -13,6 +13,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ##### 2: Add the following lines to ShaguTweaks.toc:
 <i>
 mods\buff-restyle.lua
+mods\combat-indicator.lua
 mods\cursor-tooltip.lua
 mods\hide-combat-tooltip.lua
 mods\improved-interface-options.lua
@@ -30,6 +31,11 @@ You should now be able to enable the mods by selecting them in the ShaguTweaks m
 Restyles buff and debuff font and timer<br>
 ### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/><br>
+
+### combat-indicator
+Adds a combat indicator to the target frame<br>
+### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png" width=20% height=20%/><br>
 
 ### cursor-tooltip
 Attaches the tooltip to the cursor<br>
