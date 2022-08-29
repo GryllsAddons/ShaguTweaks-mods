@@ -28,7 +28,7 @@ mods\unitframes-combat-indicator.lua<br>
 mods\unitframes-energy-tick.lua<br>
 </i>
 
-#####You should now be able to enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
+##### You should now be able to enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 
 ## Mods:
 
