@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
   title = "Color Names",
-  description = "Adds class and pet coloring to the unitframes",
+  description = "Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.",
   expansions = { ["vanilla"] = true, ["tbc"] = true },
   category = "Unit Frames",
   enabled = nil,
