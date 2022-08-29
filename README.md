@@ -15,6 +15,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 mods\buff-restyle.lua<br>
 mods\cursor-tooltip.lua<br>
 mods\hide-combat-tooltip.lua<br>
+mods\hide-ui-frames.lua<br>
 mods\improved-interface-options.lua<br>
 mods\minimap-fps.lua<br>
 mods\minimap-ms.lua<br>
@@ -44,6 +45,10 @@ Attaches the tooltip to the cursor<br>
 ### hide-combat-tooltip
 Hides the tooltip while in combat<br>
 While in combat, holding shift while mousing over a new target will show the tooltip<br>
+
+### hide-ui-frames
+An adaptable framework for hiding ui frames (please see .lua instructions)
+Currently hides the player and pet frame based on conditions
 
 ### improved-interface-options
 Removes the background while in the Interface Options<br>
