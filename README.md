@@ -78,7 +78,7 @@ The display will be hidden unless your ms increases above the target ms (set at 
 The color will change in relation to the target ms
 
 ##### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS.png" width=20% height=20%/><br>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png" width=20% height=20%/><br>
 
 ### minimap-restyle
 Restyles the minimap<br>
