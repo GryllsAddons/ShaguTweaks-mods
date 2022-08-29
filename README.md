@@ -11,6 +11,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ##### 1: Copy the .lua files inside the mods folder to \Interface\AddOns\ShaguTweaks\mods
 
 ##### 2: To enable the mod(s) add the appropriate line(s) below to \Interface\AddOns\ShaguTweaks\ShaguTweaks.toc:
+
 <i>
 mods\buff-restyle.lua<br>
 mods\cursor-tooltip.lua<br>
@@ -26,8 +27,8 @@ mods\unitframes-classportrait-tot.lua<br>
 mods\unitframes-combat-indicator.lua<br>
 mods\unitframes-energy-tick.lua<br>
 </i>
-<br>
-You should now be able to enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
+
+#####You should now be able to enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 
 ## Mods:
 
