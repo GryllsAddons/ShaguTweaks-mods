@@ -87,7 +87,7 @@ The colors can be customised by editing the .lua file<br>
 Extends class portraits to Target of Target<br>
 
 ### Preview:
-<img src=https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TOTPortrait.png" width=20% height=20%/><br>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TOTPortrait.png" width=20% height=20%/><br>
 
 ### unitframes-combat-indicator
 Adds a combat indicator to the target frame<br>
