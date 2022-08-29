@@ -12,15 +12,15 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 ##### 2: Add the following lines to ShaguTweaks.toc:
 <i>
-mods\buff-restyle.lua
-mods\combat-indicator.lua
-mods\cursor-tooltip.lua
-mods\hide-combat-tooltip.lua
-mods\improved-interface-options.lua
-mods\minimap-fps.lua
-mods\minimap-ms.lua
-mods\minimap-restyle.lua
-mods\nameplate-lowhealth.lua
+mods\buff-restyle.lua<br>
+mods\combat-indicator.lua<br>
+mods\cursor-tooltip.lua<br>
+mods\hide-combat-tooltip.lua<br>
+mods\improved-interface-options.lua<br>
+mods\minimap-fps.lua<br>
+mods\minimap-ms.lua<br>
+mods\minimap-restyle.lua<br>
+mods\nameplate-lowhealth.lua<br>
 </i>
 <br>
 You should now be able to enable the mods by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
