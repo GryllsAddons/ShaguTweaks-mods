@@ -13,7 +13,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ##### 2: Add the following lines to ShaguTweaks.toc:
 <i>
 mods\buff-restyle.lua<br>
-mods\combat-indicator.lua<br>
 mods\cursor-tooltip.lua<br>
 mods\hide-combat-tooltip.lua<br>
 mods\improved-interface-options.lua<br>
@@ -21,6 +20,9 @@ mods\minimap-fps.lua<br>
 mods\minimap-ms.lua<br>
 mods\minimap-restyle.lua<br>
 mods\nameplate-lowhealth.lua<br>
+mods\unitframes-combat-indicator.lua<br>
+mods\unitframes-energy-tick.lua<br>
+mods\combat-indicator.lua<br>
 </i>
 <br>
 You should now be able to enable the mods by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
@@ -31,11 +33,6 @@ You should now be able to enable the mods by selecting them in the ShaguTweaks m
 Restyles buff and debuff font and timer<br>
 ### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/><br>
-
-### combat-indicator
-Adds a combat indicator to the target frame<br>
-### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png" width=20% height=20%/><br>
 
 ### cursor-tooltip
 Attaches the tooltip to the cursor<br>
@@ -84,3 +81,15 @@ The colors can be customised by editing the .lua file<br>
 
 ### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth.png" width=20% height=20%/><br>
+
+### unitframes-combat-indicator
+Adds a combat indicator to the target frame<br>
+
+### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png" width=20% height=20%/><br>
+
+### unitframes-energy-tick
+Adds an energy tick to the player frame
+
+### Preview:
+<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_EnergyTick.png" width=20% height=20%/><br>
