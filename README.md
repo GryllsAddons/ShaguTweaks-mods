@@ -71,7 +71,7 @@ Friendly health will be colored blue<br>
 The colors can be customised by editing the .lua file
 
 ##### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth.png" width=20% height=20%/>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png" width=30% height=30%/>
 
 ### minimap-fps
 Adds a fps display to the bottomleft of the minimap<br>
