@@ -97,6 +97,9 @@ Extends class portraits to Target of Target
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TOTPortrait.png" width=20% height=20%/>
 
+### unitframes-colorname
+Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.
+
 ### unitframes-combat-indicator
 Adds a combat indicator to the target frame
 
