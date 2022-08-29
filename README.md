@@ -13,6 +13,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ##### 2: To enable the mod(s) add the appropriate line(s) below to \Interface\AddOns\ShaguTweaks\ShaguTweaks.toc:
 
 <i>
+mods\basic-chat.lua<br>
 mods\buff-restyle.lua<br>
 mods\cursor-tooltip.lua<br>
 mods\hide-combat-tooltip.lua<br>
@@ -32,6 +33,9 @@ mods\unitframes-namecolor.lua<br>
 ##### You should now be able to enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 
 ## Mods:
+
+### basic-chat
+Creates non-configurable General, Combat Log and Loot & Spam chat boxes
 
 ### buff-restyle
 Restyles buff and debuff font and timer<br>
