@@ -16,6 +16,7 @@ mods\buff-restyle.lua<br>
 mods\cursor-tooltip.lua<br>
 mods\hide-combat-tooltip.lua<br>
 mods\hide-ui-frames.lua<br>
+mods\improved-exp.lua<br>
 mods\improved-interface-options.lua<br>
 mods\minimap-fps.lua<br>
 mods\minimap-ms.lua<br>
@@ -49,6 +50,15 @@ While in combat, holding shift while mousing over a new target will show the too
 ### hide-ui-frames
 An adaptable framework for hiding UI frames (please see .lua instructions)
 Currently hides the player and pet frame based on conditions
+
+### improved-exp
+Shows detailed exp, rested exp and rep values on mouseover
+
+### Preview:
+<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png" width=20% height=20%/><br>
+
+### Preview:
+<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png" width=20% height=20%/><br>
 
 ### improved-interface-options
 Removes the background while in the Interface Options<br>
