@@ -15,6 +15,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 mods\buff-restyle.lua
 mods\cursor-tooltip.lua
 mods\hide-combat-tooltip.lua
+mods\improved-interface-options.lua
 mods\minimap-fps.lua
 mods\minimap-ms.lua
 mods\minimap-restyle.lua
@@ -39,6 +40,9 @@ Attaches the tooltip to the cursor<br>
 ### hide-combat-tooltip
 Hides the tooltip while in combat<br>
 While in combat, holding shift while mousing over a new target will show the tooltip<br>
+
+### improved-interface-options
+Removes the background while in the Interface Options<br>
 
 ### minimap-fps
 Adds a fps display to the bottomleft of the minimap<br>
