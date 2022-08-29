@@ -22,7 +22,6 @@ mods\minimap-restyle.lua<br>
 mods\nameplate-lowhealth.lua<br>
 mods\unitframes-combat-indicator.lua<br>
 mods\unitframes-energy-tick.lua<br>
-mods\combat-indicator.lua<br>
 </i>
 <br>
 You should now be able to enable the mods by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
