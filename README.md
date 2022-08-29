@@ -19,10 +19,10 @@ mods\hide-combat-tooltip.lua<br>
 mods\hide-ui-frames.lua<br>
 mods\improved-exp.lua<br>
 mods\improved-interface-options.lua<br>
+mods\lowhealth.lua<br>
 mods\minimap-fps.lua<br>
 mods\minimap-ms.lua<br>
 mods\minimap-restyle.lua<br>
-mods\nameplate-lowhealth.lua<br>
 mods\unitframes-classportrait-tot.lua<br>
 mods\unitframes-combat-indicator.lua<br>
 mods\unitframes-energy-tick.lua<br>
@@ -64,6 +64,15 @@ Shows detailed exp, rested exp and rep values on mouseover
 ### improved-interface-options
 Removes the background while in the Interface Options
 
+### lowhealth
+Changes the nameplate and unitframe healthbar colors when at 20% health or lower<br>
+Enemy health will be colored orange<br>
+Friendly health will be colored blue<br>
+The colors can be customised by editing the .lua file
+
+##### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth.png" width=20% height=20%/>
+
 ### minimap-fps
 Adds a fps display to the bottomleft of the minimap<br>
 Mouseover to see the high and low fps for your WoW session<br>
@@ -89,15 +98,6 @@ The MinimapButtonBag button will be hidden unless you mouse over it<br>
 
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=20% height=20%/>
-
-### nameplate-lowhealth
-Recolors the nameplate when an enemy or friendly is at low health (20% or lower)<br>
-Enemy health will be colored orange<br>
-Friendly health will be colored blue<br>
-The colors can be customised by editing the .lua file
-
-##### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth.png" width=20% height=20%/>
 
 ### unitframes-classportrait-tot
 Extends class portraits to Target of Target
