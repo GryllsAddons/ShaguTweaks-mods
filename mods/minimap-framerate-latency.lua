@@ -3,7 +3,7 @@ local tarMS = 150 -- change to your target MS (default 150)
 
 local module = ShaguTweaks:register({
   title = "MiniMap Framerate & Latency",
-  description = "Adds a small Framerate & Latency display to the mini map.",
+  description = "Adds a small framerate & latency display to the mini map.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "World & MiniMap",
   enabled = nil,
