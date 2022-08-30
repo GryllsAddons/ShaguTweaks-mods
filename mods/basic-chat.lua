@@ -6,7 +6,7 @@ local module = ShaguTweaks:register({
     enabled = nil,
   })
 
-  local function SetupChat()        
+local function SetupChat()        
     local fontsize = 14 -- chat font size
     local lines = 8 -- number of chat lines
     local h = (fontsize * lines)
@@ -47,7 +47,7 @@ local module = ShaguTweaks:register({
     FCF_DockUpdate()
 end
 
-function SetupChannels()
+local function SetupChannels()
     ChatFrame_RemoveAllMessageGroups(ChatFrame1)
     ChatFrame_RemoveAllMessageGroups(ChatFrame2)
     ChatFrame_RemoveAllMessageGroups(ChatFrame3)
