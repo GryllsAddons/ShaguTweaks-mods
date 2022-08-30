@@ -227,22 +227,23 @@ end
 
 module.enable = function(self)
     
-    Hide:RegisterEvent("PLAYER_ENTERING_WORLD")
-    Hide:RegisterEvent("PLAYER_TARGET_CHANGED")
-    Hide:RegisterEvent("UNIT_HEALTH", "player")
-    Hide:RegisterEvent("UNIT_MANA", "player")
-    Hide:RegisterEvent("UNIT_ENERGY", "player")    
-    Hide:RegisterEvent("SPELLCAST_START")
-    Hide:RegisterEvent("SPELLCAST_CHANNEL_START")
-    Hide:RegisterEvent("SPELLCAST_STOP")
-    Hide:RegisterEvent("SPELLCAST_FAILED")
-    Hide:RegisterEvent("SPELLCAST_INTERRUPTED")
-    Hide:RegisterEvent("SPELLCAST_CHANNEL_STOP")
-    Hide:RegisterEvent("PLAYER_REGEN_DISABLED") -- in combat
-    Hide:RegisterEvent("PLAYER_REGEN_ENABLED") -- out of combat
-    -- Hide:RegisterEvent("CVAR_UPDATE")
+    local events = CreateFrame("Frame", nil, UIParent)	
+    events:RegisterEvent("PLAYER_ENTERING_WORLD")
+    events:RegisterEvent("PLAYER_TARGET_CHANGED")
+    events:RegisterEvent("UNIT_HEALTH", "player")
+    events:RegisterEvent("UNIT_MANA", "player")
+    events:RegisterEvent("UNIT_ENERGY", "player")    
+    events:RegisterEvent("SPELLCAST_START")
+    events:RegisterEvent("SPELLCAST_CHANNEL_START")
+    events:RegisterEvent("SPELLCAST_STOP")
+    events:RegisterEvent("SPELLCAST_FAILED")
+    events:RegisterEvent("SPELLCAST_INTERRUPTED")
+    events:RegisterEvent("SPELLCAST_CHANNEL_STOP")
+    events:RegisterEvent("PLAYER_REGEN_DISABLED") -- in combat
+    events:RegisterEvent("PLAYER_REGEN_ENABLED") -- out of combat
+    -- events:RegisterEvent("CVAR_UPDATE")
 
-    Hide:SetScript("OnEvent", function()
+    events:SetScript("OnEvent", function()
         if event == "PLAYER_ENTERING_WORLD" then
             if not Hide.toggle then       
                 Hide.toggle = {}
