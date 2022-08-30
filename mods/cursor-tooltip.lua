@@ -2,7 +2,7 @@ local _G = _G or getfenv(0)
 
 local module = ShaguTweaks:register({
   title = "Cursor Tooltip",
-  description = "Attaches the tooltip to the cursor",
+  description = "Attaches the tooltip to the cursor.",
   expansions = { ["vanilla"] = true, ["tbc"] = true },
   category = "Tooltip & Items",
   enabled = nil,
