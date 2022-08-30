@@ -69,7 +69,6 @@ local function buffs()
 end
 
 local function buttons()
-
     local function restyle(button)
         if not button then return end        
 
@@ -124,7 +123,6 @@ local function buttons()
             restyle(button)
         end
     end
-
 end
 
 local function minimap()
