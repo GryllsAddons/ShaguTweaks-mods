@@ -2,7 +2,7 @@ local _G = _G or getfenv(0)
 local GetUnitData = ShaguTweaks.GetUnitData
 
 local module = ShaguTweaks:register({
-  title = "Unitframe Healthbar Colors",
+  title = "Unit Frame Healthbar Colors",
   description = "Changes the unitframe and nameplate healthbar color when at 20% health or lower. Adds Hunter pet healthbar coloring by happiness.",
   expansions = { ["vanilla"] = true, ["tbc"] = true },
   category = "Unit Frames",
@@ -49,8 +49,7 @@ end
 
 local function lowhealth_healthbar(unit)
 
-  local HealthBar = null
-  -- color health bar based on health
+  local HealthBar
   if unit == "player" then
       HealthBar = PlayerFrameHealthBar
   elseif unit == "pet" then
@@ -75,11 +74,9 @@ local function lowhealth_healthbar(unit)
       HealthBar = PartyMemberFrame3PetFrameHealthBar
   elseif unit == "partypet4" then
       HealthBar = PartyMemberFrame4PetFrameHealthBar
-  else
-      -- unit not found
   end
 
-  if HealthBar ~= null then
+  if HealthBar then
       if not (UnitIsDead(unit) or UnitIsGhost(unit)) then
           if unit == "pet" then
               -- credit to KoOz (https://github.com/Ko0z/UnitFramesImproved_Vanilla) for code below
