@@ -68,7 +68,7 @@ Shows detailed exp, rested exp and rep values on mouseover
 ### improved-interface-options
 Removes the background while in the Interface Options
 
-### mods\minimap-framerate-latency.lua
+### minimap-framerate-latency.lua
 Adds a small Framerate & Latency display to the mini map.
 Mouseover to see the high and low framerate and latency for your WoW session<br>
 The color will change in relation to the target values set at the top line of the minimap-fps.lua file
