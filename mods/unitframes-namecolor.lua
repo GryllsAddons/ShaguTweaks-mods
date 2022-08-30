@@ -126,17 +126,5 @@ module.enable = function(self)
             end
         end
     end)
-    
-    local events = CreateFrame("Frame", nil, UIParent)
-    events:RegisterEvent("PLAYER_ENTERING_WORLD")    
-    events:RegisterEvent("UNIT_HEALTH")
-
-    events:SetScript("OnEvent", function()
-        if event == "PLAYER_ENTERING_WORLD" then
-            ShaguPlates()
-        elseif event == "UNIT_HEALTH" then
-            Healthbar(arg1)
-        end
-    end)
 
 end
