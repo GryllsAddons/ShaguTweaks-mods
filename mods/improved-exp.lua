@@ -5,23 +5,6 @@ local module = ShaguTweaks:register({
     category = "Tooltip & Items",
     enabled = nil,
   })
-  
-local exp = CreateFrame("Frame", "exp", UIParent)
-exp:SetFrameStrata("HIGH")
-local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
-exp.expstring = exp:CreateFontString(nil, "OVERLAY", "GameFontWhite")
-exp.expstring:SetFont(font, size, outline)
-exp.expstring:ClearAllPoints()
-exp.expstring:SetPoint("CENTER", MainMenuExpBar, "CENTER", 0, 2)
-exp.expstring:SetJustifyH("CENTER")
-exp.expstring:SetTextColor(1,1,1)
-
-exp.repstring = exp:CreateFontString(nil, "OVERLAY", "GameFontWhite")
-exp.repstring:SetFont(font, size, outline)
-exp.repstring:ClearAllPoints()
-exp.repstring:SetPoint("CENTER", ReputationWatchBar, "CENTER", 0, 2)
-exp.repstring:SetJustifyH("CENTER")
-exp.repstring:SetTextColor(1,1,1)
 
 local function round(input, places)
     if not places then places = 0 end
@@ -30,6 +13,26 @@ local function round(input, places)
         for i = 1, places do pow = pow * 10 end
         return floor(input * pow + 0.5) / pow
     end
+end
+
+local exp = CreateFrame("Frame", "exp", UIParent)
+
+local function expStrings()
+    exp:SetFrameStrata("HIGH")
+    local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
+    exp.expstring = exp:CreateFontString(nil, "OVERLAY", "GameFontWhite")
+    exp.expstring:SetFont(font, size, outline)
+    exp.expstring:ClearAllPoints()
+    exp.expstring:SetPoint("CENTER", MainMenuExpBar, "CENTER", 0, 2)
+    exp.expstring:SetJustifyH("CENTER")
+    exp.expstring:SetTextColor(1,1,1)
+
+    exp.repstring = exp:CreateFontString(nil, "OVERLAY", "GameFontWhite")
+    exp.repstring:SetFont(font, size, outline)
+    exp.repstring:ClearAllPoints()
+    exp.repstring:SetPoint("CENTER", ReputationWatchBar, "CENTER", 0, 2)
+    exp.repstring:SetJustifyH("CENTER")
+    exp.repstring:SetTextColor(1,1,1)
 end
     
 local function updateExp()
@@ -106,7 +109,7 @@ local function rep_mouseOver()
 end
 
 module.enable = function(self)
-
+    
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:RegisterEvent("UPDATE_EXHAUSTION")
@@ -116,6 +119,7 @@ module.enable = function(self)
 
     events:SetScript("OnEvent", function()
         if event == "PLAYER_ENTERING_WORLD" then
+            expStrings()
             MainMenuBarOverlayFrame:Hide()       
             exp_mouseOver()
             updateExp()
