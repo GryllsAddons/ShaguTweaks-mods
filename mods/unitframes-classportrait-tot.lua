@@ -1,5 +1,13 @@
 local _G = _G or getfenv(0)
 
+local module = ShaguTweaks:register({
+  title = "Unit Frame ToT Class Portraits",
+  description = "Extends class portraits to Target of Target.",
+  expansions = { ["vanilla"] = true, ["tbc"] = nil },
+  category = "Unit Frames",
+  enabled = nil,
+})
+
 local addonpath
 local tocs = { "", "-master", "-tbc", "-wotlk" }
 for _, name in pairs(tocs) do
@@ -23,14 +31,6 @@ local CLASS_ICON_TCOORDS = {
     ["PALADIN"] = { 0, 0.25, 0.5, 0.75 },
     ["DEATHKNIGHT"] = { 0.25, .5, 0.5, .75 },
   }
-
-local module = ShaguTweaks:register({
-  title = "Unit Frame ToT Class Portraits",
-  description = "Extends class portraits to Target of Target.",
-  expansions = { ["vanilla"] = true, ["tbc"] = true },
-  category = "Unit Frames",
-  enabled = nil,
-})
 
 local function UpdatePortraits(frame, unit)
     local portrait = nil
