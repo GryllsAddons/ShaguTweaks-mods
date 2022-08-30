@@ -88,7 +88,7 @@ Adds a combat indicator to the target frame
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png" width=20% height=20%/>
 
 ### unitframes-energy-tick
-Adds an energy tick to the player frame
+Adds an energy tick to the player frame.
 
 ##### Preview:
 <img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_EnergyTick.png" width=20% height=20%/>
