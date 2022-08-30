@@ -39,40 +39,40 @@ MinimapMS:SetBackdrop({
 MinimapMS:SetBackdropBorderColor(.9,.8,.5,1)
 MinimapMS:SetBackdropColor(.4,.4,.4,1)
 
+local function round(input, places)
+    if not places then places = 0 end
+    if type(input) == "number" and type(places) == "number" then
+        local pow = 1
+        for i = 1, places do pow = pow * 10 end
+        return floor(input * pow + 0.5) / pow
+    end
+end
+
+local _r, _g, _b, _a
+local function rgbhex(r, g, b, a)
+    if type(r) == "table" then
+        if r.r then
+        _r, _g, _b, _a = r.r, r.g, r.b, (r.a or 1)
+        elseif table.getn(r) >= 3 then
+        _r, _g, _b, _a = r[1], r[2], r[3], (r[4] or 1)
+        end
+    elseif tonumber(r) then
+        _r, _g, _b, _a = r, g, b, (a or 1)
+    end
+
+    if _r and _g and _b and _a then
+        -- limit values to 0-1
+        _r = _r + 0 > 1 and 1 or _r + 0
+        _g = _g + 0 > 1 and 1 or _g + 0
+        _b = _b + 0 > 1 and 1 or _b + 0
+        _a = _a + 0 > 1 and 1 or _a + 0
+        return string.format("|c%02x%02x%02x%02x", _a*255, _r*255, _g*255, _b*255)
+    end
+
+    return ""
+end
+
 module.enable = function(self)
-
-    local function round(input, places)
-        if not places then places = 0 end
-        if type(input) == "number" and type(places) == "number" then
-            local pow = 1
-            for i = 1, places do pow = pow * 10 end
-            return floor(input * pow + 0.5) / pow
-        end
-    end
-
-    local _r, _g, _b, _a
-    local function rgbhex(r, g, b, a)
-        if type(r) == "table" then
-            if r.r then
-            _r, _g, _b, _a = r.r, r.g, r.b, (r.a or 1)
-            elseif table.getn(r) >= 3 then
-            _r, _g, _b, _a = r[1], r[2], r[3], (r[4] or 1)
-            end
-        elseif tonumber(r) then
-            _r, _g, _b, _a = r, g, b, (a or 1)
-        end
-
-        if _r and _g and _b and _a then
-            -- limit values to 0-1
-            _r = _r + 0 > 1 and 1 or _r + 0
-            _g = _g + 0 > 1 and 1 or _g + 0
-            _b = _b + 0 > 1 and 1 or _b + 0
-            _a = _a + 0 > 1 and 1 or _a + 0
-            return string.format("|c%02x%02x%02x%02x", _a*255, _r*255, _g*255, _b*255)
-        end
-
-        return ""
-    end
 
     -- color gradient
     local gradientcolors = {}
