@@ -71,19 +71,26 @@ end
 local function buttons()
 
     local function restyle(button)
-        if not button then return end
-        
-        local hotkey = getglobal(button:GetName().."HotKey")
+        if not button then return end        
+
+        local hotkey = _G[button:GetName().."HotKey"]
         if hotkey then
             local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
             hotkey:SetFont(font, size, outline)
         end
 
-        local macroName = getglobal(button:GetName().."Name")   
-        if macroName then
-            local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
-            macroName:SetFont(font, size, outline)   
+        local macro = _G[button:GetName().."Name"]  
+        if macro then
+            local font, size, outline = "Fonts\\skurri.TTF", 12, "OUTLINE"
+            macro:SetFont(font, size, outline)   
         end
+
+        local count = _G[button:GetName()..'Count']
+        if count then
+            local font, size, outline = "Fonts\\frizqt__.TTF", 14, "OUTLINE"
+            count:SetFont(font, size, outline)   
+        end
+
     end
     
     for i = 1, 24 do
