@@ -7,9 +7,6 @@ local module = ShaguTweaks:register({
 })
 
 local events = CreateFrame("Frame", nil, UIParent)	
-    events:RegisterEvent("PLAYER_REGEN_ENABLED") -- out of combat
-    events:RegisterEvent("PLAYER_REGEN_DISABLED") -- in combat
-
 local inCombat = false
 
 local function tooltipToggle(inCombat)
@@ -36,6 +33,9 @@ local function tooltipSetScript(inCombat)
 end
 
 module.enable = function(self)
+    
+    events:RegisterEvent("PLAYER_REGEN_ENABLED") -- out of combat
+    events:RegisterEvent("PLAYER_REGEN_DISABLED") -- in combat
 
     events:SetScript("OnEvent", function()
         if event == "PLAYER_REGEN_DISABLED" then
