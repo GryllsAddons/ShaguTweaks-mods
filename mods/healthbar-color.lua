@@ -4,12 +4,12 @@ local GetUnitData = ShaguTweaks.GetUnitData
 local module = ShaguTweaks:register({
   title = "Unit Frame Healthbar Colors",
   description = "Changes the unitframe and nameplate healthbar color when at 20% health or lower. Adds Hunter pet healthbar coloring by happiness.",
-  expansions = { ["vanilla"] = true, ["tbc"] = true },
+  expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "Unit Frames",
   enabled = nil,
 })
 
-local function lowhealth_ShaguPlates()
+local function ShaguPlates()
   if ShaguPlates then return end
 
   table.insert(ShaguTweaks.libnameplate.OnUpdate, function()
@@ -47,8 +47,7 @@ local function lowhealth_ShaguPlates()
   end)
 end
 
-local function lowhealth_healthbar(unit)
-
+local function Healthbar(unit)
   local HealthBar
   if unit == "player" then
       HealthBar = PlayerFrameHealthBar
@@ -137,9 +136,9 @@ module.enable = function(self)
 
   events:SetScript("OnEvent", function()
       if event == "PLAYER_ENTERING_WORLD" then
-        lowhealth_ShaguPlates()
+        ShaguPlates()
       elseif event == "UNIT_HEALTH" then
-        lowhealth_healthbar(arg1)
+        Healthbar(arg1)
       end
   end)
 
