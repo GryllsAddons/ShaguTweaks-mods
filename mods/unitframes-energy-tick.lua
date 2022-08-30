@@ -95,10 +95,10 @@ end
   
 module.enable = function(self)
 
-    local tick = CreateFrame("Frame", nil, UIParent)
-    tick:RegisterEvent("PLAYER_ENTERING_WORLD")
+    local events = CreateFrame("Frame", nil, UIParent)
+    events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
-    tick:SetScript("OnEvent", function()
+    events:SetScript("OnEvent", function()
         if event == "PLAYER_ENTERING_WORLD" then
             CreateTick()
         end
