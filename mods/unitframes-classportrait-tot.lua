@@ -59,7 +59,6 @@ module.enable = function(self)
 
     TargetofTargetHealthBar:SetScript("OnValueChanged", function()
     UpdatePortraits(TargetTargetFrame, "targettarget")
-    -- TargetofTargetHealthBar:SetScript("OnValueChanged", nil)
     end)
 
 end
