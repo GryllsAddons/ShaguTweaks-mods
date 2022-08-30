@@ -15,6 +15,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 <i>
 mods\basic-chat.lua<br>
 mods\buff-restyle.lua<br>
+mods\central-ui.lua<br>
 mods\cursor-tooltip.lua<br>
 mods\hide-combat-tooltip.lua<br>
 mods\hide-ui-frames.lua<br>
@@ -42,8 +43,11 @@ Restyles buff and debuff font and timer<br>
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/>
 
+### central-ui.lua
+Moves the unit frames, castbar, buffs and minimap into a more central layout
+
 ### cursor-tooltip
-Attaches the tooltip to the cursor<br>
+Attaches the tooltip to the cursor
 
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png" width=20% height=20%/>
