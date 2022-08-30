@@ -103,7 +103,7 @@ Adds an energy tick to the player frame.
 <img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_EnergyTick.png" width=20% height=20%/>
 
 ### ui-restyle
-Restyles minimap, buff/debuffs and unitframe names.
+Restyles minimap, buff/debuffs, unitframe names and buttons.
 
 ##### minimap-restyle
 Adds square Tracking and Mail icons and repositions the PVP icon when using the square minimap module.<br>
@@ -123,6 +123,9 @@ Restyles buff and debuff font and timer.
 
 ##### unitframe-name-restyle
 Adds an outline to unit names.
+
+##### buttons
+Changes button font
 
 ### unitframes-namecolor
 Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.
