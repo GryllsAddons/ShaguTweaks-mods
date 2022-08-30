@@ -16,6 +16,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 mods\basic-chat.lua<br>
 mods\central-ui.lua<br>
 mods\cursor-tooltip.lua<br>
+mods\healthbar-colors<br>
 mods\hide-combat-tooltip.lua<br>
 mods\hide-ui-frames.lua<br>
 mods\improved-exp.lua<br>
@@ -25,7 +26,6 @@ mods\ui-restyle.lua<br>
 mods\unitframes-classportrait-tot.lua<br>
 mods\unitframes-combat-indicator.lua<br>
 mods\unitframes-energy-tick.lua<br>
-mods\unitframes-lowhealth.lua<br>
 mods\unitframes-namecolor.lua<br>
 </i>
 
@@ -45,6 +45,15 @@ Attaches the tooltip to the cursor
 
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png" width=20% height=20%/>
+
+### healthbar-colors
+Changes the unitframe and nameplate healthbar color when at 20% health or lower.<br>
+Adds Hunter pet healthbar coloring by happiness.<br>
+Enemy health will be colored orange<br>
+Friendly health will be colored blue<br>
+
+##### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png" width=30% height=30%/>
 
 ### hide-combat-tooltip
 Hides the tooltip while in combat<br>
@@ -92,15 +101,6 @@ Adds an energy tick to the player frame.
 
 ##### Preview:
 <img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_EnergyTick.png" width=20% height=20%/>
-
-### unitframes-lowhealth
-Changes the nameplate and unitframe healthbar colors when at 20% health or lower<br>
-Enemy health will be colored orange<br>
-Friendly health will be colored blue<br>
-The colors can be customised by editing the .lua file
-
-##### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png" width=30% height=30%/>
 
 ### ui-restyle
 Restyles minimap, buff/debuffs and unitframe names.
