@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Hide UI Frames",
-    description = "Hides the player and pet frame based on conditions",
+    description = "Hides the player and pet frame based on conditions. Additional configuration available in the .lua.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -10,32 +10,42 @@ module.enable = function(self)
 
     local Hide = CreateFrame("Frame", nil, UIParent)
     
-    local function Hide_addFrames()
-        --[[ 
+    local function Hide_addFrames()    
+        --[[
+            INSTRUCTIONS:
+
             Frames may need to be shown or hidden by using the following methods:
             "SetAlpha" - uses SetAlpha(1) and SetAlpha(0)
             "ShowHide" - uses Show() and Hide() 
             "EVENT" - uses RegisterEvent(EVENT) and UnregisterEvent(EVENT)
-            If using EVENT add the EVENT to the Hide_toggleFrames function
-        ]]
-    
-        --[[
+
             Frames in Perma will be permanently hidden, frames in toggle will toggle visibility based on conditions.
             To add a frame, add the name to:
-            1. The Perma section or Toggle section below
-            2. The Hide_permaFrames or Hide_toggleFrames function
+            1. The Perma section (1A) or Toggle section (1B) below
+            2. For Perma frames add the framename to the Hide_permaFrames function (2A)
+               For toggle frames add the framename to the Hide_toggleFrames function (2B)
+            3. If using EVENT add the RegisterEvent(EVENT) and UnregisterEvent(EVENT) to the Hide_toggleFrames function (3A and 3B)
         ]]
     
-        -- Perma section
+        -- (1A)
+        -- Perma section (use "Perma" only as the hide method)
             -- add frames
-                -- Blizzard
+                -- example
                 -- Hide.perma[FRAME] = "Perma"
+                -- /example
             -- /add frames
         -- /Perma
     
-        -- Toggle section
+        -- (1B)
+        -- Toggle section  (use "SetAlpha", "ShowHide" or "EVENT" only as the hide method)
             -- add frames
-                -- Blizzard    
+                -- example
+                -- Hide.toggle[FRAME] = "SetAlpha"
+                -- Hide.toggle[FRAME] = "ShowHide"
+                -- Hide.toggle[FRAME] = "PLAYER_UPDATE_RESTING" -- EVENT
+                -- /example
+
+                -- Blizzard frames 
                 Hide.toggle[PlayerFrame] = "ShowHide"
                 Hide.toggle[PlayerStatusGlow] = "PLAYER_UPDATE_RESTING"
             -- /add frames
@@ -70,10 +80,14 @@ module.enable = function(self)
     end
     ]]
     
+    -- (2A)
     local function Hide_permaFrames()
         for _, frame in pairs({    
             -- add frames
+                -- example
                 -- FRAME,
+                -- /example
+
             -- /add frames
         }) do
             if Hide.perma[frame] == "Perma" then
@@ -87,46 +101,50 @@ module.enable = function(self)
         end
     end
 
+    -- (2B)
     local function Hide_toggleFrames(show)
         for _, frame in pairs({
             -- add frames
+                -- example
                 -- FRAME,
+                -- /example
+
                 -- Blizzard
                 PlayerFrame,
                 PlayerStatusGlow,
                 -- MultiBarLeft,
                 -- MultiBarRight,
-            -- /add frames 
+            -- /add frames
         }) do
             -- three methods to toggle - SetAlpha, ShowHide and EVENT
             if Hide.toggle[frame] ~= nil then
                 if show then
-                    -- show frames
+                    -- Show frames
                     if Hide.toggle[frame] == "SetAlpha" then
-                        -- SetAlpha(1)
                         frame:SetAlpha(1)
                     elseif Hide.toggle[frame] == "ShowHide" then
-                        -- Show()
                         frame:Show()
-                    else                
-                        -- RegisterEvent(event)
+                    else
+                        -- we are using an event
                         if Hide.toggle[frame] == "PLAYER_UPDATE_RESTING" then
-                            -- RegisterEvent(event)
                             frame:RegisterEvent("PLAYER_UPDATE_RESTING")
+                            -- (3A)
+                            -- Add further events here following the template below
+                            -- elseif Hide.toggle[frame] == "EVENT" then
+                            --     frame:UnregisterEvent("EVENT")                            
                         end    
                     end
                 else
                     -- Hide frames
                     if Hide.toggle[frame] == "SetAlpha" then
-                        -- SetAlpha(0)
                         frame:SetAlpha(0)
                     elseif Hide.toggle[frame] == "ShowHide" then
-                        -- Hide()
                         frame:Hide()
                     else
-                        -- UnregisterEvent(event)
-                        if Hide.toggle[frame] == "PLAYER_UPDATE_RESTING" then
+                        -- we are using an event
+                        if Hide.toggle[frame] == "PLAYER_UPDATE_RESTING" then                            
                             frame:UnregisterEvent("PLAYER_UPDATE_RESTING")
+                        -- (3B)
                         -- Add further events here following the template below
                         -- elseif Hide.toggle[frame] == "EVENT" then
                         --     frame:UnregisterEvent("EVENT")
