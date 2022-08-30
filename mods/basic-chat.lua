@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Basic Chat",
-    description = "Creates non-configurable General, Combat Log and Loot & Spam chat boxes",
+    description = "Creates General, Combat Log and Loot & Spam chat boxes and sets up channels. This will setup the chat on every login unless the mod is disabled.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Social & Chat",
     enabled = nil,
@@ -8,8 +8,7 @@ local module = ShaguTweaks:register({
   
   module.enable = function(self)
     
-    local function SetupChat()
-        
+    local function SetupChat()        
         local fontsize = 14 -- chat font size
         local lines = 8 -- number of chat lines
         local h = (fontsize * lines)
@@ -45,8 +44,7 @@ local module = ShaguTweaks:register({
         
         ChatFrame1:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -x, y)        
         ChatFrame2:SetAllPoints(ChatFrame1)
-        ChatFrame3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", x, y)
-        
+        ChatFrame3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", x, y)       
 
         FCF_DockUpdate()
     end
@@ -65,8 +63,7 @@ local module = ShaguTweaks:register({
           ChatFrame_AddMessageGroup(ChatFrame1, group)
         end
     
-        ChatFrame_ActivateCombatMessages(ChatFrame2)
-    
+        ChatFrame_ActivateCombatMessages(ChatFrame2)    
         
         local spamg = { "COMBAT_XP_GAIN", "COMBAT_HONOR_GAIN", "COMBAT_FACTION_CHANGE", "SKILL", "LOOT" }
         for _,group in pairs(spamg) do
