@@ -119,4 +119,4 @@ The colors can be customised by editing the .lua file
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png" width=30% height=30%/>
 
 ### unitframes-namecolor
-Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.
+Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes and adds an outline to the name text.
