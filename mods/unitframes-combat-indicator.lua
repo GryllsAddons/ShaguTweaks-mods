@@ -72,11 +72,10 @@ module.enable = function(self)
         end
     end
 
-    f:RegisterEvent("PLAYER_TARGET_CHANGED")
+    local events = CreateFrame("Frame")
+    events:RegisterEvent("PLAYER_TARGET_CHANGED")
 
-    f:SetScript("OnEvent", function()
-        if event == "PLAYER_TARGET_CHANGED" then
-            updateIndicator("target", TargetCombatIndicator)
-        end
+    events:SetScript("OnEvent", function()
+        updateIndicator("target", TargetCombatIndicator)
     end)
 end
