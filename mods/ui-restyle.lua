@@ -3,7 +3,7 @@ local _G = _G or getfenv(0)
 
 local module = ShaguTweaks:register({
     title = "UI Restyle",
-    description = "Restyles minimap, buff/debuffs and unitframe names",
+    description = "Restyles minimap, buff/debuffs and unitframe names.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
