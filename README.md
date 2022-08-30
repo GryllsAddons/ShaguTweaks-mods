@@ -51,7 +51,7 @@ Hides the tooltip while in combat<br>
 While in combat, holding shift while mousing over a new target will show the tooltip
 
 ### hide-ui-frames
-An adaptable framework for hiding UI frames.<br>
+A framework for hiding UI frames.<br>
 Hides the player and pet frame based on conditions.<br>
 Additional configuration available in the .lua.
 
