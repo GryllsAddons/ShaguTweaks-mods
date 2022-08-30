@@ -37,12 +37,6 @@ mods\unitframes-namecolor.lua<br>
 ### basic-chat
 Creates non-configurable General, Combat Log and Loot & Spam chat boxes
 
-### buff-restyle
-Restyles buff and debuff font and timer<br>
-
-##### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/>
-
 ### central-ui.lua
 Moves the unit frames, castbar, buffs and minimap into a more central layout
 
@@ -80,17 +74,6 @@ The color will change in relation to the target values set at the top line of th
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png" width=20% height=20%/><br>
 
-### minimap-restyle
-Restyles the minimap<br>
-Adds square Tracking and Mail icons and repositions the PVP icon when using the square minimap module<br>
-Restyles the Zone Text, Clock, FPS and MS display
-
-If you are using the [MinimapButtonBag](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon the MinimapButtonBag button will be repositioned below the minimap or clock<br>
-The MinimapButtonBag button will be hidden unless you mouse over it<br>
-
-##### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=20% height=20%/>
-
 ### unitframes-classportrait-tot
 Extends class portraits to Target of Target
 
@@ -118,5 +101,27 @@ The colors can be customised by editing the .lua file
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png" width=30% height=30%/>
 
+### ui-restyle
+Restyles minimap, buff/debuffs and unitframe names.
+
+##### minimap-restyle
+Adds square Tracking and Mail icons and repositions the PVP icon when using the square minimap module.<br>
+Restyles the Zone Text, Clock, FPS and MS display.
+
+If you are using the [MinimapButtonBag](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon the MinimapButtonBag button will be repositioned below the minimap or clock.<br>
+The MinimapButtonBag button will be hidden unless you mouse over it.<br>
+
+##### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=20% height=20%/>
+
+##### buff-restyle
+Restyles buff and debuff font and timer.
+
+##### Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/>
+
+##### unitframe-name-restyle
+Adds an outline to the name.
+
 ### unitframes-namecolor
-Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes and adds an outline to the name text.
+Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.
