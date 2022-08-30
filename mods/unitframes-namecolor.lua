@@ -1,7 +1,7 @@
 local module = ShaguTweaks:register({
   title = "Unit Frame Name Colors",
   description = "Adds class and player pet coloring to the unitframes.",
-  expansions = { ["vanilla"] = true, ["tbc"] = true },
+  expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "Unit Frames",
   enabled = nil,
 })
