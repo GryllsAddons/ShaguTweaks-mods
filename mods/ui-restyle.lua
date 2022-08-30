@@ -3,7 +3,7 @@ local _G = _G or getfenv(0)
 
 local module = ShaguTweaks:register({
     title = "UI Restyle",
-    description = "Restyles minimap, buff/debuffs and unitframe names.",
+    description = "Restyles minimap, buff/debuffs, unitframe names and buttons.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -66,6 +66,58 @@ local function buffs()
             end)
         end
     end
+end
+
+local function buttons()
+
+    local function restyle(button)
+        if not button then return end
+        
+        local hotkey = getglobal(button:GetName().."HotKey")
+        if hotkey then
+            local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
+            hotkey:SetFont(font, size, outline)
+        end
+
+        local macroName = getglobal(button:GetName().."Name")   
+        if macroName then
+            local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
+            macroName:SetFont(font, size, outline)   
+        end
+    end
+    
+    for i = 1, 24 do
+        local button = _G['BonusActionButton'..i]
+        if button then
+            restyle(button)
+        end
+    end
+
+    for i = 1, 12 do
+        for _, button in pairs(
+                {
+                _G['ActionButton'..i],
+                _G['MultiBarRightButton'..i],
+                _G['MultiBarLeftButton'..i],
+                _G['MultiBarBottomLeftButton'..i],
+                _G['MultiBarBottomRightButton'..i],
+            }
+        ) do
+            restyle(button)
+        end        
+    end 
+
+    for i = 1, 10 do
+        for _, button in pairs(
+            {
+                _G['ShapeshiftButton'..i],
+                _G['PetActionButton'..i]
+            }
+        ) do
+            restyle(button)
+        end
+    end
+
 end
 
 local function minimap()
@@ -192,8 +244,9 @@ module.enable = function(self)
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
-    events:SetScript("OnEvent", function()
+    events:SetScript("OnEvent", function()        
         buffs()
+        buttons()
         minimap()
         names()
     end)
