@@ -3,7 +3,7 @@ local tarMS = 150 -- change to your target MS (default 150)
 
 local module = ShaguTweaks:register({
   title = "MiniMap Framerate & Latency",
-  description = "Adds a small framerate & latency display to the mini map.",
+  description = "Adds a small framerate & latency display to the mini map. Mouseover to see the high and low framerate and latency for your WoW session. The color will change in relation to the target values set in the minimap-framerate-latency.lua.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "World & MiniMap",
   enabled = nil,
