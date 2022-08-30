@@ -34,7 +34,7 @@ mods\unitframes-namecolor.lua<br>
 ## Mods:
 
 ### basic-chat
-Creates non-configurable General, Combat Log and Loot & Spam chat boxes
+Creates General, Combat Log and Loot & Spam chat boxes and sets up channels. This will setup the chat on every login unless the mod is disabled.
 
 ### central-ui.lua
 Moves the unit frames, castbar, buffs and minimap into a more central layout
