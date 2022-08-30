@@ -21,7 +21,7 @@ mods\hide-ui-frames.lua<br>
 mods\improved-exp.lua<br>
 mods\improved-interface-options.lua<br>
 mods\minimap-framerate-latency.lua<br>
-mods\ui-restyle.lua
+mods\ui-restyle.lua<br>
 mods\unitframes-classportrait-tot.lua<br>
 mods\unitframes-combat-indicator.lua<br>
 mods\unitframes-energy-tick.lua<br>
