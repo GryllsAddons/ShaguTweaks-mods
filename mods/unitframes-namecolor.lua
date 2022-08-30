@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
   title = "Unit Frame Name Colors",
-  description = "Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes and adds an outline to the name text.",
+  description = "Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.",
   expansions = { ["vanilla"] = true, ["tbc"] = true },
   category = "Unit Frames",
   enabled = nil,
@@ -83,10 +83,7 @@ module.enable = function(self)
         end
     end
     
-    local function nameFont(name)
-        local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
-        name:SetFont(font, size, outline)
-    end
+    
 
     local namecolor = CreateFrame("Frame", nil, UIParent)
     namecolor:RegisterEvent("PLAYER_ENTERING_WORLD")    
@@ -95,19 +92,7 @@ module.enable = function(self)
     namecolor:RegisterEvent("UNIT_PET", "player")
 
     namecolor:SetScript("OnEvent", function()
-        if (event == "PLAYER_ENTERING_WORLD") then            
-            nameFont(PlayerFrame.name)
-            nameFont(PetName)
-            nameFont(TargetFrame.name)
-            nameFont(TargetofTargetName)
-            nameFont(PartyMemberFrame1.name)
-            nameFont(PartyMemberFrame2.name)
-            nameFont(PartyMemberFrame3.name)
-            nameFont(PartyMemberFrame4.name)
-            nameFont(PartyMemberFrame1PetFrame.name)
-            nameFont(PartyMemberFrame2PetFrame.name)
-            nameFont(PartyMemberFrame3PetFrame.name)
-            nameFont(PartyMemberFrame4PetFrame.name)
+        if (event == "PLAYER_ENTERING_WORLD") then
             colorName("player")
         elseif (event == "PLAYER_TARGET_CHANGED") then
             colorName("target")
