@@ -56,7 +56,7 @@ Hides the player and pet frame based on conditions.<br>
 Additional configuration available in the .lua.
 
 ### improved-exp
-Shows detailed exp, rested exp and rep values on mouseover
+Shows detailed exp, rested exp and rep values on mouseover.
 
 ##### Preview:
 <img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png" width=50% height=20%/>
@@ -65,18 +65,18 @@ Shows detailed exp, rested exp and rep values on mouseover
 <img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png" width=50% height=20%/>
 
 ### improved-interface-options
-Removes the background while in the Interface Options
+Rescales the interface options menu and removes the background.
 
 ### minimap-framerate-latency.lua
-Adds a small Framerate & Latency display to the mini map.<br>
-Mouseover to see the high and low framerate and latency for your WoW session<br>
-The color will change in relation to the target values set at the top line of the minimap-fps.lua file
+Adds a small framerate & latency display to the mini map.<br>
+Mouseover to see the high and low framerate and latency for your WoW session.<br>
+The color will change in relation to the target values set in the minimap-framerate-latency.lua.
 
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png" width=20% height=20%/><br>
 
 ### unitframes-classportrait-tot
-Extends class portraits to Target of Target
+Extends class portraits to Target of Target.
 
 ##### Preview:
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TOTPortrait.png" width=20% height=20%/>
