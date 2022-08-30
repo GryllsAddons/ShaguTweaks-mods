@@ -13,6 +13,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ##### 2: To enable the mod(s) add the appropriate line(s) below to \Interface\AddOns\ShaguTweaks\ShaguTweaks.toc:
 
 <i>
+mods\actionbar-hide-hotkey.lua<br>
+mods\actionbar-hide-macro.lua<br>
 mods\basic-chat.lua<br>
 mods\central-ui.lua<br>
 mods\cursor-tooltip.lua<br>
@@ -32,6 +34,12 @@ mods\unitframes-namecolor.lua<br>
 ##### You should now be able to enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 
 ## Mods:
+
+### actionbar-hide-hotkey
+Hides the hotkeys on the action bars
+
+### actionbar-hide-macro
+Hides the macros on the action bars
 
 ### basic-chat
 Creates General, Combat Log and Loot & Spam chat boxes and sets up channels.<br>
