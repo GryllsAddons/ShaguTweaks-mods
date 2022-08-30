@@ -3,7 +3,7 @@
 
 local module = ShaguTweaks:register({
     title = "Improved Interface Options",
-    description = "Removes the background while in the Interface Options",
+    description = "Rescales the interface options menu and removes the background.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
