@@ -122,7 +122,7 @@ Restyles buff and debuff font and timer.
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/>
 
 ##### unitframe-name-restyle
-Adds an outline to unitframe names.
+Adds an outline to unit names.
 
 ### unitframes-namecolor
 Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.
