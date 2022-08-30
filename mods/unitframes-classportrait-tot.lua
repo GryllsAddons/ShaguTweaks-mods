@@ -32,39 +32,34 @@ local module = ShaguTweaks:register({
   enabled = nil,
 })
 
-module.enable = function(self)
+local function UpdatePortraits(frame, unit)
+    local portrait = nil
 
-    local function UpdatePortraits(frame, unit)
-
-        local portrait = nil
-
-        if frame == TargetTargetFrame then
-            portrait = TargetofTargetPortrait
-        else
-            portrait = frame.portrait
-        end
-
-        -- detect unit class or remove for non-player units
-        local _, class = UnitClass(unit)
-        class = UnitIsPlayer(unit) and class or nil
-
-        -- update class icon if possible
-        if class then
-            local iconCoords = CLASS_ICON_TCOORDS[class]
-            portrait:SetTexture(addonpath .. "\\img\\UI-Classes-Circles")
-            portrait:SetTexCoord(unpack(iconCoords))
-        elseif not class then
-            portrait:SetTexCoord(0, 1, 0, 1)
-        end
+    if frame == TargetTargetFrame then
+        portrait = TargetofTargetPortrait
+    else
+        portrait = frame.portrait
     end
 
-    local events = CreateFrame("Frame")
-    events:RegisterEvent("PLAYER_TARGET_CHANGED")
-    events:SetScript("OnEvent", function()
-        TargetofTargetHealthBar:SetScript("OnValueChanged", function()        
-            UpdatePortraits(TargetTargetFrame, "targettarget")
-            -- TargetofTargetHealthBar:SetScript("OnValueChanged", nil)
-        end)
+    -- detect unit class or remove for non-player units
+    local _, class = UnitClass(unit)
+    class = UnitIsPlayer(unit) and class or nil    
+
+    -- update class icon if possible
+    if class then
+        local iconCoords = CLASS_ICON_TCOORDS[class]
+        portrait:SetTexture(addonpath .. "\\img\\UI-Classes-Circles")
+        portrait:SetTexCoord(unpack(iconCoords))
+    elseif not class then
+        portrait:SetTexCoord(0, 1, 0, 1)
+    end
+end
+
+module.enable = function(self)
+
+    TargetofTargetHealthBar:SetScript("OnValueChanged", function()
+    UpdatePortraits(TargetTargetFrame, "targettarget")
+    -- TargetofTargetHealthBar:SetScript("OnValueChanged", nil)
     end)
 
 end
