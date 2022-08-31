@@ -8,19 +8,25 @@ local module = ShaguTweaks:register({
 
 local function SetupChat()        
     local fontsize = 14 -- chat font size
-    local lines = 8 -- number of chat lines
+    local lines = 9 -- number of chat lines
     local h = (fontsize * lines)
     local w = 400
-    -- local x = 448
-    local x = MainMenuExpBar:GetRight()+(MultiBarLeft:GetWidth()*2)
-    local y = (MultiBarLeft:GetWidth()*2)
+    local x = ActionButton1:GetWidth()*3.5
+    local y = ActionButton1:GetHeight()*3.5
+
+    local right = UIParent:GetRight()
+    if right > 2513 then
+        -- 3440
+        x = MainMenuExpBar:GetLeft()-(ActionButton1:GetWidth()*2)
+        x = right - x
+        y = ActionButton1:GetHeight()*2
+    end 
 
     local function setChatFrame(chatframe)
         FCF_SetLocked(chatframe, 1)
         FCF_SetWindowColor(chatframe, 0, 0, 0)
         FCF_SetWindowAlpha(chatframe, 0)
         FCF_SetChatWindowFontSize(chatframe, fontsize)
-        
         chatframe:SetWidth(w)
         chatframe:SetHeight(h)
         chatframe:ClearAllPoints()
@@ -38,11 +44,11 @@ local function SetupChat()
     FCF_UnDockFrame(ChatFrame3)
     FCF_SetTabPosition(ChatFrame3, 0)
     setChatFrame(ChatFrame3)
-    FCF_SetWindowName(ChatFrame3, "Loot & Spam")              
-    
-    ChatFrame1:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -x, y)        
+    FCF_SetWindowName(ChatFrame3, "Loot & Spam")
+
+    ChatFrame1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", x, y)    
     ChatFrame2:SetAllPoints(ChatFrame1)
-    ChatFrame3:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", x, y)       
+    ChatFrame3:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -x, y)     
 
     FCF_DockUpdate()
 end
