@@ -6,29 +6,37 @@ local module = ShaguTweaks:register({
   enabled = nil,
 })
 
-local combat = CreateFrame("Frame", nil, UIParent)	
+local combatTooltip = CreateFrame("Frame", nil, UIParent)	
 local inCombat = false
+
+local function ShowTooltip()
+    GameTooltip:SetAlpha(1)
+end
+
+local function HideTooltip()
+    GameTooltip:SetAlpha(0)
+end
 
 local function tooltipToggle(inCombat)
     if inCombat then
         local modifierDown = IsShiftKeyDown() -- IsControlKeyDown() or IsAltKeyDown() can be used instead
         if modifierDown then            
-            GameTooltip:Show()
+            ShowTooltip()
         else
-            GameTooltip:Hide()
+            HideTooltip()
         end
     else
-        GameTooltip:Show()
+        ShowTooltip()
     end
 end
 
 local function tooltipSetScript(inCombat)
     if inCombat then
-        combat:SetScript("OnUpdate", function()
+        combatTooltip:SetScript("OnUpdate", function()
             tooltipToggle(inCombat)
         end)
     else
-        combat:SetScript("OnUpdate", nil)
+        combatTooltip:SetScript("OnUpdate", nil)
     end
 end
 
