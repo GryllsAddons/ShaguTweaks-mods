@@ -17,7 +17,7 @@ local function SetupChat()
     local right = UIParent:GetRight()
     if right > 2513 then
         -- 3440
-        x = MainMenuExpBar:GetLeft() - 400 - ActionButton1:GetWidth()*2
+        x = MainMenuExpBar:GetLeft() - w - ActionButton1:GetWidth()*2
         y = ActionButton1:GetHeight()*2
     end 
 
