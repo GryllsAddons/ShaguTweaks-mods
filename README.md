@@ -65,7 +65,7 @@ Friendly health will be colored blue<br>
 
 ### hide-combat-tooltip
 Hides the tooltip while in combat<br>
-While in combat, holding shift while mousing over a new target will show the tooltip
+While in combat, holding shift will show the tooltip.
 
 ### hide-ui-frames
 A framework for hiding UI frames.<br>
