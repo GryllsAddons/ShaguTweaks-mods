@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Basic Chat",
-    description = "Creates General, Combat Log and Loot & Spam chat boxes and sets up channels. This will setup the chat on every login unless the mod is disabled.",
+    description = "Creates General, Combat Log and 'Loot & Spam' chat boxes and setup chat channels. The mod will create and reposition the chat boxes and setup channels on every login unless disabled.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Social & Chat",
     enabled = nil,
@@ -11,14 +11,13 @@ local function SetupChat()
     local lines = 9 -- number of chat lines
     local h = (fontsize * lines)
     local w = 400
-    local x = ActionButton1:GetWidth()*3.5
-    local y = ActionButton1:GetHeight()*3.5
+    local x = ActionButton1:GetWidth()*4
+    local y = ActionButton1:GetHeight()*4
 
     local right = UIParent:GetRight()
     if right > 2513 then
         -- 3440
         x = MainMenuExpBar:GetLeft() - w - ActionButton1:GetWidth()*2
-        y = ActionButton1:GetHeight()*2
     end 
 
     local function setChatFrame(chatframe)
