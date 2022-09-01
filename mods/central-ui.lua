@@ -2,7 +2,7 @@ local module = ShaguTweaks:register({
     title = "Central UI",
     description = "Moves the unit frames, castbar, buffs and minimap into a more central layout. This will overwrite 'Movable Unit Frames' positioning.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "UI",
+    category = nil,
     enabled = nil,
   })
   
