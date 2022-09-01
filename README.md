@@ -22,7 +22,6 @@ mods\cursor-tooltip.lua<br>
 mods\healthbar-colors<br>
 mods\hide-combat-tooltip.lua<br>
 mods\hide-ui-frames.lua<br>
-mods\improved-exp.lua<br>
 mods\improved-interface-options.lua<br>
 mods\minimap-framerate-latency.lua<br>
 mods\ui-restyle.lua<br>
