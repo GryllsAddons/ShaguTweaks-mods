@@ -5,7 +5,7 @@ local module = ShaguTweaks:register({
     title = "UI Restyle",
     description = "Restyles minimap, buff/debuffs, unitframe names and buttons.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = nil,
+    category = "UI",
     enabled = nil,
   })
 
