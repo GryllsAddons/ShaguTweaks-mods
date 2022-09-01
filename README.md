@@ -41,7 +41,7 @@ Hides the hotkeys on the action bars
 ### actionbar-hide-macro
 Hides the macros on the action bars
 
-### actionbar-improved-exp.lua
+### actionbar-improved-exp
 Shows detailed exp, rested exp and rep values on mouseover.
 
 ##### Preview:
