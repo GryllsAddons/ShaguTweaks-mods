@@ -14,11 +14,12 @@ local function SetupChat()
     local x = ActionButton1:GetWidth()*4
     local y = ActionButton1:GetHeight()*4
 
-    local right = UIParent:GetRight()
-    if right > 2513 then
-        -- 3440
-        x = MainMenuExpBar:GetLeft() - w - ActionButton1:GetWidth()*2
-    end 
+    -- local right = UIParent:GetRight()
+    -- if right > 2513 then
+    --     -- 3440
+    --     x = MainMenuExpBar:GetLeft() - w - ActionButton1:GetWidth()*2
+    --     y = ActionButton1:GetHeight()*2
+    -- end 
 
     local function setChatFrame(chatframe)
         FCF_SetLocked(chatframe, 1)
@@ -29,7 +30,6 @@ local function SetupChat()
         chatframe:SetHeight(h)
         chatframe:ClearAllPoints()
         chatframe:SetUserPlaced(1)
-        chatframe:SetClampedToScreen(true)
     end
 
     setChatFrame(ChatFrame1)
