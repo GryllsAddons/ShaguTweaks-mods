@@ -43,7 +43,7 @@ Hides the macros on the action bars
 
 ### basic-chat
 Creates General, Combat Log and Loot & Spam chat boxes and sets up channels.<br>
-This will setup the chat on every login unless the mod is disabled.
+The mod will setup and reposition the chat boxes on every login unless disabled.
 
 ### central-ui.lua
 Moves the unit frames, castbar, buffs and minimap into a more central layout
