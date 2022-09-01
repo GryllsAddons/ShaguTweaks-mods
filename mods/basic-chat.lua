@@ -29,6 +29,7 @@ local function SetupChat()
         chatframe:SetHeight(h)
         chatframe:ClearAllPoints()
         chatframe:SetUserPlaced(1)
+        chatframe:SetClampedToScreen(true)
     end
 
     setChatFrame(ChatFrame1)
