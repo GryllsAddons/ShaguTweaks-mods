@@ -2,7 +2,7 @@ local module = ShaguTweaks:register({
     title = "Improved Exp Bar",
     description = "Shows detailed exp, rested exp and rep values on mouseover.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Tooltip & Items",
+    category = "Action Bar",
     enabled = nil,
   })
 
