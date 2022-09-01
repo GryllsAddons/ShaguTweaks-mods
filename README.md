@@ -15,6 +15,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 <i>
 mods\actionbar-hide-hotkey.lua<br>
 mods\actionbar-hide-macro.lua<br>
+mods\actionbar-improved-exp.lua<br>
 mods\basic-chat.lua<br>
 mods\central-ui.lua<br>
 mods\cursor-tooltip.lua<br>
@@ -40,6 +41,15 @@ Hides the hotkeys on the action bars
 
 ### actionbar-hide-macro
 Hides the macros on the action bars
+
+### actionbar-improved-exp.lua
+Shows detailed exp, rested exp and rep values on mouseover.
+
+##### Preview:
+<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png" width=50% height=20%/>
+
+##### Preview:
+<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png" width=50% height=20%/>
 
 ### basic-chat
 Create General, Combat Log and 'Loot & Spam' chat boxes and setup chat channels.<br>
@@ -71,15 +81,6 @@ While in combat, holding shift will show the tooltip.
 A framework for hiding UI frames.<br>
 Hides the player and pet frame based on conditions.<br>
 Additional configuration available in the .lua.
-
-### improved-exp
-Shows detailed exp, rested exp and rep values on mouseover.
-
-##### Preview:
-<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png" width=50% height=20%/>
-
-##### Preview:
-<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png" width=50% height=20%/>
 
 ### improved-interface-options
 Rescales the interface options menu and removes the background.
