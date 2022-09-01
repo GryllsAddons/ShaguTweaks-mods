@@ -15,6 +15,10 @@ Code from [pfUI](https://shagu.org/pfUI/)
 <i>
 mods\actionbar-hide-hotkey.lua<br>
 mods\actionbar-hide-macro.lua<br>
+mods\actionbar-mouseover-bar-bottomleft.lua<br>
+mods\actionbar-mouseover-bar-bottomright.lua<br>
+mods\actionbar-mouseover-bar-right.lua<br>
+mods\actionbar-mouseover-bar-right2.lua<br>
 mods\actionbar-improved-exp.lua<br>
 mods\basic-chat.lua<br>
 mods\central-ui.lua<br>
@@ -40,6 +44,18 @@ Hides the hotkeys on the action bars
 
 ### actionbar-hide-macro
 Hides the macros on the action bars
+
+### actionbar-mouseover-bar-bottomleft
+Hide the Bottom Left ActionBar and show on mouseover.
+
+### actionbar-mouseover-bar-bottomright
+Hide the Bottom Right ActionBar and show on mouseover.
+
+### actionbar-mouseover-bar-right
+Hide the Right ActionBar and show on mouseover.
+
+### actionbar-mouseover-bar-right2
+Hide the Right ActionBar 2 and show on mouseover.
 
 ### actionbar-improved-exp
 Shows detailed exp, rested exp and rep values on mouseover.
