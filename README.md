@@ -23,7 +23,7 @@ mods\actionbar-improved-exp.lua<br>
 mods\basic-chat.lua<br>
 mods\central-ui.lua<br>
 mods\cursor-tooltip.lua<br>
-mods\healthbar-colors<br>
+mods\healthbar-color<br>
 mods\hide-combat-tooltip.lua<br>
 mods\hide-ui-frames.lua<br>
 mods\improved-interface-options.lua<br>
