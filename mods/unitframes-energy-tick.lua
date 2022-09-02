@@ -6,6 +6,8 @@ local module = ShaguTweaks:register({
     enabled = nil,
   })
 
+local modLoaded
+
 local function UpdateTick()
     -- code based on EnergyWatch v2
     local energy = UnitMana("player")
@@ -100,7 +102,10 @@ module.enable = function(self)
 
     events:SetScript("OnEvent", function()
         if event == "PLAYER_ENTERING_WORLD" then
-            CreateTick()
+            if not modLoaded then
+                modLoaded = true
+                CreateTick()
+            end
         end
     end)
 
