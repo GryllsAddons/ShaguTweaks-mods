@@ -7,10 +7,9 @@ local module = ShaguTweaks:register({
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
-  })
+})
 
--- Based on zUI skinning (https://github.com/Ko0z/zUI)
--- Credit to Ko0z (https://github.com/Ko0z/)
+local modLoaded
 
 local function buffs()
     -- Buff font
@@ -249,11 +248,14 @@ module.enable = function(self)
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
-    events:SetScript("OnEvent", function()        
-        buffs()
-        buttons()
-        minimap()
-        names()
+    events:SetScript("OnEvent", function()
+        if not modLoaded then
+            modLoaded = true
+            buffs()
+            buttons()
+            minimap()
+            names()
+        end
     end)
     
 end
