@@ -74,13 +74,13 @@ Please reload the UI after enabling or disabling the action bar.
 Adds a spell icon and remaining cast time to the cast bar.
 
 ##### Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_ImpCastbar.png" width=50% height=20%/>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_ImpCastbar.png" width=30% height=30%/>
 
 ### actionbar-improved-exp
 Shows detailed exp, rested exp and rep values on mouseover.
 
 ##### Preview:
-<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png" width=50% height=20%/>
+<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png" width=50% height=50%/>
 
 ##### Preview:
 <img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png" width=50% height=20%/>
