@@ -4,7 +4,9 @@ local module = ShaguTweaks:register({
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
-  })
+})
+
+local modLoaded
   
 local function unitframes()    
     --[[ When scaling, the unit frame may move offscreen ]]
@@ -69,10 +71,13 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
-        unitframes()
-        castbar()         
-        minimap()
-        buffs()
+        if not modLoaded then
+            modLoaded = true
+            unitframes()
+            castbar()         
+            minimap()
+            buffs()
+        end
     end)
 
 end
