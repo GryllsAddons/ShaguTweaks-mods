@@ -145,7 +145,7 @@ Restyles minimap, buff/debuffs, unitframe names and buttons.
 Adds square Tracking and Mail icons and repositions the PVP icon when using the square minimap module.<br>
 Restyles the Zone Text, Clock, FPS and MS display.
 
-If you are using the [MinimapButtonBag](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon the MinimapButtonBag button will be repositioned below the minimap or clock.<br>
+If you are using the [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon the MinimapButtonBag button will be repositioned below the minimap or clock.<br>
 The MinimapButtonBag button will be hidden unless you mouse over it.<br>
 
 ##### Preview:
