@@ -1,14 +1,14 @@
-local _G = _G or getfenv(0)
-
 local module = ShaguTweaks:register({
     title = "Hide Hotkey Text",
     description = "Hides hotkey text",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
-  })
-
-local function hotkeys()
+})
+  
+module.enable = function(self)
+    local _G = _G or getfenv(0)
+    
     local function hidehotkeys(button)
         if not button then return end
 
@@ -50,15 +50,4 @@ local function hotkeys()
             hidehotkeys(button)
         end
     end
-end
-  
-module.enable = function(self)
-
-    local events = CreateFrame("Frame", nil, UIParent)
-    events:RegisterEvent("PLAYER_ENTERING_WORLD")
-
-    events:SetScript("OnEvent", function()
-        hotkeys()
-    end)
-    
 end
