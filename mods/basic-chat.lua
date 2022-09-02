@@ -89,5 +89,4 @@ module.enable = function(self)
         SetupChat()
         SetupChannels()
     end)
-
 end
