@@ -2,24 +2,25 @@ local _G = _G or getfenv(0)
 
 local module = ShaguTweaks:register({
     title = "Mouseover Right",
-    description = "Hide the Right ActionBar and show on mouseover.",
+    description = "Hide the Right ActionBar and show on mouseover. The action bar must be enabled in 'Interface Options' > 'Advanced Options'. Please reload the UI after enabling or disabling the action bar.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
   })
 
-local mouseOverBar = false
-local mouseOverButton = false
-local timer = CreateFrame("Frame", nil, UIParent)
-
+local modLoaded
+local timer
+local mouseOverBar
+local mouseOverButton
+    
 local function hide(bar)
     bar:Hide()
 end
-
+  
 local function show(bar)
     bar:Show()
 end
-
+  
 local function mouseover(bar)
     local function setTimer()
         local time = GetTime() + 2
@@ -46,14 +47,14 @@ local function barEnter(frame, bar)
         mouseover(bar)
     end)
 end
-
+  
 local function barLeave(frame, bar)
     frame:SetScript("OnLeave", function()
         mouseOverBar = false     
         mouseover(bar)
     end)
 end
-
+  
 local function buttonEnter(frame, bar)
     frame:SetScript("OnEnter", function()
         mouseOverButton = true
@@ -61,7 +62,7 @@ local function buttonEnter(frame, bar)
         mouseover(bar)        
     end)
 end
-
+  
 local function buttonLeave(frame, bar)
     frame:SetScript("OnLeave", function()
         mouseOverButton = false
@@ -69,7 +70,7 @@ local function buttonLeave(frame, bar)
         mouseover(bar)
     end)
 end
-
+  
 local function mouseoverButton(button, bar)
     local frame = CreateFrame("Frame", nil, UIParent)    
     frame:SetAllPoints(button)
@@ -78,7 +79,7 @@ local function mouseoverButton(button, bar)
     buttonEnter(frame, bar)
     buttonLeave(frame, bar)
 end
-
+  
 local function mouseoverBar(bar)
     local frame = CreateFrame("Frame", nil, UIParent)
     local x, y = 5, 10
@@ -88,27 +89,32 @@ local function mouseoverBar(bar)
     barEnter(frame, bar) 
     barLeave(frame, bar)
 end
-
+  
 local function setup(bar)
-    for i = 1, 12 do
-        for _, button in pairs(
-                {
-                _G[bar:GetName()..'Button'..i],
-            }
-        ) do
-            mouseoverButton(button, bar)
+    if not bar:IsVisible() then return end
+    if not modLoaded then
+        modLoaded = true
+        timer = CreateFrame("Frame", nil, UIParent)
+        for i = 1, 12 do
+            for _, button in pairs(
+                    {
+                    _G[bar:GetName()..'Button'..i],
+                }
+            ) do
+                mouseoverButton(button, bar)
+            end
         end
+        mouseoverBar(bar)
+        hide(bar)
     end
-    mouseoverBar(bar)
-    hide(bar)
 end
   
 module.enable = function(self)
 
-    local events = CreateFrame("Frame", nil, UIParent)	
+    local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
         setup(MultiBarRight)
     end)
-
+    
 end

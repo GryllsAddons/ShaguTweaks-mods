@@ -2,16 +2,17 @@ local _G = _G or getfenv(0)
 
 local module = ShaguTweaks:register({
     title = "Mouseover Bottom Right",
-    description = "Hide the Bottom Right ActionBar and show on mouseover.",
+    description = "Hide the Bottom Right ActionBar and show on mouseover. The action bar must be enabled in 'Interface Options' > 'Advanced Options'. Please reload the UI after enabling or disabling the action bar.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
-  })
+})
 
-local mouseOverBar = false
-local mouseOverButton = false
-local timer = CreateFrame("Frame", nil, UIParent)
-
+local modLoaded
+local timer
+local mouseOverBar
+local mouseOverButton
+    
 local function hide(bar)
     bar:Hide()
 end
@@ -81,7 +82,7 @@ end
 
 local function mouseoverBar(bar)
     local frame = CreateFrame("Frame", nil, UIParent)
-    local x, y = 10, 5
+    local x, y = 5, 10
     frame:SetPoint("TOPLEFT", bar ,"TOPLEFT", -x, y)
     frame:SetPoint("BOTTOMRIGHT", bar ,"BOTTOMRIGHT", x, -y)
     frame:EnableMouse(true)
@@ -90,25 +91,30 @@ local function mouseoverBar(bar)
 end
 
 local function setup(bar)
-    for i = 1, 12 do
-        for _, button in pairs(
-                {
-                _G[bar:GetName()..'Button'..i],
-            }
-        ) do
-            mouseoverButton(button, bar)
+    if not bar:IsVisible() then return end
+    if not modLoaded then
+        modLoaded = true
+        timer = CreateFrame("Frame", nil, UIParent)
+        for i = 1, 12 do
+            for _, button in pairs(
+                    {
+                    _G[bar:GetName()..'Button'..i],
+                }
+            ) do
+                mouseoverButton(button, bar)
+            end
         end
+        mouseoverBar(bar)
+        hide(bar)
     end
-    mouseoverBar(bar)
-    hide(bar)
 end
-  
+
 module.enable = function(self)
 
-    local events = CreateFrame("Frame", nil, UIParent)	
+    local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
         setup(MultiBarBottomRight)
     end)
-
+    
 end
