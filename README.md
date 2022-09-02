@@ -46,16 +46,24 @@ Hides the hotkeys on the action bars
 Hides the macros on the action bars
 
 ### actionbar-mouseover-bar-bottomleft
-Hide the Bottom Left ActionBar and show on mouseover.
+Hide the Bottom Left ActionBar and show on mouseover.<br>
+The action bar must be enabled in 'Interface Options' > 'Advanced Options'.<br>
+Please reload the UI after enabling or disabling the action bar.
 
 ### actionbar-mouseover-bar-bottomright
-Hide the Bottom Right ActionBar and show on mouseover.
+Hide the Bottom Right ActionBar and show on mouseover.<br>
+The action bar must be enabled in 'Interface Options' > 'Advanced Options'.<br>
+Please reload the UI after enabling or disabling the action bar.
 
 ### actionbar-mouseover-bar-right
-Hide the Right ActionBar and show on mouseover.
+Hide the Right ActionBar and show on mouseover.<br>
+The action bar must be enabled in 'Interface Options' > 'Advanced Options'.<br>
+Please reload the UI after enabling or disabling the action bar.
 
 ### actionbar-mouseover-bar-right2
-Hide the Right ActionBar 2 and show on mouseover.
+Hide the Right ActionBar 2 and show on mouseover.<br>
+The action bar must be enabled in 'Interface Options' > 'Advanced Options'.<br>
+Please reload the UI after enabling or disabling the action bar.
 
 ### actionbar-improved-exp
 Shows detailed exp, rested exp and rep values on mouseover.
