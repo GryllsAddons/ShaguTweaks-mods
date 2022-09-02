@@ -7,8 +7,8 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-
     local _G = _G or getfenv(0)
+
     local UnitCastingInfo = ShaguTweaks.UnitCastingInfo
     local UnitChannelInfo = ShaguTweaks.UnitChannelInfo
 
@@ -89,5 +89,5 @@ module.enable = function(self)
     events:RegisterEvent("SPELLCAST_CHANNEL_START")
     events:SetScript("OnEvent", function()
         castbar:Show()
-    end)    
+    end)
 end
