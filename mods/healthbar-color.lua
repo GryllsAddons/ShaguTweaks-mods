@@ -9,6 +9,8 @@ local module = ShaguTweaks:register({
   enabled = nil,
 })
 
+local modLoaded
+
 local function ShaguPlates()
   if ShaguPlates then return end
 
@@ -136,7 +138,10 @@ module.enable = function(self)
 
   events:SetScript("OnEvent", function()
       if event == "PLAYER_ENTERING_WORLD" then
-        ShaguPlates()
+        if not modLoaded then
+          modLoaded = true
+          ShaguPlates()
+        end
       elseif event == "UNIT_HEALTH" then
         Healthbar(arg1)
       end
