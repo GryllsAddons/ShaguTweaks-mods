@@ -10,37 +10,39 @@ local module = ShaguTweaks:register({
     enabled = nil,
 })
 
-local castbar = CreateFrame("FRAME", nil, CastingBarFrame)
-
-castbar.texture = CreateFrame("Frame", nil, castbar)
-castbar.texture:SetPoint("RIGHT", CastingBarFrame, "LEFT", -10, 2)
-castbar.texture:SetWidth(28)
-castbar.texture:SetHeight(28)
-
-castbar.texture.icon = castbar.texture:CreateTexture(nil, "BACKGROUND")
-castbar.texture.icon:SetPoint("CENTER", 0, 0)
-castbar.texture.icon:SetWidth(24)
-castbar.texture.icon:SetHeight(24)
-castbar.texture:SetBackdrop({
-    edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-    tile = true, tileSize = 8, edgeSize = 12,
-    insets = { left = 3, right = 3, top = 3, bottom = 3 }
-})
-
-castbar.spellText = castbar:CreateFontString(nil, "HIGH", "GameFontWhite")
-castbar.spellText:SetPoint("CENTER", CastingBarFrame, "CENTER", 0, 3)
-local font, _, opts = castbar.spellText:GetFont()
-local size = 14
-castbar.spellText:SetFont(font, size - 2, "THINOUTLINE")
-
-castbar.timerText = castbar:CreateFontString(nil, "HIGH", "GameFontWhite")
-castbar.timerText:SetPoint("RIGHT", CastingBarFrame, "RIGHT", -5, 3)
-castbar.timerText:SetFont(font, size - 2, "THINOUTLINE")
-
-CastingBarText:Hide()
-
 module.enable = function(self)
+    local castbar = CreateFrame("FRAME", nil, CastingBarFrame)
+    castbar:Hide()
+
+    castbar.texture = CreateFrame("Frame", nil, castbar)
+    castbar.texture:SetPoint("RIGHT", CastingBarFrame, "LEFT", -10, 2)
+    castbar.texture:SetWidth(28)
+    castbar.texture:SetHeight(28)
+
+    castbar.texture.icon = castbar.texture:CreateTexture(nil, "BACKGROUND")
+    castbar.texture.icon:SetPoint("CENTER", 0, 0)
+    castbar.texture.icon:SetWidth(24)
+    castbar.texture.icon:SetHeight(24)
+    castbar.texture:SetBackdrop({
+        edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+        tile = true, tileSize = 8, edgeSize = 12,
+        insets = { left = 3, right = 3, top = 3, bottom = 3 }
+    })
+
+    castbar.spellText = castbar:CreateFontString(nil, "HIGH", "GameFontWhite")
+    castbar.spellText:SetPoint("CENTER", CastingBarFrame, "CENTER", 0, 3)
+    local font, _, opts = castbar.spellText:GetFont()
+    local size = 14
+    castbar.spellText:SetFont(font, size - 2, "THINOUTLINE")
+
+    castbar.timerText = castbar:CreateFontString(nil, "HIGH", "GameFontWhite")
+    castbar.timerText:SetPoint("RIGHT", CastingBarFrame, "RIGHT", -5, 3)
+    castbar.timerText:SetFont(font, size - 2, "THINOUTLINE")
+
+    CastingBarText:Hide()
+
     castbar:SetScript("OnUpdate", function()
+        castbar:Show()
         local cast, nameSubtext, text, texture, startTime, endTime, isTradeSkill = UnitCastingInfo("player")
         if not cast then
         -- scan for channel spells if no cast was found
