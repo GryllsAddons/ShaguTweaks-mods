@@ -26,6 +26,7 @@ mods\cursor-tooltip.lua<br>
 mods\healthbar-color<br>
 mods\hide-combat-tooltip.lua<br>
 mods\hide-ui-frames.lua<br>
+mods\improved-advanced-options.lua<br>
 mods\improved-interface-options.lua<br>
 mods\minimap-framerate-latency.lua<br>
 mods\ui-restyle.lua<br>
@@ -104,6 +105,9 @@ While in combat, holding shift will show the tooltip.
 A framework for hiding UI frames.<br>
 Hides the player and pet frame based on conditions.<br>
 Additional configuration available in the .lua.
+
+### improved-advanced-options.lua
+Advanced Options menu tweaks.
 
 ### improved-interface-options
 Rescales the interface options menu and removes the background.
