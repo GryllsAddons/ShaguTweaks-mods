@@ -1,4 +1,3 @@
-
 local _G = _G or getfenv(0)
 
 local module = ShaguTweaks:register({
