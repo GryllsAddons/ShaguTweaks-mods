@@ -7,10 +7,9 @@ local module = ShaguTweaks:register({
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
-  })
+})
   
 module.enable = function(self)
-
     UIOptionsFrame:SetScript("OnShow", function()
         -- default events
         UIOptionsFrame_Load();
@@ -23,5 +22,4 @@ module.enable = function(self)
         UIOptionsBlackground:Hide()
         UIOptionsFrame:SetScale(.8)
     end)
-
 end
