@@ -1,5 +1,3 @@
-local _G = _G or getfenv(0)
-
 local module = ShaguTweaks:register({
   title = "Improved Advanced Options",
   description = "Advanced Options menu tweaks.",
@@ -8,9 +6,7 @@ local module = ShaguTweaks:register({
   enabled = true,
 })
 
-module.enable = function(self)  
-
+module.enable = function(self)
   AdvancedSettingsGUI:SetPoint("TOP", UIParent, "TOP", 0, -25)
-  AdvancedSettingsGUI:SetFrameStrata("DIALOG")
-  
+  AdvancedSettingsGUI:SetFrameStrata("DIALOG")  
 end
