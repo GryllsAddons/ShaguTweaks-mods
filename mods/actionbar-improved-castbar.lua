@@ -1,7 +1,3 @@
-local _G = _G or getfenv(0)
-local UnitCastingInfo = ShaguTweaks.UnitCastingInfo
-local UnitChannelInfo = ShaguTweaks.UnitChannelInfo
-
 local module = ShaguTweaks:register({
     title = "Improved Castbar",
     description = "Adds a spell icon and remaining cast time to the cast bar.",
@@ -11,6 +7,11 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
+
+    local _G = _G or getfenv(0)
+    local UnitCastingInfo = ShaguTweaks.UnitCastingInfo
+    local UnitChannelInfo = ShaguTweaks.UnitChannelInfo
+
     local castbar = CreateFrame("FRAME", nil, CastingBarFrame)
     castbar:Hide()
 
