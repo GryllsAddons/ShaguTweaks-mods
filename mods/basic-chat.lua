@@ -4,7 +4,9 @@ local module = ShaguTweaks:register({
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Social & Chat",
     enabled = nil,
-  })
+})
+
+local modLoaded
 
 local function SetupChat()        
     local fontsize = 14 -- chat font size
@@ -87,8 +89,11 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
-        SetupChat()
-        SetupChannels()
+        if not modLoaded then
+            modLoaded = true
+            SetupChat()
+            SetupChannels()
+        end
     end)
 
 end
