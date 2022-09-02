@@ -10,6 +10,7 @@ local module = ShaguTweaks:register({
 })
 
 local modLoaded
+local timerFrame
 
 local function buffs()
     -- Buff font
@@ -186,9 +187,21 @@ local function minimap()
     if MBB_MinimapButtonFrame then
         -- reposition MBB to the bottom of the styleFrame (under the minimap)
         -- show the button OnEnter and hide when OnLeave
+        
+        MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10")
+        if IsAddOnLoaded("MinimapButtonBag-TurtleWoW") then        
+            MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10_green")
+        end
+
+        timerFrame = CreateFrame("Frame", nil, UIParent)
+        timerFrame:SetPoint("TOPLEFT", MBB_MinimapButtonFrame, -5, 5)
+        timerFrame:SetPoint("BOTTOMRIGHT", MBB_MinimapButtonFrame, 5, -5)
+        timerFrame:EnableMouse(true)
+        timerFrame:SetFrameStrata(MBB_MinimapButtonFrame:GetFrameStrata())
+        timerFrame:SetFrameLevel(MBB_MinimapButtonFrame:GetFrameLevel()-1)
+        timer = CreateFrame("Frame", nil, timerFrame)
 
         MBB_MinimapButtonFrame:ClearAllPoints()
-        MBB_MinimapButtonFrame.ClearAllPoints = function() end
 
         if MinimapClock.text then -- if Clock module is enabled
             MBB_MinimapButtonFrame:SetPoint("TOP", styleFrame, "BOTTOM", 0, 0)
@@ -196,30 +209,35 @@ local function minimap()
             MBB_MinimapButtonFrame:SetPoint("TOP", Minimap, "BOTTOM", 0, 0)
         end
 
+         -- prevent button from moving
+        MBB_MinimapButtonFrame.ClearAllPoints = function() end
         MBB_MinimapButtonFrame.SetPoint = function() end
-        MBB_MinimapButtonFrame:SetAlpha(0)        
-
-        -- show
+        
         local function showButton()
-            MBB_MinimapButtonFrame:SetAlpha(1)  
+            -- MBB_MinimapButtonFrame:Show()
+            MBB_MinimapButtonFrame:SetAlpha(1)
         end
 
-        MBB_MinimapButtonFrame:SetScript("OnEnter", showButton)
+        local function hideButton(button)
+            -- MBB_MinimapButtonFrame:Hide()
+            MBB_MinimapButtonFrame:SetAlpha(0)  
+        end
 
         -- hide
-        local timerFrame = CreateFrame("Frame", nil, UIParent)
-        local function hideButton()
-            local hideTime = GetTime() + 5 -- hides in 5 seconds
-            timerFrame:SetScript("OnUpdate", function()
+        local function hideTimer()
+            local hideTime = GetTime() + 6
+            timer:SetScript("OnUpdate", function()
                 if GetTime() >= hideTime then
                     MBB_HideButtons() -- MBB function to hide buttons
-                    MBB_MinimapButtonFrame:SetAlpha(0)
-                    timerFrame:SetScript("OnUpdate", nil)
+                    hideButton()
+                    timer:SetScript("OnUpdate", nil)
                 end
             end)
         end
 
-        MBB_MinimapButtonFrame:SetScript("OnLeave", hideButton)
+        hideButton()
+        timerFrame:SetScript("OnEnter", showButton)
+        timerFrame:SetScript("OnLeave", hideTimer)
     end
 end
 
@@ -250,7 +268,7 @@ module.enable = function(self)
 
     events:SetScript("OnEvent", function()
         if not modLoaded then
-            modLoaded = true
+            modLoaded = true            
             buffs()
             buttons()
             minimap()
