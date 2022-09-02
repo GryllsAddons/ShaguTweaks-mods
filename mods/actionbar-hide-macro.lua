@@ -1,14 +1,14 @@
-local _G = _G or getfenv(0)
-
 local module = ShaguTweaks:register({
     title = "Hide Macro Text",
     description = "Hides macro text",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
-  })
+})
+  
+module.enable = function(self)
+    local _G = _G or getfenv(0)
 
-local function macros()
     local function hidemacros(button)
         if not button then return end
 
@@ -16,7 +16,6 @@ local function macros()
         if macro then
             macro:SetAlpha(0)
         end
-
     end
     
     for i = 1, 24 do
@@ -37,17 +36,6 @@ local function macros()
             }
         ) do
             hidemacros(button)
-        end        
-    end     
-end
-  
-module.enable = function(self)
-
-    local events = CreateFrame("Frame", nil, UIParent)
-    events:RegisterEvent("PLAYER_ENTERING_WORLD")
-
-    events:SetScript("OnEvent", function()
-        macros()
-    end)
-    
+        end
+    end
 end

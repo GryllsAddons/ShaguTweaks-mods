@@ -16,7 +16,6 @@ module.enable = function(self)
         if hotkey then
             hotkey:SetAlpha(0)
         end
-
     end
     
     for i = 1, 24 do
