@@ -2,7 +2,7 @@
 Custom mods for the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon
 
 ## Preview:
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods.png" width=40% height=40%/>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods2.png" width=40% height=40%/>
 
 ## Credit:
 Credit to [shagu](https://github.com/shagu)
@@ -22,6 +22,7 @@ mods\actionbar-mouseover-bar-bottomleft.lua<br>
 mods\actionbar-mouseover-bar-bottomright.lua<br>
 mods\actionbar-mouseover-bar-right.lua<br>
 mods\actionbar-mouseover-bar-right2.lua<br>
+mods\actionbar-improved-castbar.lua
 mods\actionbar-improved-exp.lua<br>
 mods\basic-chat.lua<br>
 mods\central-ui.lua<br>
@@ -68,6 +69,9 @@ Please reload the UI after enabling or disabling the action bar.
 Hide the Right ActionBar 2 and show on mouseover.<br>
 The action bar must be enabled in 'Interface Options' > 'Advanced Options'.<br>
 Please reload the UI after enabling or disabling the action bar.
+
+### actionbar-improved-castbar
+Adds a spell icon and remaining cast time to the cast bar.
 
 ### actionbar-improved-exp
 Shows detailed exp, rested exp and rep values on mouseover.
