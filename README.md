@@ -1,7 +1,10 @@
 # ShaguTweaks-Mods
 Custom mods for the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon
 
-## Credit:<br>
+## Preview:
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods.png" width=40% height=40%/>
+
+## Credit:
 Credit to [shagu](https://github.com/shagu)
 <br>
 Code from [pfUI](https://shagu.org/pfUI/)
