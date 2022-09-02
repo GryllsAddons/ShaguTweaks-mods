@@ -188,9 +188,10 @@ local function minimap()
         -- reposition MBB to the bottom of the styleFrame (under the minimap)
         -- show the button OnEnter and hide when OnLeave
         
-        MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10")
-        if IsAddOnLoaded("MinimapButtonBag-TurtleWoW") then        
+        if IsAddOnLoaded("MinimapButtonBag-TurtleWoW") then
             MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10_green")
+        else
+            MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10")
         end
 
         timerFrame = CreateFrame("Frame", nil, UIParent)
