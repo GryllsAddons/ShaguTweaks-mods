@@ -42,7 +42,6 @@ module.enable = function(self)
     CastingBarText:Hide()
 
     castbar:SetScript("OnUpdate", function()
-        castbar:Show()
         local cast, nameSubtext, text, texture, startTime, endTime, isTradeSkill = UnitCastingInfo("player")
         if not cast then
         -- scan for channel spells if no cast was found
