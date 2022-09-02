@@ -4,7 +4,9 @@ local module = ShaguTweaks:register({
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
-  })
+})
+
+local modLoaded
 
 local function round(input, places)
     if not places then places = 0 end
@@ -116,13 +118,16 @@ module.enable = function(self)
 
     events:SetScript("OnEvent", function()
         if event == "PLAYER_ENTERING_WORLD" then
-            MainMenuBarOverlayFrame:Hide()       
-            exp_mouseOver()
-            updateExp()
-            exp.expstring:Hide()          
-            rep_mouseOver()
-            updateRep()            
-            exp.repstring:Hide()
+            if not modLoaded then
+                modLoaded = true
+                MainMenuBarOverlayFrame:Hide()       
+                exp_mouseOver()
+                updateExp()
+                exp.expstring:Hide()          
+                rep_mouseOver()
+                updateRep()            
+                exp.repstring:Hide()
+            end
         elseif event == "UPDATE_EXHAUSTION" then
             updateExp()
         elseif event == "PLAYER_XP_UPDATE" then
