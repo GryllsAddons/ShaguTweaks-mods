@@ -22,7 +22,7 @@ mods\actionbar-mouseover-bar-bottomleft.lua<br>
 mods\actionbar-mouseover-bar-bottomright.lua<br>
 mods\actionbar-mouseover-bar-right.lua<br>
 mods\actionbar-mouseover-bar-right2.lua<br>
-mods\actionbar-improved-castbar.lua
+mods\actionbar-improved-castbar.lua<br>
 mods\actionbar-improved-exp.lua<br>
 mods\basic-chat.lua<br>
 mods\central-ui.lua<br>
