@@ -1,4 +1,3 @@
-
 local _G = _G or getfenv(0)
 
 local module = ShaguTweaks:register({
@@ -8,9 +7,6 @@ local module = ShaguTweaks:register({
     category = "Action Bar",
     enabled = nil,
   })
-
--- Based on zUI skinning (https://github.com/Ko0z/zUI)
--- Credit to Ko0z (https://github.com/Ko0z/)
 
 local function hotkeys()
     local function hidehotkeys(button)
