@@ -4,8 +4,9 @@ local module = ShaguTweaks:register({
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
-  })
-  
+})
+
+local modLoaded
 local Hide = CreateFrame("Frame", nil, UIParent)
 
 local function Hide_addFrames()    
@@ -245,7 +246,8 @@ module.enable = function(self)
 
     events:SetScript("OnEvent", function()
         if event == "PLAYER_ENTERING_WORLD" then
-            if not Hide.toggle then       
+            if not modLoaded then
+                modLoaded = true    
                 Hide.toggle = {}
                 Hide.perma = {}
                 Hide_addFrames()
