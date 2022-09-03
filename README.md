@@ -65,7 +65,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 <br>*Please reload the UI after enabling or disabling the action bar.*
 
 - **actionbar-improved-castbar**
-<br>*Adds a spell icon and remaining cast time to the cast bar.*
+<br>*Adds a spell icon and remaining cast time to the castbar.*
 
 - **actionbar-improved-exp**
 <br>*Shows detailed exp, rested exp and rep values on mouseover.*
