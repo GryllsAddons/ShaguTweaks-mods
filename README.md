@@ -46,23 +46,15 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **actionbar-mouseover-bar-bottomleft**
 <br>*Hide the Bottom Left ActionBar and show on mouseover.*
-<br>*The action bar must be enabled in 'Interface Options' > 'Advanced Options'.*
-<br>*Please reload the UI after enabling or disabling the action bar.*
 
 - **actionbar-mouseover-bar-bottomright**
 <br>*Hide the Bottom Right ActionBar and show on mouseover.*
-<br>*The action bar must be enabled in 'Interface Options' > 'Advanced Options'.*
-<br>*Please reload the UI after enabling or disabling the action bar.*
 
 - **actionbar-mouseover-bar-right**
 <br>*Hide the Right ActionBar and show on mouseover.*
-<br>*The action bar must be enabled in 'Interface Options' > 'Advanced Options'.*
-<br>*Please reload the UI after enabling or disabling the action bar.*
 
 - **actionbar-mouseover-bar-right2**
 <br>*Hide the Right ActionBar 2 and show on mouseover.*
-<br>*The action bar must be enabled in 'Interface Options' > 'Advanced Options'.*
-<br>*Please reload the UI after enabling or disabling the action bar.*
 
 - **actionbar-improved-castbar**
 <br>*Adds a spell icon and remaining cast time to the castbar.*
@@ -72,7 +64,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **basic-chat**
 <br>*Create General, Combat Log and 'Loot & Spam' chat boxes and setup chat channels.*
-<br>*The mod will create and reposition the chat boxes and setup channels on every login unless disabled.*
 
 - **central-ui.lua**
 <br>*Moves the unit frames, castbar, buffs and minimap into a more central layout.*
@@ -81,10 +72,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 <br>*Attaches the tooltip to the cursor.*
 
 - **healthbar-colors**
-<br>*Changes the unitframe and nameplate healthbar color when at 20% health or lower.*
+<br>*Changes the unitframe and nameplate healthbar color for enemy and friendly units when at 20% health or lower.*
 <br>*Adds Hunter pet healthbar coloring by happiness.*
-<br>*Enemy health will be colored orange.*
-<br>*Friendly health will be colored blue.*
 
 - **hide-combat-tooltip**
 <br>*Hides the tooltip while in combat.*
