@@ -87,8 +87,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 <br>*Friendly health will be colored blue.*
 
 - **hide-combat-tooltip**
-<br>*Hides the tooltip while in combat.
-<br>*While in combat, holding shift will show the tooltip.
+<br>*Hides the tooltip while in combat.*
+<br>*While in combat, holding shift will show the tooltip.*
 
 - **hide-ui-frames**
 <br>*A framework for hiding UI frames.*
