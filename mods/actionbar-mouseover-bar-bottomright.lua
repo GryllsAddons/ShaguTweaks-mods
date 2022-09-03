@@ -13,12 +13,34 @@ module.enable = function(self)
     local mouseOverBar
     local mouseOverButton
         
+    local function reposition()
+        -- move pet actionbar above other actionbars
+        PetActionBarFrame:ClearAllPoints()
+        local anchor = MainMenuBarArtFrame
+        anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
+        PetActionBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 3)
+
+        -- ShapeshiftBarFrame
+        ShapeshiftBarFrame:ClearAllPoints()
+        local offset = 0
+        local anchor = ActionButton1
+        anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
+
+        offset = anchor == ActionButton1 and ( MainMenuExpBar:IsVisible() or ReputationWatchBar:IsVisible() ) and 6 or 0
+        offset = anchor == ActionButton1 and offset + 6 or offset
+        ShapeshiftBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 8, 2 + offset)
+    end
+        
     local function hide(bar)
         bar:Hide()
+        reposition()
     end
     
     local function show(bar)
         bar:Show()
+        reposition()
     end
     
     local function mouseover(bar)
