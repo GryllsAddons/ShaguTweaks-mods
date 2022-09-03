@@ -138,23 +138,3 @@ Code from [pfUI](https://shagu.org/pfUI/)
 <br>
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/>
 <br>
-<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png" width=50% height=50%/>
-<br>
-<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png" width=50% height=20%/>
-<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png" width=20% height=20%/>
-<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png" width=30% height=30%/>
-<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png" width=20% height=20%/><br>
-<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TOTPortrait.png" width=20% height=20%/>
-<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png" width=20% height=20%/>
-<br>
-<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_EnergyTick.png" width=20% height=20%/>
-<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=20% height=20%/>
-<br>
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/>
-<br>
