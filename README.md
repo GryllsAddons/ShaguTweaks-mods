@@ -28,6 +28,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\hide-ui-frames.lua*    
 *mods\improved-advanced-options.lua*    
 *mods\improved-interface-options.lua*    
+*mods\loot-monitor.lua*    
 *mods\minimap-framerate-latency.lua*    
 *mods\ui-restyle.lua*    
 *mods\unitframes-classportrait-tot.lua*    
@@ -90,6 +91,9 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **improved-interface-options**    
 *Rescales the interface options menu and removes the background.*
 
+- **loot-monitor**    
+*Display recent loot messages.*
+
 - **minimap-framerate-latency**    
 *Adds a small framerate & latency display to the mini map.*
 *Mouseover to see the high and low framerate and latency for your WoW session.*
@@ -130,6 +134,12 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png)  
 *healthbar-colors*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor1.png)  
+*loot-monitor you*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor2.png)  
+*loot-monitor others*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png)  
 *minimap-framerate-latency*
