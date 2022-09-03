@@ -93,6 +93,9 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **loot-monitor**    
 *Display recent loot messages.*
+*Hold ALT while using the mouse wheel over the window to scroll.*
+*Hold ALT and SHIFT then scroll down to go to the bottom of the window.*
+*The window will auto scroll back to the bottom after 10 seconds.*
 
 - **minimap-framerate-latency**    
 *Adds a small framerate & latency display to the mini map.*
