@@ -112,15 +112,15 @@ module.enable = function(self)
                 colorName("party4")
             end
         elseif (event == "UNIT_PET") then
-            if (arg1 == "pet") then
+            if (arg1 == "player") then
                 colorName("pet")
-            elseif (arg1 == "partypet1") then
+            elseif (arg1 == "party1") then
                 colorName("partypet1")
-            elseif (arg1 == "partypet2") then
+            elseif (arg1 == "party2") then
                 colorName("partypet2")
-            elseif (arg1 == "partypet3") then
+            elseif (arg1 == "party3") then
                 colorName("partypet3")
-            elseif (arg1 == "partypet4") then
+            elseif (arg1 == "party4") then
                 colorName("partypet4")
             end
         end
