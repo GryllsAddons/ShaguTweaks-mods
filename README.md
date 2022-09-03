@@ -73,7 +73,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Attaches the tooltip to the cursor.*
 
 - **healthbar-colors**    
-*Changes the unitframe and nameplate healthbar color for enemy and friendly units when at 20% health or lower.*
+*Changes the unitframe and nameplate healthbar color for enemy and friendly units when at 20% health or lower.*    
 *Adds Hunter pet healthbar coloring by happiness.*
 
 - **hide-combat-tooltip**    
@@ -81,8 +81,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *While in combat, holding shift will show the tooltip.*
 
 - **hide-ui-frames**    
-*A framework for hiding UI frames.*
-*Hides the player and pet frame based on conditions.*
+*A framework for hiding UI frames.*    
+*Hides the player and pet frame based on conditions.*    
 *Additional configuration available in the .lua.*
 
 - **improved-advanced-options**    
@@ -93,13 +93,13 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **loot-monitor**    
 *Display recent loot messages.*
-*Hold ALT while using the mouse wheel over the window to scroll.*
-*Hold ALT and SHIFT then scroll down to go to the bottom of the window.*
+*Hold ALT while using the mouse wheel over the window to scroll.*    
+*Hold ALT and SHIFT then scroll down to go to the bottom of the window.*    
 *The window will auto scroll back to the bottom after 10 seconds.*
 
 - **minimap-framerate-latency**    
-*Adds a small framerate & latency display to the mini map.*
-*Mouseover to see the high and low framerate and latency for your WoW session.*
+*Adds a small framerate & latency display to the mini map.*    
+*Mouseover to see the high and low framerate and latency for your WoW session.*    
 *The color will change in relation to the target values set in the minimap-framerate-latency.lua.*
 
 - **unitframes-classportrait-tot**    
@@ -117,7 +117,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **minimap-restyle**    
 *Adds square Tracking and Mail icons and repositions the PVP icon when using the square minimap module.*     
 *Restyles the Zone Text, Clock, FPS and MS display.*    
-*If you are using the [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon the MinimapButtonBag button will be repositioned below the minimap or clock. The MinimapButtonBag button will be hidden unless you mouse over it.*
+*If you are using the [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon the MinimapButtonBag button will be repositioned below the minimap or clock.*    
+*The MinimapButtonBag button will be hidden unless you mouse over it.*
 
 - **unitframes-namecolor**    
 *Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.*
