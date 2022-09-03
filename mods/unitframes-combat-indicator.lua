@@ -4,7 +4,7 @@ local module = ShaguTweaks:register({
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Unit Frames",
     enabled = nil,
-  })
+})
   
 module.enable = function(self)
 
