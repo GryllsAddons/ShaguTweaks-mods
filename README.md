@@ -12,28 +12,28 @@ Code from [pfUI](https://shagu.org/pfUI/)
 3. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 
 ### Mods section
-*actionbar-hide-hotkey.lua*
-*actionbar-hide-macro.lua*
-*actionbar-mouseover-bar-bottomleft.lua*
-*actionbar-mouseover-bar-bottomright.lua*
-*actionbar-mouseover-bar-right.lua*
-*actionbar-mouseover-bar-right2.lua*
-*actionbar-improved-castbar.lua*
-*actionbar-improved-exp.lua*
-*basic-chat.lua*
-*central-ui.lua*
-*cursor-tooltip.lua*
-*healthbar-color*
-*hide-combat-tooltip.lua*
-*hide-ui-frames.lua*
-*improved-advanced-options.lua*
-*improved-interface-options.lua*
-*minimap-framerate-latency.lua*
-*ui-restyle.lua*
-*unitframes-classportrait-tot.lua*
-*unitframes-combat-indicator.lua*
-*unitframes-energy-tick.lua*
-*unitframes-namecolor.lua*
+<br>*actionbar-hide-hotkey.lua*
+<br>*actionbar-hide-macro.lua*
+<br>*actionbar-mouseover-bar-bottomleft.lua*
+<br>*actionbar-mouseover-bar-bottomright.lua*
+<br>*actionbar-mouseover-bar-right.lua*
+<br>*actionbar-mouseover-bar-right2.lua*
+<br>*actionbar-improved-castbar.lua*
+<br>*actionbar-improved-exp.lua*
+<br>*basic-chat.lua*
+<br>*central-ui.lua*
+<br>*cursor-tooltip.lua*
+<br>*healthbar-color*
+<br>*hide-combat-tooltip.lua*
+<br>*hide-ui-frames.lua*
+<br>*improved-advanced-options.lua*
+<br>*improved-interface-options.lua*
+<br>*minimap-framerate-latency.lua*
+<br>*ui-restyle.lua*
+<br>*unitframes-classportrait-tot.lua*
+<br>*unitframes-combat-indicator.lua*
+<br>*unitframes-energy-tick.lua*
+<br>*unitframes-namecolor.lua*
 
 ## Features
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods2.png" width=40% height=40%/>
