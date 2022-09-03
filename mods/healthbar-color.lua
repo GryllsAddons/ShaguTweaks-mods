@@ -3,7 +3,7 @@ local GetUnitData = ShaguTweaks.GetUnitData
 
 local module = ShaguTweaks:register({
   title = "Unit Frame Healthbar Colors",
-  description = "Changes the unitframe and nameplate healthbar color when at 20% health or lower. Adds Hunter pet healthbar coloring by happiness.",
+  description = "Changes the unitframe and nameplate healthbar color for enemy and friendly units when at 20% health or lower. Adds Hunter pet healthbar coloring by happiness.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "Unit Frames",
   enabled = nil,
