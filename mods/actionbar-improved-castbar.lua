@@ -25,20 +25,24 @@ module.enable = function(self)
     castbar.texture.icon:SetWidth(24)
     castbar.texture.icon:SetHeight(24)
     castbar.texture:SetBackdrop({
+        -- edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
         edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
         tile = true, tileSize = 8, edgeSize = 12,
-        insets = { left = 3, right = 3, top = 3, bottom = 3 }
+        insets = { left = 2, right = 2, top = 2, bottom = 2 }
     })
+    
+    if ShaguTweaks.DarkMode then
+        castbar.texture:SetBackdropBorderColor( .3, .3, .3, .9)
+    end   
 
     castbar.spellText = castbar:CreateFontString(nil, "HIGH", "GameFontWhite")
     castbar.spellText:SetPoint("CENTER", CastingBarFrame, "CENTER", 0, 3)
-    local font, _, opts = castbar.spellText:GetFont()
-    local size = 14
-    castbar.spellText:SetFont(font, size - 2, "THINOUTLINE")
+    local font, size, opts = castbar.spellText:GetFont()
+    castbar.spellText:SetFont(font, size, "THINOUTLINE")
 
     castbar.timerText = castbar:CreateFontString(nil, "HIGH", "GameFontWhite")
     castbar.timerText:SetPoint("RIGHT", CastingBarFrame, "RIGHT", -5, 3)
-    castbar.timerText:SetFont(font, size - 2, "THINOUTLINE")
+    castbar.timerText:SetFont(font, size, "THINOUTLINE")
 
     CastingBarText:Hide()
 
