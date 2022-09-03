@@ -11,29 +11,29 @@ Code from [pfUI](https://shagu.org/pfUI/)
 2. Add the appropriate line(s) from the mods section below to \Interface\AddOns\ShaguTweaks\ShaguTweaks.toc
 3. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 
-### Mods section
-<br>*mods\actionbar-hide-hotkey.lua*
-<br>*mods\actionbar-hide-macro.lua*
-<br>*mods\actionbar-mouseover-bar-bottomleft.lua*
-<br>*mods\actionbar-mouseover-bar-bottomright.lua*
-<br>*mods\actionbar-mouseover-bar-right.lua*
-<br>*mods\actionbar-mouseover-bar-right2.lua*
-<br>*mods\actionbar-improved-castbar.lua*
-<br>*mods\actionbar-improved-exp.lua*
-<br>*mods\basic-chat.lua*
-<br>*mods\central-ui.lua*
-<br>*mods\cursor-tooltip.lua*
-<br>*mods\healthbar-color*
-<br>*mods\hide-combat-tooltip.lua*
-<br>*mods\hide-ui-frames.lua*
-<br>*mods\improved-advanced-options.lua*
-<br>*mods\improved-interface-options.lua*
-<br>*mods\minimap-framerate-latency.lua*
-<br>*mods\ui-restyle.lua*
-<br>*mods\unitframes-classportrait-tot.lua*
-<br>*mods\unitframes-combat-indicator.lua*
-<br>*mods\unitframes-energy-tick.lua*
-<br>*mods\unitframes-namecolor.lua*
+- **Mods section**  
+*mods\actionbar-hide-hotkey.lua*    
+*mods\actionbar-hide-macro.lua*    
+*mods\actionbar-mouseover-bar-bottomleft.lua*    
+*mods\actionbar-mouseover-bar-bottomright.lua*    
+*mods\actionbar-mouseover-bar-right.lua*    
+*mods\actionbar-mouseover-bar-right2.lua*    
+*mods\actionbar-improved-castbar.lua*    
+*mods\actionbar-improved-exp.lua*    
+*mods\basic-chat.lua*    
+*mods\central-ui.lua*    
+*mods\cursor-tooltip.lua*    
+*mods\healthbar-color*
+*mods\hide-combat-tooltip.lua*    
+*mods\hide-ui-frames.lua*    
+*mods\improved-advanced-options.lua*    
+*mods\improved-interface-options.lua*    
+*mods\minimap-framerate-latency.lua*    
+*mods\ui-restyle.lua*    
+*mods\unitframes-classportrait-tot.lua*    
+*mods\unitframes-combat-indicator.lua*    
+*mods\unitframes-energy-tick.lua*    
+*mods\unitframes-namecolor.lua*
 
 ## Features
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods2.png" width=40% height=40%/>
