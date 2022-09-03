@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Loot Monitor",
-    description = "Display recent loot messages.",
+    description = "Display recent loot messages. Hold ALT while using the mouse wheel over the window to scroll. Hold ALT and SHIFT then scroll down to go to the bottom of the window. The window will auto scroll back to the bottom after 10 seconds.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -8,15 +8,56 @@ local module = ShaguTweaks:register({
   
 module.enable = function(self)
     local loot = CreateFrame("ScrollingMessageFrame")
-    loot:SetPoint("TOP", UIParent, "TOP", 0, -150)
+    loot:SetPoint("TOP", UIErrorsFrame, "BOTTOM", 0, 0)
+    loot:SetWidth(UIErrorsFrame:GetWidth())
+    loot:SetHeight(70) -- 5 lines
+    
     -- loot:SetFontObject(GameTooltipTextSmall)
     loot.text = loot:CreateFontString(nil, "HIGH", "GameFontWhite")
     local font, size, opts = loot.text:GetFont()
     loot:SetFont(font, size, "OUTLINE")
-
     loot:SetJustifyH("CENTER")
-    loot:SetHeight(100)
-    loot:SetWidth(300)
+
+    local timer = CreateFrame("FRAME", nil, loot)
+    timer:Hide()
+
+    local scrollspeed = 1
+    local function ChatOnMouseWheel()
+        if arg1 > 0 then
+          if IsShiftKeyDown() then
+            this:ScrollToTop()
+          else
+            for i=1, scrollspeed do
+              this:ScrollUp()
+            end
+          end
+        elseif arg1 < 0 then
+          if IsShiftKeyDown() then
+            this:ScrollToBottom()
+          else
+            for i=1, scrollspeed do
+              this:ScrollDown()
+            end
+          end
+        end
+    end
+    
+    loot:EnableMouseWheel(true)
+    loot:SetScript("OnMouseWheel", function()
+        if IsAltKeyDown() then
+            ChatOnMouseWheel()
+        end   
+        
+        timer:Show()
+        timer.time = GetTime() + 10
+
+        timer:SetScript("OnUpdate", function()
+            if GetTime() > timer.time then
+                loot:ScrollToBottom()
+                timer:Hide()
+            end
+        end)             
+    end)
 
     local function AddLootMessage(msg)
         local GetUnitData = ShaguTweaks.GetUnitData
