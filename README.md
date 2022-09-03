@@ -19,7 +19,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\actionbar-mouseover-bar-right.lua*    
 *mods\actionbar-mouseover-bar-right2.lua*    
 *mods\actionbar-improved-castbar.lua*    
-*mods\actionbar-improved-exp.lua*    
+*mods\actionbar-improved-expbar.lua*    
 *mods\basic-chat.lua*    
 *mods\central-ui.lua*    
 *mods\cursor-tooltip.lua*    
@@ -59,7 +59,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **actionbar-improved-castbar**    
 *Adds a spell icon and remaining cast time to the castbar.*
 
-- **actionbar-improved-exp**    
+- **actionbar-improved-expbar**    
 *Shows detailed exp, rested exp and rep values on mouseover.*
 
 - **basic-chat**    
