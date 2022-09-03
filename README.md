@@ -23,7 +23,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\basic-chat.lua*    
 *mods\central-ui.lua*    
 *mods\cursor-tooltip.lua*    
-*mods\healthbar-color*
+*mods\healthbar-color*    
 *mods\hide-combat-tooltip.lua*    
 *mods\hide-ui-frames.lua*    
 *mods\improved-advanced-options.lua*    
