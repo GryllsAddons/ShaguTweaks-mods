@@ -82,7 +82,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **healthbar-colors**
 <br>*Changes the unitframe and nameplate healthbar color when at 20% health or lower.*
-<br>Adds Hunter pet healthbar coloring by happiness.*
+<br>*Adds Hunter pet healthbar coloring by happiness.*
 <br>*Enemy health will be colored orange.*
 <br>*Friendly health will be colored blue.*
 
