@@ -38,103 +38,113 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ## Features
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods2.png" width=40% height=40%/>
 
-- **actionbar-hide-hotkey**
-<br>*Hides the hotkeys on the action bars.*
+- **actionbar-hide-hotkey**    
+*Hides the hotkeys on the action bars.*
 
-- **actionbar-hide-macro**
-<br>*Hides the macros on the action bars.*
+- **actionbar-hide-macro**    
+*Hides the macros on the action bars.*
 
-- **actionbar-mouseover-bar-bottomleft**
-<br>*Hide the Bottom Left ActionBar and show on mouseover.*
+- **actionbar-mouseover-bar-bottomleft**    
+*Hide the Bottom Left ActionBar and show on mouseover.*
 
-- **actionbar-mouseover-bar-bottomright**
-<br>*Hide the Bottom Right ActionBar and show on mouseover.*
+- **actionbar-mouseover-bar-bottomright**    
+*Hide the Bottom Right ActionBar and show on mouseover.*
 
-- **actionbar-mouseover-bar-right**
-<br>*Hide the Right ActionBar and show on mouseover.*
+- **actionbar-mouseover-bar-right**    
+*Hide the Right ActionBar and show on mouseover.*
 
-- **actionbar-mouseover-bar-right2**
-<br>*Hide the Right ActionBar 2 and show on mouseover.*
+- **actionbar-mouseover-bar-right2**    
+*Hide the Right ActionBar 2 and show on mouseover.*
 
-- **actionbar-improved-castbar**
-<br>*Adds a spell icon and remaining cast time to the castbar.*
+- **actionbar-improved-castbar**    
+*Adds a spell icon and remaining cast time to the castbar.*
 
-- **actionbar-improved-exp**
-<br>*Shows detailed exp, rested exp and rep values on mouseover.*
+- **actionbar-improved-exp**    
+*Shows detailed exp, rested exp and rep values on mouseover.*
 
-- **basic-chat**
-<br>*Create General, Combat Log and 'Loot & Spam' chat boxes and setup chat channels.*
+- **basic-chat**    
+*Create General, Combat Log and 'Loot & Spam' chat boxes and setup chat channels.*
 
-- **central-ui.lua**
-<br>*Moves the unit frames, castbar, buffs and minimap into a more central layout.*
+- **central-ui.lua**    
+*Moves the unit frames, castbar, buffs and minimap into a more central layout.*
 
-- **cursor-tooltip**
-<br>*Attaches the tooltip to the cursor.*
+- **cursor-tooltip**    
+*Attaches the tooltip to the cursor.*
 
-- **healthbar-colors**
-<br>*Changes the unitframe and nameplate healthbar color for enemy and friendly units when at 20% health or lower.*
-<br>*Adds Hunter pet healthbar coloring by happiness.*
+- **healthbar-colors**    
+*Changes the unitframe and nameplate healthbar color for enemy and friendly units when at 20% health or lower.*
+*Adds Hunter pet healthbar coloring by happiness.*
 
-- **hide-combat-tooltip**
-<br>*Hides the tooltip while in combat.*
-<br>*While in combat, holding shift will show the tooltip.*
+- **hide-combat-tooltip**    
+*Hides the tooltip while in combat.*
+*While in combat, holding shift will show the tooltip.*
 
-- **hide-ui-frames**
-<br>*A framework for hiding UI frames.*
-<br>*Hides the player and pet frame based on conditions.*
-<br>*Additional configuration available in the .lua.*
+- **hide-ui-frames**    
+*A framework for hiding UI frames.*
+*Hides the player and pet frame based on conditions.*
+*Additional configuration available in the .lua.*
 
-- **improved-advanced-options**
-<br>*Advanced Options menu tweaks.*
+- **improved-advanced-options**    
+*Advanced Options menu tweaks.*
 
-- **improved-interface-options**
-<br>*Rescales the interface options menu and removes the background.*
+- **improved-interface-options**    
+*Rescales the interface options menu and removes the background.*
 
-- **minimap-framerate-latency**
-<br>*Adds a small framerate & latency display to the mini map.*
-<br>*Mouseover to see the high and low framerate and latency for your WoW session.*
-<br>*The color will change in relation to the target values set in the minimap-framerate-latency.lua.*
+- **minimap-framerate-latency**    
+*Adds a small framerate & latency display to the mini map.*
+*Mouseover to see the high and low framerate and latency for your WoW session.*
+*The color will change in relation to the target values set in the minimap-framerate-latency.lua.*
 
-- **unitframes-classportrait-tot**
-<br>*Extends class portraits to Target of Target.*
+- **unitframes-classportrait-tot**    
+*Extends class portraits to Target of Target.*
 
-- **unitframes-combat-indicator**
-<br>*Adds a combat indicator to the target frame.*
+- **unitframes-combat-indicator**    
+*Adds a combat indicator to the target frame.*
 
-- **unitframes-energy-tick**
-<br>*Adds an energy tick to the player frame.*
+- **unitframes-energy-tick**    
+*Adds an energy tick to the player frame.*
 
-- **ui-restyle**
-<br>*Restyles minimap, buff/debuffs, unitframe names and buttons.*
+- **ui-restyle**    
+*Restyles minimap, buff/debuffs, unitframe names and buttons.*
 
-- **minimap-restyle**
-<br>*Adds square Tracking and Mail icons and repositions the PVP icon when using the square minimap module.*
-<br>*Restyles the Zone Text, Clock, FPS and MS display.*
-<br>*If you are using the [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon the MinimapButtonBag button will be repositioned below the minimap or clock. The MinimapButtonBag button will be hidden unless you mouse over it.*
+- **minimap-restyle**    
+*Adds square Tracking and Mail icons and repositions the PVP icon when using the square minimap module.*     
+*Restyles the Zone Text, Clock, FPS and MS display.*    
+*If you are using the [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon the MinimapButtonBag button will be repositioned below the minimap or clock. The MinimapButtonBag button will be hidden unless you mouse over it.*
 
-- **unitframes-namecolor**
-<br>*Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.*
+- **unitframes-namecolor**    
+*Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.*
 
 ## Screenshots
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_ImpCastbar.png" width=30% height=30%/>
-<br>*actionbar-improved-castbar*
-<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png" width=50% height=50%/>
-<br>*actionbar-improved-castbar exp*
-<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png" width=50% height=20%/>
-<br>*actionbar-improved-castbar rep*
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png" width=20% height=20%/>
-<br>*cursor-tooltip*
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png" width=30% height=30%/>
-<br>*healthbar-colors*
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png" width=20% height=20%/><br>
-<br>*minimap-framerate-latency*
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TOTPortrait.png" width=20% height=20%/>
-<br>*unitframes-classportrait-tot*
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png" width=20% height=20%/>
-<br>*unitframes-combat-indicator*
-<img src="https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_EnergyTick.png" width=20% height=20%/>
-<br>*unitframes-energy-tick*
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=20% height=20%/>
-<br>*ui-restyle minimap*
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png" width=15% height=15%/>
-<br>*ui-restyle buffs*
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_ImpCastbar.png)    
+*actionbar-improved-castbar*
+
+![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png)   
+*actionbar-improved-castbar exp*
+
+![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png)   
+*actionbar-improved-castbar rep*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png)  
+*cursor-tooltip*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png)  
+*healthbar-colors*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png)  
+*minimap-framerate-latency*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TOTPortrait.png)  
+*unitframes-classportrait-tot*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png)  
+*unitframes-combat-indicator*
+
+![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_EnergyTick.png)  
+*unitframes-energy-tick*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png)  
+*ui-restyle minimap*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png)  
+*ui-restyle buffs*
