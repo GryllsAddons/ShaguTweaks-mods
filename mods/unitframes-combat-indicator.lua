@@ -7,7 +7,6 @@ local module = ShaguTweaks:register({
 })
   
 module.enable = function(self)
-
     local f = CreateFrame("Frame", "TargetCombatIndicator", TargetFrame)
     f.indicator = f:CreateTexture(nil, "OVERLAY")
     --f.indicator:SetTexture("Interface\\Icons\\ABILITY_DUALWIELD")
