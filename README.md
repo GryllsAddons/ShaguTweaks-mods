@@ -11,7 +11,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 2. Add the appropriate line(s) from the mods section below to \Interface\AddOns\ShaguTweaks\ShaguTweaks.toc
 3. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 
-- **Mods section**  
+## Mods
 *mods\actionbar-hide-hotkey.lua*    
 *mods\actionbar-hide-macro.lua*    
 *mods\actionbar-mouseover-bar-bottomleft.lua*    
