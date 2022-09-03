@@ -92,7 +92,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Rescales the interface options menu and removes the background.*
 
 - **loot-monitor**    
-*Display recent loot messages.*
+*Display recent loot messages.*    
 *Hold ALT while using the mouse wheel over the window to scroll.*    
 *Hold ALT and SHIFT then scroll down to go to the bottom of the window.*    
 *The window will auto scroll back to the bottom after 10 seconds.*
