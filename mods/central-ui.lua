@@ -37,11 +37,18 @@ module.enable = function(self)
     end
     
     local function castbar()
+        CastingBarFrame:ClearAllPoints()
+
         if IsAddOnLoaded("GryllsSwingTimer") then
             CastingBarFrame:SetPoint("TOP", SP_ST_Frame, "BOTTOM", 0, -14)
         else
-            CastingBarFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -214)
+            CastingBarFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -250)
         end
+
+        -- prevent castbar from moving
+        CastingBarFrame.ClearAllPoints = function() end
+        CastingBarFrame.SetAllPoints = function() end
+        CastingBarFrame.SetPoint = function() end
     end   
     
     local function minimap()
