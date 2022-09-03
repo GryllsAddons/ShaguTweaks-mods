@@ -26,7 +26,7 @@ module.enable = function(self)
         TargetFrame:SetPoint("LEFT", UIParent, "CENTER", x, y)
     
         -- Party
-        local scale = 1.4
+        local scale = 1.2
         PartyMemberFrame1:ClearAllPoints()
         PartyMemberFrame1:SetScale(scale)
         PartyMemberFrame2:SetScale(scale)
