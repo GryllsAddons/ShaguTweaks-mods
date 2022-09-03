@@ -120,10 +120,10 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *actionbar-improved-castbar*
 
 ![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png)   
-*actionbar-improved-castbar exp*
+*actionbar-improved-exp exp*
 
 ![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png)   
-*actionbar-improved-castbar rep*
+*actionbar-improved-exp rep*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png)  
 *cursor-tooltip*
