@@ -36,7 +36,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\unitframes-classportrait-tot.lua*    
 *mods\unitframes-combat-indicator.lua*    
 *mods\unitframes-energy-tick.lua*    
-*mods\unitframes-namecolor.lua*
+*mods\unitframes-nameclasscolor.lua*
 
 ## Features
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods2.png" width=40% height=40%/>
@@ -139,9 +139,9 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Restyles minimap, buff/debuffs, unitframe names and buttons.*    
 *If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned below the minimap or clock. The MinimapButtonBag button will be hidden unless you mouse over it.*
 
-- **Unit Frame Name Colors**    
-*unitframes-namecolor.lua*   
-*Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.*
+- **Unit Frame Name Class Colors**    
+*unitframes-nameclasscolor.lua*   
+*Adds name class colors to the player, pet, target, tot and party unit frames.*
 
 ## Screenshots
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_ImpCastbar.png)    
