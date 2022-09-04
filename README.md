@@ -23,7 +23,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\basic-chat.lua*    
 *mods\central-ui.lua*    
 *mods\cursor-tooltip.lua*    
-*mods\healthbar-color*    
+*mods\healthbar-color.lua*    
 *mods\hide-combat-tooltip.lua*    
 *mods\hide-ui-frames.lua*    
 *mods\improved-advanced-options.lua*    
@@ -39,88 +39,108 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ## Features
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods.png" width=40% height=40%/>
 
-- **actionbar-hide-hotkey**    
+- **Hide Hotkey Text**    
+*actionbar-hide-hotkey.lua*    
 *Hides the hotkeys on the action bars.*
 
-- **actionbar-hide-macro**    
+- **Hide Macro Text**    
+*actionbar-hide-macro.lua*    
 *Hides the macros on the action bars.*
 
-- **actionbar-mouseover-bar-bottomleft**    
+- **Mouseover Bottom Left**    
+*actionbar-mouseover-bar-bottomleft.lua*    
 *Hide the Bottom Left ActionBar and show on mouseover.*
 
-- **actionbar-mouseover-bar-bottomright**    
+- **Mouseover Bottom Right**    
+*actionbar-mouseover-bar-bottomright.lua*    
 *Hide the Bottom Right ActionBar and show on mouseover.*
 
-- **actionbar-mouseover-bar-right**    
+- **Mouseover Right**    
+*actionbar-mouseover-bar-right.lua*    
 *Hide the Right ActionBar and show on mouseover.*
 
-- **actionbar-mouseover-bar-right2**    
+- **Mouseover Right 2**    
+*actionbar-mouseover-bar-right2.lua*    
 *Hide the Right ActionBar 2 and show on mouseover.*
 
-- **actionbar-improved-castbar**    
+- **Improved Castbar**    
+*actionbar-improved-castbar.lua*    
 *Adds a spell icon and remaining cast time to the castbar.*
 
-- **actionbar-improved-expbar**    
+- **Improved Exp Bar**    
+*actionbar-improved-expbar.lua*    
 *Shows detailed exp, rested exp and rep values on mouseover.*
 
-- **basic-chat**    
+- **Basic Chat**    
+*basic-chat.lua*    
 *Create General, Combat Log and 'Loot & Spam' chat boxes and setup chat channels.*
 
-- **central-ui.lua**    
+- **Central UI**    
+*central-ui.lua*    
 *Moves the unit frames, castbar, buffs and minimap into a more central layout.*
 
-- **cursor-tooltip**    
+- **Cursor Tooltip**    
+*cursor-tooltip.lua*    
 *Attaches the tooltip to the cursor.*
 
-- **healthbar-colors**    
+- **Unit Frame Healthbar Colors**    
+*healthbar-color.lua*    
 *Changes the unitframe and nameplate healthbar color for enemy and friendly units when at 20% health or lower.*    
 *Adds Hunter pet healthbar coloring by happiness.*
 
-- **hide-combat-tooltip**    
+- **Hide Combat Tooltip**    
+*hide-combat-tooltip.lua*    
 *Hides the tooltip while in combat.*
 *While in combat, holding shift will show the tooltip.*
 
-- **hide-ui-frames**    
+- **Hide UI Frames**    
+*hide-ui-frames.lua*    
 *A framework for hiding UI frames.*    
 *Hides the player and pet frame based on conditions.*    
 *Additional configuration available in the .lua.*
 
-- **improved-advanced-options**    
+- **Improved Advanced Options**    
+*improved-advanced-options.lua*    
 *Advanced Options menu tweaks.*
 
-- **improved-interface-options**    
+- **Improved Interface Options**   
+*improved-advanced-options.lua*     
 *Rescales the interface options menu and removes the background.*
 
-- **loot-monitor**    
+- **Loot Monitor**    
+*loot-monitor.lua*    
 *Display recent loot messages.*    
 *Hold ALT while using the mouse wheel over the window to scroll.*    
 *Hold ALT and SHIFT then scroll down to go to the bottom of the window.*    
 *The window will auto scroll back to the bottom after 10 seconds.*
 
-- **minimap-framerate-latency**    
+- **MiniMap Framerate & Latency**    
+*minimap-framerate-latency.lua*    
 *Adds a small framerate & latency display to the mini map.*    
 *Mouseover to see the high and low framerate and latency for your WoW session.*    
 *The color will change in relation to the target values set in the minimap-framerate-latency.lua.*
 
-- **unitframes-classportrait-tot**    
+- **Unit Frame ToT Class Portraits**    
+*unitframes-classportrait-tot.lua*    
 *Extends class portraits to Target of Target.*
 
-- **unitframes-combat-indicator**    
+- **Unit Frame Combat Indicator**    
+*unitframes-combat-indicator.lua*    
 *Adds a combat indicator to the target frame.*
 
-- **unitframes-energy-tick**    
+- **Unit Frame Energy & Mana Tick**    
+*unitframes-energy-tick.lua*    
 *Adds an energy & mana tick to the player frame.*
 
-- **ui-restyle**    
+- **UI Restyle**    
+*ui-restyle.lua*    
 *Restyles minimap, buff/debuffs, unitframe names and buttons.*
 
-- **minimap-restyle**    
-*Adds square Tracking and Mail icons and repositions the PVP icon when using the square minimap module.*     
-*Restyles the Zone Text, Clock, FPS and MS display.*    
-*If you are using the [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) addon the MinimapButtonBag button will be repositioned below the minimap or clock.*    
+*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned below the minimap or clock.*    
 *The MinimapButtonBag button will be hidden unless you mouse over it.*
 
-- **unitframes-namecolor**    
+- **Unit Frame Name Colors**    
+*unitframes-namecolor.lua*   
 *Adds class and pet coloring (if Warlock or Hunter pet) to the unitframes.*
 
 ## Screenshots
