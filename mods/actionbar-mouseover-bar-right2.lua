@@ -9,6 +9,7 @@ local module = ShaguTweaks:register({
 module.enable = function(self)
     local _G = _G or getfenv(0)
 
+    ShaguTweaks.MouseOverRight2 = true
     local timer = CreateFrame("Frame", nil, UIParent)
     local mouseOverBar
     local mouseOverButton
