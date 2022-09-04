@@ -122,6 +122,11 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Mouseover to see the high and low framerate and latency for your WoW session.*    
 *The color will change in relation to the target values set in the minimap-framerate-latency.lua.*
 
+- **UI Restyle**    
+*ui-restyle.lua*    
+*Restyles minimap, buff/debuffs, unitframe names and buttons.*    
+*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned below the minimap or clock. The MinimapButtonBag button will be hidden unless you mouse over it.*
+
 - **Unit Frame ToT Class Portraits**    
 *unitframes-classportrait-tot.lua*    
 *Extends class portraits to Target of Target.*
@@ -133,11 +138,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Unit Frame Energy & Mana Tick**    
 *unitframes-energy-tick.lua*    
 *Adds an energy & mana tick to the player frame.*
-
-- **UI Restyle**    
-*ui-restyle.lua*    
-*Restyles minimap, buff/debuffs, unitframe names and buttons.*    
-*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned below the minimap or clock. The MinimapButtonBag button will be hidden unless you mouse over it.*
 
 - **Unit Frame Name Class Colors**    
 *unitframes-nameclasscolor.lua*   
