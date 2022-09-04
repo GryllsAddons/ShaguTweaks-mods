@@ -84,6 +84,6 @@ module.enable = function(self)
   energytick.spark = energytick:CreateTexture(nil, 'OVERLAY')
   energytick.spark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
   energytick.spark:SetHeight(pheight + 10)
-  energytick.spark:SetWidth(pheight + 5)
+  energytick.spark:SetWidth(pheight + 10)
   energytick.spark:SetBlendMode('ADD')
 end
