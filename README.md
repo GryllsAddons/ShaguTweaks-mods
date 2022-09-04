@@ -109,7 +109,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Adds a combat indicator to the target frame.*
 
 - **unitframes-energy-tick**    
-*Adds an energy tick to the player frame.*
+*Adds an energy & mana tick to the player frame.*
 
 - **ui-restyle**    
 *Restyles minimap, buff/debuffs, unitframe names and buttons.*
@@ -153,9 +153,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png)  
 *unitframes-combat-indicator*
-
-![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_EnergyTick.png)  
-*unitframes-energy-tick*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png)  
 *ui-restyle minimap*
