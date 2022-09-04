@@ -71,7 +71,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **Improved Exp Bar**    
 *actionbar-improved-expbar.lua*    
-*Show detailed exp, rested exp and rep values on mouseover. Show rested precent while resting.*
+*Show detailed exp, rested exp and rep values on mouseover.*    
+*Bar shows rested precent while resting and changes green when 150% rested.*
 
 - **Basic Chat**    
 *basic-chat.lua*    
