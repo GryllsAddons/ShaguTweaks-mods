@@ -4,6 +4,8 @@ Custom mods for the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon
 ## Credit
 Credit to [shagu](https://github.com/shagu)
 <br>
+Code from [ShaguTweaks](https://shagu.org/ShaguTweaks/)
+<br>
 Code from [pfUI](https://shagu.org/pfUI/)
 
 ## Installation
@@ -37,7 +39,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\unitframes-namecolor.lua*
 
 ## Features
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods.png" width=40% height=40%/>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods2.png" width=40% height=40%/>
 
 - **Hide Hotkey Text**    
 *actionbar-hide-hotkey.lua*    
