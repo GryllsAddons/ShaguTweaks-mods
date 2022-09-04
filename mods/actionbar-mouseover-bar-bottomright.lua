@@ -126,10 +126,33 @@ module.enable = function(self)
         mouseoverBar(bar)
         hide(bar)
     end
+
+    -- general function to hide textures and frames
+    local function hide(frame, texture)
+        if not frame then return end
+
+        if texture and texture == 1 and frame.SetTexture then
+        frame:SetTexture("")
+        elseif texture and texture == 2 and frame.SetNormalTexture then
+        frame:SetNormalTexture("")
+        else
+        frame:ClearAllPoints()
+        frame.Show = function() return end
+        frame:Hide()
+        end
+    end
+
+    local function hidepetart()
+        local textures = {
+            SlidingActionBarTexture0, SlidingActionBarTexture1,
+          }
+        for id, frame in pairs(textures) do hide(frame, 1) end
+    end
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
         setup(MultiBarBottomRight)
-    end)    
+        hidepetart()
+    end)
 end
