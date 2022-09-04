@@ -39,7 +39,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\unitframes-nameclasscolor.lua*
 
 ## Features
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods2.png" width=40% height=40%/>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods.png" width=40% height=40%/>
 
 - **Hide Hotkey Text**    
 *actionbar-hide-hotkey.lua*    
