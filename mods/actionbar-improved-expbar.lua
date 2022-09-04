@@ -84,6 +84,7 @@ module.enable = function(self)
     end    
     
     local function expShow()
+        updateExp()
         exp.expstring:Show()
     end
     
