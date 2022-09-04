@@ -7,8 +7,7 @@ local module = ShaguTweaks:register({
   })
 
 module.enable = function(self)
-    local pheight, pwidth = PlayerFrameManaBar:GetHeight(),PlayerFrameManaBar:GetWidth()
-    local energytick = CreateFrame("Frame", nil, PlayerFrame)
+    local energytick = CreateFrame("Frame", nil, PlayerFrameManaBar)
     energytick:SetAllPoints(PlayerFrameManaBar)
     energytick:RegisterEvent("PLAYER_ENTERING_WORLD")
     energytick:RegisterEvent("UNIT_DISPLAYPOWER")
@@ -27,6 +26,7 @@ module.enable = function(self)
 
     if event == "PLAYER_ENTERING_WORLD" then
       this.lastMana = UnitMana("player")
+      this.spark:SetVertexColor(1, 1, 1, 1)
     end
 
     if (event == "UNIT_MANA" or event == "UNIT_ENERGY") and arg1 == "player" then
@@ -61,8 +61,9 @@ module.enable = function(self)
       end
     end
   end)
-
-  energytick:SetScript("OnUpdate", function()
+  
+  local pheight, pwidth = PlayerFrameManaBar:GetHeight(), PlayerFrameManaBar:GetWidth()
+  energytick:SetScript("OnUpdate", function()    
     if this.target then
       this.start, this.max = GetTime(), this.target
       this.target = nil
@@ -85,5 +86,5 @@ module.enable = function(self)
   energytick.spark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
   energytick.spark:SetHeight(pheight + 10)
   energytick.spark:SetWidth(pheight + 10)
-  energytick.spark:SetBlendMode('ADD')
+  energytick.spark:SetBlendMode('ADD')  
 end
