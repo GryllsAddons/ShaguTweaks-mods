@@ -137,8 +137,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **UI Restyle**    
 *ui-restyle.lua*    
 *Restyles minimap, buff/debuffs, unitframe names and buttons.*    
-*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned below the minimap or clock.*    
-*The MinimapButtonBag button will be hidden unless you mouse over it.*
+*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned below the minimap or clock. The MinimapButtonBag button will be hidden unless you mouse over it.*
 
 - **Unit Frame Name Colors**    
 *unitframes-namecolor.lua*   
