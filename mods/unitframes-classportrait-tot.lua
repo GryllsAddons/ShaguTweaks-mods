@@ -1,5 +1,5 @@
 local module = ShaguTweaks:register({
-  title = "Unit Frame ToT Class Portraits",
+  title = "Unit Frame Class Portraits ToT",
   description = "Extends class portraits to Target of Target.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "Unit Frames",
