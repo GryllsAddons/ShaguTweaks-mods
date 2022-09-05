@@ -10,7 +10,7 @@ module.enable = function(self)
     local function SetupChat()        
         local fontsize = 14 -- chat font size
         local lines = 9 -- number of chat lines
-        local h = (fontsize * lines)
+        local h = (fontsize * (lines*1.1))
         local w = 400
         local x = ActionButton1:GetWidth()*4
         local y = ActionButton1:GetHeight()*4
