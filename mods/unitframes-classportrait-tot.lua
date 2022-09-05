@@ -56,28 +56,29 @@ module.enable = function(self)
       end
   end
 
-  local targeting = CreateFrame("Frame", nil, UIParent)
-  local name
+  local t = CreateFrame("Frame", nil, UIParent)
+  t:SetScript("OnUpdate", function()
+    if UnitExists("targettarget") then        
+        if GetUnitName("targettarget") ~= t.name then
+            t.name = GetUnitName("targettarget")
+            UpdatePortraits(TargetTargetFrame, "targettarget")
+        end
+    end
+  end)
 
-  local function portraitToT()
-      if UnitExists("target") then        
-          targeting:SetScript("OnUpdate", function()
-              if UnitExists("targettarget") then        
-                  if GetUnitName("targettarget") ~= name then
-                      name = GetUnitName("targettarget")
-                      UpdatePortraits(TargetTargetFrame, "targettarget")
-                  end
-              end
-          end)
+  local function tot()
+      if UnitExists("target") then       
+        t:Show()  
       else
-          targeting:SetScript("OnUpdate", nil)
+        t:Hide()
       end
   end
+  tot()
 
   local events = CreateFrame("Frame", nil, UIParent)
   events:RegisterEvent("PLAYER_TARGET_CHANGED")
 
   events:SetScript("OnEvent", function()
-    portraitToT()
+    tot()
   end)
 end
