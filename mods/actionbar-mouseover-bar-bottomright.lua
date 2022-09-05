@@ -24,9 +24,9 @@ module.enable = function(self)
     
     local function mouseover(bar)
         local function setTimer()
-            local time = GetTime() + 2
+            timer.time = GetTime() + 2
             timer:SetScript("OnUpdate", function()
-                if GetTime() >= time then
+                if GetTime() >= timer.time then
                     hide(bar)
                     timer:SetScript("OnUpdate", nil)
                 end

@@ -9,35 +9,43 @@ local module = ShaguTweaks:register({
 module.enable = function(self)
     local _G = _G or getfenv(0)
 
-    ShaguTweaks.MouseOverBarBottomLeft = true    
+    ShaguTweaks.MouseOverBarBottomLeft = true
     local timer = CreateFrame("Frame", nil, UIParent)
     local mouseOverBar
     local mouseOverButton
+    local point, relativeTo, relativePoint, xOfs, yOfs
+
+    local function hidebars()
+        PetActionBarFrame:Hide()  
+        ShapeshiftBarFrame:Hide()
+    end    
+
+    local function showbars()
+        PetActionBarFrame:Show()
+        ShapeshiftBarFrame:Show()
+    end
         
     local function hide(bar)
         if ShaguTweaks.MouseOverBarBottomRight and MultiBarBottomRight and MultiBarBottomRight:IsVisible() then
             MultiBarBottomRight:Hide()
         end
         bar:Hide()
-        if PetActionBarFrame then
-            -- PetActionBarFrame:SetAlpha(1)
-            PetActionBarFrame:Show()
-        end
+        showbars()
     end
     
     local function show(bar)
-        bar:Show()
-        if PetActionBarFrame then
-            -- PetActionBarFrame:SetAlpha(0)
-            PetActionBarFrame:Hide()
+        if ShaguTweaks.MouseOverBarBottomRight and MultiBarBottomRight and (not MultiBarBottomRight:IsVisible()) then
+            MultiBarBottomRight:Show()
         end
+        bar:Show()    
+        hidebars()
     end
     
     local function mouseover(bar)
         local function setTimer()
-            local time = GetTime() + 2
+            timer.time = GetTime() + 2
             timer:SetScript("OnUpdate", function()
-                if GetTime() >= time then
+                if GetTime() >= timer.time then
                     hide(bar)
                     timer:SetScript("OnUpdate", nil)
                 end
@@ -132,17 +140,37 @@ module.enable = function(self)
         end
     end
 
-    local function hidepetart()
+    local function hideart()
         local textures = {
+            -- pet backgrounds
             SlidingActionBarTexture0, SlidingActionBarTexture1,
+             -- shapeshift backgrounds
+            ShapeshiftBarLeft, ShapeshiftBarMiddle, ShapeshiftBarRight,
           }
         for id, frame in pairs(textures) do hide(frame, 1) end
+    end
+
+    local function lockbars()
+        PetActionBarFrame.ClearAllPoints = function() end
+        PetActionBarFrame.SetPoint = function() end
+
+        ShapeshiftBarFrame.ClearAllPoints = function() end
+        ShapeshiftBarFrame.SetPoint = function() end
     end
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
         setup(MultiBarBottomLeft)
-        hidepetart()
-    end)    
+        hideart()
+        -- wait before locking bars ("Reduced Actionbar" support)
+        local timer = CreateFrame("FRAME", nil, UIParent)        
+        timer.timer = GetTime() + 1
+        timer:SetScript("OnUpdate", function()
+            if (GetTime() > timer.timer) then
+                lockbars()
+                timer:SetScript("OnUpdate", nil)
+            end
+        end)
+    end)
 end

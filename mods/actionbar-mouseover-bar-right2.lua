@@ -9,24 +9,23 @@ local module = ShaguTweaks:register({
 module.enable = function(self)
     local _G = _G or getfenv(0)
 
-    ShaguTweaks.MouseOverRight2 = true
     local timer = CreateFrame("Frame", nil, UIParent)
     local mouseOverBar
     local mouseOverButton
         
     local function hide(bar)
-        bar:Hide()
+        bar:Hide() 
     end
     
     local function show(bar)
-        bar:Show()
+        bar:Show()  
     end
     
     local function mouseover(bar)
         local function setTimer()
-            local time = GetTime() + 2
+            timer.time = GetTime() + 2
             timer:SetScript("OnUpdate", function()
-                if GetTime() >= time then
+                if GetTime() >= timer.time then
                     hide(bar)
                     timer:SetScript("OnUpdate", nil)
                 end
