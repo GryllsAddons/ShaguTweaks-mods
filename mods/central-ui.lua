@@ -42,7 +42,7 @@ module.enable = function(self)
         if IsAddOnLoaded("GryllsSwingTimer") then
             CastingBarFrame:SetPoint("TOP", SP_ST_Frame, "BOTTOM", 0, -14)
         else
-            CastingBarFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -250)
+            CastingBarFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -275)
         end
 
         -- prevent castbar from moving
