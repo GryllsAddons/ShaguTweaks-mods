@@ -51,7 +51,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **Mouseover Bottom Left**    
 *actionbar-mouseover-bar-bottomleft.lua*    
-*Hide the Bottom Left ActionBar and show on mouseover.*
+*Hide the Bottom Left ActionBar and show on mouseover.*    
+*If using the 'Reduced Actionbar' mod, the pet & shapeshift bars will not be clickable.*
 
 - **Mouseover Bottom Right**    
 *actionbar-mouseover-bar-bottomright.lua*    
