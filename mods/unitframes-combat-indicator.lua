@@ -25,49 +25,35 @@ module.enable = function(self)
     f.glow:SetVertexColor(1,0,0)
     f.glow:SetPoint("TOPLEFT", f.indicator, -1, 1)
     f.glow:SetPoint("BOTTOMRIGHT", f.indicator, 1, -1)
-    f.glow:SetAlpha(0) -- for fade
-    f.glow:Hide()
+    f.glow:SetAlpha(0)
+    f.glow:Hide()    
 
-    local function updateIndicator(unit, frame)
-        if frame then
-            if UnitExists(unit) then
-                frame:SetScript("OnUpdate", function()
-                    local inCombat = UnitAffectingCombat(unit)
-                    if inCombat then
-                        TargetLevelText:Hide()
-                        frame.indicator:Show()
-                        frame.glow:Show() -- comment out for blink
-                        --frame.statusTexture:Show()
+    f:SetScript("OnUpdate", function()        
+        local inCombat = UnitAffectingCombat("target")
+        if inCombat then
+            TargetLevelText:Hide()
+            f.indicator:Show()
+            f.glow:Show()
 
-                        -- blinking glow
-                        -- local time = GetTime()
-                        -- if ( time >= frame.timerEnd ) then
-                        --     frame.timerEnd = time + frame.tickRate
-
-                        --     if frame.glow:IsVisible() then
-                        --         frame.glow:Hide()
-                        --     else
-                        --         frame.glow:Show()
-                        --     end
-                        -- end
-
-                        -- pulsing glow if we are attacking the mob otherwise static glow
-                        if PlayerStatusGlow:IsVisible() then
-                            local alpha = PlayerStatusGlow:GetAlpha()
-                            frame.glow:SetAlpha(alpha)
-                        else
-                            frame.glow:SetAlpha(1)
-                        end
-                    else
-                        TargetLevelText:Show()
-                        frame.indicator:Hide()
-                        frame.glow:Hide()
-                        --frame.statusTexture:Hide()
-                    end
-                end)
+            -- pulsing glow if we are attacking the mob otherwise static glow
+            if PlayerStatusGlow:IsVisible() then
+                local alpha = PlayerStatusGlow:GetAlpha()
+                f.glow:SetAlpha(alpha)
             else
-                frame:SetScript("OnUpdate", nil)
+                f.glow:SetAlpha(1)
             end
+        else
+            TargetLevelText:Show()
+            f.indicator:Hide()
+            f.glow:Hide()
+        end
+    end)
+
+    local function updateIndicator()
+        if UnitExists("target") then
+            f:Show()
+        else
+            f:Hide()
         end
     end
 
@@ -75,6 +61,6 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_TARGET_CHANGED")
 
     events:SetScript("OnEvent", function()
-        updateIndicator("target", TargetCombatIndicator)
+        updateIndicator()
     end)
 end
