@@ -62,22 +62,24 @@ module.enable = function(self)
         end
     end
 
-    local targeting = CreateFrame("Frame", nil, UIParent)
-    local name
-    local function totcolor()
-        if UnitExists("target") then        
-            targeting:SetScript("OnUpdate", function()
-                if UnitExists("targettarget") then        
-                    if GetUnitName("targettarget") ~= name then
-                        name = GetUnitName("targettarget")
-                        targetcolor("targettarget")
-                    end
-                end
-            end)
-        else
-            targeting:SetScript("OnUpdate", nil)
+    local t = CreateFrame("Frame", nil, UIParent)
+    t:SetScript("OnUpdate", function()
+        if UnitExists("targettarget") then        
+            if GetUnitName("targettarget") ~= t.name then
+                t.name = GetUnitName("targettarget")
+                targetcolor("targettarget")
+            end
         end
-    end    
+    end)
+
+    local function totcolor()
+        if UnitExists("target") then       
+          t:Show()  
+        else
+          t:Hide()
+        end
+    end
+    totcolor()
 
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")    
