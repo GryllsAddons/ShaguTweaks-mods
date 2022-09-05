@@ -14,11 +14,11 @@ module.enable = function(self)
     local mouseOverButton
         
     local function hide(bar)
-        bar:Hide() 
+        bar:Hide()
     end
     
     local function show(bar)
-        bar:Show()  
+        bar:Show()
     end
     
     local function mouseover(bar)

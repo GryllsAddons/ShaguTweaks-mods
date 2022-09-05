@@ -6,7 +6,7 @@ local module = ShaguTweaks:register({
     enabled = nil,
 })
 
-  module.enable = function(self)
+module.enable = function(self)
     local _G = _G or getfenv(0)
 
     local timer = CreateFrame("Frame", nil, UIParent)

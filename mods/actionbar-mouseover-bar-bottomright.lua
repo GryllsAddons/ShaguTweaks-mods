@@ -8,8 +8,7 @@ local module = ShaguTweaks:register({
 
 module.enable = function(self)
     local _G = _G or getfenv(0)
-    
-    ShaguTweaks.MouseOverBarBottomRight = true
+
     local timer = CreateFrame("Frame", nil, UIParent)
     local mouseOverBar
     local mouseOverButton
@@ -110,5 +109,5 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
         setup(MultiBarBottomRight)
-    end)
+    end)    
 end
