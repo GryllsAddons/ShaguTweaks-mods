@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Mouseover Bottom Left",
-    description = "Hide the Bottom Left ActionBar and show on mouseover. The action bar must be enabled in 'Interface Options' > 'Advanced Options'. Please reload the UI after enabling or disabling the action bar.",
+    description = "Hide the Bottom Left ActionBar and show on mouseover. The action bar must be enabled in 'Interface Options' > 'Advanced Options'. Please reload the UI after enabling or disabling the action bar. If using the 'Reduced Actionbar' mod, the pet & shapeshift bars will not be clickable.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
@@ -13,16 +13,19 @@ module.enable = function(self)
     local timer = CreateFrame("Frame", nil, UIParent)
     local mouseOverBar
     local mouseOverButton
-    local point, relativeTo, relativePoint, xOfs, yOfs
 
     local function hidebars()
-        PetActionBarFrame:Hide()  
-        ShapeshiftBarFrame:Hide()
-    end    
+        if ShaguTweaks.ReducedActionbar then
+            PetActionBarFrame:Hide()
+            ShapeshiftBarFrame:Hide()
+        end
+    end
 
     local function showbars()
-        PetActionBarFrame:Show()
-        ShapeshiftBarFrame:Show()
+        if ShaguTweaks.ReducedActionbar then
+            PetActionBarFrame:Show()
+            ShapeshiftBarFrame:Show()
+        end
     end
         
     local function hide(bar)
@@ -172,5 +175,9 @@ module.enable = function(self)
                 timer:SetScript("OnUpdate", nil)
             end
         end)
+        -- check for Reduced Actionbar
+        if MainMenuBar:GetWidth() <= 512 then
+            ShaguTweaks.ReducedActionbar = true
+        end
     end)
 end
