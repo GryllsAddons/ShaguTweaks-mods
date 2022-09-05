@@ -57,23 +57,20 @@ module.enable = function(self)
   end
 
   local t = CreateFrame("Frame", nil, UIParent)
-  t:SetScript("OnUpdate", function()
-    if UnitExists("targettarget") then        
-        if GetUnitName("targettarget") ~= t.name then
-            t.name = GetUnitName("targettarget")
-            UpdatePortraits(TargetTargetFrame, "targettarget")
-        end
-    end
-  end)
-
   local function tot()
-      if UnitExists("target") then       
-        t:Show()  
+      if UnitExists("target") then        
+          t:SetScript("OnUpdate", function()
+              if UnitExists("targettarget") then        
+                  if GetUnitName("targettarget") ~= t.name then
+                    t.name = GetUnitName("targettarget")
+                      UpdatePortraits(TargetTargetFrame, "targettarget")
+                  end
+              end
+          end)
       else
-        t:Hide()
+          t:SetScript("OnUpdate", nil)
       end
   end
-  tot()
 
   local events = CreateFrame("Frame", nil, UIParent)
   events:RegisterEvent("PLAYER_TARGET_CHANGED")
@@ -82,3 +79,5 @@ module.enable = function(self)
     tot()
   end)
 end
+
+
