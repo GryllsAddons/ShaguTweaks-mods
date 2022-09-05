@@ -51,13 +51,11 @@ module.enable = function(self)
 
       -- hide if full mana and not in combat
       if this.mode == "MANA" then
-        if diff == 5 then
-            if UnitAffectingCombat("player") then
-                this:Show()
-            else
-                this:Hide()
-            end
-        end
+          if (UnitMana("player") == UnitManaMax("player")) and (not UnitAffectingCombat("player")) then
+            this:Hide()
+          else
+            this:Show()
+          end
       end
     end
   end)
@@ -86,5 +84,5 @@ module.enable = function(self)
   energytick.spark:SetTexture("Interface\\CastingBar\\UI-CastingBar-Spark")
   energytick.spark:SetHeight(pheight + 10)
   energytick.spark:SetWidth(pheight + 10)
-  energytick.spark:SetBlendMode('ADD')  
+  energytick.spark:SetBlendMode('ADD')
 end
