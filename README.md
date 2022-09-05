@@ -32,7 +32,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\improved-interface-options.lua*    
 *mods\loot-monitor.lua*    
 *mods\minimap-framerate-latency.lua*    
-*mods\ui-restyle.lua*    
+*mods\restyle-ui.lua*    
 *mods\unitframes-classportrait-tot.lua*    
 *mods\unitframes-combat-indicator.lua*    
 *mods\unitframes-energy-tick.lua*    
@@ -123,9 +123,9 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Mouseover to see the high and low framerate and latency for your WoW session.*    
 *The color will change in relation to the target values set in the minimap-framerate-latency.lua.*
 
-- **UI Restyle**    
-*ui-restyle.lua*    
-*Restyles minimap, buff/debuffs, unitframe names and buttons.*    
+- **Restyle UI**    
+*restyle-ui.lua*    
+*Restyles UI Elements.*    
 *If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned below the minimap or clock. The MinimapButtonBag button will be hidden unless you mouse over it.*
 
 - **Unit Frame Class Portraits ToT**    
@@ -176,7 +176,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *unitframes-combat-indicator*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png)  
-*ui-restyle minimap*
+*restyle-ui minimap*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png)  
-*ui-restyle buffs*
+*restyle-ui buffs*
