@@ -52,9 +52,9 @@ module.enable = function(self)
       -- hide if full mana and not in combat
       if this.mode == "MANA" then
           if (UnitMana("player") == UnitManaMax("player")) and (not UnitAffectingCombat("player")) then
-            this:Hide()
+            energytick:Hide()
           else
-            this:Show()
+            energytick:Show()
           end
       end
     end
