@@ -82,9 +82,7 @@ module.enable = function(self)
     
     local function mouseoverBar(bar)
         local frame = CreateFrame("Frame", nil, UIParent)
-        local x, y = 5, 10
-        frame:SetPoint("TOPLEFT", bar ,"TOPLEFT", -x, y)
-        frame:SetPoint("BOTTOMRIGHT", bar ,"BOTTOMRIGHT", x, -y)
+        frame:SetAllPoints(bar)
         frame:EnableMouse(true)
         barEnter(frame, bar) 
         barLeave(frame, bar)
