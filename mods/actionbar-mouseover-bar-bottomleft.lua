@@ -168,7 +168,7 @@ module.enable = function(self)
         hideart()
         -- wait before locking bars ("Reduced Actionbar" support)
         local timer = CreateFrame("FRAME", nil, UIParent)        
-        timer.timer = GetTime() + 1
+        timer.timer = GetTime() + 2
         timer:SetScript("OnUpdate", function()
             if (GetTime() > timer.timer) then
                 lockbars()
