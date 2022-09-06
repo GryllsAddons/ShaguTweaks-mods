@@ -52,12 +52,14 @@ module.enable = function(self)
     end   
     
     local function minimap()
-        -- local x = 448
-        local x = (MultiBarLeft:GetWidth()*2)+400+MultiBarLeft:GetWidth()
-        local y = 10
-        MinimapCluster:ClearAllPoints()
-        -- MinimapCluster:SetPoint("TOPLEFT", UIParent, x, 0)
-        MinimapCluster:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -x, -y)
+        if UIParent:GetRight() > 2513 then
+            -- 3440
+            local w = 400
+            local x = MainMenuExpBar:GetLeft() - w - ActionButton1:GetWidth()*2
+            local y = 10
+            MinimapCluster:ClearAllPoints()
+            MinimapCluster:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -x, -y)
+        end        
     end
     
     local function buffs()

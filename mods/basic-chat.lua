@@ -15,8 +15,7 @@ module.enable = function(self)
         local x = ActionButton1:GetWidth()*4
         local y = ActionButton1:GetHeight()*4
     
-        local right = UIParent:GetRight()
-        if right > 2513 then
+        if UIParent:GetRight() > 2513 then
             -- 3440
             x = MainMenuExpBar:GetLeft() - w - ActionButton1:GetWidth()*2
         end 
