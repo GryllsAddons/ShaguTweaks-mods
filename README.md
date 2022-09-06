@@ -77,7 +77,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **Basic Chat**    
 *basic-chat.lua*    
-*Create General, Combat Log and 'Loot & Spam' chat boxes and setup chat channels.*
+*Create General, Combat Log and 'Loot & Spam' chat boxes and setup chat channels.*    
+*The mod will create and reposition the chat boxes and setup channels on every login unless disabled.*
 
 - **Central UI**    
 *central-ui.lua*    
