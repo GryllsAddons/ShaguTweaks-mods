@@ -114,7 +114,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **Loot Monitor**    
 *loot-monitor.lua*    
-*Display recent loot messages.*    
+*Display recent loot messages in a central scrolling window.*    
 *Hold ALT while using the mouse wheel over the window to scroll.*    
 *Hold ALT and SHIFT then scroll down to go to the bottom of the window.*    
 *The window will auto scroll back to the bottom after 10 seconds.*
