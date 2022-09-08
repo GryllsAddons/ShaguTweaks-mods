@@ -200,13 +200,9 @@ module.enable = function(self)
 
             MBB_MinimapButtonFrame:ClearAllPoints()
 
-            if MinimapClock.text then -- if Clock module is enabled
-                MBB_MinimapButtonFrame:SetPoint("TOP", styleFrame, "BOTTOM", 0, 0)
-            else
-                MBB_MinimapButtonFrame:SetPoint("TOP", Minimap, "BOTTOM", 0, 0)
-            end
+            MBB_MinimapButtonFrame:SetPoint("BOTTOM", Minimap, "BOTTOM", 0, 2)
 
-            -- prevent button from moving
+            -- lock button
             MBB_MinimapButtonFrame.ClearAllPoints = function() end
             MBB_MinimapButtonFrame.SetPoint = function() end
             
