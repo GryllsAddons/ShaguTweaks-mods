@@ -148,14 +148,21 @@ module.enable = function(self)
             MinimapClock:SetPoint("CENTER", styleFrame, "CENTER")
         end
 
-        -- ShaguTweaks fps
+        -- ShaguTweaks-Mods timer
+        if MinimapTimer then
+            removeBackdrop(MinimapTimer)
+            MinimapClock:ClearAllPoints()
+            MinimapClock:SetPoint("TOP", styleFrame, "BOTTOM")
+        end
+
+        -- ShaguTweaks-Mods fps
         if MinimapFPS then
             removeBackdrop(MinimapFPS)
             MinimapFPS:ClearAllPoints()
             MinimapFPS:SetPoint("LEFT", styleFrame, "LEFT")
         end
 
-        -- ShaguTweaks ms
+        -- ShaguTweaks-Mods ms
         if MinimapMS then
             removeBackdrop(MinimapMS)
             MinimapMS:ClearAllPoints()
@@ -230,7 +237,7 @@ module.enable = function(self)
                 end)
             end)
             
-            hide:RegisterForClicks("LeftButtonUp","RightButtonUp")
+            hide:RegisterForClicks("LeftButtonDown","RightButtonDown")
             hide:SetScript("OnClick", function()
                 MBB_OnClick(arg1)
             end)
