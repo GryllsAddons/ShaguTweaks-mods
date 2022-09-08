@@ -62,6 +62,7 @@ module.enable = function(self)
           t:SetScript("OnUpdate", function()
               if UnitExists("targettarget") then        
                   if GetUnitName("targettarget") ~= t.name then
+                    UpdatePortraits(TargetTargetFrame, "targettarget")
                     t.name = GetUnitName("targettarget")
                       UpdatePortraits(TargetTargetFrame, "targettarget")
                   end
@@ -79,5 +80,3 @@ module.enable = function(self)
     tot()
   end)
 end
-
-
