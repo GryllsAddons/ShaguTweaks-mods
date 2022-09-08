@@ -136,7 +136,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Restyle UI**    
 *restyle-ui.lua*    
 *Restyles UI Elements.*    
-*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned below the minimap or clock. The MinimapButtonBag button will be hidden unless you mouse over it.*
+*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned within the bottom of the minimap. The MinimapButtonBag button will be hidden unless you mouse over it.*
 
 - **Unit Frame Class Portraits ToT**    
 *unitframes-classportrait-tot.lua*    
@@ -186,7 +186,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *unitframes-combat-indicator*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png)  
-*restyle-ui minimap*
+*restyle-ui minimap and MinimapButtonBag button*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png)  
 *restyle-ui buffs*
