@@ -150,7 +150,7 @@ module.enable = function(self)
 
         -- ShaguTweaks-Mods timer
         if MinimapTimer then
-            removeBackdrop(MinimapTimer)
+            -- removeBackdrop(MinimapTimer)
             MinimapTimer:ClearAllPoints()
             MinimapTimer:SetPoint("TOP", styleFrame, "BOTTOM")
         end
