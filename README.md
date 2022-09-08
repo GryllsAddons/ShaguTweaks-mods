@@ -32,6 +32,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\improved-interface-options.lua*    
 *mods\loot-monitor.lua*    
 *mods\minimap-framerate-latency.lua*    
+*mods\minimap-timer.lua*    
 *mods\restyle-ui.lua*    
 *mods\unitframes-classportrait-tot.lua*    
 *mods\unitframes-combat-indicator.lua*    
@@ -124,6 +125,12 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Adds a small framerate & latency display to the mini map.*    
 *Mouseover to see the high and low framerate and latency for your WoW session.*    
 *The color will change in relation to the target values set in the minimap-framerate-latency.lua.*
+
+- **MiniMap Framerate & Latency**    
+*mods\minimap-timer.lua*    
+*Adds a togglable timer to the minimap clock.*    
+*Left click the clock to toggle the timer.*    
+*Left click the timer to start or right click to reset and hide.*
 
 - **Restyle UI**    
 *restyle-ui.lua*    
