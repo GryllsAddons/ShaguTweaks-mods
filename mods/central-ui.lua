@@ -37,18 +37,23 @@ module.enable = function(self)
     end
     
     local function castbar()
-        CastingBarFrame:ClearAllPoints()
-
-        if IsAddOnLoaded("GryllsSwingTimer") then
-            CastingBarFrame:SetPoint("TOP", SP_ST_Frame, "BOTTOM", 0, -14)
-        else
-            CastingBarFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -275)
+        local function lock(frame)
+            frame.ClearAllPoints = function() end
+            frame.SetAllPoints = function() end
+            frame.SetPoint = function() end
         end
 
-        -- prevent castbar from moving
-        CastingBarFrame.ClearAllPoints = function() end
-        CastingBarFrame.SetAllPoints = function() end
-        CastingBarFrame.SetPoint = function() end
+        CastingBarFrame:ClearAllPoints()
+        CastingBarFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -275)
+        -- CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, ActionButton1:GetHeight()+10)
+        lock(CastingBarFrame)
+
+        -- GryllsSwingTimer / zUI SwimgTimer support
+        if SP_ST_Frame then
+            SP_ST_Frame:ClearAllPoints()
+            SP_ST_Frame:SetPoint("BOTTOM", CastingBarFrame, "TOP", 0, 14)
+            lock(SP_ST_Frame)      
+        end   
     end   
     
     local function minimap()
