@@ -190,3 +190,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png)  
 *restyle-ui buffs*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Timer.png)  
+*timer*
