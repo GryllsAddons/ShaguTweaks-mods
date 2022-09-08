@@ -129,7 +129,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *The color will change in relation to the target values set in the minimap-framerate-latency.lua.*
 
 - **MiniMap Framerate & Latency**    
-*mods\minimap-timer.lua*    
+*minimap-timer.lua*    
 *Adds a togglable timer to the minimap clock.*    
 *Left click the clock to toggle the timer.*    
 *Left click the timer to start or right click to reset and hide.*
