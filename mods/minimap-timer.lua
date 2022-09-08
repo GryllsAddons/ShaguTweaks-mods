@@ -2,7 +2,7 @@ local _G = _G or getfenv(0)
 
 local module = ShaguTweaks:register({
   title = "MiniMap Timer",
-  description = "Adds a togglable timer to the ShaguTweaks clock or Minimap clock. Left click the timer to toggle or right click to reset and hide.",
+  description = "Adds a togglable timer to the minimap clock. Left click the clock to toggle the timer. Left click the timer to start or right click to reset and hide.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "World & MiniMap",
   enabled = nil,
