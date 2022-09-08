@@ -1,5 +1,6 @@
 # ShaguTweaks-Mods
-Custom mods for the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon
+Custom mods for the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon.    
+These mods aim to preserve the spirit of the default UI while providing modern quality of life features.
 
 ## Credit
 Credit to [shagu](https://github.com/shagu)
