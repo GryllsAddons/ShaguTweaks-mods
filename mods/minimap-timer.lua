@@ -134,7 +134,6 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
-      setuptimer()
-      resettimer()
+      setuptimer()      
     end)
 end
