@@ -2,7 +2,7 @@ local _G = _G or getfenv(0)
 
 local module = ShaguTweaks:register({
   title = "MiniMap Timer",
-  description = "Adds a togglable timer to the minimap clock. Left click the clock to toggle the timer. Left click the timer to start or right click to reset and hide.",
+  description = "Adds a togglable timer to the minimap clock. Left click the clock to toggle the timer. Left click the timer to start or right click to reset.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "World & MiniMap",
   enabled = nil,
@@ -104,12 +104,13 @@ module.enable = function(self)
           pausetimer()
         end        
       elseif (arg1 == "RightButton") then
-        hidetimer()
+        resettimer()
       end
   end)
 
   local function setuptimer()
     local function toggle()
+      resettimer()
       if not MinimapTimer:IsVisible() then
         MinimapTimer:Show()
       else
@@ -133,7 +134,6 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
-      resettimer()
       setuptimer()      
     end)
 end
