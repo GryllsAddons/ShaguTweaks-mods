@@ -8,21 +8,22 @@ local module = ShaguTweaks:register({
   enabled = nil,
 })
 
-MinimapTimer = CreateFrame("BUTTON", "Timer", Minimap)
-MinimapTimer:Hide()
-MinimapTimer:SetFrameLevel(64)
-MinimapTimer:SetWidth(70)
-MinimapTimer:SetHeight(23)
-MinimapTimer:SetBackdrop({
-  bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-  edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-  tile = true, tileSize = 8, edgeSize = 16,
-  insets = { left = 3, right = 3, top = 3, bottom = 3 }
-})
-MinimapTimer:SetBackdropBorderColor(.9,.8,.5,1)
-MinimapTimer:SetBackdropColor(.4,.4,.4,1)
-
 module.enable = function(self)
+
+  local MinimapTimer = CreateFrame("BUTTON", "Timer", Minimap)
+  MinimapTimer:Hide()
+  MinimapTimer:SetFrameLevel(64)
+  MinimapTimer:SetWidth(70)
+  MinimapTimer:SetHeight(23)
+  MinimapTimer:SetBackdrop({
+    bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+    edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+    tile = true, tileSize = 8, edgeSize = 16,
+    insets = { left = 3, right = 3, top = 3, bottom = 3 }
+  })
+  MinimapTimer:SetBackdropBorderColor(.9,.8,.5,1)
+  MinimapTimer:SetBackdropColor(.4,.4,.4,1)
+
   MinimapTimer:EnableMouse(true)
   MinimapTimer.text = MinimapTimer:CreateFontString("Status", "LOW", "GameFontNormal")
   MinimapTimer.text:SetFont(STANDARD_TEXT_FONT, 12, "OUTLINE")
