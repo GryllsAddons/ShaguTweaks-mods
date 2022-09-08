@@ -34,7 +34,7 @@ module.enable = function(self)
         this.spark:SetVertexColor(1, 1, 1, 1)
       end
 
-      if (event == "UNIT_MANA" or event == "UNIT_ENERGY") and arg1 == "player" then
+      if (event == "PLAYER_ENTERING_WORLD") or (event == "UNIT_MANA" or event == "UNIT_ENERGY") and arg1 == "player" then
         this.currentMana = UnitMana("player")
         local diff = 0
         if this.lastMana then
@@ -49,7 +49,8 @@ module.enable = function(self)
           else
             this.badtick = diff
           end
-        elseif this.mode == "ENERGY" and diff > 0 then
+        -- elseif this.mode == "ENERGY" and diff > 0 then
+          elseif this.mode == "ENERGY" then
           this.target = 2
         end
         this.lastMana = this.currentMana      
