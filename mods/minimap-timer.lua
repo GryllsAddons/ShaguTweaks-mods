@@ -8,29 +8,31 @@ local module = ShaguTweaks:register({
   enabled = nil,
 })
 
+MinimapTimer = CreateFrame("BUTTON", "Timer", Minimap)
+MinimapTimer:Hide()
+MinimapTimer:SetFrameLevel(64)
+MinimapTimer:SetWidth(70)
+MinimapTimer:SetHeight(23)
+MinimapTimer:SetBackdrop({
+  bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
+  edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+  tile = true, tileSize = 8, edgeSize = 16,
+  insets = { left = 3, right = 3, top = 3, bottom = 3 }
+})
+MinimapTimer:SetBackdropBorderColor(.9,.8,.5,1)
+MinimapTimer:SetBackdropColor(.4,.4,.4,1)
+
 module.enable = function(self)
-
-  local MinimapTimer = CreateFrame("BUTTON", "Timer", Minimap)
-  MinimapTimer:Hide()
-  MinimapTimer:SetFrameLevel(64)
-  MinimapTimer:SetWidth(70)
-  MinimapTimer:SetHeight(23)
-  MinimapTimer:SetBackdrop({
-    bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-    edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
-    tile = true, tileSize = 8, edgeSize = 16,
-    insets = { left = 3, right = 3, top = 3, bottom = 3 }
-  })
-  MinimapTimer:SetBackdropBorderColor(.9,.8,.5,1)
-  MinimapTimer:SetBackdropColor(.4,.4,.4,1)
-
   MinimapTimer:EnableMouse(true)
-  MinimapTimer.text = MinimapTimer:CreateFontString("Status", "LOW", "GameFontNormal")
-  MinimapTimer.text:SetFont(STANDARD_TEXT_FONT, 12, "OUTLINE")
-  MinimapTimer.text:SetFontObject(GameFontWhite)
-  MinimapTimer.text:SetAllPoints(MinimapTimer)
+  local timertext = MinimapTimer:CreateFontString("Status", "LOW", "GameFontNormal")
+  timertext:SetFont(STANDARD_TEXT_FONT, 12, "OUTLINE")
+  timertext:SetFontObject(GameFontWhite)
+  timertext:SetAllPoints(MinimapTimer)
 
-  MinimapTimer.max = 99 * 3600 + 59 * 60 + 59 -- 99:59:59
+  local timermax = 99 * 3600 + 59 * 60 + 59 -- 99:59:59
+  local timerstarted = nil
+  local timerelapsed = nil
+  local timerpaused = nil
   
   local function formattime(e)
     if e then
@@ -45,12 +47,12 @@ module.enable = function(self)
   end
 
   local function updatetext()
-    local h,m,s = formattime(MinimapTimer.elapsed)
-    MinimapTimer.text:SetText(format("%02d:%02d:%02d",h,m,s))
+    local h,m,s = formattime(timerelapsed)
+   timertext:SetText(format("%02d:%02d:%02d",h,m,s))
   end
 
   local function starttimer()
-    MinimapTimer.started = GetTime()
+    timerstarted = GetTime()
     ElapsedTimer:Show()
   end
 
@@ -60,20 +62,20 @@ module.enable = function(self)
 
   local function resettimer()
     stoptimer()
-    MinimapTimer.started = nil
-    MinimapTimer.elapsed = nil
-    MinimapTimer.paused = nil   
+    timerstarted = nil
+    timerelapsed = nil
+    timerpaused = nil
     updatetext()    
   end
 
   local function pausetimer()
     stoptimer()
-    MinimapTimer.paused = GetTime()
+    timerpaused = GetTime()
   end
 
   local function continuetimer()
-    MinimapTimer.started = MinimapTimer.started + (GetTime() - MinimapTimer.paused)
-    MinimapTimer.paused = nil
+    timerstarted = timerstarted + (GetTime() - timerpaused)
+    timerpaused = nil
     ElapsedTimer:Show()
   end
 
@@ -85,9 +87,9 @@ module.enable = function(self)
   ElapsedTimer = CreateFrame("FRAME", nil, MinimapTimer)
   ElapsedTimer:Hide()
   ElapsedTimer:SetScript("OnUpdate", function()
-    MinimapTimer.elapsed = GetTime() - MinimapTimer.started    
-    if MinimapTimer.elapsed > MinimapTimer.max then
-      MinimapTimer.elapsed = MinimapTimer.max
+    timerelapsed = GetTime() - timerstarted    
+    if timerelapsed > timermax then
+      timerelapsed = timermax
       this:Hide()
     else
       updatetext()
@@ -97,9 +99,9 @@ module.enable = function(self)
   MinimapTimer:RegisterForClicks("LeftButtonDown","RightButtonDown")
   MinimapTimer:SetScript("OnClick", function()
       if (arg1 == "LeftButton") then
-        if MinimapTimer.paused then
+        if timerpaused then
           continuetimer()          
-        elseif not MinimapTimer.started then
+        elseif not timerstarted then
           starttimer()
         else
           pausetimer()
