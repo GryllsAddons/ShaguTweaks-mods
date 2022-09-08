@@ -46,19 +46,19 @@ module.enable = function(self)
             local class = RAID_CLASS_COLORS[class]
             name:SetTextColor(class.r, class.g, class.b, 1)
         else
-            if UnitIsFriend("player", unit) then
-                local creatureType = UnitCreatureType(unit)
-                local class = { r = 255/255, g = 210/255, b = 0/255, a = 1 }
-                if creatureType == "Demon" then
-                    class = RAID_CLASS_COLORS["WARLOCK"]                    
-                elseif creatureType == "Beast" then
-                    class = RAID_CLASS_COLORS["HUNTER"]
-                end
-                name:SetTextColor(class.r, class.g, class.b, 1)
-            else
+            -- if UnitIsFriend("player", unit) then
+            --     local creatureType = UnitCreatureType(unit)
+            --     local class = { r = 255/255, g = 210/255, b = 0/255, a = 1 }
+            --     if creatureType == "Demon" then
+            --         class = RAID_CLASS_COLORS["WARLOCK"]                    
+            --     elseif creatureType == "Beast" then
+            --         class = RAID_CLASS_COLORS["HUNTER"]
+            --     end
+            --     name:SetTextColor(class.r, class.g, class.b, 1)
+            -- else
                 local r,g,b = GameTooltip_UnitColor(unit)
-                name:SetTextColor(r,g,b)
-            end 
+                name:SetTextColor(r, g, b, 1)
+            -- end 
         end
     end
 
