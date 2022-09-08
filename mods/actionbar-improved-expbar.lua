@@ -7,14 +7,6 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-    local function round(input, places)
-        if not places then places = 0 end
-        if type(input) == "number" and type(places) == "number" then
-            local pow = 1
-            for i = 1, places do pow = pow * 10 end
-            return floor(input * pow + 0.5) / pow
-        end
-    end
     
     local exp = CreateFrame("Frame", "exp", UIParent)
     exp:SetFrameStrata("HIGH")
@@ -36,10 +28,12 @@ module.enable = function(self)
     local function updateExp()
         local playerlevel = UnitLevel("player")
         local xp, xpmax, exh = UnitXP("player"), UnitXPMax("player"), GetXPExhaustion() or 0
-        local xp_perc = round(xp / xpmax * 100)
-        local exh_perc = round(exh / xpmax * 100) or 0
+        local xp_perc = ShaguTweaks.round(xp / xpmax * 100)
+        local exh_perc = ShaguTweaks.round(exh / xpmax * 100) or 0
         local remaining = xpmax - xp
-        local remaining_perc = round(remaining / xpmax * 100)
+        local remaining_perc = ShaguTweaks.round(remaining / xpmax * 100)
+        exh = ShaguTweaks.Abbreviate(exh, 1)
+        remaining = ShaguTweaks.Abbreviate(remaining, 1)
 
         if playerlevel < 60 then
             if IsResting() then
@@ -75,9 +69,11 @@ module.enable = function(self)
         local percentFloor = floor(percent + 0.5)
         local repvalues = { "Hated", "Hostile", "Unfriendly", "Neutral", "Friendly", "Honored", "Revered", "Exalted" }
         local level = UnitLevel("player")
+        remaining = ShaguTweaks.round(remaining)
+        remaining = ShaguTweaks.Abbreviate(remaining, 1)
     
         if name then -- watching a faction
-            exp.repstring:SetText(name .. " (" .. repvalues[standing] .. ") " .. percentFloor .. "% - "  .. round(remaining) .. " remaining")
+            exp.repstring:SetText(name .. " (" .. repvalues[standing] .. ") " .. percentFloor .. "% - "  .. remaining .. " remaining")
         else
             exp.repstring:SetText("")
         end
@@ -104,6 +100,7 @@ module.enable = function(self)
     end
     
     local function repShow()
+        updateRep()
         exp.repstring:Show()
     end
     
