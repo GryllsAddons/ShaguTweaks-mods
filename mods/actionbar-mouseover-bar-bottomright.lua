@@ -7,18 +7,38 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
+    ShaguTweaks.MouseoverBottomRight = true
     local _G = _G or getfenv(0)
 
     local timer = CreateFrame("Frame", nil, UIParent)
     local mouseOverBar
     local mouseOverButton
+    local _, class = UnitClass("player")
+
+    local function hidebars()
+        if class == ("HUNTER" or "WARLOCK") then
+            PetActionBarFrame:Hide()
+        elseif class == ("DRUID" or "ROGUE" or "WARRIOR" or "PALADIN") then
+            ShapeshiftBarFrame:Hide()
+        end
+    end
+
+    local function showbars()
+        if class == ("HUNTER" or "WARLOCK") then
+            PetActionBarFrame:Show()
+        elseif class == ("DRUID" or "ROGUE" or "WARRIOR" or "PALADIN") then
+            ShapeshiftBarFrame:Show()
+        end
+    end
         
     local function hide(bar)
         bar:Hide()
+        showbars()
     end
     
     local function show(bar)
-        bar:Show()
+        bar:Show()    
+        hidebars()
     end
     
     local function mouseover(bar)
@@ -102,10 +122,71 @@ module.enable = function(self)
         mouseoverBar(bar)
         hide(bar)
     end
+
+    local function hideart()
+        -- general function to hide textures and frames
+        local function hide(frame, texture)
+            if not frame then return end
+
+            if texture and texture == 1 and frame.SetTexture then
+            frame:SetTexture("")
+            elseif texture and texture == 2 and frame.SetNormalTexture then
+            frame:SetNormalTexture("")
+            else
+            frame:ClearAllPoints()
+            frame.Show = function() return end
+            frame:Hide()
+            end
+        end
+
+        -- textures that shall be set empty
+        local textures = {
+            SlidingActionBarTexture0, SlidingActionBarTexture1,
+            -- PetActionBarFrame
+            SlidingActionBarTexture0, SlidingActionBarTexture1,
+            -- ShapeshiftBarFrame
+            ShapeshiftBarLeft, ShapeshiftBarMiddle, ShapeshiftBarRight,
+          }
+
+        -- button textures that shall be set empty
+        local normtextures = {
+            ShapeshiftButton1, ShapeshiftButton2,
+            ShapeshiftButton3, ShapeshiftButton4,
+            ShapeshiftButton5, ShapeshiftButton6,
+        }
+
+        -- clear textures
+        for id, frame in pairs(textures) do hide(frame, 1) end
+        for id, frame in pairs(normtextures) do hide(frame, 2) end
+    end
+
+    local function lockframes()
+        local function lock(frame)
+            frame.ClearAllPoints = function() end
+            frame.SetAllPoints = function() end
+            frame.SetPoint = function() end
+        end
+
+        PetActionBarFrame:ClearAllPoints()
+        ShapeshiftBarFrame:ClearAllPoints()
+
+        local w, h = ActionButton1:GetWidth(), ActionButton1:GetHeight()
+        local anchor = MultiBarBottomLeft
+
+        PetActionBarFrame:SetPoint("CENTER", anchor, "CENTER", w, h*1.25)
+        ShapeshiftBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 8, h*0.1)
+
+        lock(PetActionBarFrame)
+        lock(ShapeshiftBarFrame)
+    end
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
+        if not ShaguTweaks.MouseoverBottomLeft then
+            lockframes()
+            hideart()
+        end
         setup(MultiBarBottomRight)
     end)    
 end

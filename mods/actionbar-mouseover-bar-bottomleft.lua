@@ -7,6 +7,7 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
+    ShaguTweaks.MouseoverBottomLeft = true
     local _G = _G or getfenv(0)
 
     local timer = CreateFrame("Frame", nil, UIParent)
@@ -14,18 +15,18 @@ module.enable = function(self)
     local mouseOverButton
     local _, class = UnitClass("player")
 
-    local function hidebars()        
-        if class == "HUNTER" or "WARLOCK" then
+    local function hidebars()
+        if class == ("HUNTER" or "WARLOCK") then
             PetActionBarFrame:Hide()
-        elseif class == "DRUID" or "ROGUE" or "WARRIOR" or "PALADIN" then
+        elseif class == ("DRUID" or "ROGUE" or "WARRIOR" or "PALADIN") then
             ShapeshiftBarFrame:Hide()
         end
     end
 
     local function showbars()
-        if class == "HUNTER" or "WARLOCK" then
+        if class == ("HUNTER" or "WARLOCK") then
             PetActionBarFrame:Show()
-        elseif class == "DRUID" or "ROGUE" or "WARRIOR" or "PALADIN" then
+        elseif class == ("DRUID" or "ROGUE" or "WARRIOR" or "PALADIN") then
             ShapeshiftBarFrame:Show()
         end
     end
@@ -159,18 +160,20 @@ module.enable = function(self)
         for id, frame in pairs(normtextures) do hide(frame, 2) end
     end
 
-    local function lockbars()        
-        local function lock(bar)
-            bar.ClearAllPoints = function() end
-            bar.SetPoint = function() end
+    local function lockframes()        
+        local function lock(frame)
+            frame.ClearAllPoints = function() end
+            frame.SetAllPoints = function() end
+            frame.SetPoint = function() end
         end
 
         PetActionBarFrame:ClearAllPoints()
         ShapeshiftBarFrame:ClearAllPoints()
 
-        -- PetActionBarFrame
+        local h = ActionButton1:GetHeight()
         local anchor = MultiBarBottomLeft
-        PetActionBarFrame:SetPoint("CENTER", anchor, "CENTER", ActionButton1:GetWidth(), 2)
+
+        PetActionBarFrame:SetPoint("CENTER", anchor, "CENTER", h, 2)
 
         -- ShapeshiftBarFrame
         local offset = 0
@@ -180,17 +183,17 @@ module.enable = function(self)
         ShapeshiftBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 8, 1 + offset)
 
         lock(PetActionBarFrame)
-        lock(ShapeshiftBarFrame)   
+        lock(ShapeshiftBarFrame)
     end
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()        
-        if event == "PLAYER_ENTERING_WORLD" then
-            lockbars()
+        if (ShaguTweaks.MouseoverBottomLeft and ShaguTweaks.MouseoverBottomRight) or not ShaguTweaks.MouseoverBottomRight then
+            lockframes()
             hideart()
-            setup(MultiBarBottomLeft)
-        end       
+        end
+        setup(MultiBarBottomLeft)
     end)
 end

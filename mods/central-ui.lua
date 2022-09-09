@@ -37,24 +37,35 @@ module.enable = function(self)
     end
     
     local function castbar()
+        local ReducedActionbar        
+        if MainMenuBar:GetWidth() <= 512 then
+            ReducedActionbar = true
+        end
+
         local function lock(frame)
             frame.ClearAllPoints = function() end
             frame.SetAllPoints = function() end
             frame.SetPoint = function() end
         end
 
+        local h = ActionButton1:GetHeight()
+
         CastingBarFrame:ClearAllPoints()
-        CastingBarFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -275)
-        -- CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, ActionButton1:GetHeight()+10)
+        CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*1.75)
+        if ReducedActionbar and (ShaguTweaks.MouseoverBottomRight or ShaguTweaks.MouseoverBottomLeft) then           
+            CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*2.75)
+        elseif ReducedActionbar and not (ShaguTweaks.MouseoverBottomLeft or ShaguTweaks.MouseoverBottomRight)  then
+            CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*3.75)
+        end
         lock(CastingBarFrame)
 
-        -- GryllsSwingTimer / zUI SwimgTimer support
+        -- GryllsSwingTimer / zUI SwingTimer support
         if SP_ST_Frame then
             SP_ST_Frame:ClearAllPoints()
-            SP_ST_Frame:SetPoint("BOTTOM", CastingBarFrame, "TOP", 0, 14)
+            SP_ST_Frame:SetPoint("TOP", CastingBarFrame, "BOTTOM", 0, -14)
             lock(SP_ST_Frame)      
         end   
-    end   
+    end
     
     local function minimap()
         if UIParent:GetRight() > 2513 then
