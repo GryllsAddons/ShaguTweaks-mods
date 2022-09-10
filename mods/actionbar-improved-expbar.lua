@@ -25,7 +25,7 @@ module.enable = function(self)
     exp.repstring:SetJustifyH("CENTER")
     exp.repstring:SetTextColor(1,1,1)
     
-    local function updateExp()
+    local function updateExp(mouseover)
         local playerlevel = UnitLevel("player")
         local xp, xpmax, exh = UnitXP("player"), UnitXPMax("player"), GetXPExhaustion() or 0
         local xp_perc = ShaguTweaks.round(xp / xpmax * 100)
@@ -35,10 +35,10 @@ module.enable = function(self)
         exh = ShaguTweaks.Abbreviate(exh, 1)
         remaining = ShaguTweaks.Abbreviate(remaining, 1)
 
-        if playerlevel < 60 then
-            if IsResting() then
+        if playerlevel < 60 then            
+            if IsResting() and (not mouseover) then
                 exp.expstring:SetText(exh_perc.."% rested")
-            else            
+            else
                 if (exh == 0) then
                     exp.expstring:SetText("Level "..playerlevel.." - "..remaining.." ("..remaining_perc.."%) remaining")            
                 else
@@ -47,7 +47,7 @@ module.enable = function(self)
             end
         end
 
-        local rested  = GetRestState();
+        local rested  = GetRestState()
 		if (rested == 1) then
             if (exh_perc == 150) then
                 MainMenuExpBar:SetStatusBarColor(0, 1, 0.6, 1)
@@ -80,13 +80,15 @@ module.enable = function(self)
     end    
     
     local function expShow()
-        updateExp()
+        updateExp(true)
         exp.expstring:Show()
     end
     
     local function expHide()
         if not IsResting() then
             exp.expstring:Hide()
+        else
+            updateExp(false)
         end
     end
     
@@ -119,8 +121,8 @@ module.enable = function(self)
 
     local function updateResting()
         if IsResting() then
-            updateExp()
-            expShow()
+            updateExp(false)
+            exp.expstring:Show()
         else
             expHide()
         end

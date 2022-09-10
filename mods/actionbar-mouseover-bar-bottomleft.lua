@@ -16,17 +16,17 @@ module.enable = function(self)
     local _, class = UnitClass("player")
 
     local function hidebars()
-        if class == ("HUNTER" or "WARLOCK") then
+        if (class == "HUNTER") or (class == "WARLOCK") then
             PetActionBarFrame:Hide()
-        elseif class == ("DRUID" or "ROGUE" or "WARRIOR" or "PALADIN") then
+        elseif (class == "DRUID") or (class == "ROGUE") or (class == "WARRIOR") or (class == "PALADIN") then
             ShapeshiftBarFrame:Hide()
         end
     end
 
     local function showbars()
-        if class == ("HUNTER" or "WARLOCK") then
+        if (class == "HUNTER") or (class == "WARLOCK") then
             PetActionBarFrame:Show()
-        elseif class == ("DRUID" or "ROGUE" or "WARRIOR" or "PALADIN") then
+        elseif (class == "DRUID") or (class == "ROGUE") or (class == "WARRIOR") or (class == "PALADIN") then
             ShapeshiftBarFrame:Show()
         end
     end
