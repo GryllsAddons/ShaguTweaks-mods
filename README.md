@@ -51,23 +51,27 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *actionbar-hide-macro.lua*    
 *Hides the macros on the action bars.*
 
-- **Mouseover Bottom Left**    
-*actionbar-mouseover-bar-bottomleft.lua*    
-*Hide the Bottom Left ActionBar and show on mouseover.*    
-*The pet/shapeshift/aura/stance bars will not be clickable if located in the same position as the mouseover bar.*
+- **Mouseover Bars**    
+*The relevant action bar must be enabled in 'Interface Options' > 'Advanced Options'.*    
+*Please reload the UI after enabling or disabling the action bar.*    
 
-- **Mouseover Bottom Right**    
-*actionbar-mouseover-bar-bottomright.lua*    
-*Hide the Bottom Right ActionBar and show on mouseover.*    
-*The pet/shapeshift/aura/stance bars will not be clickable if located in the same position as the mouseover bar.*
+  ****Mouseover Bottom Left****    
+  *actionbar-mouseover-bar-bottomleft.lua*    
+  *Hide the Bottom Left ActionBar and show on mouseover.*    
+  *The pet/shapeshift/aura/stance bars will not be clickable if located in the same position as the mouseover bar.*    
 
-- **Mouseover Right**    
-*actionbar-mouseover-bar-right.lua*    
-*Hide the Right ActionBar and show on mouseover.*
+  ****Mouseover Bottom Right****    
+  *actionbar-mouseover-bar-bottomright.lua*    
+  *Hide the Bottom Right ActionBar and show on mouseover.*    
+  *The pet/shapeshift/aura/stance bars will not be clickable if located in the same position as the mouseover bar.*    
 
-- **Mouseover Right 2**    
-*actionbar-mouseover-bar-right2.lua*    
-*Hide the Right ActionBar 2 and show on mouseover.*
+  ****Mouseover Right****    
+  *actionbar-mouseover-bar-right.lua*    
+  *Hide the Right ActionBar and show on mouseover.*    
+
+  ****Mouseover Right 2****    
+  *actionbar-mouseover-bar-right2.lua*    
+  *Hide the Right ActionBar 2 and show on mouseover.*
 
 - **Improved Castbar**    
 *actionbar-improved-castbar.lua*    
