@@ -58,7 +58,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **Mouseover Bottom Right**    
 *actionbar-mouseover-bar-bottomright.lua*    
-*Hide the Bottom Right ActionBar and show on mouseover.*
+*Hide the Bottom Right ActionBar and show on mouseover.*    
+*The pet/shapeshift/aura/stance bars will not be clickable.*
 
 - **Mouseover Right**    
 *actionbar-mouseover-bar-right.lua*    
