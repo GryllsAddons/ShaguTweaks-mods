@@ -1,33 +1,31 @@
 local module = ShaguTweaks:register({
     title = "Central UI",
-    description = "Moves UI frames to a central layout. This will overwrite 'Movable Unit Frames' positioning.",
+    description = "Moves unit frames, minimap and buffs to a central layout. This will overwrite 'Movable Unit Frames' positioning.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
 })
 
 module.enable = function(self)
-    local function unitframes()    
-        --[[ When scaling, the unit frame may move offscreen ]]
-    
-        -- Player / Target
-        local scale = 1    
-        local x = 20
-        local y = -150
+    local function unitframes()
+        local scale, x, y = 1, 20, -150
     
         -- Player
         PlayerFrame:ClearAllPoints()
+        PlayerFrame:SetClampedToScreen(true)
         PlayerFrame:SetScale(scale)
         PlayerFrame:SetPoint("RIGHT", UIParent, "CENTER", -x, y)
     
         -- Target
         TargetFrame:ClearAllPoints()
+        TargetFrame:SetClampedToScreen(true)
         TargetFrame:SetScale(scale)
         TargetFrame:SetPoint("LEFT", UIParent, "CENTER", x, y)
     
         -- Party
-        local scale = 1.2
+        scale = 1.2
         PartyMemberFrame1:ClearAllPoints()
+        PartyMemberFrame1:SetClampedToScreen(true)
         PartyMemberFrame1:SetScale(scale)
         PartyMemberFrame2:SetScale(scale)
         PartyMemberFrame3:SetScale(scale)
@@ -37,14 +35,15 @@ module.enable = function(self)
     end
     
     local function minimap()
-        if UIParent:GetRight() > 2513 then
-            -- 3440
-            local w = 400
-            local x = MainMenuExpBar:GetLeft() - w - ActionButton1:GetWidth()*2
-            local y = 10
-            MinimapCluster:ClearAllPoints()
-            MinimapCluster:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -x, -y)
-        end        
+        local w = 400
+        local x = MainMenuExpBar:GetLeft() - w - ActionButton1:GetWidth()*2
+        local y = 10
+        MinimapCluster:ClearAllPoints()
+        MinimapCluster:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -x, -y)
+
+        -- if UIParent:GetRight() > 2513 then
+        --    -- 3440
+        -- end        
     end
     
     local function buffs()
