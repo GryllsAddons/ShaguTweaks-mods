@@ -219,7 +219,7 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()        
-        if (ShaguTweaks.MouseoverBottomLeft and ShaguTweaks.MouseoverBottomRight) or not ShaguTweaks.MouseoverBottomRight then
+        if not ShaguTweaks.MouseoverBottomRight then
             lockframes()
             castbar()
             hideart()
