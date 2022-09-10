@@ -89,7 +89,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **Central UI**    
 *central-ui.lua*    
-*Moves UI frames to a central layout.*    
+*Moves unit frames, minimap and buffs to a central layout.*    
 *This will overwrite 'Movable Unit Frames' positioning.*
 
 - **Cursor Tooltip**    
