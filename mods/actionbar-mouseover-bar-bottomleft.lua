@@ -187,45 +187,47 @@ module.enable = function(self)
     end
 
     local function castbar()
-        local ReducedActionbar        
-        if MainMenuBar:GetWidth() <= 512 then
-            ReducedActionbar = true
-        end
-
         local function lock(frame)
             frame.ClearAllPoints = function() end
             frame.SetAllPoints = function() end
             frame.SetPoint = function() end
         end
 
-        local h = ActionButton1:GetHeight()
+        if MainMenuBar:GetWidth() <= 512 then
+            ReducedActionbar = true
+        end
+
+        local h = ActionButton1:GetHeight()        
 
         CastingBarFrame:ClearAllPoints()
-        CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*1.75)
-        if ReducedActionbar and (ShaguTweaks.MouseoverBottomRight or ShaguTweaks.MouseoverBottomLeft) then           
-            CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*2.75)
-        elseif ReducedActionbar and not (ShaguTweaks.MouseoverBottomLeft or ShaguTweaks.MouseoverBottomRight)  then
-            CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*3.75)
+        if not ShaguTweaks.MouseoverBottomRight then
+            if ReducedActionbar then
+                CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*2.5)
+            else
+                CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*1.5)
+            end
+            lock(CastingBarFrame)
+        elseif ShaguTweaks.MouseoverBottomRight then
+            CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*1.5)
+            lock(CastingBarFrame)
         end
-        lock(CastingBarFrame)
 
         -- GryllsSwingTimer / zUI SwingTimer support
         if SP_ST_Frame then
             SP_ST_Frame:ClearAllPoints()
-            SP_ST_Frame:SetPoint("TOP", CastingBarFrame, "BOTTOM", 0, -14)
+            SP_ST_Frame:SetPoint("BOTTOM", CastingBarFrame, "TOP", 0, 14)
             lock(SP_ST_Frame)      
-        end   
+        end
     end
-    
+
+    local ReducedActionbar
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
-    events:SetScript("OnEvent", function()        
-        if (ShaguTweaks.MouseoverBottomLeft and ShaguTweaks.MouseoverBottomRight) or not ShaguTweaks.MouseoverBottomRight then
-            lockframes()
-            castbar()
-            hideart()
-        end
+    events:SetScript("OnEvent", function()
+        lockframes()
+        castbar()
+        hideart()
         setup(MultiBarBottomLeft)
     end)
 end

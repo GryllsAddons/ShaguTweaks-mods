@@ -195,20 +195,15 @@ module.enable = function(self)
         local h = ActionButton1:GetHeight()
 
         CastingBarFrame:ClearAllPoints()
-        CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*1.75)
-        if ReducedActionbar and (ShaguTweaks.MouseoverBottomRight or ShaguTweaks.MouseoverBottomLeft) then           
-            CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*2.75)
-        elseif ReducedActionbar and not (ShaguTweaks.MouseoverBottomLeft or ShaguTweaks.MouseoverBottomRight)  then
-            CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*3.75)
-        end
+        CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*2.5)
         lock(CastingBarFrame)
 
         -- GryllsSwingTimer / zUI SwingTimer support
         if SP_ST_Frame then
             SP_ST_Frame:ClearAllPoints()
-            SP_ST_Frame:SetPoint("TOP", CastingBarFrame, "BOTTOM", 0, -14)
+            SP_ST_Frame:SetPoint("BOTTOM", CastingBarFrame, "TOP", 0, 14)
             lock(SP_ST_Frame)      
-        end   
+        end
     end
     
     local events = CreateFrame("Frame", nil, UIParent)
