@@ -25,6 +25,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\actionbar-improved-expbar.lua*    
 *mods\basic-chat.lua*    
 *mods\central-ui.lua*    
+*mods\central-ui-windows.lua*    
 *mods\cursor-tooltip.lua*    
 *mods\hide-combat-tooltip.lua*    
 *mods\hide-ui-frames.lua*    
@@ -92,6 +93,10 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *central-ui.lua*    
 *Moves unit frames, minimap and buffs to a central layout.*    
 *This will overwrite 'Movable Unit Frames' positioning.*
+
+- **Central UI Windows**    
+*central-ui-windows.lua*    
+*Moves interaction windows to a central layout.*    
 
 - **Cursor Tooltip**    
 *cursor-tooltip.lua*    
