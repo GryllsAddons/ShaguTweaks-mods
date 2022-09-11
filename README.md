@@ -35,6 +35,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\minimap-framerate-latency.lua*    
 *mods\minimap-timer.lua*    
 *mods\restyle-ui.lua*    
+*mods\smaller-errors-frame.lua*    
 *mods\unitframes-classportrait-tot.lua*    
 *mods\unitframes-combat-indicator.lua*    
 *mods\unitframes-energy-tick.lua*    
@@ -143,6 +144,10 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *restyle-ui.lua*    
 *Restyles UI Elements.*    
 *If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned within the bottom of the minimap. The MinimapButtonBag button will be hidden unless you mouse over it.*
+
+- **Smaller Errors Frame**    
+*smaller-errors-frame.lua*    
+*Resizes the error frame to 1 line instead of 3.*    
 
 - **Unit Frame Class Portraits ToT**    
 *unitframes-classportrait-tot.lua*    
