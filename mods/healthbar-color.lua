@@ -25,8 +25,6 @@ module.enable = function(self)
           return "FRIENDLY_NPC"
         end
       end
-
-      this.name:SetTextColor(GetUnitType(red, green, blue))
   
       local hp = this.healthbar:GetValue()
       local hpmin, hpmax = this.healthbar:GetMinMaxValues()
