@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Loot Monitor",
-    description = "Display recent loot messages in a central scrolling window. Hold ALT while using the mouse wheel over the window to scroll. Hold ALT and SHIFT then scroll down to go to the bottom of the window. The window will auto scroll back to the bottom after 10 seconds.",
+    description = "Display recent loot text in a central scrolling window. Hold ALT or ALT+Shift while using the mouse wheel over the window to scroll.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
