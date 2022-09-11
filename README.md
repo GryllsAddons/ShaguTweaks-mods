@@ -43,7 +43,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\unitframes-nameclasscolor.lua*
 
 ## Features
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Mods.png" width=40% height=40%/>
+<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=40% height=40%/>
 
 - **Hide Hotkey Text**    
 *actionbar-hide-hotkey.lua*    
@@ -190,7 +190,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png)  
 *unitframes-combat-indicator*
 
-![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png)  
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_UIRestyle.png)  
 *restyle-ui minimap and MinimapButtonBag button*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png)  
