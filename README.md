@@ -178,9 +178,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png)  
 *cursor-tooltip*
 
-![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Lowhealth2.png)  
-*healthbar-colors*
-
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor1.png)  
 *loot-monitor you*
 
