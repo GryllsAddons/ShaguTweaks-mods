@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Mouseover Right 2",
-    description = "Hide the Right ActionBar 2 and show on mouseover. The action bar must be enabled in 'Interface Options' > 'Advanced Options'. Please reload the UI after enabling or disabling the action bar.",
+    description = "Hide the Right ActionBar 2 and show on mouseover.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
