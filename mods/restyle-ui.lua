@@ -1,11 +1,11 @@
 local module = ShaguTweaks:register({
     title = "Restyle UI",
-    description = "Restyles UI elements",
+    description = "Restyles buffs, buttons, minimap and unit names.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
 })
-  
+
 module.enable = function(self)
     local _G = _G or getfenv(0)
 
