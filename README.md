@@ -172,6 +172,9 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png)   
 *actionbar-improved-exp rep*
 
+![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp3.png)   
+*actionbar-improved-exp fully rested*
+
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png)  
 *cursor-tooltip*
 
