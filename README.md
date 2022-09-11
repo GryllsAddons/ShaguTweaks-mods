@@ -132,15 +132,15 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Mouseover to see the high and low framerate and latency for your WoW session.*    
 *The color will change in relation to the target values set in the minimap-framerate-latency.lua.*
 
-- **MiniMap Framerate & Latency**    
+- **MiniMap Timer**    
 *minimap-timer.lua*    
 *Adds a togglable timer to the minimap clock.*    
 *Left click the clock to toggle the timer.*    
-*Left click the timer to start or right click to reset and hide.*
+*Left click the timer to start or right click to reset.*
 
 - **Pet Happiness Colors**    
 *pet-happiness-colors.lua*    
-*Colors the pet healthbar by happiness.*
+*Colors Hunter pet healthbar by happiness.*
 
 - **Restyle UI**    
 *restyle-ui.lua*    
