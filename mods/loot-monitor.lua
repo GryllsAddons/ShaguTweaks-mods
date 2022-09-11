@@ -13,7 +13,7 @@ module.enable = function(self)
     loot:SetHeight(70) -- 5 lines
     
     -- loot:SetFontObject(GameTooltipTextSmall)
-    loot.text = loot:CreateFontString(nil, "HIGH", "GameFontWhite")
+    loot.text = loot:CreateFontString(nil, "HIGH", "GameTooltipTextSmall")
     local font, size, opts = loot.text:GetFont()
     loot:SetFont(font, size, "OUTLINE")
     loot:SetJustifyH("CENTER")
