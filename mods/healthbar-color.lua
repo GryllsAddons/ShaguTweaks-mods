@@ -10,7 +10,7 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-  local function ShaguPlates()
+  local function nameplates()
     if ShaguPlates then return end
   
     table.insert(ShaguTweaks.libnameplate.OnUpdate, function()
@@ -25,6 +25,8 @@ module.enable = function(self)
           return "FRIENDLY_NPC"
         end
       end
+
+      this.name:SetTextColor(GetUnitType(red, green, blue))
   
       local hp = this.healthbar:GetValue()
       local hpmin, hpmax = this.healthbar:GetMinMaxValues()
@@ -48,7 +50,7 @@ module.enable = function(self)
     end)
   end
   
-  local function Healthbar(unit)
+  local function healthbar(unit)
     local HealthBar
     if unit == "player" then
         HealthBar = PlayerFrameHealthBar
@@ -135,9 +137,9 @@ module.enable = function(self)
 
   events:SetScript("OnEvent", function()
       if event == "PLAYER_ENTERING_WORLD" then
-        ShaguPlates()
+        nameplates()
       elseif event == "UNIT_HEALTH" then
-        Healthbar(arg1)
+        healthbar(arg1)
       end
   end)
 end
