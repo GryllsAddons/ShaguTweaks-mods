@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Central UI Windows",
-    description = "Moves windows to a central layout.",
+    description = "Moves interaction windows to a central layout.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
