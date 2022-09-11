@@ -21,11 +21,11 @@ module.enable = function(self)
         -- credit to KoOz (https://github.com/Ko0z/UnitFramesImproved_Vanilla)
         local happiness, damagePercentage, loyaltyRate = GetPetHappiness()
         if (happiness == 3) then
-            HealthBar:SetStatusBarColor(0,1,0)
+          PetFrameHealthBar:SetStatusBarColor(0,1,0)
         elseif (happiness == 2) then
-            HealthBar:SetStatusBarColor(1,1,0)
+          PetFrameHealthBar:SetStatusBarColor(1,1,0)
         else
-            HealthBar:SetStatusBarColor(1,0,0)
+          PetFrameHealthBar:SetStatusBarColor(1,0,0)
         end
     end
 
