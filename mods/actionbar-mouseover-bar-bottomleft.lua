@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Mouseover Bottom Left",
-    description = "Hide the Bottom Left ActionBar and show on mouseover. The pet/shapeshift/aura/stance bars will not be clickable if located in the same position as the mouseover bar. The action bar must be enabled in 'Interface Options' > 'Advanced Options'. Please reload the UI after enabling or disabling the action bar.",
+    description = "Hide the Bottom Left ActionBar and show on mouseover. The pet/shapeshift/aura/stance bars will not be clickable if in the same position as the mouseover bar.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
