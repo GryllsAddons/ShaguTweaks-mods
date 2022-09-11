@@ -1,5 +1,5 @@
-local tarFPS = 60 -- change to your target FPS (default 60)
-local tarMS = 250 -- change to your target MS (default 150)
+local tarFPS = 60 -- target FPS (default 60)
+local tarMS = 250 -- target MS (default 250)
 
 local module = ShaguTweaks:register({
   title = "MiniMap Framerate & Latency",
