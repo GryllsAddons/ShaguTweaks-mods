@@ -115,7 +115,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Advanced Options menu tweaks.*
 
 - **Improved Interface Options**   
-*improved-advanced-options.lua*     
+*improved-interface-options.lua*     
 *Rescales the interface options menu and removes the background.*
 
 - **Loot Monitor**    
