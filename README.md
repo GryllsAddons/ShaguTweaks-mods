@@ -21,7 +21,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\actionbar-mouseover-bar-bottomright.lua*    
 *mods\actionbar-mouseover-bar-right.lua*    
 *mods\actionbar-mouseover-bar-right2.lua*    
-*mods\actionbar-improved-castbar.lua*    
 *mods\actionbar-improved-expbar.lua*    
 *mods\basic-chat.lua*    
 *mods\central-ui.lua*    
@@ -30,6 +29,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\hide-combat-tooltip.lua*    
 *mods\hide-ui-frames.lua*    
 *mods\improved-advanced-options.lua*    
+*mods\improved-castbar.lua*    
 *mods\improved-interface-options.lua*    
 *mods\loot-monitor.lua*    
 *mods\minimap-framerate-latency.lua*    
@@ -75,10 +75,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
   *actionbar-mouseover-bar-right2.lua*    
   *Hide the Right ActionBar 2 and show on mouseover.*
 
-- **Improved Castbar**    
-*actionbar-improved-castbar.lua*    
-*Adds a spell icon and remaining cast time to the castbar.*
-
 - **Improved Exp Bar**    
 *actionbar-improved-expbar.lua*    
 *Improved exp information on mouseover.*    
@@ -113,6 +109,10 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Improved Advanced Options**    
 *improved-advanced-options.lua*    
 *Advanced Options menu tweaks.*
+
+- **Improved Castbar**    
+*improved-castbar.lua*    
+*Adds a spell icon and remaining cast time to the castbar.*
 
 - **Improved Interface Options**   
 *improved-interface-options.lua*     
