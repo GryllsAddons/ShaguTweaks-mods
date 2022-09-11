@@ -164,7 +164,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 ## Screenshots
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_ImpCastbar.png)    
-*actionbar-improved-castbar*
+*improved-castbar*
 
 ![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png)   
 *actionbar-improved-exp exp*
