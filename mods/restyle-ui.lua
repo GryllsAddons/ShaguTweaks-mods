@@ -125,7 +125,7 @@ module.enable = function(self)
     local function minimap()
         -- Move minimap elements
         local styleFrame = CreateFrame("Frame", nil, MinimapCluster)
-        styleFrame:SetPoint("TOP", Minimap, "BOTTOM")
+        styleFrame:SetPoint("CENTER", Minimap, "BOTTOM")
         styleFrame:SetHeight(16)
         styleFrame:SetWidth(Minimap:GetWidth())
 
@@ -141,33 +141,43 @@ module.enable = function(self)
             frame:SetBackdropColor(0,0,0,0)
         end
 
-        -- -- ShaguTweaks clock
-        -- if MinimapClock then
-        --     removeBackdrop(MinimapClock)
-        --     MinimapClock:ClearAllPoints()
-        --     MinimapClock:SetPoint("CENTER", styleFrame, "CENTER")
-        -- end
+        local function lock(frame)
+            frame.ClearAllPoints = function() end
+            frame.SetAllPoints = function() end
+            frame.SetPoint = function() end
+            -- frame.SetWidth = function() end
+            -- feame.SetHeight = function() end
+            -- feame.SetScale = function() end            
+        end
 
-        -- -- ShaguTweaks-Mods timer
-        -- if MinimapTimer then
-        --     -- removeBackdrop(MinimapTimer)
-        --     MinimapTimer:ClearAllPoints()
-        --     MinimapTimer:SetPoint("TOP", styleFrame, "BOTTOM")
-        -- end
+        -- ShaguTweaks clock
+        if MinimapClock then
+            -- removeBackdrop(MinimapClock)
+            MinimapClock:ClearAllPoints()
+            MinimapClock:SetPoint("CENTER", styleFrame, "CENTER", -1, 0)
+            -- lock(MinimapClock)
+        end
 
-        -- -- ShaguTweaks-Mods fps
-        -- if MinimapFPS then
-        --     removeBackdrop(MinimapFPS)
-        --     MinimapFPS:ClearAllPoints()
-        --     MinimapFPS:SetPoint("LEFT", styleFrame, "LEFT")
-        -- end
+        -- ShaguTweaks-Mods timer
+        if MinimapTimer then
+            -- removeBackdrop(MinimapTimer)
+            MinimapTimer:ClearAllPoints()
+            MinimapTimer:SetPoint("TOP", styleFrame, "BOTTOM")
+        end
 
-        -- -- ShaguTweaks-Mods ms
-        -- if MinimapMS then
-        --     removeBackdrop(MinimapMS)
-        --     MinimapMS:ClearAllPoints()
-        --     MinimapMS:SetPoint("RIGHT", styleFrame, "RIGHT")
-        -- end
+        -- ShaguTweaks-Mods fps
+        if MinimapFPS then
+            -- removeBackdrop(MinimapFPS)
+            MinimapFPS:ClearAllPoints()
+            MinimapFPS:SetPoint("LEFT", styleFrame, "LEFT")
+        end
+
+        -- ShaguTweaks-Mods ms
+        if MinimapMS then
+            -- removeBackdrop(MinimapMS)
+            MinimapMS:ClearAllPoints()
+            MinimapMS:SetPoint("RIGHT", styleFrame, "RIGHT")
+        end
 
         if Minimap.border then -- if using square minimap
             -- Tracking
@@ -184,7 +194,7 @@ module.enable = function(self)
 
             -- PVP
             MiniMapBattlefieldFrame:ClearAllPoints()
-            MiniMapBattlefieldFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 2, -2)
+            MiniMapBattlefieldFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 2, 8)
         end
 
         -- MinimapButtonFrame    
@@ -199,12 +209,8 @@ module.enable = function(self)
             end            
 
             MBB_MinimapButtonFrame:ClearAllPoints()
-
-            MBB_MinimapButtonFrame:SetPoint("BOTTOM", Minimap, "BOTTOM", 0, 2)
-
-            -- lock button
-            MBB_MinimapButtonFrame.ClearAllPoints = function() end
-            MBB_MinimapButtonFrame.SetPoint = function() end
+            MBB_MinimapButtonFrame:SetPoint("BOTTOM", Minimap, "BOTTOM", 0, 10)
+            lock(MBB_MinimapButtonFrame)           
             
             local function showButton(button)
                 button:SetAlpha(1)
