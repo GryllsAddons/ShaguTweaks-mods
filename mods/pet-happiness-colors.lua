@@ -16,18 +16,17 @@ module.enable = function(self)
     local _, class = UnitClass("player")
     if not (class == "HUNTER") then return end
 
-    local function color(arg1)
-      if not (UnitIsDead(unit) or UnitIsGhost(unit)) then
-          -- credit to KoOz (https://github.com/Ko0z/UnitFramesImproved_Vanilla)
-          local happiness, damagePercentage, loyaltyRate = GetPetHappiness()
-          if (happiness == 3) then
-              HealthBar:SetStatusBarColor(0,1,0)
-          elseif (happiness == 2) then
-              HealthBar:SetStatusBarColor(1,1,0)
-          else
-              HealthBar:SetStatusBarColor(1,0,0)
-          end
-      end
+    local function color(unit)
+      if (not UnitExists(unit)) or UnitIsDead(unit) or UnitIsGhost(unit) then return end
+        -- credit to KoOz (https://github.com/Ko0z/UnitFramesImproved_Vanilla)
+        local happiness, damagePercentage, loyaltyRate = GetPetHappiness()
+        if (happiness == 3) then
+            HealthBar:SetStatusBarColor(0,1,0)
+        elseif (happiness == 2) then
+            HealthBar:SetStatusBarColor(1,1,0)
+        else
+            HealthBar:SetStatusBarColor(1,0,0)
+        end
     end
 
     local events = CreateFrame("Frame", nil, UIParent)
