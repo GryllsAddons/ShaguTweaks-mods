@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Hide UI Frames",
-    description = "Hides the player and pet frame based on conditions. Additional configuration available in the .lua.",
+    description = "Hides the player and pet frame based on conditions.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
