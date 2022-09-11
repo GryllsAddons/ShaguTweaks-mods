@@ -5,7 +5,7 @@ local vanilla = ShaguTweaks.GetExpansion() == "vanilla" or nil
 
 local module = ShaguTweaks:register({
   title = "Pet Happiness Colors",
-  description = "Colors the pet healthbar by happiness.",
+  description = "Colors Hunter pet healthbar by happiness.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "Unit Frames",
   enabled = nil,
