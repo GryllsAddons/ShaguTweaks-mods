@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Improved Exp Bar",
-    description = "Show detailed exp, rested exp and rep values on mouseover. Bar shows rested precent while resting and changes green when 150% rested.",
+    description = "Improved exp information on mouseover. Shows rested precent while resting and changes color when fully rested.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
