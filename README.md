@@ -109,9 +109,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **Hide UI Frames**    
 *hide-ui-frames.lua*    
-*A framework for hiding UI frames.*    
-*Hides the player and pet frame based on conditions.*    
-*Additional configuration available in the .lua.*
+*Hides the player and pet frame based on conditions.*
 
 - **Improved Advanced Options**    
 *improved-advanced-options.lua*    
