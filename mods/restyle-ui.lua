@@ -141,33 +141,33 @@ module.enable = function(self)
             frame:SetBackdropColor(0,0,0,0)
         end
 
-        -- ShaguTweaks clock
-        if MinimapClock then
-            removeBackdrop(MinimapClock)
-            MinimapClock:ClearAllPoints()
-            MinimapClock:SetPoint("CENTER", styleFrame, "CENTER")
-        end
+        -- -- ShaguTweaks clock
+        -- if MinimapClock then
+        --     removeBackdrop(MinimapClock)
+        --     MinimapClock:ClearAllPoints()
+        --     MinimapClock:SetPoint("CENTER", styleFrame, "CENTER")
+        -- end
 
-        -- ShaguTweaks-Mods timer
-        if MinimapTimer then
-            -- removeBackdrop(MinimapTimer)
-            MinimapTimer:ClearAllPoints()
-            MinimapTimer:SetPoint("TOP", styleFrame, "BOTTOM")
-        end
+        -- -- ShaguTweaks-Mods timer
+        -- if MinimapTimer then
+        --     -- removeBackdrop(MinimapTimer)
+        --     MinimapTimer:ClearAllPoints()
+        --     MinimapTimer:SetPoint("TOP", styleFrame, "BOTTOM")
+        -- end
 
-        -- ShaguTweaks-Mods fps
-        if MinimapFPS then
-            removeBackdrop(MinimapFPS)
-            MinimapFPS:ClearAllPoints()
-            MinimapFPS:SetPoint("LEFT", styleFrame, "LEFT")
-        end
+        -- -- ShaguTweaks-Mods fps
+        -- if MinimapFPS then
+        --     removeBackdrop(MinimapFPS)
+        --     MinimapFPS:ClearAllPoints()
+        --     MinimapFPS:SetPoint("LEFT", styleFrame, "LEFT")
+        -- end
 
-        -- ShaguTweaks-Mods ms
-        if MinimapMS then
-            removeBackdrop(MinimapMS)
-            MinimapMS:ClearAllPoints()
-            MinimapMS:SetPoint("RIGHT", styleFrame, "RIGHT")
-        end
+        -- -- ShaguTweaks-Mods ms
+        -- if MinimapMS then
+        --     removeBackdrop(MinimapMS)
+        --     MinimapMS:ClearAllPoints()
+        --     MinimapMS:SetPoint("RIGHT", styleFrame, "RIGHT")
+        -- end
 
         if Minimap.border then -- if using square minimap
             -- Tracking
