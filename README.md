@@ -26,7 +26,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\basic-chat.lua*    
 *mods\central-ui.lua*    
 *mods\cursor-tooltip.lua*    
-*mods\healthbar-color.lua*    
 *mods\hide-combat-tooltip.lua*    
 *mods\hide-ui-frames.lua*    
 *mods\improved-advanced-options.lua*    
@@ -34,6 +33,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\loot-monitor.lua*    
 *mods\minimap-framerate-latency.lua*    
 *mods\minimap-timer.lua*    
+*mods\pet-happiness-colors.lua*    
 *mods\restyle-ui.lua*    
 *mods\smaller-errors-frame.lua*    
 *mods\unitframes-classportrait-tot.lua*    
@@ -97,11 +97,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *cursor-tooltip.lua*    
 *Attaches the tooltip to the cursor.*
 
-- **Unit Frame Healthbar Colors**    
-*healthbar-color.lua*    
-*Changes the unitframe and nameplate healthbar color for enemy and friendly units when at 20% health or lower.*    
-*Adds Hunter pet healthbar coloring by happiness.*
-
 - **Hide Combat Tooltip**    
 *hide-combat-tooltip.lua*    
 *Hides the tooltip while in combat.*
@@ -140,6 +135,10 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Adds a togglable timer to the minimap clock.*    
 *Left click the clock to toggle the timer.*    
 *Left click the timer to start or right click to reset and hide.*
+
+- **Pet Happiness Colors**    
+*pet-happiness-colors.lua*    
+*Colors the pet healthbar by happiness.*
 
 - **Restyle UI**    
 *restyle-ui.lua*    
