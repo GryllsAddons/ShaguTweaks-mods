@@ -9,7 +9,7 @@ local module = ShaguTweaks:register({
 module.enable = function(self)
     local loot = CreateFrame("ScrollingMessageFrame")
     loot:SetPoint("TOP", UIErrorsFrame, "BOTTOM", 0, 0)
-    loot:SetWidth(200)
+    loot:SetWidth(400)
     loot:SetHeight(70) -- 5 lines
     
     -- loot:SetFontObject(GameTooltipTextSmall)
