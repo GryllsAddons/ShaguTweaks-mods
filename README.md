@@ -139,7 +139,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Restyle UI**    
 *restyle-ui.lua*    
 *Restyles buffs, buttons, minimap and unit names.*    
-*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned within the bottom of the minimap. The MinimapButtonBag button will be shown on mouseover.*
+*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned inside the minimap. The MinimapButtonBag button will be shown on mouseover.*
 
 - **Smaller Errors Frame**    
 *smaller-errors-frame.lua*    
