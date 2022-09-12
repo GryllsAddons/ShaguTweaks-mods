@@ -107,7 +107,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 - **Improved Advanced Options**    
 *improved-advanced-options.lua*    
-*Advanced Options menu tweaks.*
+*Rescales the Advanced Options menu to fit the increased number of mods.*
 
 - **Improved Castbar**    
 *improved-castbar.lua*    
