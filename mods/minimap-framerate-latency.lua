@@ -118,7 +118,7 @@ module.enable = function(self)
     MinimapFPS:EnableMouse(true)
     
     local currFPS = 0
-    local lowFPS = 1000
+    local lowFPS = 9999
     local highFPS = 0
 
     MinimapFPS.text = MinimapFPS:CreateFontString("Status", "LOW", "GameFontNormal")
@@ -168,7 +168,7 @@ module.enable = function(self)
     MinimapMS:EnableMouse(true)
     
     local currMS = 0
-    local lowMS = 1000
+    local lowMS = 9999
     local highMS = 0
 
     MinimapMS.text = MinimapMS:CreateFontString("Status", "LOW", "GameFontNormal")
