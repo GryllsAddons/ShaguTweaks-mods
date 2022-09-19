@@ -123,7 +123,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Hold ALT or ALT+Shift while using the mouse wheel over the window to scroll.*    
 *Click the item name to get item details.*    
 *Poor quality items will be excluded by default (configurable in the lua).*   
-*Amend line 66 with the desired [item quality](https://wowpedia.fandom.com/wiki/Enum.ItemQuality) for loot that you receive or line 72 for loot other players receive.*
+*Amend line 66 with the desired [item quality](https://wowpedia.fandom.com/wiki/Enum.ItemQuality) for loot that you receive or line 72 for loot that other players receive.*
 
 - **MiniMap Framerate & Latency**    
 *minimap-framerate-latency.lua*    
