@@ -120,7 +120,10 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Loot Monitor**    
 *loot-monitor.lua*    
 *Display recent loot text in a central scrolling window.*    
-*Hold ALT or ALT+Shift while using the mouse wheel over the window to scroll.*
+*Hold ALT or ALT+Shift while using the mouse wheel over the window to scroll.*    
+*Click the item name to get item details.*    
+*Poor quality items will be excluded by default (configurable in the lua).*   
+*Amend line 66 with the desired [item quality](https://wowpedia.fandom.com/wiki/Enum.ItemQuality) for loot that you receive or line 72 for loot other players receive.*
 
 - **MiniMap Framerate & Latency**    
 *minimap-framerate-latency.lua*    
@@ -179,9 +182,6 @@ Code from [pfUI](https://shagu.org/pfUI/)
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor1.png)  
 *loot-monitor you*
-
-![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor2.png)  
-*loot-monitor others*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png)  
 *minimap-framerate-latency*
