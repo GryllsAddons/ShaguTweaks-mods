@@ -61,7 +61,7 @@ module.enable = function(self)
       if UnitExists("target") then        
           t:SetScript("OnUpdate", function()
               if UnitExists("targettarget") then        
-                  if GetUnitName("targettarget") ~= t.name then
+                  if not (GetUnitName("targettarget") == t.name) then
                     for i=1, 3 do -- doesn't always update portrait the first time                      
                       UpdatePortraits(TargetTargetFrame, "targettarget")
                     end
