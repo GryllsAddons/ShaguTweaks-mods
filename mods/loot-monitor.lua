@@ -20,11 +20,14 @@ module.enable = function(self)
       SetItemRef(arg1, arg2, arg3)
     end)
 
-    local LOOT_ITEM = string.gsub(LOOT_ITEM, "%%s|Hitem:%%d:%%d:%%d:%%d|h%[%%s%]|h%%s", "%%s")
+    -- constants (https://wowwiki-archive.fandom.com/wiki/Talk:WoW_constants)
     local LOOT_ITEM_SELF = string.gsub(LOOT_ITEM_SELF, "%%s|Hitem:%%d:%%d:%%d:%%d|h%[%%s%]|h%%s", "%%s")
+    -- "You receive loot: %s."
+    local LOOT_ITEM = string.gsub(LOOT_ITEM, "%%s|Hitem:%%d:%%d:%%d:%%d|h%[%%s%]|h%%s", "%%s")
+    -- "%s receives loot: %s."
+
     -- Not used in 1.12:
-    -- local LOOT_ITEM_MULTIPLE = string.gsub(LOOT_ITEM_MULTIPLE, "%%s|Hitem:%%d:%%d:%%d:%%d|h%[%%s%]|h%%s", "%%s")    
-    -- local LOOT_ITEM_SELF_MULTIPLE = string.gsub(LOOT_ITEM_SELF_MULTIPLE, "%%s|Hitem:%%d:%%d:%%d:%%d|h%[%%s%]|h%%s", "%%s")
+    -- LOOT_ITEM_MULTIPLE, LOOT_ITEM_SELF_MULTIPLE
     
     LootMonitor.cache = {}
     LootMonitor.cindex = 0   
@@ -36,7 +39,6 @@ module.enable = function(self)
     LootMonitor.scan = CreateFrame("Frame", "STLootMonitor", UIParent)
     LootMonitor.scan:RegisterEvent("CHAT_MSG_LOOT")
     LootMonitor.scan:SetScript("OnEvent", function()
-      -- constants (https://wowwiki-archive.fandom.com/wiki/Talk:WoW_constants)
       local item = ShaguTweaks.cmatch(arg1, LOOT_ITEM_SELF)
       if item then        
         local player = "You"
@@ -54,7 +56,7 @@ module.enable = function(self)
         -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player)..", item = "..tostring(item)..", class = "..tostring(class))
         LootMonitor:AddCache(item, player, class)
         return
-      end
+      end      
     end)
 
     function LootMonitor:AddCache(hyperlink, player, class)      
@@ -95,8 +97,7 @@ module.enable = function(self)
     end
 
     function LootMonitor:UpdateLoot(i)
-      LootMonitor.timer:Show()      
-      LootMonitor.timer.time = GetTime() + 15
+      LootMonitor.timer:Show()
       local c1, c2, c3, c4, c5 = "", "", "", "", ""
       
       -- most recent on bottom
@@ -194,13 +195,15 @@ module.enable = function(self)
 
     LootMonitor.timer:SetScript("OnUpdate", function()
       if (GetTime() > LootMonitor.timer.time) then
-        LootMonitor:SetAlpha(0)
+        LootMonitor:SetText("")
         LootMonitor.sindex = LootMonitor.cindex
         LootMonitor.timer:Hide()
       end
     end)
 
     LootMonitor.timer:SetScript("OnShow", function()
-      LootMonitor:SetAlpha(1)
+      LootMonitor.timer.time = GetTime() + 10
     end)
 end
+
+-- Received item
