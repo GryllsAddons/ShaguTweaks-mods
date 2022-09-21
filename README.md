@@ -34,6 +34,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\loot-monitor.lua*    
 *mods\minimap-framerate-latency.lua*    
 *mods\minimap-timer.lua*    
+*mods\modifier-actions.lua*    
 *mods\pet-happiness-colors.lua*    
 *mods\restyle-ui.lua*    
 *mods\smaller-errors-frame.lua*    
@@ -134,6 +135,11 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Adds a togglable timer to the minimap clock.*    
 *Left click the clock to toggle the timer.*    
 *Left click the timer to start or right click to reset.*
+
+- **Modifier Actions**    
+*modifier-actions.lua*    
+*Use Ctrl (C), Alt (A) & Shift (S) for in game actions.*    
+*CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, S: Repair.*
 
 - **Pet Happiness Colors**    
 *pet-happiness-colors.lua*    
