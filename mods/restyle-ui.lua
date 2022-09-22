@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Restyle UI",
-    description = "Restyles buffs, buttons, minimap and unit names.",
+    description = "Restyles supported addons, buffs, buttons, minimap and unit names.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -8,6 +8,34 @@ local module = ShaguTweaks:register({
 
 module.enable = function(self)
     local _G = _G or getfenv(0)
+
+    local function addons()
+        --[[
+            Supported Addons:
+            SP_SwingTimer
+        ]]
+
+        if IsAddOnLoaded("SP_SwingTimer") then
+            local o,e,i = 2,10,4
+            local f = CreateFrame("Frame", nil, SP_ST_Frame)
+            f:SetPoint("TOPLEFT", f:GetParent(), "TOPLEFT", -o, o)
+            f:SetPoint("BOTTOMRIGHT", f:GetParent(), "BOTTOMRIGHT", o, -o)
+            f:SetBackdrop({
+                edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+                edgeSize = e,
+                insets = { left = i, right = i, top = i, bottom = i },
+            })
+
+            local f = CreateFrame("Frame", nil, SP_ST_FrameOFF)
+            f:SetPoint("TOPLEFT", f:GetParent(), "TOPLEFT", -o, o)
+            f:SetPoint("BOTTOMRIGHT", f:GetParent(), "BOTTOMRIGHT", o, -o)
+            f:SetBackdrop({
+                edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+                edgeSize = e,
+                insets = { left = i, right = i, top = i, bottom = i },
+            })
+        end
+    end
 
     local function buffs()
         -- Buff font
@@ -270,6 +298,7 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
+        addons()
         buffs()
         buttons()
         minimap()
