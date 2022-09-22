@@ -212,7 +212,7 @@ module.enable = function(self)
             lock(CastingBarFrame)
         end
 
-        -- GryllsSwingTimer / zUI SwingTimer support
+        -- SP_SwingTimer / zUI SwingTimer / GryllsSwingTimer support
         if SP_ST_Frame then
             SP_ST_Frame:ClearAllPoints()
             SP_ST_Frame:SetPoint("BOTTOM", CastingBarFrame, "TOP", 0, 14)
