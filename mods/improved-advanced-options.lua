@@ -8,6 +8,6 @@ local module = ShaguTweaks:register({
 
 module.enable = function(self)
   AdvancedSettingsGUI:SetPoint("TOP", UIParent, "TOP", 0, -10)
-  AdvancedSettingsGUI:SetScale(0.93)
+  AdvancedSettingsGUI:SetScale(0.88)
   AdvancedSettingsGUI:SetFrameStrata("DIALOG")  
 end
