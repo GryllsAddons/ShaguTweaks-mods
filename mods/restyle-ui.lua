@@ -237,7 +237,7 @@ module.enable = function(self)
             end            
 
             MBB_MinimapButtonFrame:ClearAllPoints()
-            MBB_MinimapButtonFrame:SetPoint("BOTTOM", Minimap, "BOTTOM", 0, 10)
+            MBB_MinimapButtonFrame:SetPoint("CENTER", Minimap, "BOTTOMLEFT", 0, 0)
             lock(MBB_MinimapButtonFrame)           
             
             local function showButton(button)
