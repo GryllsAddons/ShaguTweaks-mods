@@ -121,10 +121,11 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Loot Monitor**    
 *loot-monitor.lua*    
 *Display recent loot text in a central scrolling window.*    
-*Hold ALT or ALT+Shift while using the mouse wheel over the window to scroll.*    
+*Hold Alt or Alt+Shift to scroll*    
+*Hold Alt+Ctrl while scrolling to filter by quality.*    
 *Click the item name to get item details.*    
-*Poor quality items will be excluded by default (configurable in the lua).*   
-*Amend line 66 with the desired [item quality](https://wowpedia.fandom.com/wiki/Enum.ItemQuality) for loot that you receive or line 72 for loot that other players receive.*
+*Items looted over 1 minute ago will be shown at 50% transparency.*    
+*Items looted over 10 minutes ago will be shown at 25% transparency.*
 
 - **MiniMap Framerate & Latency**    
 *minimap-framerate-latency.lua*    
