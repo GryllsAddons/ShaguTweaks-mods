@@ -133,7 +133,7 @@ module.enable = function(self)
           if LootMonitor:GetLoot(index) then
             local item, player, class, cachetime = LootMonitor:GetLoot(index)
             index = index - 1
-            local class = RAID_CLASS_COLORS[class]
+            class = RAID_CLASS_COLORS[class]
             local alpha = LootMonitor:GetTimeAlpha(updatetime, cachetime)
             LootMonitor[i]:SetText(player.." "..item)
             LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
@@ -145,7 +145,7 @@ module.enable = function(self)
           if LootMonitor:GetFilteredLoot() then
             local item, player, class, cachetime = LootMonitor:GetLoot(LootMonitor.findex)
             LootMonitor.findex = LootMonitor.findex - 1
-            local class = RAID_CLASS_COLORS[class]
+            class = RAID_CLASS_COLORS[class]
             local alpha = LootMonitor:GetTimeAlpha(updatetime, cachetime)
             LootMonitor[i]:SetText(player.." "..item)
             LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
