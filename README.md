@@ -140,7 +140,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Modifier Actions**    
 *modifier-actions.lua*    
 *Use Ctrl (C), Alt (A) & Shift (S) for in game actions.*    
-*CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, S: Repair.*
+*CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, S: Sell & Repair.*
 
 - **Pet Happiness Colors**    
 *pet-happiness-colors.lua*    
