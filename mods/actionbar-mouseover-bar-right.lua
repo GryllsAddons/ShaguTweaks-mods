@@ -7,6 +7,7 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
+    ShaguTweaks.MouseoverRight = true
     local _G = _G or getfenv(0)
 
     local timer = CreateFrame("Frame", nil, UIParent)
@@ -87,9 +88,20 @@ module.enable = function(self)
         barEnter(frame, bar) 
         barLeave(frame, bar)
     end
+
+    local function movebags()
+        if ShaguTweaks.MouseoverRight2 then return end
+        if MultiBarLeft:IsVisible() then
+            ContainerFrame1:ClearAllPoints()
+            ContainerFrame1:SetPoint("RIGHT", MultiBarLeft, "LEFT", -5)
+        elseif MultiBarRight:IsVisible() then
+            ContainerFrame1:ClearAllPoints()
+            ContainerFrame1:SetPoint("RIGHT", MultiBarRight, "LEFT", -5)
+        end
+    end
     
     local function setup(bar)
-        if not bar:IsVisible() then return end        
+        if not bar:IsVisible() then return end            
         for i = 1, 12 do
             for _, button in pairs(
                     {
@@ -100,12 +112,14 @@ module.enable = function(self)
             end
         end
         mouseoverBar(bar)
-        hide(bar)
+        hide(bar)        
     end
+    
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
-        setup(MultiBarRight)
+        movebags()
+        setup(MultiBarRight)        
     end)    
 end
