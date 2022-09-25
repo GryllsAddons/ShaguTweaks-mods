@@ -1,10 +1,12 @@
 local module = ShaguTweaks:register({
     title = "Modifier Actions",
-    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, S: Repair.",
+    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, S: Sell & Repair.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
 })
+
+local processed = {}
 
 local function CreateGoldString(money)
     if type(money) ~= "number" then return "-" end
@@ -21,8 +23,33 @@ local function CreateGoldString(money)
     return string
 end
 
+local function HasGreyItems()
+    for bag = 0, 4, 1 do
+      for slot = 1, GetContainerNumSlots(bag), 1 do
+        local name = GetContainerItemLink(bag,slot)
+        if name and string.find(name,"ff9d9d9d") then return true end
+      end
+    end
+    return nil
+  end
+  
+  local function GetNextGreyItem()
+    for bag = 0, 4, 1 do
+      for slot = 1, GetContainerNumSlots(bag), 1 do
+        local name = GetContainerItemLink(bag,slot)
+        if name and string.find(name,"ff9d9d9d") and not processed[bag.."x"..slot] then
+          processed[bag.."x"..slot] = true
+          return bag, slot
+        end
+      end
+    end
+  
+    return nil, nil
+  end
+
 module.enable = function(self)
     local actions = CreateFrame("Frame", nil, UIParent)
+    local autovendor = CreateFrame("Frame", nil, nil)
 
     function actions:SetTime()
        actions.time = GetTime() + 0.75
@@ -34,12 +61,70 @@ module.enable = function(self)
 
     function actions:Merchant()
         if actions.merchant then
+             -- sell
+            if GetTime() > autovendor.cd  then
+                if not autovendor:IsVisible() then
+                    autovendor:Show()
+                    autovendor.cd = GetTime()+5
+                end
+            end
+            -- repair
             local repairAllCost, canRepair = GetRepairAllCost()
 	        if canRepair and (GetMoney() > repairAllCost) then
                 RepairAllItems()
-                DEFAULT_CHAT_FRAME:AddMessage("Your items have been repaired for " .. CreateGoldString(repairAllCost))
+                DEFAULT_CHAT_FRAME:AddMessage("Your items were repaired for " .. CreateGoldString(repairAllCost))
             end
         end
+    end
+
+    local function selljunk()
+        autovendor:Hide()
+
+        autovendor:SetScript("OnShow", function()
+        processed = {}
+        this.price = 0
+        this.count = 0
+        end)
+
+        autovendor:SetScript("OnHide", function()
+        if this.count > 0 then
+            DEFAULT_CHAT_FRAME:AddMessage("Your grey items were sold for " .. CreateGoldString(this.price))
+        end
+        end)
+
+        autovendor:SetScript("OnUpdate", function()
+        -- throttle to to one item per .1 second
+        if ( this.tick or 1) > GetTime() then return else this.tick = GetTime() + .1 end
+
+        -- scan for the next grey item
+        local bag, slot = GetNextGreyItem()
+        if not bag or not slot then
+            this:Hide()
+            return
+        end
+
+        -- double check to only sell grey
+        local name = GetContainerItemLink(bag,slot)
+        if not name or not string.find(name,"ff9d9d9d") then
+            return
+        end
+
+        -- get value
+        local _, icount = GetContainerItemInfo(bag, slot)
+        local _, _, id = string.find(GetContainerItemLink(bag, slot), "item:(%d+):%d+:%d+:%d+")
+        local price = ShaguTweaks.SellValueDB[tonumber(id)] or 0
+        if this.price then
+            this.price = this.price + ( price * ( icount or 1 ) )
+            this.count = this.count + 1
+        end
+
+        -- abort if the merchant window disappeared
+        if not actions.merchant then return end
+
+        -- clear cursor and sell the item
+        ClearCursor()
+        UseContainerItem(bag, slot)
+        end)
     end
 
     function actions:Inspect()
@@ -97,6 +182,7 @@ module.enable = function(self)
         end
     end    
     
+    selljunk()
     actions:RegisterEvent("TRADE_SHOW")
     actions:RegisterEvent("TRADE_CLOSED")
     actions:RegisterEvent("MERCHANT_SHOW")
@@ -109,8 +195,10 @@ module.enable = function(self)
             actions.trade = nil        
         elseif (event == "MERCHANT_SHOW") then
             actions.merchant = true
+            autovendor.cd = 0
         elseif (event == "MERCHANT_CLOSED") then
             actions.merchant = nil
+            autovendor:Hide()
         end
     end)
     
