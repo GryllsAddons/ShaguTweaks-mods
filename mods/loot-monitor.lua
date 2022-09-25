@@ -1,37 +1,55 @@
 local module = ShaguTweaks:register({
     title = "Loot Monitor",
-    description = "Display recent loot text in a central scrolling window. Hold ALT or ALT+Shift while using the mouse wheel over the window to scroll.",
+    description = "Display recent loot text in a central scrolling window. Hold Alt or Alt+Shift to scroll. Hold Alt+Ctrl while scrolling to filter by quality.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
 })
   
-module.enable = function(self)
-    local LootMonitor = CreateFrame("SimpleHTML")
-    LootMonitor:SetPoint("TOP", UIErrorsFrame, "BOTTOM", 85, 0)
-    LootMonitor:SetWidth(300)
-    LootMonitor:SetHeight(50)
+module.enable = function(self)    
+    local width, height = 300, 10
     
+    local LootMonitor = CreateFrame("Frame")
+    LootMonitor:SetPoint("TOP", UIErrorsFrame, "BOTTOM", 85, 0)
+    LootMonitor:SetHeight(height)
+    LootMonitor:SetWidth(width)
+
+    LootMonitor.info = CreateFrame("Frame", nil, LootMonitor)    
+    LootMonitor.info:SetHeight(height)
+    LootMonitor.info:SetWidth(width)
+
     LootMonitor.text = LootMonitor:CreateFontString(nil, "HIGH", "GameTooltipTextSmall")
     local font, size, opts = LootMonitor.text:GetFont()
-    LootMonitor:SetFont(font, size, "OUTLINE")
+    opts = "OUTLINE"
+    LootMonitor.text:SetFont(font, size, "OUTLINE")
 
-    LootMonitor:SetScript("OnHyperlinkClick", function()
-      SetItemRef(arg1, arg2, arg3)
-    end)
+    LootMonitor.lines = 5
+    for i=LootMonitor.lines,1,-1 do
+      LootMonitor[i] = CreateFrame("SimpleHTML", nil, LootMonitor)
+      LootMonitor[i]:SetPoint("TOP", LootMonitor[i+1] or LootMonitor, "BOTTOM")
+      LootMonitor[i]:SetHeight(height)
+      LootMonitor[i]:SetWidth(width)
+      LootMonitor[i]:SetFont(font, size, opts)
+      LootMonitor[i]:SetScript("OnHyperlinkClick", function()
+        SetItemRef(arg1, arg2, arg3)
+      end)
+    end
 
-    -- constants (https://wowwiki-archive.fandom.com/wiki/Talk:WoW_constants)
+    LootMonitor.info:SetPoint("TOP", LootMonitor[1], "BOTTOM")
+    LootMonitor.text:SetPoint("LEFT", LootMonitor.info, "LEFT")    
+    
+    -- https://wowwiki-archive.fandom.com/wiki/Talk:WoW_constants
     local LOOT_ITEM_SELF = string.gsub(LOOT_ITEM_SELF, "%%s|Hitem:%%d:%%d:%%d:%%d|h%[%%s%]|h%%s", "%%s")
     -- "You receive loot: %s."
     local LOOT_ITEM = string.gsub(LOOT_ITEM, "%%s|Hitem:%%d:%%d:%%d:%%d|h%[%%s%]|h%%s", "%%s")
     -- "%s receives loot: %s."
-
-    -- Not used in 1.12:
-    -- LOOT_ITEM_MULTIPLE, LOOT_ITEM_SELF_MULTIPLE
     
     LootMonitor.cache = {}
-    LootMonitor.cindex = 0   
-    LootMonitor.sindex = 5    
+    LootMonitor.cindex = 0  
+    LootMonitor.sindex = LootMonitor.lines
+    LootMonitor.timedelay = 10
+    LootMonitor.itemQuality = -1
+    
     local GetUnitData = ShaguTweaks.GetUnitData
     local strsplit = ShaguTweaks.strsplit
     local _, pclass = UnitClass("player")
@@ -39,154 +57,233 @@ module.enable = function(self)
     LootMonitor.scan = CreateFrame("Frame", "STLootMonitor", UIParent)
     LootMonitor.scan:RegisterEvent("CHAT_MSG_LOOT")
     LootMonitor.scan:SetScript("OnEvent", function()
+      local cachetime = GetTime()
+
       local item = ShaguTweaks.cmatch(arg1, LOOT_ITEM_SELF)
       if item then        
         local player = "You"
         -- DEBUG:
         -- DEFAULT_CHAT_FRAME:AddMessage("LOOT_ITEM_SELF")
-        -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player)..", item = "..tostring(item)..", class = "..tostring(class))
-        LootMonitor:AddCache(item, player, pclass)        
+        -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player)..", item = "..tostring(item)..", class = "..tostring(class)..", cachetime = "..cachetime)
+        LootMonitor:AddCache(item, player, pclass, cachetime)        
         return
       end
+
       local player, item = ShaguTweaks.cmatch(arg1, LOOT_ITEM)
       if item then
         local class = GetUnitData(player)
         -- DEBUG:
         -- DEFAULT_CHAT_FRAME:AddMessage("LOOT_ITEM")
-        -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player)..", item = "..tostring(item)..", class = "..tostring(class))
-        LootMonitor:AddCache(item, player, class)
+        -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player)..", item = "..tostring(item)..", class = "..tostring(class)..", cachetime = "..cachetime)
+        LootMonitor:AddCache(item, player, class, cachetime)
         return
       end      
     end)
 
-    function LootMonitor:AddCache(hyperlink, player, class)      
+    function LootMonitor:AddCache(hyperlink, player, class, cachetime)      
       local _, _, itemLink = string.find(hyperlink, "(item:%d+:%d+:%d+:%d+)")
       local _, _, itemQuality = GetItemInfo(itemLink)
-
-      -- filter by ItemQuality (https://wowpedia.fandom.com/wiki/Enum.ItemQuality)
-      if player == "You" then
-        if itemQuality > 0 then
-          LootMonitor.cindex = LootMonitor.cindex + 1
-          table.insert(LootMonitor.cache, LootMonitor.cindex, hyperlink..","..player..","..class)
-          LootMonitor:UpdateLoot(LootMonitor.cindex)
-        end
-      else
-        if itemQuality > 0 then
-          LootMonitor.cindex = LootMonitor.cindex + 1
-          table.insert(LootMonitor.cache, LootMonitor.cindex, hyperlink..","..player..","..class)
-          LootMonitor:UpdateLoot(LootMonitor.cindex)
-        end
-      end
+      itemQuality = tonumber(itemQuality)
+      
+      LootMonitor.cindex = LootMonitor.cindex + 1
+      table.insert(LootMonitor.cache, LootMonitor.cindex, hyperlink..","..itemQuality..","..player..","..class..","..cachetime)
+      LootMonitor:UpdateLoot(LootMonitor.cindex)      
 
       -- DEBUG:
       -- DEFAULT_CHAT_FRAME:AddMessage("LootMonitor:AddCache")
       -- DEFAULT_CHAT_FRAME:AddMessage("LootMonitor.cindex = "..LootMonitor.cindex)  
-      -- DEFAULT_CHAT_FRAME:AddMessage("AddCache: hyperlink = "..tostring(hyperlink))
-      -- DEFAULT_CHAT_FRAME:AddMessage("AddCache: itemQuality = "..tostring(itemQuality))
+      -- DEFAULT_CHAT_FRAME:AddMessage("hyperlink = "..tostring(hyperlink))
+      -- DEFAULT_CHAT_FRAME:AddMessage("itemQuality = "..tostring(itemQuality))
       -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player))
-      -- DEFAULT_CHAT_FRAME:AddMessage("class = "..tostring(class))    
+      -- DEFAULT_CHAT_FRAME:AddMessage("class = "..tostring(class))
+      -- DEFAULT_CHAT_FRAME:AddMessage("cachetime = "..tostring(cachetime))  
     end
 
     function LootMonitor:GetLoot(i)
-      if LootMonitor.cindex >= i then      
-        local item, player, class = strsplit(",", LootMonitor.cache[i])
-        return item, player, class
-      else 
-        return false
+        if i < 1 then return false end
+        local item, itemQuality, player, class, cachetime = strsplit(",", LootMonitor.cache[i])
+        if not item then return false end
+        return item, player, class, cachetime
+    end
+
+    function LootMonitor:GetFilteredLoot()
+      for i=LootMonitor.findex,1,-1 do
+        local item, itemQuality, player, class, cachetime = strsplit(",", LootMonitor.cache[i])
+        if item then
+          if tonumber(itemQuality) == tonumber(LootMonitor.itemQuality) then
+            LootMonitor.findex = i
+            return item, player, class, cachetime
+          end
+        end
       end
     end
 
-    function LootMonitor:UpdateLoot(i)
+    function LootMonitor:UpdateLoot(index)
+      local updatetime = GetTime()
+      LootMonitor.timer.time = GetTime() + LootMonitor.timedelay
       LootMonitor.timer:Show()
-      local c1, c2, c3, c4, c5 = "", "", "", "", ""
-      
-      -- most recent on bottom
-      local index = i
-      if LootMonitor:GetLoot(index) then
-        local c5i, c5p, c5c = LootMonitor:GetLoot(index)
-        local c5c = RAID_CLASS_COLORS[c5c]
-        local color = ShaguTweaks.rgbhex(c5c.r, c5c.g, c5c.b, 1)
-        c5 = color..c5p.."|r "..c5i
-      end
+      LootMonitor:ClearText()
+      local text = LootMonitor:GetItemQuality(LootMonitor.itemQuality)
+      local r,g,b = GetItemQualityColor(LootMonitor.itemQuality)
+      LootMonitor.text:SetText(text)
+      LootMonitor.text:SetTextColor(r,g,b)
 
-      index = i-1
-      if LootMonitor:GetLoot(index) then
-        local c4i, c4p, c4c = LootMonitor:GetLoot(index)
-        local c4c = RAID_CLASS_COLORS[c4c]
-        local color = ShaguTweaks.rgbhex(c4c.r, c4c.g, c4c.b, 1)
-        c4 = color..c4p.."|r "..c4i
+      if LootMonitor.itemQuality == -1 then
+        for i=1,LootMonitor.lines do
+          if LootMonitor:GetLoot(index) then
+            local item, player, class, cachetime = LootMonitor:GetLoot(index)
+            index = index - 1
+            local class = RAID_CLASS_COLORS[class]
+            local alpha = LootMonitor:GetTimeAlpha(updatetime, cachetime)
+            LootMonitor[i]:SetText(player.." "..item)
+            LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
+          end
+        end
+      else
+        LootMonitor.findex = index
+        for i=1,LootMonitor.lines do
+          if LootMonitor:GetFilteredLoot() then
+            local item, player, class, cachetime = LootMonitor:GetLoot(LootMonitor.findex)
+            LootMonitor.findex = LootMonitor.findex - 1
+            local class = RAID_CLASS_COLORS[class]
+            local alpha = LootMonitor:GetTimeAlpha(updatetime, cachetime)
+            LootMonitor[i]:SetText(player.." "..item)
+            LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
+          end
+        end
       end
+    end
 
-      index = i-2
-      if LootMonitor:GetLoot(index) then
-        local c3i, c3p, c3c = LootMonitor:GetLoot(index)
-        local c3c = RAID_CLASS_COLORS[c3c]
-        local color = ShaguTweaks.rgbhex(c3c.r, c3c.g, c3c.b, 1)
-        c3 = color..c3p.."|r "..c3i
+    function LootMonitor:GetTimeAlpha(updatetime, cachetime)
+      local diff = updatetime - cachetime
+      if diff < 60 then
+        return 1
+      elseif diff < 600 then
+        return 0.5
+      else
+        return 0.25
       end
+    end
 
-      index = i-3
-      if LootMonitor:GetLoot(index) then
-        local c2i, c2p, c2c = LootMonitor:GetLoot(index)
-        local c2c = RAID_CLASS_COLORS[c2c]
-        local color = ShaguTweaks.rgbhex(c2c.r, c2c.g, c2c.b, 1)
-        c2 = color..c2p.."|r "..c2i
+    function LootMonitor:ClearText()
+      LootMonitor.text:SetText("")
+      for i=1, LootMonitor.lines do
+        LootMonitor[i]:SetText("")
       end
+    end
 
-      index = i-4
-      if LootMonitor:GetLoot(index) then
-        local c1i, c1p, c1c = LootMonitor:GetLoot(index)
-        local c1c = RAID_CLASS_COLORS[c1c]
-        local color = ShaguTweaks.rgbhex(c1c.r, c1c.g, c1c.b, 1)
-        c1 = color..c1p.."|r "..c1i
+    function LootMonitor:GetItemQuality(q)
+      -- (https://wowpedia.fandom.com/wiki/Enum.ItemQuality)
+      if q == -1 then
+        return "All loot"
+      elseif q == 0 then        
+        return "Poor loot"
+      elseif q == 1 then        
+        return "Common loot"
+      elseif q == 2 then        
+        return "Uncommon loot"
+      elseif q == 3 then        
+        return "Rare loot"
+      elseif q == 4 then        
+        return "Epic loot"
+      elseif q == 5 then        	
+        return "Legendary loot"
       end
-
-      LootMonitor:SetText("<html><body><p>"..c1.."</p><p>"..c2.."</p><p>"..c3.."</p><p>"..c4.."</p><p>"..c5.."</p></body></html>")
-      end
+    end    
 
     -- scrolling
-    local function increment(i)
+    local function incrementIndex()
       LootMonitor.sindex = LootMonitor.sindex + 1
       if LootMonitor.sindex > LootMonitor.cindex then
-        LootMonitor.sindex = LootMonitor.cindex        
-      end
-    end
-
-    local function decrement(i)
-      LootMonitor.sindex = LootMonitor.sindex - 1      
-      if LootMonitor.sindex < 5 then
-        LootMonitor.sindex = 5
-      end
-    end
-
-    local scrollspeed = 1
-    local function LootMonitorOnMouseWheel()
-      if arg1 > 0 then -- scroll up
-        if IsShiftKeyDown() then
-          LootMonitor.sindex = 5
+        if LootMonitor.cindex == 0 then
+          LootMonitor.sindex = 1
         else
-          for i=1, scrollspeed do
-          decrement()
-          end
+          LootMonitor.sindex = LootMonitor.cindex
         end
-      elseif arg1 < 0 then -- scroll down
-        if IsShiftKeyDown() then
+      end
+    end
+
+    local function decrementIndex()
+      LootMonitor.sindex = LootMonitor.sindex - 1
+      if LootMonitor.sindex < LootMonitor.lines then
+        if LootMonitor.cindex == 0 then
+          LootMonitor.sindex = 1
+        elseif LootMonitor.cindex < LootMonitor.lines then
           LootMonitor.sindex = LootMonitor.cindex
         else
-          for i=1, scrollspeed do
-            increment()
+          LootMonitor.sindex = LootMonitor.lines
+        end
+      end
+    end
+
+    local function firstIndex()
+      LootMonitor.sindex = LootMonitor.lines
+      if LootMonitor.sindex > LootMonitor.cindex then
+        if LootMonitor.cindex == 0 then
+          LootMonitor.sindex = 1
+        else
+          LootMonitor.sindex = LootMonitor.cindex
+        end
+      end
+    end
+
+    local function lastIndex()
+      LootMonitor.sindex = LootMonitor.cindex
+      if LootMonitor.sindex < LootMonitor.lines then
+        if LootMonitor.cindex == 0 then
+          LootMonitor.sindex = 1
+        elseif LootMonitor.cindex < LootMonitor.lines then
+          LootMonitor.sindex = LootMonitor.cindex
+        end
+      end
+    end
+
+    local function incrementQuality()
+      LootMonitor.itemQuality = LootMonitor.itemQuality + 1
+      if LootMonitor.itemQuality > 5 then
+        LootMonitor.itemQuality = 5
+      end
+    end
+
+    local function decrementQuality()
+      LootMonitor.itemQuality = LootMonitor.itemQuality - 1
+      if LootMonitor.itemQuality < -1 then
+        LootMonitor.itemQuality = -1
+      end
+    end
+
+    
+    local function LootMonitorOnMouseWheel()
+      if IsAltKeyDown() then
+        if arg1 > 0 then -- scroll up
+          if IsShiftKeyDown() then
+            firstIndex()          
+          elseif IsControlKeyDown() then
+            incrementQuality()     
+          else            
+            decrementIndex()
+          end
+        elseif arg1 < 0 then -- scroll down
+          if IsShiftKeyDown() then
+            lastIndex()
+          elseif IsControlKeyDown() then
+            decrementQuality()
+          else           
+              incrementIndex()
           end
         end
       end
-      LootMonitor:UpdateLoot(LootMonitor.sindex)      
+      -- DEBUG:
+      -- DEFAULT_CHAT_FRAME:AddMessage("LootMonitor.sindex = "..LootMonitor.sindex)
+      LootMonitor.timer.time = GetTime() + LootMonitor.timedelay
+      LootMonitor:UpdateLoot(LootMonitor.sindex)
     end
 
-    LootMonitor:EnableMouseWheel(true)
-    LootMonitor:SetScript("OnMouseWheel", function()
-      if IsAltKeyDown() then
-        LootMonitorOnMouseWheel()
-      end
-    end)
+    LootMonitor.bg = CreateFrame("Frame", nil, LootMonitor)
+    LootMonitor.bg:SetPoint("TOPLEFT", LootMonitor, "TOPLEFT")
+    LootMonitor.bg:SetPoint("BOTTOMRIGHT", LootMonitor.info, "BOTTOMRIGHT")
+    LootMonitor.bg:EnableMouseWheel(true)
+    LootMonitor.bg:SetScript("OnMouseWheel", LootMonitorOnMouseWheel)
 
     -- hiding
     LootMonitor.timer = CreateFrame("FRAME", nil, LootMonitor)
@@ -195,15 +292,9 @@ module.enable = function(self)
 
     LootMonitor.timer:SetScript("OnUpdate", function()
       if (GetTime() > LootMonitor.timer.time) then
-        LootMonitor:SetText("")
+        LootMonitor:ClearText()
         LootMonitor.sindex = LootMonitor.cindex
         LootMonitor.timer:Hide()
       end
     end)
-
-    LootMonitor.timer:SetScript("OnShow", function()
-      LootMonitor.timer.time = GetTime() + 10
-    end)
 end
-
--- Received item
