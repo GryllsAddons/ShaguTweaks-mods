@@ -25,6 +25,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *mods\basic-chat.lua*    
 *mods\central-ui.lua*    
 *mods\central-ui-windows.lua*    
+*mods\chat-tweaks-extended.lua*    
 *mods\cursor-tooltip.lua*    
 *mods\hide-combat-tooltip.lua*    
 *mods\hide-ui-frames.lua*    
@@ -92,6 +93,12 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Central UI Windows**    
 *central-ui-windows.lua*    
 *Moves interaction windows to a central layout.*    
+
+
+- **Chat Tweaks Extended**    
+*chat-tweaks-extended.lua*    
+*Extends "Chat Tweaks".*    
+*Removes chat buttons, shows item links on hover, adds Alt click chat names to invite and Ctrl click chat names to target.*
 
 - **Cursor Tooltip**    
 *cursor-tooltip.lua*    
