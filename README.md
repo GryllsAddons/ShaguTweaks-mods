@@ -98,7 +98,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Chat Tweaks Extended**    
 *chat-tweaks-extended.lua*    
 *Extends "Chat Tweaks".*    
-*Removes chat buttons, shows item links on hover, adds Alt click chat names to invite and Ctrl click chat names to target.*
+*Removes chat buttons, shortens channel names, shows item links on mouseover, adds Alt click chat names to invite and Ctrl click chat names to target.*
 
 - **Cursor Tooltip**    
 *cursor-tooltip.lua*    
