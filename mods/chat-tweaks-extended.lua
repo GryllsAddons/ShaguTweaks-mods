@@ -67,11 +67,11 @@ local function mouseoverlinks()
     for i=1, NUM_CHAT_WINDOWS do
         local frame = _G["ChatFrame" .. i]   
         frame:SetScript("OnHyperlinkEnter", function()
-            local _, _, itemLink = string.find(arg1, "(item:%d+:%d+:%d+:%d+)")
-            if itemLink then
-                GameTooltip:SetOwner(GameTooltip, "ANCHOR_CURSOR")
-                GameTooltip:SetHyperlink(arg1)
-                GameTooltip:Show()
+            local _, _, linktype = string.find(arg1, "^(.-):(.+)$")
+            if linktype == "item" then
+            GameTooltip:SetOwner(this, "ANCHOR_CURSOR")
+            GameTooltip:SetHyperlink(arg1)
+            GameTooltip:Show()
             end
         end)
         frame:SetScript("OnHyperlinkLeave", function()
