@@ -1,3 +1,4 @@
+local _G = _G or getfenv(0)
 local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
@@ -12,35 +13,35 @@ module.enable = function(self)
     hooksecurefunc("ActionButtonDown", function(id)
         ActionButtonUp(id)
         if ( BonusActionBarFrame:IsShown() ) then
-            local button = getglobal("BonusActionButton"..id)            
+            local button = _G["BonusActionButton"..id]      
             button:SetChecked(1)
         end
-        local button = getglobal("ActionButton"..id)        
+        local button = _G["ActionButton"..id]      
         button:SetChecked(1)
     end, true)
 
     hooksecurefunc("ActionButtonUp", function(id)
         if ( BonusActionBarFrame:IsShown() ) then
-            local button = getglobal("BonusActionButton"..id)
+            local button = _G["BonusActionButton"..id]
             button:SetChecked(0)
         end
-        local button = getglobal("ActionButton"..id)    
+        local button = _G["ActionButton"..id]    
         button:SetChecked(0)
     end, true)
 
     hooksecurefunc("MultiActionButtonDown", function(bar, id)
         MultiActionButtonUp(bar, id)
-        local button = getglobal(bar.."Button"..id)
+        local button = _G[bar.."Button"..id]
         button:SetChecked(1)
     end, true)
 
     hooksecurefunc("MultiActionButtonUp", function(bar, id, onSelf)
-        local button = getglobal(bar.."Button"..id)
+        local button = _G[bar.."Button"..id]
         button:SetChecked(0)
     end, true)
 
     hooksecurefunc("PetActionButtonDown", function(id)
-        local button = getglobal("PetActionButton"..id)
+        local button = _G["PetActionButton"..id]
         if ( button:GetButtonState() == "NORMAL" ) then
             button:SetButtonState("PUSHED")
             CastPetAction(id)
@@ -48,7 +49,7 @@ module.enable = function(self)
     end)
 
     hooksecurefunc("PetActionButtonUp", function(id)
-        local button = getglobal("PetActionButton"..id)
+        local button = _G["PetActionButton"..id]
         if ( button:GetButtonState() == "PUSHED" ) then
             button:SetButtonState("NORMAL")
         end
