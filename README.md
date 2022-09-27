@@ -57,7 +57,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 *Hides the macros on the action bars.*
 
 - **Quick Actions**    
-*mods\actionbar-quick-actions.lua*    
+*actionbar-quick-actions.lua*    
 *Action buttons will be activated on key down.*
 
 - **Mouseover Bars**    
