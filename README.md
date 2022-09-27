@@ -17,6 +17,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 ## Mods
 *mods\actionbar-hide-hotkey.lua*    
 *mods\actionbar-hide-macro.lua*    
+*mods\actionbar-quick-actions.lua*    
 *mods\actionbar-mouseover-bar-bottomleft.lua*    
 *mods\actionbar-mouseover-bar-bottomright.lua*    
 *mods\actionbar-mouseover-bar-right.lua*    
@@ -54,6 +55,10 @@ Code from [pfUI](https://shagu.org/pfUI/)
 - **Hide Macro Text**    
 *actionbar-hide-macro.lua*    
 *Hides the macros on the action bars.*
+
+- **Quick Actions**    
+*mods\actionbar-quick-actions.lua*    
+*Action buttons will be activated on key down.*
 
 - **Mouseover Bars**    
 *The relevant action bar must be enabled in 'Interface Options' > 'Advanced Options'.*    
