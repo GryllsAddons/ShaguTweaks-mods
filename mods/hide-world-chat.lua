@@ -36,14 +36,13 @@ function WorldChat(inInstance)
 	end
 	
 	if ChatFrameWorld then
-		DEFAULT_CHAT_FRAME:AddMessage("ChatFrameWorld = "..ChatFrameWorld:GetName())
 		if (inInstance == 1) then
 			ChatFrame_RemoveChannel(ChatFrameWorld, name)
-			DEFAULT_CHAT_FRAME:AddMessage("Left world on chatframe "..ChatFrameWorld:GetName())
+			-- DEFAULT_CHAT_FRAME:AddMessage("Left world on chatframe "..ChatFrameWorld:GetName())
 			ChatFrameLeftWorld = ChatFrameWorld
 		else
 			JoinChannelByName("world", nil, ChatFrameWorld:GetID())
-			DEFAULT_CHAT_FRAME:AddMessage("Joined world on chatframe "..ChatFrameWorld:GetName())
+			-- DEFAULT_CHAT_FRAME:AddMessage("Joined world on chatframe "..ChatFrameWorld:GetName())
 			ChatFrameLeftWorld = nil
 		end
 	end
