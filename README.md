@@ -3,11 +3,10 @@ Custom mods for the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon.
 These mods aim to preserve the spirit of the default UI while providing modern quality of life features.
 
 ## Credit
-Credit to [shagu](https://github.com/shagu)
-<br>
-Code from [ShaguTweaks](https://shagu.org/ShaguTweaks/)
-<br>
-Code from [pfUI](https://shagu.org/pfUI/)
+Credit to [shagu](https://github.com/shagu)    
+Code from [ShaguTweaks](https://shagu.org/ShaguTweaks/)    
+Code from [pfUI](https://shagu.org/pfUI/)    
+Code from [zUI](https://github.com/Ko0z/zUI)
 
 ## Installation
 1. Copy the .lua files inside the mods folder to <i>\Interface\AddOns\ShaguTweaks\mods</i>
