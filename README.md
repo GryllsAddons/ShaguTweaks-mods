@@ -29,6 +29,7 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 *mods\cursor-tooltip.lua*    
 *mods\hide-combat-tooltip.lua*    
 *mods\hide-ui-frames.lua*    
+*mods\hide-world-chat.lua*    
 *mods\improved-advanced-options.lua*    
 *mods\improved-castbar.lua*    
 *mods\improved-interface-options.lua*    
@@ -42,7 +43,7 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 *mods\unitframes-classportrait-tot.lua*    
 *mods\unitframes-combat-indicator.lua*    
 *mods\unitframes-energy-tick.lua*    
-*mods\unitframes-nameclasscolor.lua*
+*mods\unitframes-nameclasscolor.lua*    
 
 ## Features
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=40% height=40%/>
@@ -116,6 +117,10 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 - **Hide UI Frames**    
 *hide-ui-frames.lua*    
 *Hides the player and pet frame based on conditions.*
+
+- **World Chat Hider**    
+*hide-world-chat.lua*    
+*Looks for world chat in the chat frames and hides it while in an instance.*
 
 - **Improved Advanced Options**    
 *improved-advanced-options.lua*    
