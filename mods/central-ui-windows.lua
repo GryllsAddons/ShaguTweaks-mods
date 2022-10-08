@@ -18,6 +18,7 @@ local module = ShaguTweaks:register({
 
 module.enable = function(self)
     local function move(f,e,x,y)
+        if not f then return end
         f:ClearAllPoints()            
         f:SetClampedToScreen(true)
         f:SetPoint(e, UIParent, "CENTER", x, y)
@@ -40,8 +41,7 @@ module.enable = function(self)
             move(SpellBookFrame,"RIGHT",0,0)
             -- right frames
             move(DressUpFrame,"LEFT",0,0)
-            move(FriendsFrame,"LEFT",0,0)
-            move(InspectFrame,"LEFT",0,0)
+            move(FriendsFrame,"LEFT",0,0)            
             move(TalentFrame,"LEFT",0,0)
             -- center frames
             move(BankFrame,"CENTER",0,0)
@@ -65,6 +65,7 @@ module.enable = function(self)
                 move(SurvivalUI_GUI,"CENTER",0,0)
             end        
         elseif (event == "ADDON_LOADED") then
+            move(InspectFrame,"LEFT",0,0)
             -- fires when clicking the main menu or trade skill buttons for the first time
             if CraftFrame then
                 move(CraftFrame,"CENTER",15,0)

@@ -156,7 +156,8 @@ module.enable = function(self)
                 distIndex = 2
             end
         elseif action == "inspect" or action == "duel" then
-            if not UnitIsUnit("player", unit) and UnitIsPlayer(unit) then
+            -- if not UnitIsUnit("player", unit) and UnitIsPlayer(unit) then
+            if UnitIsPlayer(unit) then
                 distIndex = 3
             end
         elseif action == "follow" then
