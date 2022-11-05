@@ -10,7 +10,7 @@ local module = ShaguTweaks:register({
     enabled = nil,
 })
 
-function WorldChat(inInstance)
+local function WorldChat(inInstance)
 	local findChannel = function(ChatFrame, name)  
 		for index, value in ChatFrame.channelList do
 			if (strupper(name) == strupper(value)) then
@@ -37,7 +37,7 @@ function WorldChat(inInstance)
 	
 	if ChatFrameWorld then
 		if (inInstance == 1) then
-			ChatFrame_RemoveChannel(ChatFrameWorld, name)
+			ChatFrame_RemoveChannel(ChatFrameWorld, "world")
 			-- DEFAULT_CHAT_FRAME:AddMessage("Left world on chatframe "..ChatFrameWorld:GetName())
 			ChatFrameLeftWorld = ChatFrameWorld
 		else
