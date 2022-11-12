@@ -2,7 +2,6 @@ local module = ShaguTweaks:register({
     title = "Improved Castbar",
     description = "Adds a spell icon and remaining cast time to the cast bar.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
     enabled = nil,
 })
 
