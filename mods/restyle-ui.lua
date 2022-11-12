@@ -40,7 +40,7 @@ module.enable = function(self)
     local function buffs()
         -- Buff font
         local font, size, outline = "Fonts\\FRIZQT__.TTF", 9, "OUTLINE"
-        local yoffset = 3
+        local yoffset = -5
         local f = CreateFrame("Frame", nil, GryllsMinimap)
         f:SetFrameStrata("HIGH")
 
