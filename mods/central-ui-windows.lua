@@ -42,7 +42,6 @@ module.enable = function(self)
             -- right frames
             move(DressUpFrame,"LEFT",0,0)
             move(FriendsFrame,"LEFT",0,0)            
-            move(TalentFrame,"LEFT",0,0)
             -- center frames
             move(BankFrame,"CENTER",0,0)
             move(GossipFrame,"CENTER",5,0)
@@ -66,6 +65,7 @@ module.enable = function(self)
             end        
         elseif (event == "ADDON_LOADED") then
             move(InspectFrame,"LEFT",0,0)
+            move(TalentFrame,"LEFT",0,0)
             -- fires when clicking the main menu or trade skill buttons for the first time
             if CraftFrame then
                 move(CraftFrame,"CENTER",15,0)
