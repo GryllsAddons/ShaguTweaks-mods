@@ -78,8 +78,8 @@ module.enable = function(self)
         ChatFrame_RemoveChannel(ChatFrame1, chan)
         end
     
-        JoinChannelByName("World")
-        ChatFrame_AddChannel(ChatFrame3, "World")
+        -- JoinChannelByName("World")
+        -- ChatFrame_AddChannel(ChatFrame3, "World")
     end
 
     local events = CreateFrame("Frame", nil, UIParent)	
