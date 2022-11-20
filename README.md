@@ -9,8 +9,8 @@ Code from [pfUI](https://shagu.org/pfUI/)
 Code from [zUI](https://github.com/Ko0z/zUI)
 
 ## Installation
-1. Copy the .lua files inside the mods folder to <i>\Interface\AddOns\ShaguTweaks\mods</i>
-2. Add the appropriate line(s) from the mods section below to <i>\Interface\AddOns\ShaguTweaks\ShaguTweaks.toc</i>
+1. Copy the "ShaguTweaks" folder within the "ShaguTweaks-Mods-main" folder inside the .zip) to <i>\Interface\AddOns\</i>
+2. Replace/overwrite any existing files when copying.</i>
 3. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 
 ## Mods
