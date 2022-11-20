@@ -137,7 +137,7 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 
 - **Improved Roll Frames**   
 *mods\improved-roll-frames.lua*     
-*Restyles the roll frames, tracks who has clicked need/greed/pass (requires "Detailed Loot information" to be checked in interface options).*
+*Restyles the roll frames, shows who has clicked need/greed/pass (requires "Detailed Loot information" to be checked in interface options).*
 
 - **Loot Monitor**    
 *mods\loot-monitor.lua*    
