@@ -1,0 +1,100 @@
+## Interface: 11200
+## Title: |cffffcc00Shagu|cffffffffTweaks
+## Author: Shagu
+## Notes: A collection of tweaks and enhancements to the Default UI
+## Version: GIT
+## SavedVariablesPerCharacter: ShaguTweaks_config, ShaguTweaks_cache
+
+# locales
+locales\locales_deDE.lua
+locales\locales_enUS.lua
+locales\locales_esES.lua
+locales\locales_frFR.lua
+locales\locales_koKR.lua
+locales\locales_ruRU.lua
+locales\locales_zhCN.lua
+
+# basic
+main.lua
+helpers.lua
+config.lua
+
+# libraries
+libs\libtipscan.lua
+libs\libspell.lua
+libs\libcast.lua
+libs\libdebuff.lua
+libs\libunitscan.lua
+libs\libhealth.lua
+libs\libnameplate.lua
+
+# custom
+mods\custom.lua
+
+# ShaguTweaks-Mods
+mods\actionbar-hide-hotkey.lua
+mods\actionbar-hide-macro.lua
+mods\actionbar-quick-actions.lua
+mods\actionbar-mouseover-bar-bottomleft.lua
+mods\actionbar-mouseover-bar-bottomright.lua
+mods\actionbar-mouseover-bar-right.lua
+mods\actionbar-mouseover-bar-right2.lua
+mods\actionbar-improved-expbar.lua
+mods\basic-chat.lua
+mods\central-ui.lua
+mods\central-ui-windows.lua
+mods\chat-tweaks-extended.lua
+mods\cursor-tooltip.lua
+mods\hide-combat-tooltip.lua
+mods\hide-ui-frames.lua
+mods\hide-world-chat.lua
+mods\improved-advanced-options.lua
+mods\improved-castbar.lua
+mods\improved-interface-options.lua
+mods\improved-roll-frames.lua
+mods\loot-monitor.lua
+mods\minimap-framerate-latency.lua
+mods\minimap-timer.lua
+mods\modifier-actions.lua
+mods\pet-happiness-colors.lua
+mods\restyle-ui.lua
+mods\smaller-errors-frame.lua
+mods\unitframes-classportrait-tot.lua
+mods\unitframes-combat-indicator.lua
+mods\unitframes-energy-tick.lua
+mods\unitframes-nameclasscolor.lua
+
+# modules
+mods\dark-ui-elements.lua
+mods\equip-compare.lua
+mods\minimap-clock.lua
+mods\minimap-square.lua
+mods\minimap-tweaks.lua
+mods\nameplate-scale.lua
+mods\sell-junk.lua
+mods\unitframes-classcolor.lua
+mods\vendor-values.lua
+mods\worldmap-coordinates.lua
+mods\worldmap-window.lua
+mods\blue-shaman.lua
+mods\nameplate-classcolor.lua
+mods\move-unitframes.lua
+mods\target-castbar.lua
+mods\target-debufftimer.lua
+mods\social-colors.lua
+mods\item-colors.lua
+mods\chat-links.lua
+mods\health-numbers.lua
+mods\health-color.lua
+mods\auto-dismount.lua
+mods\auto-stance.lua
+mods\tooltip-details.lua
+mods\hide-errors.lua
+mods\chat-tweaks.lua
+mods\hide-gryphons.lua
+mods\worldmap-colors.lua
+mods\unitframes-bighealth.lua
+mods\unitframes-classportrait.lua
+mods\cooldown-numbers.lua
+mods\turtle-health.lua
+mods\reduced-actionbar.lua
