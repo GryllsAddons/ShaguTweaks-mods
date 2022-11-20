@@ -88,11 +88,11 @@ module.enable = function(self)
     function ShaguTweaks.roll:CreateLootRoll(id)
     local size = 20
     -- local rawborder, border = GetBorderSize()
+    local border = 4
     local esize = 20
     local f = CreateFrame("Frame", "STLootRollFrame" .. id, UIParent)
 
-    local function CreateBackdrop(f,b,a)
-        
+    local function CreateBackdrop(f,b,a)        
         if not f then return end
         f.backdrop = CreateFrame("Frame", nil, f)
         f.backdrop:SetPoint("TOPLEFT", f, "TOPLEFT", -b, b)
@@ -108,7 +108,7 @@ module.enable = function(self)
         f.backdrop:SetBackdropBorderColor(1, 1, 1, a)
     end
 
-    CreateBackdrop(f, 4, .1)
+    CreateBackdrop(f, border, .1)
     -- CreateBackdrop(f, nil, nil, .8)
     -- CreateBackdropShadow(f)
     f.backdrop:SetFrameStrata("BACKGROUND")
@@ -118,7 +118,7 @@ module.enable = function(self)
     f:SetHeight(size)
 
     f.icon = CreateFrame("Button", "STLootRollFrame" .. id .. "Icon", f)
-    CreateBackdrop(f.icon, 4, .1)
+    CreateBackdrop(f.icon, border, .1)
     f.icon:SetPoint("LEFT", f, "LEFT", -30, 0)
     f.icon:SetWidth(esize*1.2)
     f.icon:SetHeight(esize*1.2)
