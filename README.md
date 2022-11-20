@@ -1,5 +1,5 @@
 # ShaguTweaks-Mods
-Custom mods for the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon.    
+Adds additional custom mods to the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon.    
 These mods aim to preserve the spirit of the default UI while providing modern quality of life features.
 
 ## Credit
@@ -9,44 +9,13 @@ Code from [pfUI](https://shagu.org/pfUI/)
 Code from [zUI](https://github.com/Ko0z/zUI)
 
 ## Installation
-1. Copy the "ShaguTweaks" folder within the "ShaguTweaks-Mods-main" folder inside the .zip) to <i>\Interface\AddOns\</i>
-2. Replace/overwrite any existing files when copying.</i>
-3. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
+1. The "ShaguTweaks" folder provided with this .zip contains the mods and a .toc file to allow the mods to load.
+2. Copy the "ShaguTweaks" folder within the "ShaguTweaks-Mods-main" folder inside the .zip) to "\Interface\AddOns\"    
+3. Replace/overwrite any existing files when copying
+4. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
+5. When updating the ShaguTweaks addon, don't overwrite the .toc file supplied inside the "ShaguTweaks" folder mentioned above.
 
 ## Mods
-*mods\actionbar-hide-hotkey.lua*    
-*mods\actionbar-hide-macro.lua*    
-*mods\actionbar-quick-actions.lua*    
-*mods\actionbar-mouseover-bar-bottomleft.lua*    
-*mods\actionbar-mouseover-bar-bottomright.lua*    
-*mods\actionbar-mouseover-bar-right.lua*    
-*mods\actionbar-mouseover-bar-right2.lua*    
-*mods\actionbar-improved-expbar.lua*    
-*mods\basic-chat.lua*    
-*mods\central-ui.lua*    
-*mods\central-ui-windows.lua*    
-*mods\chat-tweaks-extended.lua*    
-*mods\cursor-tooltip.lua*    
-*mods\hide-combat-tooltip.lua*    
-*mods\hide-ui-frames.lua*    
-*mods\hide-world-chat.lua*    
-*mods\improved-advanced-options.lua*    
-*mods\improved-castbar.lua*    
-*mods\improved-interface-options.lua*    
-*mods\improved-roll-frames.lua*    
-*mods\loot-monitor.lua*    
-*mods\minimap-framerate-latency.lua*    
-*mods\minimap-timer.lua*    
-*mods\modifier-actions.lua*    
-*mods\pet-happiness-colors.lua*    
-*mods\restyle-ui.lua*    
-*mods\smaller-errors-frame.lua*    
-*mods\unitframes-classportrait-tot.lua*    
-*mods\unitframes-combat-indicator.lua*    
-*mods\unitframes-energy-tick.lua*    
-*mods\unitframes-nameclasscolor.lua*    
-
-## Features
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=40% height=40%/>
 
 - **Hide Hotkey Text**    
