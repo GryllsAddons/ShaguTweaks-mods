@@ -9,7 +9,7 @@ Code from [pfUI](https://shagu.org/pfUI/)
 Code from [zUI](https://github.com/Ko0z/zUI)
 
 ## Installation
-1. The "ShaguTweaks" folder provided with this .zip contains the mods and a .toc file to allow the mods to load.
+1. The "ShaguTweaks" folder provided with this download contains the mods and a .toc file to allow the mods to load.
 2. Copy the "ShaguTweaks" folder within the "ShaguTweaks-Mods-main" folder inside the .zip) to "\Interface\AddOns\"    
 3. Replace/overwrite any existing files when copying
 4. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
