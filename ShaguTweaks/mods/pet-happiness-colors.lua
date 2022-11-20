@@ -25,6 +25,7 @@ module.enable = function(self)
 
   local events = CreateFrame("Frame", nil, UIParent)
   events:RegisterEvent("UNIT_PET", "player")
+  events:RegisterEvent("UNIT_LOYALTY")
   events:SetScript("OnEvent", function()
     color("pet")
   end)
