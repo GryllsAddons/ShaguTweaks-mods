@@ -33,6 +33,7 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 *mods\improved-advanced-options.lua*    
 *mods\improved-castbar.lua*    
 *mods\improved-interface-options.lua*    
+*mods\improved-roll-frames.lua*    
 *mods\loot-monitor.lua*    
 *mods\minimap-framerate-latency.lua*    
 *mods\minimap-timer.lua*    
@@ -49,15 +50,15 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=40% height=40%/>
 
 - **Hide Hotkey Text**    
-*actionbar-hide-hotkey.lua*    
+*mods\actionbar-hide-hotkey.lua*    
 *Hides the hotkeys on the action bars.*
 
 - **Hide Macro Text**    
-*actionbar-hide-macro.lua*    
+*mods\actionbar-hide-macro.lua*    
 *Hides the macros on the action bars.*
 
 - **Quick Actions**    
-*actionbar-quick-actions.lua*    
+*mods\actionbar-quick-actions.lua*    
 *Action buttons will be activated on key down.*
 
 - **Mouseover Bars**    
@@ -65,77 +66,81 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 *Please reload the UI after enabling or disabling the action bar.*    
 
   ****Mouseover Bottom Left****    
-  *actionbar-mouseover-bar-bottomleft.lua*    
+  *mods\actionbar-mouseover-bar-bottomleft.lua*    
   *Hide the Bottom Left ActionBar and show on mouseover.*    
   *The pet/shapeshift/aura/stance bars will not be clickable if in the same position as the mouseover bar.*    
 
   ****Mouseover Bottom Right****    
-  *actionbar-mouseover-bar-bottomright.lua*    
+  *mods\actionbar-mouseover-bar-bottomright.lua*    
   *Hide the Bottom Right ActionBar and show on mouseover.*    
   *The pet/shapeshift/aura/stance bars will not be clickable if in the same position as the mouseover bar.*    
 
   ****Mouseover Right****    
-  *actionbar-mouseover-bar-right.lua*    
+  *mods\actionbar-mouseover-bar-right.lua*    
   *Hide the Right ActionBar and show on mouseover.*    
 
   ****Mouseover Right 2****    
-  *actionbar-mouseover-bar-right2.lua*    
+  *mods\actionbar-mouseover-bar-right2.lua*    
   *Hide the Right ActionBar 2 and show on mouseover.*
 
 - **Improved Exp Bar**    
-*actionbar-improved-expbar.lua*    
+*mods\actionbar-improved-expbar.lua*    
 *Improved exp information on mouseover.*    
 *Shows rested percent while resting and changes color when fully rested.*
 
 - **Basic Chat**    
-*basic-chat.lua*    
+*mods\basic-chat.lua*    
 *Creates General, Combat Log and 'Loot & Spam' chat boxes and resets chat channels on every login.*
 
 - **Central UI**    
-*central-ui.lua*    
+*mods\central-ui.lua*    
 *Moves unit frames, minimap and buffs to a central layout.*
 
 - **Central UI Windows**    
-*central-ui-windows.lua*    
+*mods\central-ui-windows.lua*    
 *Moves interaction windows to a central layout.*    
 
 
 - **Chat Tweaks Extended**    
-*chat-tweaks-extended.lua*    
+*mods\chat-tweaks-extended.lua*    
 *Extends "Chat Tweaks".*    
 *Removes chat buttons, shortens channel names, shows item links on mouseover, adds Alt click chat names to invite and Ctrl click chat names to target.*
 
 - **Cursor Tooltip**    
-*cursor-tooltip.lua*    
+*mods\cursor-tooltip.lua*    
 *Attaches the tooltip to the cursor.*
 
 - **Hide Combat Tooltip**    
-*hide-combat-tooltip.lua*    
+*mods\hide-combat-tooltip.lua*    
 *Hides the tooltip while in combat.*
 *While in combat, holding shift will show the tooltip.*
 
 - **Hide UI Frames**    
-*hide-ui-frames.lua*    
+*mods\hide-ui-frames.lua*    
 *Hides the player and pet frame based on conditions.*
 
 - **World Chat Hider**    
-*hide-world-chat.lua*    
+*mods\hide-world-chat.lua*    
 *Looks for world chat in the chat frames and hides it while in an instance.*
 
 - **Improved Advanced Options**    
-*improved-advanced-options.lua*    
+*mods\improved-advanced-options.lua*    
 *Rescales the Advanced Options menu to fit the increased number of mods.*
 
 - **Improved Castbar**    
-*improved-castbar.lua*    
+*mods\improved-castbar.lua*    
 *Adds a spell icon and remaining cast time to the castbar.*
 
 - **Improved Interface Options**   
-*improved-interface-options.lua*     
+*mods\improved-interface-options.lua*     
 *Rescales the interface options menu and removes the background.*
 
+- **Improved Roll Frames**   
+*mods\improved-roll-frames.lua*     
+*Restyles the roll frames, tracks who has clicked need/greed/pass (requires "Detailed Loot information" to be checked in interface options).*
+
 - **Loot Monitor**    
-*loot-monitor.lua*    
+*mods\loot-monitor.lua*    
 *Display recent loot text in a central scrolling window.*    
 *Hold Alt or Alt+Shift to scroll*    
 *Hold Alt+Ctrl while scrolling to filter by quality.*    
@@ -144,47 +149,47 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 *Items looted over 10 minutes ago will be shown at 25% transparency.*
 
 - **MiniMap Framerate & Latency**    
-*minimap-framerate-latency.lua*    
+*mods\minimap-framerate-latency.lua*    
 *Adds a small framerate & latency display to the mini map.*
 
 - **MiniMap Timer**    
-*minimap-timer.lua*    
+*mods\minimap-timer.lua*    
 *Adds a togglable timer to the minimap clock.*    
 *Left click the clock to toggle the timer.*    
 *Left click the timer to start or right click to reset.*
 
 - **Modifier Actions**    
-*modifier-actions.lua*    
+*mods\modifier-actions.lua*    
 *Use Ctrl (C), Alt (A) & Shift (S) for in game actions.*    
 *CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, S: Sell & Repair.*
 
 - **Pet Happiness Colors**    
-*pet-happiness-colors.lua*    
+*mods\pet-happiness-colors.lua*    
 *Colors Hunter pet healthbar by happiness.*
 
 - **Restyle UI**    
-*restyle-ui.lua*    
+*mods\restyle-ui.lua*    
 *Restyles supported addons, buffs, buttons, minimap and unit names.*    
 *If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned to the bottom left of the minimap and will shown on mouseover.*
 
 - **Smaller Errors Frame**    
-*smaller-errors-frame.lua*    
+*mods\smaller-errors-frame.lua*    
 *Resizes the error frame to 1 line instead of 3.*    
 
 - **Unit Frame Class Portraits ToT**    
-*unitframes-classportrait-tot.lua*    
+*mods\unitframes-classportrait-tot.lua*    
 *Extends class portraits to Target of Target.*
 
 - **Unit Frame Combat Indicator**    
-*unitframes-combat-indicator.lua*    
+*mods\unitframes-combat-indicator.lua*    
 *Adds a combat indicator to the target frame.*
 
 - **Unit Frame Energy & Mana Tick**    
-*unitframes-energy-tick.lua*    
+*mods\unitframes-energy-tick.lua*    
 *Adds an energy & mana tick to the player frame.*
 
 - **Unit Frame Name Class Colors**    
-*unitframes-nameclasscolor.lua*   
+*mods\unitframes-nameclasscolor.lua*   
 *Adds name class colors to the player, pet, target, tot and party unit frames.*
 
 ## Screenshots
