@@ -10,10 +10,10 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 
 ## Installation
 1. The "ShaguTweaks" folder provided with this download contains the mods and a .toc file to allow the mods to load.
-2. Copy the "ShaguTweaks" folder within the "ShaguTweaks-Mods-main" folder inside the .zip) to "\Interface\AddOns\"    
+2. Copy the "ShaguTweaks" folder (within the "ShaguTweaks-Mods-main" folder inside the .zip) to "\Interface\AddOns\"    
 3. Replace/overwrite any existing files when copying
 4. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
-5. When updating the ShaguTweaks addon, don't overwrite the .toc file supplied inside the "ShaguTweaks" folder mentioned above.
+5. When updating the ShaguTweaks addon, don't overwrite the .toc file supplied inside the "ShaguTweaks" folder
 
 ## Mods
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=40% height=40%/>
