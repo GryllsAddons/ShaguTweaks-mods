@@ -20,13 +20,25 @@ local function chatbuttons()
         _G["ChatFrame" .. i .. "DownButton"].Show = function() return end
         _G["ChatFrame" .. i .. "BottomButton"]:Hide()
         _G["ChatFrameMenuButton"]:Hide()
-        _G["ChatFrameMenuButton"].Show = function() return end            
+        _G["ChatFrameMenuButton"].Show = function() return end
 
         -- hide BottomButton on click
         _G["ChatFrame" .. i .. "BottomButton"]:SetScript("OnClick", function()
             this:GetParent():ScrollToBottom()
             this:Hide()
         end)
+    end
+
+    -- Hook FCF_Tab_OnClick
+    if not HookFCF_Tab_OnClick then
+        local HookFCF_Tab_OnClick = FCF_Tab_OnClick
+        function _G.FCF_Tab_OnClick()
+            HookFCF_Tab_OnClick()
+            for i=1, NUM_CHAT_WINDOWS do
+                _G["ChatFrame" .. i]:ScrollToBottom()
+                _G["ChatFrame" .. i .. "BottomButton"]:Hide()                
+            end
+        end
     end
 end
 
