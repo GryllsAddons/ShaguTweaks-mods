@@ -13,6 +13,7 @@ local module = ShaguTweaks:register({
     aux
     AdvancedTradeSkillWindow
     SuperMacro
+    SuperInspect
     SurvivalUI 
 ]]
 
@@ -41,7 +42,7 @@ module.enable = function(self)
             move(SpellBookFrame,"RIGHT",0,0)
             -- right frames
             move(DressUpFrame,"LEFT",0,0)
-            move(FriendsFrame,"LEFT",0,0)            
+            move(FriendsFrame,"LEFT",0,0)       
             -- center frames
             move(BankFrame,"CENTER",0,0)
             move(GossipFrame,"CENTER",5,0)
@@ -60,9 +61,12 @@ module.enable = function(self)
             if SuperMacroFrame then
                 move(SuperMacroFrame,"CENTER",15,0)
             end
+            if SuperInspectFrame then
+                move(SuperInspectFrame,"LEFT",25,30)
+            end
             if SurvivalUI_GUI then
                 move(SurvivalUI_GUI,"CENTER",0,0)
-            end        
+            end
         elseif (event == "ADDON_LOADED") then
             move(InspectFrame,"LEFT",0,0)
             move(TalentFrame,"LEFT",0,0)
