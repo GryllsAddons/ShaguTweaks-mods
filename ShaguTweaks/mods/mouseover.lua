@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
   title = "Mouseover Cast",
-  description = "Adds /stcast and /stcastself functions",
+  description = "Adds /stcast and /stcastself functions for use in macros.",
   expansions = { ["vanilla"] = true, ["tbc"] = false },
   enabled = false,
 })
