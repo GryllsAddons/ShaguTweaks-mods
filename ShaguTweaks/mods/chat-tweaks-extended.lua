@@ -29,15 +29,15 @@ local function chatbuttons()
         end)
     end
 
-    -- Hook FCF_Tab_OnClick
-    if not HookFCF_Tab_OnClick then
-        local HookFCF_Tab_OnClick = FCF_Tab_OnClick
-        function _G.FCF_Tab_OnClick()
-            HookFCF_Tab_OnClick()
+    -- Hook FCF_DockUpdate
+    if not HookFCF_DockUpdate then
+        local HookFCF_DockUpdate = FCF_DockUpdate
+        function _G.FCF_DockUpdate() 
             for i=1, NUM_CHAT_WINDOWS do
                 _G["ChatFrame" .. i]:ScrollToBottom()
                 _G["ChatFrame" .. i .. "BottomButton"]:Hide()                
             end
+            HookFCF_DockUpdate()
         end
     end
 end
