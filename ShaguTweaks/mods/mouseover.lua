@@ -43,6 +43,12 @@ module.enable = function(self)
   end
 
   function SlashCmdList.STCASTSELF(msg)
-    CastSpellByName(msg, 1)
+    local oldt = true
+    if UnitIsUnit("target", "player") then oldt = nil end
+    TargetUnit("player")
+    CastSpellByName(msg)
+    if oldt then
+      TargetLastTarget()
+    end
   end
 end
