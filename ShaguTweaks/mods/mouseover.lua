@@ -44,8 +44,7 @@ module.enable = function(self)
           return
         end
     end
-    cast(unit, msg)
-    
+    cast(unit, msg)    
   end
 
   function SlashCmdList.STCASTSELF(msg)
