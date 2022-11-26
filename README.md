@@ -132,6 +132,10 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 *Use Ctrl (C), Alt (A) & Shift (S) for in game actions.*    
 *CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, S: Sell & Repair.*
 
+- **Mouseover Cast**    
+*mods\mouseover.lua*    
+*Adds /stcast and /stcastself functions for use in macros.*
+
 - **Pet Happiness Colors**    
 *mods\pet-happiness-colors.lua*    
 *Colors Hunter pet healthbar by happiness.*
