@@ -56,6 +56,7 @@ mods\loot-monitor.lua
 mods\minimap-framerate-latency.lua
 mods\minimap-timer.lua
 mods\modifier-actions.lua
+mods\mouseover.lua
 mods\pet-happiness-colors.lua
 mods\restyle-ui.lua
 mods\smaller-errors-frame.lua
