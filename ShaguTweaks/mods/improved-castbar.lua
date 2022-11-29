@@ -6,7 +6,7 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-    local _G = _G or getfenv(0)
+    local _G = _G or getfenv(0)    
 
     local UnitCastingInfo = ShaguTweaks.UnitCastingInfo
     local UnitChannelInfo = ShaguTweaks.UnitChannelInfo
@@ -45,6 +45,8 @@ module.enable = function(self)
 
     CastingBarText:Hide()
 
+    local name = GetUnitName("player")
+
     castbar:SetScript("OnUpdate", function()
         local cast, nameSubtext, text, texture, startTime, endTime, isTradeSkill = UnitCastingInfo("player")
         if not cast then
@@ -56,7 +58,7 @@ module.enable = function(self)
         castbar:SetAlpha(alpha)
 
         if cast then
-            local channel = UnitChannelInfo("player")
+            local channel = UnitChannelInfo(name)
             local duration = endTime - startTime
             local max = duration / 1000
             local cur = GetTime() - startTime / 1000
