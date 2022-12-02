@@ -1,5 +1,5 @@
 # ShaguTweaks-Mods
-Adds additional custom mods to the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon.    
+Adds additional vanilla 1.12 custom mods to the [ShaguTweaks](https://shagu.org/ShaguTweaks/) addon.    
 These mods aim to preserve the spirit of the default UI while providing modern quality of life features.
 
 ## Credit
