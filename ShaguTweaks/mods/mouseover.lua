@@ -1,3 +1,5 @@
+local _G = _G or getfenv(0)
+
 local module = ShaguTweaks:register({
   title = "Mouseover Cast",
   description = "Adds /stcast and /stcastself functions for use in macros.",
