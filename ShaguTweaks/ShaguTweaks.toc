@@ -34,12 +34,13 @@ mods\custom.lua
 # ShaguTweaks-Mods
 mods\actionbar-hide-hotkey.lua
 mods\actionbar-hide-macro.lua
-mods\actionbar-quick-actions.lua
+mods\actionbar-improved-expbar.lua
 mods\actionbar-mouseover-bar-bottomleft.lua
 mods\actionbar-mouseover-bar-bottomright.lua
 mods\actionbar-mouseover-bar-right.lua
 mods\actionbar-mouseover-bar-right2.lua
-mods\actionbar-improved-expbar.lua
+mods\actionbar-quick-actions.lua
+mods\actionbar-range-color.lua
 mods\basic-chat.lua
 mods\central-ui.lua
 mods\central-ui-windows.lua
