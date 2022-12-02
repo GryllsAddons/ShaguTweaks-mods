@@ -57,6 +57,10 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 *Improved exp information on mouseover.*    
 *Shows rested percent while resting and changes color when fully rested.*
 
+- **Range Color**    
+*mods\actionbar-range-color.lua*    
+*Action buttons will be colored red when out of range.*
+
 - **Basic Chat**    
 *mods\basic-chat.lua*    
 *Creates General, Combat Log and 'Loot & Spam' chat boxes and resets chat channels on every login.*
