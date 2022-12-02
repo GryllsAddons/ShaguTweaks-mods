@@ -15,6 +15,10 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 4. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options)
 5. When updating the ShaguTweaks addon, don't overwrite the .toc file supplied inside the "ShaguTweaks" folder
 
+### Optional Install
+The download contains an optional image file containing alternative high resolution unitframe class icons (UI-Classes-Circles.tga).    
+Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
+
 ## Mods
 <img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=40% height=40%/>
 
