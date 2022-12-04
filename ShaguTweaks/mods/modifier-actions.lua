@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Modifier Actions",
-    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, S: Sell & Repair.",
+    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, A: Release/Resurrect, S: Sell & Repair.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -147,6 +147,17 @@ module.enable = function(self)
         end
     end
 
+    function actions:Resurrect()
+        if actions.resurrect and UnitIsDeadOrGhost("player") then
+            actions.resurrect = nil
+            AcceptResurrect()
+        elseif UnitIsGhost("player") then
+            RetrieveCorpse()
+        elseif UnitIsDead("player") then
+            RepopMe()        
+        end
+    end
+
     function actions:CheckInteractable(unit, action)
         if not UnitExists(unit) then return false end
         
@@ -200,6 +211,8 @@ module.enable = function(self)
         elseif (event == "MERCHANT_CLOSED") then
             actions.merchant = nil
             autovendor:Hide()
+        elseif (event == "RESURRECT_REQUEST") then
+            actions.resurrect = true
         end
     end)
     
@@ -218,6 +231,8 @@ module.enable = function(self)
             actions:Follow()
         elseif (actions.alt and actions.shift) then
             actions:Inspect()
+        elseif (actions.alt) then
+            actions:Resurrect()
         elseif (actions.shift) then
             actions:Merchant()
         end
