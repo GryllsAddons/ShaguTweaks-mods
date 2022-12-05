@@ -113,8 +113,7 @@ module.enable = function(self)
         gradientcolors[index].h
     end
 
-    -- Framerate
-    MinimapFPS:Show()
+    -- Framerate    
     MinimapFPS:EnableMouse(true)
     
     local currFPS = 0
@@ -164,7 +163,6 @@ module.enable = function(self)
     end)
 
     -- Latency
-    MinimapMS:Show()
     MinimapMS:EnableMouse(true)
     
     local currMS = 0
@@ -212,4 +210,12 @@ module.enable = function(self)
     MinimapMS:SetScript("OnLeave", function()
         GameTooltip:Hide()
     end)
+
+    local events = CreateFrame("Frame", nil, UIParent)
+    events:RegisterEvent("PLAYER_ENTERING_WORLD")
+
+    events:SetScript("OnEvent", function()
+        MinimapMS:Show()
+        MinimapFPS:Show()
+    end)   
 end
