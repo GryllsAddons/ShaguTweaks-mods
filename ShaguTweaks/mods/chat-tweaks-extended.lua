@@ -27,6 +27,7 @@ local function chatbuttons()
             this:GetParent():ScrollToBottom()
             this:Hide()
         end)
+
     end
 
     -- Hook FCF_DockUpdate
@@ -34,8 +35,10 @@ local function chatbuttons()
         local HookFCF_DockUpdate = FCF_DockUpdate
         function _G.FCF_DockUpdate() 
             for i=1, NUM_CHAT_WINDOWS do
-                _G["ChatFrame" .. i]:ScrollToBottom()
-                _G["ChatFrame" .. i .. "BottomButton"]:Hide()                
+                if not _G["ChatFrame" .. i].scroll then
+                    _G["ChatFrame" .. i]:ScrollToBottom()
+                    _G["ChatFrame" .. i .. "BottomButton"]:Hide()
+                end             
             end
             HookFCF_DockUpdate()
         end
@@ -62,7 +65,9 @@ local function ChatOnMouseWheel()
     end    
     if ( this:AtBottom() ) then
         _G[this:GetName().."BottomButton"]:Hide()
+        this.scroll = nil
     else
+        this.scroll = true
         _G[this:GetName().."BottomButton"]:Show()
     end
 end
@@ -71,6 +76,7 @@ local function chatscroll()
     for i=1, NUM_CHAT_WINDOWS do
         -- enable mouse wheel scrolling
         _G["ChatFrame" .. i]:EnableMouseWheel(true)
+        _G["ChatFrame" .. i].scroll = nil
         _G["ChatFrame" .. i]:SetScript("OnMouseWheel", ChatOnMouseWheel)
     end
 end
@@ -139,8 +145,8 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
-        chatbuttons()
         chatscroll()
+        chatbuttons()
         mouseoverlinks()
         clicklinks()
         channelindicators()
