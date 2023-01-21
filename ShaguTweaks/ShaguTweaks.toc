@@ -64,6 +64,7 @@ mods\smaller-errors-frame.lua
 mods\unitframes-combat-indicator.lua
 mods\unitframes-energy-tick.lua
 mods\unitframes-nameclasscolor.lua
+mods\unitframes-whitemana.lua
 
 # modules
 mods\dark-ui-elements.lua
