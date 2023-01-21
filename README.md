@@ -155,11 +155,7 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 
 - **Smaller Errors Frame**    
 *mods\smaller-errors-frame.lua*    
-*Resizes the error frame to 1 line instead of 3.*    
-
-- **Unit Frame Class Portraits ToT**    
-*mods\unitframes-classportrait-tot.lua*    
-*Extends class portraits to Target of Target.*
+*Resizes the error frame to 1 line instead of 3.*
 
 - **Unit Frame Combat Indicator**    
 *mods\unitframes-combat-indicator.lua*    
@@ -209,9 +205,6 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Roll2.png)  
 *Improved Roll Frames*
-
-![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TOTPortrait.png)  
-*Unit Frame Class Portraits ToT*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png)  
 *Unit Frame Combat Indicator*
