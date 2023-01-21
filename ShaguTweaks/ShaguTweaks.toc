@@ -61,7 +61,6 @@ mods\mouseover.lua
 mods\pet-happiness-colors.lua
 mods\restyle-ui.lua
 mods\smaller-errors-frame.lua
-mods\unitframes-classportrait-tot.lua
 mods\unitframes-combat-indicator.lua
 mods\unitframes-energy-tick.lua
 mods\unitframes-nameclasscolor.lua
