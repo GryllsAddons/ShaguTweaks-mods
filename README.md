@@ -142,7 +142,9 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 
 - **Mouseover Cast**    
 *mods\mouseover.lua*    
-*Adds /stcast and /stcastself functions for use in macros.*
+*Adds /stcast and /stcastself functions for use in macros.*    
+*/stcast functions like /pfcast in pfUI (same as /cast but for mouseover units). /stcastself will always cast the spell on yourself.*    
+*examples: /stcast spellname, /stcastself spellname
 
 - **Pet Happiness Colors**    
 *mods\pet-happiness-colors.lua*    
