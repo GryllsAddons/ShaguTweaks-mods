@@ -1,4 +1,4 @@
-local _G = _G or getfenv(0)
+local _G = ShaguTweaks.GetGlobalEnv()
 local scrollspeed = 1
 local gfind = string.gmatch or string.gfind
 local strsplit = ShaguTweaks.strsplit
