@@ -6,7 +6,7 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-    local _G = _G or getfenv(0)    
+   local _G = ShaguTweaks.GetGlobalEnv()
 
     local UnitCastingInfo = ShaguTweaks.UnitCastingInfo
     local UnitChannelInfo = ShaguTweaks.UnitChannelInfo
