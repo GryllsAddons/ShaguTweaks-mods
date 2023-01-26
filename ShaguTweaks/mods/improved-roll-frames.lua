@@ -7,7 +7,7 @@ local module = ShaguTweaks:register({
   })
 
 module.enable = function(self)
-    local _G = _G or getfenv(0)
+    local _G = ShaguTweaks.GetGlobalEnv()
     local font_default, font_size = "Fonts\\skurri.TTF", 14
 
     ShaguTweaks.roll = CreateFrame("Frame", "STLootRoll", UIParent)
