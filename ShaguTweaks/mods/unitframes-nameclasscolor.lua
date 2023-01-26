@@ -7,7 +7,7 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-    local _G = _G or getfenv(0)
+    local _G = ShaguTweaks.GetGlobalEnv()
 
     local function partycolors()
         for id = 1, MAX_PARTY_MEMBERS do
