@@ -1,44 +1,35 @@
+local HookScript = ShaguTweaks.HookScript
+
 local module = ShaguTweaks:register({
   title = "Improved Advanced Options",
-  description = "Rescales the Advanced Options menu to fit the increased number of mods.",
+  description = "Allows scaling of the Advanced Options menu to fit the increased number of mods (CTRL + Mousewheel to scale).",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = nil,
   enabled = true,
 })
 
 module.enable = function(self)
+  AdvancedSettingsGUI.iaotext = AdvancedSettingsGUI:CreateFontString(nil, "DIALOG", "GameFontHighlightSmall")
+  AdvancedSettingsGUI.iaotext:SetText("(CTRL + Mousewheel to scale)")
+  AdvancedSettingsGUI.iaotext:SetPoint("TOP", AdvancedSettingsGUITtitle, "BOTTOM", 0, 27)
+
+  if not this.hooked then
+    this.hooked = true
+
+    HookScript(AdvancedSettingsGUI, "OnShow", function()
+      this:EnableMouseWheel(1)
+      AdvancedSettingsGUI:SetScale(.88)
+    end)
+
+    HookScript(AdvancedSettingsGUI, "OnMouseWheel", function()
+      if IsControlKeyDown() then
+        AdvancedSettingsGUI:SetScale(AdvancedSettingsGUI:GetScale() + arg1/10)
+      end
+    end)
+  end 
+
+  AdvancedSettingsGUI:SetScale(.88)
+  AdvancedSettingsGUI:ClearAllPoints()
   AdvancedSettingsGUI:SetPoint("TOP", UIParent, "TOP", 0, -10)
-  AdvancedSettingsGUI:SetScale(0.88)
   AdvancedSettingsGUI:SetFrameStrata("DIALOG")
-
-  -- local function hide()
-  --   PlayerFrame:SetAlpha(0)
-  --   TargetFrame:SetAlpha(0)
-  --   PetActionBarFrame:Hide()
-  --   MultiBarBottomRight:Hide()
-  --   MultiBarBottomLeft:Hide()
-  --   MultiBarRight:Hide()
-  --   MultiBarLeft:Hide()
-  --   MainMenuBar:Hide()
-  -- end
-
-  -- local function show()
-  --   PlayerFrame:SetAlpha(1)
-  --   TargetFrame:SetAlpha(1)
-  --   PetActionBarFrame:Show()
-  --   MultiBarBottomRight:Show()
-  --   MultiBarBottomLeft:Show()
-  --   MultiBarRight:Show()
-  --   MultiBarLeft:Show()
-  --   MainMenuBar:Show()
-  -- end
-
-  -- local f = CreateFrame("Frame", nil, AdvancedSettingsGUI)
-  -- f:SetScript("OnShow", function()
-  --   hide()
-  -- end)
-
-  -- f:SetScript("OnHide", function()
-  --   show()
-  -- end)
 end
