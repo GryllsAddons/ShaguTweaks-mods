@@ -25,7 +25,7 @@ module.enable = function(self)
       if not ((UnitIsPVP(unit) and UnitReaction(unit, "player") <= 4) or (UnitIsPVP(unit) and UnitIsPlayer(unit))) then
         CastSpellByName(spell)
       else
-        UIErrorsFrame:AddMessage("Mouseover target is PVP flagged",1,0,0)
+        UIErrorsFrame:AddMessage("Mouseover unit is PVP flagged",1,0,0)
       end
     else
       CastSpellByName(spell)
