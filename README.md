@@ -142,7 +142,7 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 
 - **Mouseover Cast**    
 *mods\mouseover.lua*    
-*Adds /stcast and /stcastself functions for use in macros (HCWarn addon supported).*    
+*Adds /stcast and /stcastself functions for use in macros ([HCWarn](https://github.com/GryllsAddons/HCWarn) supported).*    
 */stcast functions like /pfcast in pfUI (same as /cast but for mouseover units). /stcastself will always cast the spell on yourself.*    
 *examples: /stcast spellname, /stcastself spellname*
 
