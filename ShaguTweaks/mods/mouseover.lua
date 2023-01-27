@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
   title = "Mouseover Cast",
-  description = "Adds /stcast and /stcastself functions for use in macros.",
+  description = "Adds /stcast and /stcastself functions for use in macros (HCWarn addon supported).",
   expansions = { ["vanilla"] = true, ["tbc"] = false },
   enabled = false,
 })
@@ -20,7 +20,16 @@ module.enable = function(self)
     PlaySound = function() end
     
     TargetUnit(unit)
-    CastSpellByName(spell)
+
+    if HCWarn_nointeract and (unit ~= "player") then -- HCWarn support
+      if not ((UnitIsPVP(unit) and UnitReaction(unit, "player") <= 4) or (UnitIsPVP(unit) and UnitIsPlayer(unit))) then
+        CastSpellByName(spell)
+      else
+        UIErrorsFrame:AddMessage("Mouseover target is PVP flagged",1,0,0)
+      end
+    else
+      CastSpellByName(spell)
+    end
 
     if oldt then
         TargetLastTarget()
