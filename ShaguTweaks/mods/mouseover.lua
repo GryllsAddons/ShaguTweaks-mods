@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
   title = "Mouseover Cast",
-  description = "Adds /stcast and /stcastself functions for use in macros (HCWarn addon supported).",
+  description = "Adds /stcast and /stcastself functions for use in macros.",
   expansions = { ["vanilla"] = true, ["tbc"] = false },
   enabled = false,
 })
