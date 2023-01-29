@@ -10,7 +10,7 @@ local module = ShaguTweaks:register({
 
 module.enable = function(self)
   AdvancedSettingsGUI.iaotext = AdvancedSettingsGUI:CreateFontString(nil, "DIALOG", "GameFontHighlightSmall")
-  AdvancedSettingsGUI.iaotext:SetText("(CTRL + Mousewheel to scale)")
+  AdvancedSettingsGUI.iaotext:SetText("(Drag to move, CTRL + Mousewheel to scale)")
   AdvancedSettingsGUI.iaotext:SetPoint("TOP", AdvancedSettingsGUITtitle, "BOTTOM", 0, 27)
 
   local function position()

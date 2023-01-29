@@ -20,7 +20,6 @@ module.enable = function(self)
     
     local function show(bar)        
         bar:Show()
-        updateContainerFrameAnchors()
     end
     
     local function mouseover(bar)
@@ -89,17 +88,6 @@ module.enable = function(self)
         barEnter(frame, bar) 
         barLeave(frame, bar)
     end
-
-    -- local function movebags()
-    --     if ShaguTweaks.MouseoverRight2 then return end
-    --     if MultiBarLeft:IsVisible() then
-    --         ContainerFrame1:ClearAllPoints()
-    --         ContainerFrame1:SetPoint("RIGHT", MultiBarLeft, "LEFT", -5)
-    --     elseif MultiBarRight:IsVisible() then
-    --         ContainerFrame1:ClearAllPoints()
-    --         ContainerFrame1:SetPoint("RIGHT", MultiBarRight, "LEFT", -5)
-    --     end
-    -- end
     
     local function setup(bar)
         if not bar:IsVisible() then return end            
@@ -113,14 +101,23 @@ module.enable = function(self)
             end
         end
         mouseoverBar(bar)
-        hide(bar)        
     end
-    
+
+    local function login(bar)
+        local f = CreateFrame("FRAME")
+        f.timer = GetTime() + 1             
+        f:SetScript("OnUpdate", function()            
+            if (GetTime() > f.timer) then
+                hide(bar) 
+                f:SetScript("OnUpdate", nil)
+            end
+        end)
+    end  
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
-        -- movebags()
-        setup(MultiBarRight)        
+        setup(MultiBarRight)
+        login(MultiBarRight)
     end)    
 end
