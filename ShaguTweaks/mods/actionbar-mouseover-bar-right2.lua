@@ -16,10 +16,12 @@ module.enable = function(self)
         
     local function hide(bar)
         bar:Hide()
+        UIParent_ManageFramePositions()
     end
     
     local function show(bar)
         bar:Show()
+        UIParent_ManageFramePositions()
     end
     
     local function mouseover(bar)
@@ -101,23 +103,12 @@ module.enable = function(self)
             end
         end
         mouseoverBar(bar)
-    end
-
-    local function login(bar)
-        local f = CreateFrame("FRAME")
-        f.timer = GetTime() + 1             
-        f:SetScript("OnUpdate", function()            
-            if (GetTime() > f.timer) then
-                hide(bar) 
-                f:SetScript("OnUpdate", nil)
-            end
-        end)
+        hide(bar)
     end
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
         setup(MultiBarLeft)
-        login(MultiBarLeft)
     end)    
 end
