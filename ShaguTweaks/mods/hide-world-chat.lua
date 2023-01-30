@@ -26,8 +26,9 @@ local function WorldChat(inInstance)
 	else
 		-- look for world channel in chat frames
 		local id, name = GetChannelName("world")
+		if not name then return end
 		for i = 1, NUM_CHAT_WINDOWS do
-			local ChatFrame = _G["ChatFrame"..i]
+			local ChatFrame = _G["ChatFrame"..i]			
 			if findChannel(ChatFrame, name) then
 				ChatFrameWorld = ChatFrame
 				break
