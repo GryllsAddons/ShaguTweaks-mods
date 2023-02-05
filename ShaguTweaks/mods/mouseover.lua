@@ -55,11 +55,15 @@ module.enable = function(self)
           return
         end
     end
-    cast(unit, msg)    
+    if UnitIsUnit("player", unit) then
+      CastSpellByName(msg, 1)
+    else
+      cast(unit, msg)
+    end
   end
 
   function SlashCmdList.STCASTSELF(msg)
-    -- CastSpellByName(msg, 1)
-    cast("player", msg)
+    CastSpellByName(msg, 1)
+    -- cast("player", msg)
   end
 end
