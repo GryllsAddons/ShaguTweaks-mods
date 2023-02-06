@@ -171,6 +171,10 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 *mods\unitframes-nameclasscolor.lua*   
 *Adds name class colors to the player, pet, target, tot and party unit frames.*
 
+- **Unit Frame White Mana**    
+*mods\unitframes-whitemana.lua*   
+*Changes unit frame mana color to white.*
+
 ## Screenshots
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_ImpCastbar.png)    
 *Improved Castbar*
