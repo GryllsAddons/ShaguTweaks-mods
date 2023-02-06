@@ -36,14 +36,13 @@ module.enable = function(self)
     
     local function minimap()
         local w = 400
-        local x = MainMenuExpBar:GetLeft() - w - ActionButton1:GetWidth()*2
+        local x = ActionButton1:GetWidth()*4
         local y = 10
+        MinimapCluster:SetClampedToScreen(true)
         MinimapCluster:ClearAllPoints()
         MinimapCluster:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -x, -y)
-
-        -- if UIParent:GetRight() > 2513 then
-        --    -- 3440
-        -- end        
+        MinimapCluster.ClearAllPoints = function() end
+        MinimapCluster.SetPoint = function() end
     end
     
     local function buffs()

@@ -55,6 +55,7 @@ module.enable = function(self)
             move(QuestLogFrame,"CENTER",30,0)
             move(TaxiFrame,"CENTER",0,0)
             move(TradeFrame,"CENTER",0,0)
+            move(TalentFrame,"LEFT",0,0)
             if AtlasFrame then
                 move(AtlasFrame,"CENTER",0,50)
             end
