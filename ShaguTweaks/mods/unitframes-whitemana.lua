@@ -10,8 +10,7 @@ local module = ShaguTweaks:register({
 
 module.enable = function(self)    
     hooksecurefunc("UnitFrame_UpdateManaType", function(unitFrame)
-        if not unitFrame then return end
-        if not UnitExists(unitFrame.unit) and UnitHealth(unitFrame.unit) > 0 and UnitIsConnected(unitFrame.unit) then return end
+        if (not unitFrame) or (not UnitExists(unitFrame.unit)) or UnitIsDeadOrGhost(unitFrame.unit) or (not UnitIsConnected(unitFrame.unit)) then return end
         if UnitPowerType(unitFrame.unit) == 0 then unitFrame.manabar:SetStatusBarColor(1, 1, 1) end
     end, true)
 end
