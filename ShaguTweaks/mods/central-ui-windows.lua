@@ -18,15 +18,20 @@ local module = ShaguTweaks:register({
 ]]
 
 module.enable = function(self)
-    local function move(f,e,x,y)
-        if not f then return end
-        f:ClearAllPoints()            
-        f:SetClampedToScreen(true)
-        f:SetPoint(e, UIParent, "CENTER", x, y)
-        -- lock frames
+    local function lock(f)
         f.ClearAllPoints = function() end
         f.SetAllPoints = function() end
         f.SetPoint = function() end
+    end
+
+    local function move(f,e,x,y)
+        if not f then return end
+
+        f:ClearAllPoints()            
+        f:SetClampedToScreen(true)
+        f:SetPoint(e, UIParent, "CENTER", x, y)
+
+        lock(f)
     end
 
     local events = CreateFrame("Frame", nil, UIParent)
@@ -37,27 +42,26 @@ module.enable = function(self)
 
     events:SetScript("OnEvent", function()
         if (event == "PLAYER_ENTERING_WORLD") then
-            -- left frames
             move(CharacterFrame,"RIGHT",0,0)
             move(SpellBookFrame,"RIGHT",0,0)
-            -- right frames
+
             move(DressUpFrame,"LEFT",0,0)
-            move(FriendsFrame,"LEFT",0,0)       
-            -- center frames
-            move(BankFrame,"CENTER",0,0)
-            move(GossipFrame,"CENTER",5,0)
+            move(FriendsFrame,"LEFT",0,0)
             move(InspectFrame,"LEFT",0,0)
+            move(TalentFrame,"LEFT",0,0)
+
+            move(BankFrame,"CENTER",0,0)
+            move(GossipFrame,"CENTER",5,0)            
             move(ItemTextFrame,"CENTER",5,0)
             move(LootFrame,"CENTER",30,10)
             move(MailFrame,"CENTER",10,0)
             move(MerchantFrame,"CENTER",10,0)
             move(PetStableFrame,"CENTER",5,0)
             move(QuestFrame,"CENTER",5,0)
-            move(QuestLogFrame,"CENTER",30,0)
-            move(TalentFrame,"LEFT",0,0)
+            move(QuestLogFrame,"CENTER",30,0)            
             move(TaxiFrame,"CENTER",0,0)
             move(TradeFrame,"CENTER",0,0)
-            move(TalentFrame,"LEFT",0,0)
+            
             if AtlasFrame then
                 move(AtlasFrame,"CENTER",0,50)
             end
