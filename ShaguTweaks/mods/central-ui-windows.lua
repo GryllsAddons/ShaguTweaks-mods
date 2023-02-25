@@ -46,6 +46,7 @@ module.enable = function(self)
             -- center frames
             move(BankFrame,"CENTER",0,0)
             move(GossipFrame,"CENTER",5,0)
+            move(InspectFrame,"LEFT",0,0)
             move(ItemTextFrame,"CENTER",5,0)
             move(LootFrame,"CENTER",30,10)
             move(MailFrame,"CENTER",10,0)
@@ -53,6 +54,7 @@ module.enable = function(self)
             move(PetStableFrame,"CENTER",5,0)
             move(QuestFrame,"CENTER",5,0)
             move(QuestLogFrame,"CENTER",30,0)
+            move(TalentFrame,"LEFT",0,0)
             move(TaxiFrame,"CENTER",0,0)
             move(TradeFrame,"CENTER",0,0)
             move(TalentFrame,"LEFT",0,0)
@@ -69,8 +71,6 @@ module.enable = function(self)
                 move(SurvivalUI_GUI,"CENTER",0,0)
             end
         elseif (event == "ADDON_LOADED") then
-            move(InspectFrame,"LEFT",0,0)
-            move(TalentFrame,"LEFT",0,0)
             -- fires when clicking the main menu or trade skill buttons for the first time
             if CraftFrame then
                 move(CraftFrame,"CENTER",15,0)
