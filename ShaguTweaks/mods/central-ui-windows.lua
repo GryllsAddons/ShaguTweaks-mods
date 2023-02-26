@@ -48,7 +48,8 @@ module.enable = function(self)
     end
 
     local function hook(f,e,x,y)
-        if not f then return end
+        if not f or f.hooked then return end
+        f.hooked = true
 
         HookScript(f, "OnShow", function()
             unlock(f) 
@@ -62,59 +63,73 @@ module.enable = function(self)
         HookScript(f, "OnMouseUp",function()
             f:StopMovingOrSizing()
         end)
+        
     end
 
     local function hookparent(f,e,x,y)
+        if not f or f.hooked then return end
+        f.hooked = true
+
         HookScript(f, "OnMouseDown",function()
             f:GetParent():StartMoving()
         end)
       
         HookScript(f, "OnMouseUp",function()
             f:GetParent():StopMovingOrSizing()
-        end)
+        end)    
     end
 
     if not this.hooked then
-        this.hooked = true    
+        this.hooked = true
 
         hook(CharacterFrame,"RIGHT",0,0)
         hookparent(PaperDollFrame,"RIGHT",0,0)
         hookparent(ReputationFrame,"RIGHT",0,0)
         hookparent(SkillFrame,"RIGHT",0,0)
         hookparent(HonorFrame,"RIGHT",0,0)
-
         hook(SpellBookFrame,"RIGHT",0,0)
 
         hook(DressUpFrame,"LEFT",0,0)
         hook(FriendsFrame,"LEFT",0,0)
         hook(InspectFrame,"LEFT",0,0)
-        -- move(TalentFrame,"LEFT",0,0)
-
-        hook(AuctionFrame,"CENTER",-5,0)
+        move(TalentFrame,"LEFT",0,0)
+        
         hook(BankFrame,"CENTER",0,0)
-        hook(ClassTrainerFrame,"CENTER",10,0)
-        hook(CraftFrame,"CENTER",15,0)
         hook(GossipFrame,"CENTER",5,0)            
         hook(ItemTextFrame,"CENTER",5,0)
         hook(LootFrame,"CENTER",30,10)
-        hook(MacroFrame,"CENTER",-5,0)
         hook(MailFrame,"CENTER",10,0)
         hook(MerchantFrame,"CENTER",10,0)
-        hook(KeyBindingFrame,"CENTER",20,0)
         hook(PetStableFrame,"CENTER",5,0)
         hook(QuestFrame,"CENTER",5,0)
         hook(QuestLogFrame,"CENTER",30,0)
-        move(TalentFrame,"CENTER",0,0)      
         hook(TaxiFrame,"CENTER",0,0)
-        hook(TradeFrame,"CENTER",0,0)
-        hook(TradeSkillFrame,"CENTER",15,0)
+        hook(TradeFrame,"CENTER",0,0)        
 
         -- AddOn support
-        hook(AtlasFrame,"CENTER",0,50)
-        hook(ATSWFrame,"CENTER",15,0)
         hook(aux_frame,"CENTER",0,0)
+        hook(AtlasFrame,"CENTER",0,50)
+        hook(ATSWFrame,"CENTER",15,0)        
         hook(SuperMacroFrame,"CENTER",15,0)
         hook(SuperInspectFrame,"LEFT",25,30)
         hook(SurvivalUI_GUI,"CENTER",0,0)
     end
+
+    local events = CreateFrame("Frame", nil, UIParent)
+    events:RegisterEvent("ADDON_LOADED")
+    events:RegisterEvent("AUCTION_HOUSE_SHOW")
+    events:RegisterEvent("TRAINER_SHOW")
+
+    events:SetScript("OnEvent", function()
+        if (event == "ADDON_LOADED") then
+            hook(CraftFrame,"CENTER",15,0)
+            hook(KeyBindingFrame,"CENTER",15,0)
+            hook(MacroFrame,"CENTER",-5,0)            
+            hook(TradeSkillFrame,"CENTER",15,0)
+        elseif (event == "AUCTION_HOUSE_SHOW") then
+            move(AuctionFrame,"CENTER",-5,0)            
+        elseif (event == "TRAINER_SHOW") then
+            hook(ClassTrainerFrame,"CENTER",10,0)
+        end
+    end)
 end
