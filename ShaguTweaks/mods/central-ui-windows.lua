@@ -1,6 +1,8 @@
+local HookScript = ShaguTweaks.HookScript
+
 local module = ShaguTweaks:register({
     title = "Central UI Windows",
-    description = "Moves interaction windows to a central layout.",
+    description = "Makes interaction windows central and draggable.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -8,95 +10,110 @@ local module = ShaguTweaks:register({
 
 --[[
     AddOn Support:
+    AdvancedTradeSkillWindow
     Atlas
     AtlasLoot
-    aux
-    AdvancedTradeSkillWindow
+    aux    
     SuperMacro
     SuperInspect
     SurvivalUI 
 ]]
 
 module.enable = function(self)
+    local _ClearAllPoints
+    local _SetAllPoints
+    local _SetPoint
+
     local function lock(f)
+        _ClearAllPoints = f.ClearAllPoints
+        _SetAllPoints = f.SetAllPoints
+        _SetPoint = f.SetPoint
+
         f.ClearAllPoints = function() end
         f.SetAllPoints = function() end
         f.SetPoint = function() end
     end
 
-    local function move(f,e,x,y)
-        if not f then return end
-
-        f:ClearAllPoints()            
-        f:SetClampedToScreen(true)
-        f:SetPoint(e, UIParent, "CENTER", x, y)
-
-        lock(f)
+    local function unlock(f)
+        f.ClearAllPoints = _ClearAllPoints
+        f.SetAllPoints = _SetAllPoints
+        f.SetPoint = _SetPoint
     end
 
-    local events = CreateFrame("Frame", nil, UIParent)
-    events:RegisterEvent("PLAYER_ENTERING_WORLD")
-    events:RegisterEvent("ADDON_LOADED")
-    events:RegisterEvent("AUCTION_HOUSE_SHOW")
-    events:RegisterEvent("TRAINER_SHOW")
+    local function move(f,e,x,y)        
+        f:ClearAllPoints()            
+        f:SetClampedToScreen(true)
+        f:SetPoint(e, UIParent, "CENTER", x, y) 
+    end
 
-    events:SetScript("OnEvent", function()
-        if (event == "PLAYER_ENTERING_WORLD") then
-            move(CharacterFrame,"RIGHT",0,0)
-            move(SpellBookFrame,"RIGHT",0,0)
+    local function hook(f,e,x,y)
+        if not f then return end
 
-            move(DressUpFrame,"LEFT",0,0)
-            move(FriendsFrame,"LEFT",0,0)
-            move(InspectFrame,"LEFT",0,0)
-            move(TalentFrame,"LEFT",0,0)
+        HookScript(f, "OnShow", function()
+            unlock(f) 
+            move(f,e,x,y)
+            lock(f)
+        end)
 
-            move(BankFrame,"CENTER",0,0)
-            move(GossipFrame,"CENTER",5,0)            
-            move(ItemTextFrame,"CENTER",5,0)
-            move(LootFrame,"CENTER",30,10)
-            move(MailFrame,"CENTER",10,0)
-            move(MerchantFrame,"CENTER",10,0)
-            move(PetStableFrame,"CENTER",5,0)
-            move(QuestFrame,"CENTER",5,0)
-            move(QuestLogFrame,"CENTER",30,0)            
-            move(TaxiFrame,"CENTER",0,0)
-            move(TradeFrame,"CENTER",0,0)
-            
-            if AtlasFrame then
-                move(AtlasFrame,"CENTER",0,50)
-            end
-            if SuperMacroFrame then
-                move(SuperMacroFrame,"CENTER",15,0)
-            end
-            if SuperInspectFrame then
-                move(SuperInspectFrame,"LEFT",25,30)
-            end
-            if SurvivalUI_GUI then
-                move(SurvivalUI_GUI,"CENTER",0,0)
-            end
-        elseif (event == "ADDON_LOADED") then
-            -- fires when clicking the main menu or trade skill buttons for the first time
-            if CraftFrame then
-                move(CraftFrame,"CENTER",15,0)
-            end
-            if MacroFrame then
-                move(MacroFrame,"CENTER",-5,0)
-            end
-            if KeyBindingFrame then
-                move(KeyBindingFrame,"CENTER",20,0)
-            end
-            if ATSWFrame then
-                move(ATSWFrame,"CENTER",15,0)
-            elseif TradeSkillFrame then
-                move(TradeSkillFrame,"CENTER",15,0)
-            end
-        elseif (event == "AUCTION_HOUSE_SHOW") then
-            if aux_frame then
-                move(aux_frame,"CENTER",0,0)
-            end
-            move(AuctionFrame,"CENTER",-5,0)
-        elseif (event == "TRAINER_SHOW") then
-            move(ClassTrainerFrame,"CENTER",10,0)
-        end
-    end)
+        HookScript(f, "OnMouseDown",function()
+            f:StartMoving()
+        end)
+      
+        HookScript(f, "OnMouseUp",function()
+            f:StopMovingOrSizing()
+        end)
+    end
+
+    local function hookparent(f,e,x,y)
+        HookScript(f, "OnMouseDown",function()
+            f:GetParent():StartMoving()
+        end)
+      
+        HookScript(f, "OnMouseUp",function()
+            f:GetParent():StopMovingOrSizing()
+        end)
+    end
+
+    if not this.hooked then
+        this.hooked = true    
+
+        hook(CharacterFrame,"RIGHT",0,0)
+        hookparent(PaperDollFrame,"RIGHT",0,0)
+        hookparent(ReputationFrame,"RIGHT",0,0)
+        hookparent(SkillFrame,"RIGHT",0,0)
+        hookparent(HonorFrame,"RIGHT",0,0)
+
+        hook(SpellBookFrame,"RIGHT",0,0)
+
+        hook(DressUpFrame,"LEFT",0,0)
+        hook(FriendsFrame,"LEFT",0,0)
+        hook(InspectFrame,"LEFT",0,0)
+        hook(TalentFrame,"LEFT",0,0)
+
+        hook(AuctionFrame,"CENTER",-5,0)
+        hook(BankFrame,"CENTER",0,0)
+        hook(ClassTrainerFrame,"CENTER",10,0)
+        hook(CraftFrame,"CENTER",15,0)
+        hook(GossipFrame,"CENTER",5,0)            
+        hook(ItemTextFrame,"CENTER",5,0)
+        hook(LootFrame,"CENTER",30,10)
+        hook(MacroFrame,"CENTER",-5,0)
+        hook(MailFrame,"CENTER",10,0)
+        hook(MerchantFrame,"CENTER",10,0)
+        hook(KeyBindingFrame,"CENTER",20,0)
+        hook(PetStableFrame,"CENTER",5,0)
+        hook(QuestFrame,"CENTER",5,0)
+        hook(QuestLogFrame,"CENTER",30,0)            
+        hook(TaxiFrame,"CENTER",0,0)
+        hook(TradeFrame,"CENTER",0,0)
+        hook(TradeSkillFrame,"CENTER",15,0)
+
+        -- AddOn support
+        hook(AtlasFrame,"CENTER",0,50)
+        hook(ATSWFrame,"CENTER",15,0)
+        hook(aux_frame,"CENTER",0,0)
+        hook(SuperMacroFrame,"CENTER",15,0)
+        hook(SuperInspectFrame,"LEFT",25,30)
+        hook(SurvivalUI_GUI,"CENTER",0,0)
+    end
 end
