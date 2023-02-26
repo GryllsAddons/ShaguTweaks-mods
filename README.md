@@ -212,8 +212,3 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_UIRestyle.png)  
 *Restyle UI*
-
-![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_BuffRestyle.png)  
-*Restyle UI*
-
-
