@@ -89,7 +89,7 @@ module.enable = function(self)
         hookparent(HonorFrame,"RIGHT",0,0)
         hook(SpellBookFrame,"RIGHT",0,0)
 
-        hook(DressUpFrame,"LEFT",0,0)
+        move(DressUpFrame,"LEFT",0,0)
         hook(FriendsFrame,"LEFT",0,0)
         hook(InspectFrame,"LEFT",0,0)
         move(TalentFrame,"LEFT",0,0)
@@ -129,7 +129,7 @@ module.enable = function(self)
         elseif (event == "AUCTION_HOUSE_SHOW") then
             move(AuctionFrame,"CENTER",-5,0)            
         elseif (event == "TRAINER_SHOW") then
-            hook(ClassTrainerFrame,"CENTER",10,0)
+            move(ClassTrainerFrame,"CENTER",10,0)
         end
     end)
 end
