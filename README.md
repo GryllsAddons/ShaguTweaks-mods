@@ -75,8 +75,7 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 
 - **Central UI Windows**    
 *mods\central-ui-windows.lua*    
-*Moves interaction windows to a central layout.*    
-
+*Makes interaction windows central and draggable.*    
 
 - **Chat Tweaks Extended**    
 *mods\chat-tweaks-extended.lua*    
@@ -99,10 +98,6 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 - **World Chat Hider**    
 *mods\hide-world-chat.lua*    
 *Looks for world chat in the chat frames and hides it while in an instance.*
-
-- **Improved Advanced Options**    
-*mods\improved-advanced-options.lua*    
-*Rescales the Advanced Options menu to fit the increased number of mods.*
 
 - **Improved Castbar**    
 *mods\improved-castbar.lua*    
