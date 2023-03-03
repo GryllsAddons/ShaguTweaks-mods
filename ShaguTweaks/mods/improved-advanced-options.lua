@@ -2,7 +2,7 @@ local HookScript = ShaguTweaks.HookScript
 
 local module = ShaguTweaks:register({
   title = "Improved Advanced Options",
-  description = "Allows moving and scaling of the Advanced Options menu (drag to move, ctrl + mousewheel to scale ).",
+  description = "Allows moving and scaling of the Advanced Options menu (drag to move, ctrl + mousewheel to scale).",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = nil,
   enabled = true,
