@@ -62,6 +62,7 @@ mods\restyle-ui.lua
 mods\smaller-errors-frame.lua
 mods\unitframes-combat-indicator.lua
 mods\unitframes-energy-tick.lua
+mods\unitframes-healthbar-color.lua
 mods\unitframes-nameclasscolor.lua
 mods\unitframes-whitemana.lua
 
