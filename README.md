@@ -98,6 +98,10 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 *mods\hide-world-chat.lua*    
 *Looks for world chat in the chat frames and hides it while in an instance.*
 
+- **Improved Advanced Options**   
+*mods\improved-advanced-options.lua*     
+*Allows moving and scaling of the Advanced Options menu (drag to move, ctrl + mousewheel to scale).*
+
 - **Improved Castbar**    
 *mods\improved-castbar.lua*    
 *Adds a spell icon and remaining cast time to the castbar.*
