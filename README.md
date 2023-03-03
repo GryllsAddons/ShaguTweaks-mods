@@ -20,7 +20,6 @@ The download contains an optional image file containing alternative high resolut
 Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 
 ## Mods
-<img src="https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_Restyle.png" width=40% height=40%/>
 
 - **Hide Hotkey Text**    
 *mods\actionbar-hide-hotkey.lua*    
