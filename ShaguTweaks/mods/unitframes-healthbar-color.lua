@@ -50,7 +50,7 @@ module.enable = function(self)
 
   local function healthbar()
     hooksecurefunc("UnitFrameHealthBar_Update", function(statusbar, unit)
-      if not (unit == statusbar.unit) or (not UnitExists(unit)) or UnitIsDeadOrGhost(unit) or (not UnitIsConnected(unit)) then return end
+      if (not (unit == statusbar.unit)) or (not UnitExists(unit)) or UnitIsDeadOrGhost(unit) or (not UnitIsConnected(unit)) then return end
       local red, green, blue = statusbar:GetStatusBarColor()
       local unittype = GetUnitType(red, green, blue) or "ENEMY_NPC"
       if UnitIsPlayer(unit) and unittype == "ENEMY_NPC" then unittype = "ENEMY_PLAYER" end
