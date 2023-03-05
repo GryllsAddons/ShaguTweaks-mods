@@ -1,8 +1,4 @@
 local _G = ShaguTweaks.GetGlobalEnv()
-local Abbreviate = ShaguTweaks.Abbreviate
-local GetColorGradient = ShaguTweaks.GetColorGradient
-local vanilla = ShaguTweaks.GetExpansion() == "vanilla" or nil
-local HookScript = ShaguTweaks.HookScript
 
 local module = ShaguTweaks:register({
   title = "Real Health Numbers Extended",
