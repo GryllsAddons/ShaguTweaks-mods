@@ -1,6 +1,5 @@
 local _G = ShaguTweaks.GetGlobalEnv()
 local libspell = ShaguTweaks.libspell
-local HookScript = ShaguTweaks.HookScript
 
 local module = ShaguTweaks:register({
     title = "Macro Icons & Cooldowns",
