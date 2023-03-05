@@ -95,6 +95,7 @@ module.enable = function(self)
         move(TalentFrame,"LEFT",0,0)
         
         hook(BankFrame,"CENTER",0,0)
+        hook(GossipFrame,"CENTER",5,0)            
         hook(ItemTextFrame,"CENTER",5,0)
         hook(LootFrame,"CENTER",30,10)
         hook(MailFrame,"CENTER",10,0)
@@ -118,7 +119,6 @@ module.enable = function(self)
     events:RegisterEvent("ADDON_LOADED")
     events:RegisterEvent("AUCTION_HOUSE_SHOW")
     events:RegisterEvent("TRAINER_SHOW")
-    events:RegisterEvent("GOSSIP_SHOW")
 
     events:SetScript("OnEvent", function()
         if (event == "ADDON_LOADED") then
@@ -130,10 +130,6 @@ module.enable = function(self)
             move(AuctionFrame,"CENTER",-5,0)            
         elseif (event == "TRAINER_SHOW") then
             move(ClassTrainerFrame,"CENTER",10,0)
-        elseif (event == "GOSSIP_SHOW") then
-            DEFAULT_CHAT_FRAME:AddMessage("GOSSIP")
-            move(GossipFrame,"CENTER",5,0)
-            hook(GossipFrame,"CENTER",5,0)
         end
     end)
 end
