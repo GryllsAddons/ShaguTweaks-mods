@@ -111,16 +111,16 @@ module.enable = function(self)
       end      
     end
   end
+
+  local function GetActiveBar()
+    if CURRENT_ACTIONBAR_PAGE == 1 and GetBonusBarOffset() ~= 0 then
+      return NUM_ACTIONBAR_PAGES + GetBonusBarOffset()
+    else
+      return CURRENT_ACTIONBAR_PAGE
+    end
+  end
   
   local function ScanBars()
-    local function GetActiveBar()
-      if CURRENT_ACTIONBAR_PAGE == 1 and GetBonusBarOffset() ~= 0 then
-        return NUM_ACTIONBAR_PAGES + GetBonusBarOffset()
-      else
-        return CURRENT_ACTIONBAR_PAGE
-      end
-    end
-
     local bar = GetActiveBar()
     -- DEFAULT_CHAT_FRAME:AddMessage("GetActiveBar = "..bar)
 
