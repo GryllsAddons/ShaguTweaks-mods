@@ -47,6 +47,7 @@ mods\central-ui.lua
 mods\central-ui-windows.lua
 mods\chat-tweaks-extended.lua
 mods\cursor-tooltip.lua
+mods\health-numbers-extended.lua
 mods\hide-combat-tooltip.lua
 mods\hide-ui-frames.lua
 mods\hide-world-chat.lua
@@ -65,8 +66,8 @@ mods\smaller-errors-frame.lua
 mods\unitframes-combat-indicator.lua
 mods\unitframes-energy-tick.lua
 mods\unitframes-healthbar-color.lua
-mods\unitframes-nameclasscolor.lua
 mods\unitframes-whitemana.lua
+mods\worldmap-reveal.lua
 
 # modules
 mods\dark-ui-elements.lua
