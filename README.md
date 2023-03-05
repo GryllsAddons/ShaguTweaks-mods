@@ -29,6 +29,10 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 *mods\actionbar-hide-macro.lua*    
 *Hides the macros on the action bars.*
 
+- **Macro Icons & Cooldowns**    
+*mods\actionbar-macros.lua*    
+*Show macro icons & cooldowns on the action bars.*
+
 - **Quick Actions**    
 *mods\actionbar-quick-actions.lua*    
 *Action buttons will be activated on key down.*
