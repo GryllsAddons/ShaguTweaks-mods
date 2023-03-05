@@ -169,10 +169,6 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 *mods\unitframes-energy-tick.lua*    
 *Adds an energy & mana tick to the player frame.*
 
-- **Unit Frame Healthbar Colors**    
-*mods\unitframes-healthbar-color.lua*    
-*Changes the unitframe and nameplate healthbar color when at 20% health or lower.*
-
 - **Unit Frame Name Class Colors**    
 *mods\unitframes-nameclasscolor.lua*   
 *Adds name class colors to the player, pet, target, tot and party unit frames.*
@@ -180,6 +176,10 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 - **Unit Frame White Mana**    
 *mods\unitframes-whitemana.lua*   
 *Changes unit frame mana color to white.*
+
+- **WorldMap Reveal**    
+*mods\worldmap-reveal.lua*    
+*Reveals unexplored areas on the world map.*    
 
 ## Screenshots
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_ImpCastbar.png)    
