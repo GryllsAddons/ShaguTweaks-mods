@@ -35,6 +35,7 @@ mods\custom.lua
 mods\actionbar-hide-hotkey.lua
 mods\actionbar-hide-macro.lua
 mods\actionbar-improved-expbar.lua
+mods\actionbar-macros.lua
 mods\actionbar-mouseover-bar-bottomleft.lua
 mods\actionbar-mouseover-bar-bottomright.lua
 mods\actionbar-mouseover-bar-right.lua
