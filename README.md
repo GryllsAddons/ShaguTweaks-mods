@@ -89,6 +89,10 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 *mods\cursor-tooltip.lua*    
 *Attaches the tooltip to the cursor.*
 
+- **Real Health Numbers Extended**    
+*mods\health-numbers-extended.lua*    
+*Adds health numbers to ToT and party unit frames.*
+
 - **Hide Combat Tooltip**    
 *mods\hide-combat-tooltip.lua*    
 *Hides the tooltip while in combat.*
