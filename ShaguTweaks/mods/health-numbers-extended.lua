@@ -1,4 +1,5 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
   title = "Real Health Numbers Extended",
@@ -50,12 +51,9 @@ module.enable = function(self)
     TextStatusBar_UpdateTextString(manabar)
   end
 
-  -- Hook TargetofTarget_Update
-  if not HookTargetofTarget_Update then
-    local HookTargetofTarget_Update = TargetofTarget_Update
-    function _G.TargetofTarget_Update()
-      HookTargetofTarget_Update()
-      TextStatusBar_UpdateTextString(TargetofTargetHealthBar)
-    end
+  local function UpdateToT()
+    TextStatusBar_UpdateTextString(TargetofTargetHealthBar)
   end
+
+  hooksecurefunc("TargetofTarget_Update", UpdateToT, true)
 end
