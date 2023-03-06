@@ -77,46 +77,11 @@ module.enable = function(self)
         HookScript(f, "OnMouseUp",function()
             f:GetParent():StopMovingOrSizing()
         end)    
-    end
-
-    if not this.hooked then
-        this.hooked = true
-
-        hook(CharacterFrame,"RIGHT",0,0)
-        hookparent(PaperDollFrame,"RIGHT",0,0)
-        hookparent(ReputationFrame,"RIGHT",0,0)
-        hookparent(SkillFrame,"RIGHT",0,0)
-        hookparent(HonorFrame,"RIGHT",0,0)
-        hook(SpellBookFrame,"RIGHT",0,0)
-
-        move(DressUpFrame,"LEFT",0,0)
-        hook(FriendsFrame,"LEFT",0,0)
-        hook(InspectFrame,"LEFT",0,0)
-        move(TalentFrame,"LEFT",0,0)
-        
-        hook(BankFrame,"CENTER",0,0)
-        hook(GossipFrame,"CENTER",5,0)            
-        hook(ItemTextFrame,"CENTER",5,0)
-        hook(LootFrame,"CENTER",30,10)
-        hook(MailFrame,"CENTER",10,0)
-        hook(MerchantFrame,"CENTER",10,0)
-        hook(PetStableFrame,"CENTER",5,0)
-        hook(QuestFrame,"CENTER",5,0)
-        hook(QuestLogFrame,"CENTER",30,0)
-        hook(TaxiFrame,"CENTER",0,0)
-        hook(TradeFrame,"CENTER",0,0)        
-
-        -- AddOn support
-        hook(aux_frame,"CENTER",0,0)
-        hook(AtlasFrame,"CENTER",0,50)
-        hook(ATSWFrame,"CENTER",15,0)        
-        hook(SuperMacroFrame,"CENTER",15,0)
-        hook(SuperInspectFrame,"LEFT",25,30)
-        hook(SurvivalUI_GUI,"CENTER",0,0)
-    end
+    end    
 
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("ADDON_LOADED")
+    events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:RegisterEvent("AUCTION_HOUSE_SHOW")
     events:RegisterEvent("TRAINER_SHOW")
 
@@ -126,6 +91,39 @@ module.enable = function(self)
             hook(KeyBindingFrame,"CENTER",15,0)
             hook(MacroFrame,"CENTER",-5,0)            
             hook(TradeSkillFrame,"CENTER",15,0)
+        elseif (event == "PLAYER_ENTERING_WORLD") then
+            hook(CharacterFrame,"RIGHT",0,0)
+            hookparent(PaperDollFrame,"RIGHT",0,0)
+            hookparent(ReputationFrame,"RIGHT",0,0)
+            hookparent(SkillFrame,"RIGHT",0,0)
+            hookparent(HonorFrame,"RIGHT",0,0)
+            hook(SpellBookFrame,"RIGHT",0,0)
+
+            move(DressUpFrame,"LEFT",0,0)
+            hook(FriendsFrame,"LEFT",0,0)
+            hook(InspectFrame,"LEFT",0,0)
+            move(TalentFrame,"LEFT",0,0)
+            
+            hook(BankFrame,"CENTER",0,0)
+            hook(GossipFrame,"CENTER",5,0)            
+            hook(ItemTextFrame,"CENTER",5,0)
+            hook(LootFrame,"CENTER",30,10)
+            
+            hook(MailFrame,"CENTER",10,0)
+            hook(MerchantFrame,"CENTER",10,0)
+            hook(PetStableFrame,"CENTER",5,0)
+            hook(QuestFrame,"CENTER",5,0)
+            hook(QuestLogFrame,"CENTER",30,0)
+            hook(TaxiFrame,"CENTER",0,0)
+            hook(TradeFrame,"CENTER",0,0)        
+
+            -- AddOn support
+            hook(aux_frame,"CENTER",0,0)
+            hook(AtlasFrame,"CENTER",0,50)
+            hook(ATSWFrame,"CENTER",15,0)        
+            hook(SuperMacroFrame,"CENTER",15,0)
+            hook(SuperInspectFrame,"LEFT",25,30)
+            hook(SurvivalUI_GUI,"CENTER",0,0)
         elseif (event == "AUCTION_HOUSE_SHOW") then
             move(AuctionFrame,"CENTER",-5,0)            
         elseif (event == "TRAINER_SHOW") then
