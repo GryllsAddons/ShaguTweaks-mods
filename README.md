@@ -159,7 +159,7 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 - **Restyle UI**    
 *mods\restyle-ui.lua*    
 *Restyles supported addons, buffs, buttons, minimap and unit names.*    
-*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned to the bottom left of the minimap and will shown on mouseover.*
+*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/GryllsAddons/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned to the bottom left of the minimap and will shown on mouseover.*
 
 - **Smaller Errors Frame**    
 *mods\smaller-errors-frame.lua*    
