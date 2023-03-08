@@ -69,8 +69,9 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:RegisterEvent("PLAYER_TARGET_CHANGED")
     events:RegisterEvent("UNIT_HEALTH", "player")
+    events:RegisterEvent("UNIT_HEALTH", "pet")
     events:RegisterEvent("UNIT_MANA", "player")
-    events:RegisterEvent("UNIT_ENERGY", "player")    
+    events:RegisterEvent("UNIT_ENERGY", "player")
     events:RegisterEvent("SPELLCAST_START")
     events:RegisterEvent("SPELLCAST_CHANNEL_START")
     events:RegisterEvent("SPELLCAST_STOP")
@@ -79,6 +80,7 @@ module.enable = function(self)
     events:RegisterEvent("SPELLCAST_CHANNEL_STOP")
     events:RegisterEvent("PLAYER_REGEN_DISABLED") -- in combat
     events:RegisterEvent("PLAYER_REGEN_ENABLED") -- out of combat
+    events:RegisterEvent("UNIT_PET")    
 
     events:SetScript("OnEvent", function()
         CheckConditions()
