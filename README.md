@@ -22,108 +22,71 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 ## Mods
 
 - **Hide Hotkey Text**    
-*mods\actionbar-hide-hotkey.lua*    
 *Hides the hotkeys on the action bars.*
 
 - **Hide Macro Text**    
-*mods\actionbar-hide-macro.lua*    
 *Hides the macros on the action bars.*
 
 - **Macro Icons & Cooldowns**    
-*mods\actionbar-macros.lua*    
 *Show macro icons & cooldowns on the action bars.*
 
 - **Quick Actions**    
-*mods\actionbar-quick-actions.lua*    
 *Action buttons will be activated on key down.*
 
 - **Mouseover Bars**    
-*The relevant action bar must be enabled in 'Interface Options' > 'Advanced Options'.*    
+*Hides the relevant action bar and shows on mouseover.*    
+*The action bar must be enabled in 'Interface Options' > 'Advanced Options'.*    
 *Please reload the UI after enabling or disabling the action bar.*    
-
-  ****Mouseover Bottom Left****    
-  *mods\actionbar-mouseover-bar-bottomleft.lua*    
-  *Hide the Bottom Left ActionBar and show on mouseover.*    
-  *The pet/shapeshift/aura/stance bars will not be clickable if in the same position as the mouseover bar.*    
-
-  ****Mouseover Bottom Right****    
-  *mods\actionbar-mouseover-bar-bottomright.lua*    
-  *Hide the Bottom Right ActionBar and show on mouseover.*    
-  *The pet/shapeshift/aura/stance bars will not be clickable if in the same position as the mouseover bar.*    
-
-  ****Mouseover Right****    
-  *mods\actionbar-mouseover-bar-right.lua*    
-  *Hide the Right ActionBar and show on mouseover.*    
-
-  ****Mouseover Right 2****    
-  *mods\actionbar-mouseover-bar-right2.lua*    
-  *Hide the Right ActionBar 2 and show on mouseover.*
+*The pet/shapeshift/aura/stance bars will not be clickable if in the same position as the mouseover bar.*   
 
 - **Improved Exp Bar**    
-*mods\actionbar-improved-expbar.lua*    
+*Shows rested percent while resting and changes color when fully rested.*    
 *Improved exp information on mouseover.*    
-*Shows rested percent while resting and changes color when fully rested.*
 
 - **Range Color**    
-*mods\actionbar-range-color.lua*    
 *Action buttons will be colored red when out of range.*
 
 - **Basic Chat**    
-*mods\basic-chat.lua*    
 *Creates General, Combat Log and 'Loot & Spam' chat boxes and resets chat channels on every login.*
 
 - **Central UI**    
-*mods\central-ui.lua*    
 *Moves unit frames, minimap and buffs to a central layout.*
 
 - **Central UI Windows**    
-*mods\central-ui-windows.lua*    
 *Makes interaction windows central and draggable.*    
 
 - **Chat Tweaks Extended**    
-*mods\chat-tweaks-extended.lua*    
 *Extends "Chat Tweaks".*    
 *Removes chat buttons, shortens channel names, shows item links on mouseover, adds Alt click chat names to invite and Ctrl click chat names to target.*
 
 - **Cursor Tooltip**    
-*mods\cursor-tooltip.lua*    
 *Attaches the tooltip to the cursor.*
 
 - **Real Health Numbers Extended**    
-*mods\health-numbers-extended.lua*    
 *Adds health numbers to ToT and party unit frames.*
 
 - **Hide Combat Tooltip**    
-*mods\hide-combat-tooltip.lua*    
-*Hides the tooltip while in combat.*
-*While in combat, holding shift will show the tooltip.*
+*Hides the tooltip while in combat. While in combat, holding shift will show the tooltip.*
 
 - **Hide Unit Frames**    
-*mods\hide-unit-frames.lua*    
 *Hide the player and pet frame if full health & mana, happy, no target and out of combat.*
 
 - **World Chat Hider**    
-*mods\hide-world-chat.lua*    
 *Looks for world chat in the chat frames and hides it while in an instance.*
 
 - **Improved Advanced Options**   
-*mods\improved-advanced-options.lua*     
 *Allows moving and scaling of the Advanced Options menu (drag to move, ctrl + mousewheel to scale).*
 
 - **Improved Castbar**    
-*mods\improved-castbar.lua*    
 *Adds a spell icon and remaining cast time to the castbar.*
 
 - **Improved Interface Options**   
-*mods\improved-interface-options.lua*     
 *Rescales the interface options menu and removes the background.*
 
 - **Improved Roll Frames**   
-*mods\improved-roll-frames.lua*     
 *Restyles the roll frames, shows who has clicked need/greed/pass (requires "Detailed Loot information" to be checked in interface options).*
 
 - **Loot Monitor**    
-*mods\loot-monitor.lua*    
 *Display recent loot text in a central scrolling window.*    
 *Hold Alt or Alt+Shift to scroll*    
 *Hold Alt+Ctrl while scrolling to filter by quality.*    
@@ -132,61 +95,47 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 *Items looted over 10 minutes ago will be shown at 25% transparency.*
 
 - **MiniMap Framerate & Latency**    
-*mods\minimap-framerate-latency.lua*    
 *Adds a small framerate & latency display to the mini map.*
 
 - **MiniMap Timer**    
-*mods\minimap-timer.lua*    
 *Adds a togglable timer to the minimap clock.*    
-*Left click the clock to toggle the timer.*    
-*Left click the timer to start or right click to reset.*
+*Left click the clock to toggle the timer, left click the timer to start or right click to reset.*
 
 - **Modifier Actions**    
-*mods\modifier-actions.lua*    
 *Use Ctrl (C), Alt (A) & Shift (S) for in game actions.*    
 *CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, S: Sell & Repair.*
 
 - **Mouseover Cast**    
-*mods\mouseover.lua*    
 *Adds /stcast and /stcastself functions for use in macros ([HCWarn](https://github.com/GryllsAddons/HCWarn) supported).*    
 */stcast functions like /pfcast in pfUI (same as /cast but for mouseover units). /stcastself will always cast the spell on yourself.*    
 *examples: /stcast spellname, /stcastself spellname*
 
 - **Pet Happiness Colors**    
-*mods\pet-happiness-colors.lua*    
 *Colors Hunter pet healthbar by happiness.*
 
 - **Restyle UI**    
-*mods\restyle-ui.lua*    
 *Restyles supported addons, buffs, buttons, minimap and unit names.*    
 *If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/GryllsAddons/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned to the bottom left of the minimap and will shown on mouseover.*
 
 - **Smaller Errors Frame**    
-*mods\smaller-errors-frame.lua*    
 *Resizes the error frame to 1 line instead of 3.*
 
 - **Unit Frame Combat Indicator**    
-*mods\unitframes-combat-indicator.lua*    
 *Adds a combat indicator to the target frame.*
 
 - **Unit Frame Energy & Mana Tick**    
-*mods\unitframes-energy-tick.lua*    
 *Adds an energy & mana tick to the player frame.*
 
 - **Unit Frame Healthbar Colors**    
-*mods\unitframes-healthbar-color.lua*   
 *Changes the unitframe and nameplate healthbar color when at 20% health or lower.*
 
 - **Unit Frame Name Class Colors**    
-*mods\unitframes-nameclasscolor.lua*   
 *Adds name class colors to the player, pet, target, tot and party unit frames.*
 
 - **Unit Frame White Mana**    
-*mods\unitframes-whitemana.lua*   
 *Changes unit frame mana color to white.*
 
 - **WorldMap Reveal**    
-*mods\worldmap-reveal.lua*    
 *Reveals unexplored areas on the world map.*    
 
 ## Screenshots
