@@ -98,9 +98,9 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 *Hides the tooltip while in combat.*
 *While in combat, holding shift will show the tooltip.*
 
-- **Hide UI Frames**    
-*mods\hide-ui-frames.lua*    
-*Hides the player and pet frame based on conditions.*
+- **Hide Unit Frames**    
+*mods\hide-unit-frames.lua*    
+*Hide the player and pet frame if full health & mana, happy, no target and out of combat.*
 
 - **World Chat Hider**    
 *mods\hide-world-chat.lua*    
