@@ -110,8 +110,8 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 */stcast functions like /pfcast in pfUI (same as /cast but for mouseover units). /stcastself will always cast the spell on yourself.*    
 *examples: /stcast spellname, /stcastself spellname*
 
-- **Pet Happiness Colors**    
-*Colors Hunter pet healthbar by happiness.*
+- **Pet Name Happiness**    
+*Colors Hunter pet name by happiness level.*
 
 - **Restyle UI**    
 *Restyles supported addons, buffs, buttons, minimap and unit names.*    
