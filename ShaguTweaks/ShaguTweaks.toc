@@ -49,7 +49,7 @@ mods\chat-tweaks-extended.lua
 mods\cursor-tooltip.lua
 mods\health-numbers-extended.lua
 mods\hide-combat-tooltip.lua
-mods\hide-ui-frames.lua
+mods\hide-unit-frames.lua
 mods\hide-world-chat.lua
 mods\improved-advanced-options.lua
 mods\improved-castbar.lua
