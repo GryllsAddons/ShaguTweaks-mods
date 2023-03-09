@@ -131,9 +131,6 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 - **Unit Frame Healthbar Colors**    
 *Changes the unitframe and nameplate healthbar color when at 20% health or lower.*
 
-- **Unit Frame Name Class Colors**    
-*Adds name class colors to the player, pet, target, tot and party unit frames.*
-
 - **Unit Frame White Mana**    
 *Changes unit frame mana color to white.*
 
