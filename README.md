@@ -29,11 +29,12 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 - **Hide Macro Text**    
 *Hides the macros on the action bars.*
 
+- **Improved Exp Bar**    
+*Shows rested percent while resting and changes color when fully rested.*    
+*Improved exp information on mouseover.*    
+
 - **Macro Icons & Cooldowns**    
 *Show macro icons & cooldowns on the action bars.*
-
-- **Quick Actions**    
-*Action buttons will be activated on key down.*
 
 - **Mouseover Bars**    
 *Hides the relevant action bar and shows on mouseover.*    
@@ -41,9 +42,8 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 *Please reload the UI after enabling or disabling the action bar.*    
 *The pet/shapeshift/aura/stance bars will not be clickable if in the same position as the mouseover bar.*   
 
-- **Improved Exp Bar**    
-*Shows rested percent while resting and changes color when fully rested.*    
-*Improved exp information on mouseover.*    
+- **Quick Actions**    
+*Action buttons will be activated on key down.*
 
 - **Range Color**    
 *Action buttons will be colored red when out of range.*
