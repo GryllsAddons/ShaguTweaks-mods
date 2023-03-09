@@ -1,3 +1,5 @@
+local hooksecurefunc = ShaguTweaks.hooksecurefunc
+
 local module = ShaguTweaks:register({
   title = "Pet Name Happiness",
   description = "Colors Hunter pet name by happiness level.",
@@ -7,27 +9,19 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-  local _, class = UnitClass("player")
-  if not (class == "HUNTER") then return end
-
-  local function PetColor()
-    if not UnitExists("pet") then return end
-
+  local function PetNameColor()
     local happiness = GetPetHappiness()
-    if (happiness == 3) then
-      PetName:SetTextColor(0,1,0)
-    elseif (happiness == 2) then
-      PetName:SetTextColor(1,1,0)
-    else
+    local _, isHunterPet = HasPetUI();
+    if ( not happiness or not isHunterPet ) then return end
+      
+    if (happiness == 1) then -- unhappy
       PetName:SetTextColor(1,0,0)
+    elseif (happiness == 2) then -- content
+      PetName:SetTextColor(1,1,0)
+    elseif (happiness == 3) then -- happy
+      PetName:SetTextColor(0,1,0)
     end
   end
 
-  local events = CreateFrame("Frame", nil, UIParent)
-  events:RegisterEvent("UNIT_PET", "player")
-  events:RegisterEvent("UNIT_LOYALTY")
-  events:RegisterEvent("UNIT_HAPPINESS")
-  events:SetScript("OnEvent", function()
-    PetColor()
-  end)
+  hooksecurefunc("PetFrame_SetHappiness", PetNameColor, true)
 end
