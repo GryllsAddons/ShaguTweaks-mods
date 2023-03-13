@@ -43,6 +43,7 @@ mods\actionbar-mouseover-bar-right2.lua
 mods\actionbar-quick-actions.lua
 mods\actionbar-range-color.lua
 mods\basic-chat.lua
+mods\camera.lua
 mods\central-windows.lua
 mods\chat-tweaks-extended.lua
 mods\cursor-tooltip.lua
