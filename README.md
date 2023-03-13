@@ -113,7 +113,8 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 *examples: /stcast spellname, /stcastself spellname*
 
 - **Move Unitframes Extended**    
-*Party frames, Minimap and Buffs can be moved while <Shift> and <Ctrl> are pressed together.*   
+*Party frames, Minimap and Buffs can be moved while Shift and Ctrl are pressed together.*   
+
 - **Pet Name Happiness**    
 *Colors Hunter pet name by happiness level.*
 
