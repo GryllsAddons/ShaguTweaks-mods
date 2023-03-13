@@ -51,11 +51,8 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 - **Basic Chat**    
 *Creates General, Combat Log and 'Loot & Spam' chat boxes and resets chat channels on every login.*
 
-- **Central UI**    
-*Moves unit frames, minimap and buffs to a central layout.*
-
-- **Central UI Windows**    
-*Makes interaction windows central and draggable.*    
+- **Central Interaction Windows**    
+*Interaction windows will be positioned centrally.*    
 
 - **Chat Tweaks Extended**    
 *Extends "Chat Tweaks".*    
@@ -112,6 +109,8 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 */stcast functions like /pfcast in pfUI (same as /cast but for mouseover units). /stcastself will always cast the spell on yourself.*    
 *examples: /stcast spellname, /stcastself spellname*
 
+- **Move Unitframes Extended**    
+*Party frames, Minimap and Buffs can be moved while <Shift> and <Ctrl> are pressed together.*   
 - **Pet Name Happiness**    
 *Colors Hunter pet name by happiness level.*
 
