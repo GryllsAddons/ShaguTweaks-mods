@@ -51,6 +51,9 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 - **Basic Chat**    
 *Creates General, Combat Log and 'Loot & Spam' chat boxes and resets chat channels on every login.*
 
+- **Max Camera Distance**    
+*Increases the maximum zoom out distance of the camera.*    
+
 - **Central Interaction Windows**    
 *Interaction windows will be positioned centrally.*    
 
