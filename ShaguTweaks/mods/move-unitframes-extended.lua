@@ -24,8 +24,8 @@ local nonmovables = {
 
 module.enable = function(self)
   ShaguTweaks_config = ShaguTweaks_config or {}
-  ShaguTweaks_config["Move"] = ShaguTweaks_config["Move"] or {}
-  local movedb = ShaguTweaks_config["Move"]
+  ShaguTweaks_config["MoveUnitframesExtended"] = ShaguTweaks_config["MoveUnitframesExtended"] or {}
+  local movedb = ShaguTweaks_config["MoveUnitframesExtended"]
 
   local unlocker = CreateFrame("Frame", nil, UIParent)
   unlocker:SetAllPoints(UIParent)
