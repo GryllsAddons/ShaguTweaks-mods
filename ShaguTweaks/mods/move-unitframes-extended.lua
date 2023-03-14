@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
   title = "Movable Unit Frames Extended",
-  description = "Party frames, Minimap and Buffs can be moved while <Shift> and <Ctrl> are pressed together.",
+  description = "Party frames, Minimap, Buffs and Debuffs can be moved while <Shift> and <Ctrl> are pressed together. Drag the first buff or debuff to move.",
   expansions = { ["vanilla"] = true, ["tbc"] = true },
   category = "Unit Frames",
   enabled = nil,
@@ -16,11 +16,17 @@ local movables = {
 }
 
 local nonmovables = {
-  "MinimapCluster",
-  "TemporaryEnchantFrame"
+  "Minimap",
+  "BuffButton0", -- buffs
+  "BuffButton16", -- debuffs
+  "TempEnchant1" -- weapon buffs
 }
 
 module.enable = function(self)
+  ShaguTweaks_config = ShaguTweaks_config or {}
+  ShaguTweaks_config["Move"] = ShaguTweaks_config["Move"] or {}
+  local movedb = ShaguTweaks_config["Move"]
+
   local unlocker = CreateFrame("Frame", nil, UIParent)
   unlocker:SetAllPoints(UIParent)
 
@@ -37,12 +43,25 @@ module.enable = function(self)
          _G[frame]:SetScript("OnDragStop", function() this:StopMovingOrSizing() end)
         end
 
-        for _, frame in pairs(nonmovables) do              
+        for _, frame in pairs(nonmovables) do
          _G[frame]:SetMovable(true)
          _G[frame]:EnableMouse(true)
          _G[frame]:RegisterForDrag("LeftButton")
-         _G[frame]:SetScript("OnDragStart", function() this:StartMoving() end)
-         _G[frame]:SetScript("OnDragStop", function() this:StopMovingOrSizing() end)
+
+         if frame == "Minimap" then
+          _G[frame]:GetParent():SetMovable(true)
+          _G[frame]:SetScript("OnDragStart", function()
+            -- this:StartMoving()
+            this:GetParent():StartMoving()
+          end)
+          _G[frame]:SetScript("OnDragStop", function()
+            -- this:StopMovingOrSizing()
+            this:GetParent():StopMovingOrSizing()
+          end)
+         else
+          _G[frame]:SetScript("OnDragStart", function() this:StartMoving() end)
+          _G[frame]:SetScript("OnDragStop", function() this:StopMovingOrSizing() end)
+         end
         end
 
         unlocker.movable = true
@@ -60,10 +79,11 @@ module.enable = function(self)
        _G[frame]:SetScript("OnDragStop", function() end)
        _G[frame]:StopMovingOrSizing()
 
-       local left = "move_".._G[frame]:GetName().."_left"
-       local top = "move_".._G[frame]:GetName().."_top"
-       ShaguTweaks_config[left] = _G[frame]:GetLeft()
-       ShaguTweaks_config[top] = _G[frame]:GetTop()
+       if frame == "Minimap" then
+        movedb[_G[frame]:GetParent():GetName()] = {_G[frame]:GetParent():GetLeft(), _G[frame]:GetParent():GetTop()}
+       else
+        movedb[_G[frame]:GetName()] = {_G[frame]:GetLeft(), _G[frame]:GetTop()}
+       end
       end      
 
       unlocker.movable = nil
@@ -116,14 +136,16 @@ module.enable = function(self)
 
   -- position nonmovables
   for _, frame in pairs(nonmovables) do
-   local left = "move_".._G[frame]:GetName().."_left"
-   local top = "move_".._G[frame]:GetName().."_top"
-   
-   local frameleft = ShaguTweaks_config[left] or nil
-   local frameright = ShaguTweaks_config[top] or nil
-
-   if frameleft and frameright then
-    _G[frame]:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", frameleft, frameright)
-   end
+    if frame == "Minimap" then
+      if movedb[_G[frame]:GetParent():GetName()] then 
+       _G[frame]:GetParent():ClearAllPoints()
+       _G[frame]:GetParent():SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", movedb[_G[frame]:GetParent():GetName()][1], movedb[_G[frame]:GetParent():GetName()][2])
+      end
+    else
+      if movedb[_G[frame]:GetName()] then
+       _G[frame]:ClearAllPoints()
+       _G[frame]:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", movedb[_G[frame]:GetName()][1], movedb[_G[frame]:GetName()][2])
+      end
+    end
   end
 end
