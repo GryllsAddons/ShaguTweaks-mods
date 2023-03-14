@@ -112,8 +112,8 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 */stcast functions like /pfcast in pfUI (same as /cast but for mouseover units). /stcastself will always cast the spell on yourself.*    
 *examples: /stcast spellname, /stcastself spellname*
 
-- **Move Unitframes Extended**    
-*Party frames, Minimap and Buffs can be moved while Shift and Ctrl are pressed together.*   
+- **Movable Unitframes Extended**    
+*Party frames, Minimap and Buffs can be moved while Shift and Ctrl are pressed together. Drag the first buff or debuff to move.*   
 
 - **Pet Name Happiness**    
 *Colors Hunter pet name by happiness level.*
