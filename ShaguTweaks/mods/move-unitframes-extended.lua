@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
   title = "Movable Unit Frames Extended",
-  description = "Party frames, Minimap, Buffs and Debuffs can be moved while <Shift> and <Ctrl> are pressed together. Drag the first buff or debuff to move.",
+  description = "Party frames, Minimap, Buffs, Weapon Buffs and Debuffs can be moved while <Shift> and <Ctrl> are pressed together. Drag the first buff or debuff to move.",
   expansions = { ["vanilla"] = true, ["tbc"] = true },
   category = "Unit Frames",
   enabled = nil,
