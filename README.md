@@ -35,7 +35,7 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 
 - **Macro Icons & Cooldowns**    
 *Show macro icons & cooldowns on the action bars.*    
-In order to fix the range and cooldown check of macros, you have to write the following line at the top of each macro:    
+In order to have the range and mana colors show on macros, you have to write the following line at the top of each macro:    
 ***/run if nil then CastSpellByName("SPELLNAME"); end***    
 Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
