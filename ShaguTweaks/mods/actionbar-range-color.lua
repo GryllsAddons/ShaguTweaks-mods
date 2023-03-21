@@ -9,7 +9,7 @@ local module = ShaguTweaks:register({
     enabled = nil,
 })
 
-module.enable = function(self)
+module.enable = function(self)    
     hooksecurefunc("ActionButton_OnUpdate", function(elapsed)
         -- Button color based on range
         if ( this.rangeTimer ) then
@@ -26,5 +26,5 @@ module.enable = function(self)
                     this.rangeTimer = TOOLTIP_UPDATE_TIME
                 end
             end
-        end)
+    end, true)
 end
