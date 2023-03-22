@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Modifier Actions",
-    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, A: Release/Resurrect, S: Sell & Repair.",
+    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, A: Release/Resurrect/Summon/BG, S: Sell & Repair.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -148,13 +148,24 @@ module.enable = function(self)
     end
 
     function actions:Resurrect()
-        if actions.resurrect and UnitIsDeadOrGhost("player") then
-            actions.resurrect = nil
+        if UnitIsDeadOrGhost("player") then
             AcceptResurrect()
         elseif UnitIsGhost("player") then
             RetrieveCorpse()
         elseif UnitIsDead("player") then
             RepopMe()        
+        end
+    end
+
+    function actions:Summon()
+        ConfirmSummon()
+    end
+
+    function actions:Battleground()
+        if IsPartyLeader() or IsRaidLeader() then
+            JoinBattlefield(0, 1)
+        else
+            JoinBattlefield(0)
         end
     end
 
@@ -198,7 +209,7 @@ module.enable = function(self)
     actions:RegisterEvent("TRADE_SHOW")
     actions:RegisterEvent("TRADE_CLOSED")
     actions:RegisterEvent("MERCHANT_SHOW")
-    actions:RegisterEvent("MERCHANT_CLOSED")    
+    actions:RegisterEvent("MERCHANT_CLOSED") 
 
     actions:SetScript("OnEvent", function() 
         if (event == "TRADE_SHOW") then
@@ -211,8 +222,6 @@ module.enable = function(self)
         elseif (event == "MERCHANT_CLOSED") then
             actions.merchant = nil
             autovendor:Hide()
-        elseif (event == "RESURRECT_REQUEST") then
-            actions.resurrect = true
         end
     end)
     
@@ -233,6 +242,8 @@ module.enable = function(self)
             actions:Inspect()
         elseif (actions.alt) then
             actions:Resurrect()
+            actions:Summon()
+            actions:Battleground()            
         elseif (actions.shift) then
             actions:Merchant()
         end
