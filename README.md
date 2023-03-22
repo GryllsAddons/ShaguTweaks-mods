@@ -23,6 +23,9 @@ Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
 
 ## Mods
 
+- **Accept Group Invites**    
+*Accept group invites from friends and guildies.*
+
 - **Hide Hotkey Text**    
 *Hides the hotkeys on the action bars.*
 
