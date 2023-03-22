@@ -32,6 +32,7 @@ libs\libnameplate.lua
 mods\custom.lua
 
 # ShaguTweaks-Mods
+mods\accept-invites.lua
 mods\actionbar-hide-hotkey.lua
 mods\actionbar-hide-macro.lua
 mods\actionbar-improved-expbar.lua
