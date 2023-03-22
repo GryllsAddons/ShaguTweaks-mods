@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Modifier Actions",
-    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, A: Release/Resurrect/Summon/BG, S: Sell & Repair.",
+    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. CAS: Logout, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, A: Release/Resurrect/Summon/Group/BG, S: Sell & Repair.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -161,6 +161,10 @@ module.enable = function(self)
         ConfirmSummon()
     end
 
+    function actions:Group()
+        AcceptGroup()
+    end
+
     function actions:Battleground()
         if IsPartyLeader() or IsRaidLeader() then
             JoinBattlefield(0, 1)
@@ -209,7 +213,7 @@ module.enable = function(self)
     actions:RegisterEvent("TRADE_SHOW")
     actions:RegisterEvent("TRADE_CLOSED")
     actions:RegisterEvent("MERCHANT_SHOW")
-    actions:RegisterEvent("MERCHANT_CLOSED") 
+    actions:RegisterEvent("MERCHANT_CLOSED")
 
     actions:SetScript("OnEvent", function() 
         if (event == "TRADE_SHOW") then
@@ -243,7 +247,8 @@ module.enable = function(self)
         elseif (actions.alt) then
             actions:Resurrect()
             actions:Summon()
-            actions:Battleground()            
+            actions:Group()
+            actions:Battleground()
         elseif (actions.shift) then
             actions:Merchant()
         end
