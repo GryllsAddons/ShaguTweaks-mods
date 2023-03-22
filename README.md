@@ -125,6 +125,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Restyles supported addons, buffs, buttons, minimap and unit names.*    
 *If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW)) the MinimapButtonBag button will be repositioned to the bottom left of the minimap and will shown on mouseover.*
 
+- **Skip Gossip Text**    
+*Skip gossip text when interacting with NPCs unless holding shift.*
+
 - **Smaller Errors Frame**    
 *Resizes the error frame to 1 line instead of 3.*
 
