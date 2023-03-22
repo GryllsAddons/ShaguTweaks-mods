@@ -159,10 +159,12 @@ module.enable = function(self)
 
     function actions:Summon()
         ConfirmSummon()
+        StaticPopup_Hide("CONFIRM_SUMMON")
     end
 
     function actions:Group()
         AcceptGroup()
+        StaticPopup_Hide("PARTY_INVITE")
     end
 
     function actions:Battleground()
@@ -171,6 +173,7 @@ module.enable = function(self)
         else
             JoinBattlefield(0)
         end
+        -- HideUIPanel(BattlefieldFrame)
     end
 
     function actions:CheckInteractable(unit, action)
