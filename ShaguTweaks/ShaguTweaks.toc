@@ -63,6 +63,7 @@ mods\mouseover.lua
 mods\move-unitframes-extended.lua
 mods\pet-name-happiness.lua
 mods\restyle-ui.lua
+mods\skip-gossip.lua
 mods\smaller-errors-frame.lua
 mods\unitframes-combat-indicator.lua
 mods\unitframes-energy-tick.lua
