@@ -24,7 +24,7 @@ module.enable = function(self)
     frame.TextString:SetFontObject("GameFontWhite")
     frame.TextString:SetFont(STANDARD_TEXT_FONT, 9, "OUTLINE")
     frame.TextString:SetHeight(32)
-    frame.TextString:SetJustifyH("LEFT") 
+    frame.TextString:SetJustifyH("LEFT")
   end
 
   for i=1, 4 do
@@ -40,12 +40,14 @@ module.enable = function(self)
     healthbar.TextString:SetFontObject("GameFontWhite")
     healthbar.TextString:SetFont(STANDARD_TEXT_FONT, 10, "OUTLINE")
     healthbar.TextString:SetHeight(32)
+    healthbar.TextString:SetDrawLayer("OVERLAY")
 
     manabar.TextString = frame.StatusTexts:CreateFontString("PartyMemberFrame"..i.."ManaBarText", "OVERLAY")
     manabar.TextString:SetPoint("CENTER", manabar, "CENTER", -2, 0)
     manabar.TextString:SetFontObject("GameFontWhite")
     manabar.TextString:SetFont(STANDARD_TEXT_FONT, 10, "OUTLINE")
     manabar.TextString:SetHeight(32)
+    manabar.TextString:SetDrawLayer("OVERLAY")
     
     TextStatusBar_UpdateTextString(healthbar)
     TextStatusBar_UpdateTextString(manabar)

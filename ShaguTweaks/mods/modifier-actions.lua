@@ -155,6 +155,9 @@ module.enable = function(self)
         elseif UnitIsDead("player") then
             RepopMe()        
         end
+        StaticPopup_Hide("RESURRECT_NO_TIMER")
+        StaticPopup_Hide("RESURRECT_NO_SICKNESS")
+        StaticPopup_Hide("RESURRECT")
     end
 
     function actions:Summon()
