@@ -171,12 +171,13 @@ module.enable = function(self)
     end
 
     function actions:Battleground()
-        if IsPartyLeader() or IsRaidLeader() then
-            JoinBattlefield(0, 1)
-        else
-            JoinBattlefield(0)
+        for i=1, MAX_BATTLEFIELD_QUEUES do
+            status, mapName, instanceID = GetBattlefieldStatus(i)
+            if status == "confirm" then
+                AcceptBattlefieldPort(i,1)
+                StaticPopup_Hide("CONFIRM_BATTLEFIELD_ENTRY")
+            end
         end
-        -- HideUIPanel(BattlefieldFrame)
     end
 
     function actions:CheckInteractable(unit, action)
