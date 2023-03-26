@@ -53,6 +53,8 @@ module.enable = function(self)
         else
           statusbar:SetStatusBarColor(255/255, 128/255, 0/255)
         end
+      else
+        statusbar:SetStatusBarColor(0, 1, 0)
       end
     end
   end, true)
