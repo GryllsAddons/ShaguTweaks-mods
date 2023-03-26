@@ -107,7 +107,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 - **MiniMap Timer**    
 *Adds a togglable timer to the minimap clock.*    
-*Left click the clock to toggle the timer, left click the timer to start or right click to reset.*
+*Left click the clock to toggle the timer, left click the timer to start/pause or right click to reset.*
 
 - **Modifier Actions**    
 *Use Ctrl (C), Alt (A) & Shift (S) for in game actions.*    
