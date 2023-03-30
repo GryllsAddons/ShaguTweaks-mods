@@ -126,7 +126,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 - **Restyle UI**    
 *Restyles supported addons and the minimap. Changes fonts for units, buffs, buttons & chat.*    
-*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW)) the MinimapButtonBag button will be repositioned to the bottom left of the minimap and will shown on mouseover.*
+*If you are using [MinimapButtonBag-vanilla](https://github.com/laytya/MinimapButtonBag-vanilla) or [MinimapButtonBag-TurtleWoW](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) the MinimapButtonBag button will be repositioned to the bottom left of the minimap and will shown on mouseover.*
 
 - **Skip Gossip Text**    
 *Skip gossip text when interacting with NPCs unless holding shift.*
