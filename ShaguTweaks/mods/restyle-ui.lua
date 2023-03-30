@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Restyle UI",
-    description = "Restyles supported addons, buffs, buttons, minimap and unit names.",
+    description = "Restyles supported addons and the minimap. Changes fonts for units, buffs, buttons & chat.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -294,6 +294,15 @@ module.enable = function(self)
         nameFont(PartyMemberFrame4PetFrame.name)
     end
 
+    local function font()
+        local chatframes = { ChatFrame1, ChatFrame2, ChatFrame3}
+
+        for _, chatframe in pairs(chatframes) do
+            local font, size = chatframe:GetFont()
+            chatframe:SetFont(font, size, "OUTLINE")
+        end
+    end
+
     local events = CreateFrame("Frame", nil, UIParent)	
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
@@ -303,5 +312,6 @@ module.enable = function(self)
         buttons()
         minimap()
         names()
+        font()
     end)
 end
