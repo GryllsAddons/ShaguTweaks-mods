@@ -6,8 +6,7 @@ local module = ShaguTweaks:register({
     enabled = nil,
 })
 
-module.enable = function(self)
-    
+module.enable = function(self)    
     local exp = CreateFrame("Frame", "exp", UIParent)
     exp:SetFrameStrata("HIGH")
     local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
@@ -24,6 +23,12 @@ module.enable = function(self)
     exp.repstring:SetPoint("CENTER", ReputationWatchBar, "CENTER", 0, 2)
     exp.repstring:SetJustifyH("CENTER")
     exp.repstring:SetTextColor(1,1,1)
+
+    local expArt = {
+        ExhaustionTick, 
+        MainMenuXPBarTexture0, MainMenuXPBarTexture1, MainMenuXPBarTexture2, MainMenuXPBarTexture3, 
+        ReputationWatchBarTexture0, ReputationWatchBarTexture1, ReputationWatchBarTexture2, ReputationWatchBarTexture3
+    }
     
     local function updateExp(mouseover)
         local playerlevel = UnitLevel("player")
@@ -36,8 +41,10 @@ module.enable = function(self)
         remaining = ShaguTweaks.Abbreviate(remaining, 1)
 
         if playerlevel < 60 then            
-            if IsResting() and (not mouseover) then
-                exp.expstring:SetText(exh_perc.."% rested")
+            if ((IsResting() or TargetHPText or TargetHPPercText) and (not mouseover)) then
+                if exh_perc > 0 then
+                    exp.expstring:SetText(exh_perc.."% rested")
+                end
             else
                 if (exh == 0) then
                     exp.expstring:SetText("Level "..playerlevel.." - "..remaining.." ("..remaining_perc.."%) remaining")            
@@ -77,18 +84,24 @@ module.enable = function(self)
         else
             exp.repstring:SetText("")
         end
-    end    
-    
+    end
+
     local function expShow()
         updateExp(true)
         exp.expstring:Show()
+        for _, element in pairs(expArt) do
+            element:SetAlpha(0.25)
+        end
     end
     
     local function expHide()
-        if not IsResting() then
+        if (not IsResting()) and (not (TargetHPText or TargetHPPercText)) then
             exp.expstring:Hide()
         else
             updateExp(false)
+        end
+        for _, element in pairs(expArt) do
+            element:SetAlpha(1)
         end
     end
     
@@ -104,10 +117,16 @@ module.enable = function(self)
     local function repShow()
         updateRep()
         exp.repstring:Show()
+        for _, element in pairs(expArt) do
+            element:SetAlpha(0.25)
+        end
     end
     
     local function repHide()
         exp.repstring:Hide()
+        for _, element in pairs(expArt) do
+            element:SetAlpha(1)
+        end
     end
     
     local function mouseoverRep()
@@ -147,7 +166,13 @@ module.enable = function(self)
         elseif event == "PLAYER_UPDATE_RESTING" then
             updateResting()
         else
-            updateExp()       
+            -- Always show rested % for Turtle WoW
+            if (TargetHPText or TargetHPPercText) then
+                updateExp(false)
+                exp.expstring:Show()
+            else
+                updateExp()
+            end
         end
     end)
 end
