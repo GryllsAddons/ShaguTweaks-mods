@@ -300,7 +300,7 @@ module.enable = function(self)
         for _, chatframe in pairs(chatframes) do
             local _, size = chatframe:GetFont()
             local font = "Fonts\\frizqt__.TTF"
-            chatframe:SetFont(font, size-2)
+            chatframe:SetFont(font, size)
         end
     end
 
@@ -313,6 +313,6 @@ module.enable = function(self)
         buttons()
         minimap()
         names()
-        -- font()
+        font()
     end)
 end
