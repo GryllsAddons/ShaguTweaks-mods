@@ -298,9 +298,9 @@ module.enable = function(self)
         local chatframes = { ChatFrame1, ChatFrame2, ChatFrame3 }
 
         for _, chatframe in pairs(chatframes) do
-            local _, size = chatframe:GetFont()
             local font = "Fonts\\frizqt__.TTF"
-            chatframe:SetFont(font, size)
+            local _, size, outline = chatframe:GetFont()
+            chatframe:SetFont(font, size, outline)
         end
     end
 
