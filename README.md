@@ -119,7 +119,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *examples: /stcast spellname, /stcastself spellname*
 
 - **Movable Unitframes Extended**    
-*Party frames, Minimap, Buffs, Weapon Buffs and Debuffs can be moved while Shift and Ctrl are pressed together. Drag the first buff or debuff to move.*   
+*Party frames, Minimap, Buffs, Weapon Buffs and Debuffs can be moved while Shift and Ctrl are pressed together. Drag the first (end) buff or debuff to move.*   
 
 - **Pet Name Happiness**    
 *Colors Hunter pet name by happiness level.*
