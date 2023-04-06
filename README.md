@@ -8,18 +8,18 @@ Code from [ShaguTweaks](https://shagu.org/ShaguTweaks/)
 Code from [pfUI](https://shagu.org/pfUI/)    
 Code from [zUI](https://github.com/Ko0z/zUI)
 
-## Installation / Updating
+## Installation
 #### The mods included with this download require [ShaguTweaks](https://shagu.org/ShaguTweaks/) to work.    
 This download contains a mods folder and a .toc file to allow the mods to load.
 
-1. Copy the "ShaguTweaks" folder within the "ShaguTweaks-Mods-main" folder inside the .zip to "\Interface\AddOns\".    
-2. Replace/overwrite any existing files when copying.
-3. Enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options).
-4. When updating the ShaguTweaks addon, don't overwrite the .toc file supplied inside the "ShaguTweaks" folder.
+1. Install [ShaguTweaks](https://shagu.org/ShaguTweaks/) if not already installed.
+2. Unpack the Zip file included with this download.
+3. Copy the "ShaguTweaks" folder within "ShaguTweaks-Mods-main" to "\Interface\AddOns\".    
+4. Replace/overwrite any existing files when copying.
+5. Once in game, enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options).
+6. (Optional) The download contains an image file containing alternative high resolution unitframe class icons (UI-Classes-Circles.tga). Copy this file to "\Interface\AddOns\ShaguTweaks\img".
 
-### Optional Install
-The download contains an optional image file containing alternative high resolution unitframe class icons (UI-Classes-Circles.tga).    
-Copy this file to the img folder located in "\Interface\AddOns\ShaguTweaks\img"
+#### When updating the ShaguTweaks addon, don't overwrite the .toc file supplied inside the "ShaguTweaks" folder.
 
 ## Mods
 
