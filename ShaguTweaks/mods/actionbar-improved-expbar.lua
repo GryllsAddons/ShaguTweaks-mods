@@ -30,6 +30,8 @@ module.enable = function(self)
         ReputationWatchBarTexture0, ReputationWatchBarTexture1, ReputationWatchBarTexture2, ReputationWatchBarTexture3
     }
     
+    local isMousing
+
     local function updateExp(mouseover)
         local playerlevel = UnitLevel("player")
         local xp, xpmax, exh = UnitXP("player"), UnitXPMax("player"), GetXPExhaustion() or 0
@@ -40,10 +42,18 @@ module.enable = function(self)
         exh = ShaguTweaks.Abbreviate(exh, 1)
         remaining = ShaguTweaks.Abbreviate(remaining, 1)
 
-        if playerlevel < 60 then            
-            if ((IsResting() or TargetHPText or TargetHPPercText) and (not mouseover)) then
-                if exh_perc > 0 then
-                    exp.expstring:SetText(exh_perc.."% rested")
+        if playerlevel < 60 then
+            if (not mouseover) then              
+                if IsResting() then                    
+                    if exh_perc > 0 then
+                        exp.expstring:SetText(exh .. " (" .. exh_perc.."%) rested")
+                    end
+                elseif (TargetHPText or TargetHPPercText) then -- Turtle WoW
+                    if exh_perc > 0 then
+                        exp.expstring:SetText(exh_perc.."% rested")
+                    end
+                else
+                    exp.expstring:SetText("")
                 end
             else
                 if (exh == 0) then
@@ -54,7 +64,7 @@ module.enable = function(self)
             end
         end
 
-        local rested  = GetRestState()
+        local rested = GetRestState()
 		if (rested == 1) then
             if (exh_perc == 150) then
                 MainMenuExpBar:SetStatusBarColor(0, 1, 0.6, 1)
@@ -63,8 +73,7 @@ module.enable = function(self)
             end
 		elseif (rested == 2) then
 			MainMenuExpBar:SetStatusBarColor(0.58, 0.0, 0.55, 1.0)
-        end
-        
+        end        
     end
     
     local function updateRep()
@@ -87,7 +96,8 @@ module.enable = function(self)
     end
 
     local function expShow()
-        updateExp(true)
+        isMousing = true
+        updateExp(isMousing)
         exp.expstring:Show()
         for _, element in pairs(expArt) do
             element:SetAlpha(0.25)
@@ -95,10 +105,11 @@ module.enable = function(self)
     end
     
     local function expHide()
+        isMousing = nil
         if (not IsResting()) and (not (TargetHPText or TargetHPPercText)) then
             exp.expstring:Hide()
         else
-            updateExp(false)
+            updateExp(isMousing)
         end
         for _, element in pairs(expArt) do
             element:SetAlpha(1)
@@ -115,6 +126,7 @@ module.enable = function(self)
     end
     
     local function repShow()
+        isMousing = true
         updateRep()
         exp.repstring:Show()
         for _, element in pairs(expArt) do
@@ -123,6 +135,7 @@ module.enable = function(self)
     end
     
     local function repHide()
+        isMousing = nil
         exp.repstring:Hide()
         for _, element in pairs(expArt) do
             element:SetAlpha(1)
@@ -140,7 +153,7 @@ module.enable = function(self)
 
     local function updateResting()
         if IsResting() then
-            updateExp(false)
+            updateExp(isMousing)
             exp.expstring:Show()
         else
             expHide()
@@ -159,20 +172,19 @@ module.enable = function(self)
             MainMenuBarOverlayFrame:Hide()       
             mouseoverExp()
             mouseoverRep()            
-            updateExp()
+            updateExp(isMousing)
             updateRep()
             expHide()
             repHide()
+            
+            -- Always show rested % for Turtle WoW
+            if (TargetHPText or TargetHPPercText) then
+                exp.expstring:Show()
+            end
         elseif event == "PLAYER_UPDATE_RESTING" then
             updateResting()
         else
-            -- Always show rested % for Turtle WoW
-            if (TargetHPText or TargetHPPercText) then
-                updateExp(false)
-                exp.expstring:Show()
-            else
-                updateExp()
-            end
+            updateExp(isMousing)
         end
     end)
 end
