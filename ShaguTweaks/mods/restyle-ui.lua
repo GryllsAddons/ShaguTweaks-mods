@@ -12,10 +12,18 @@ module.enable = function(self)
     local function addons()
         --[[
             Supported Addons:
-            SP_SwingTimer
+            SP_SwingTimer (Vanilla/Turtle),
+            MinimapButtonBag (Vanilla/Turtle)
         ]]
 
-        if IsAddOnLoaded("SP_SwingTimer") then
+        local function lock(frame)
+            frame.ClearAllPoints = function() end
+            frame.SetAllPoints = function() end
+            frame.SetPoint = function() end         
+        end
+
+        -- SP_SwingTimer
+        if IsAddOnLoaded("SP_SwingTimer") and (not IsAddOnLoaded("GryllsSwingTimer")) then
             -- local w, h, b = 200, 14, 6
             local h, b = 14, 6
             -- set mainhand
@@ -79,6 +87,54 @@ module.enable = function(self)
             
             addBorder(SP_ST_Frame)
             addBorder(SP_ST_FrameOFF)            
+        end
+
+        -- MinimapButtonFrame    
+        if MBB_MinimapButtonFrame then
+            -- reposition MBB to the bottom of the styleFrame (under the minimap)
+            -- show the button OnEnter and hide when OnLeave
+            
+            if IsAddOnLoaded("MinimapButtonBag-TurtleWoW") then
+                MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10_green")
+            else
+                MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10")
+            end            
+
+            MBB_MinimapButtonFrame:ClearAllPoints()
+            MBB_MinimapButtonFrame:SetPoint("CENTER", Minimap, "BOTTOMLEFT", 0, 0)
+            lock(MBB_MinimapButtonFrame)           
+            
+            local function showButton(button)
+                button:SetAlpha(1)
+            end
+
+            local function hideButton(button)
+                button:SetAlpha(0)  
+            end            
+
+            hideButton(MBB_MinimapButtonFrame)
+            local hide = CreateFrame("BUTTON", nil, MBB_MinimapButtonFrame)
+            hide:SetAllPoints(hide:GetParent())
+
+            hide:SetScript("OnEnter", function()
+                showButton(MBB_MinimapButtonFrame)
+            end)
+
+            hide:SetScript("OnLeave", function()
+                hide.timer = GetTime() + 6
+                hide:SetScript("OnUpdate", function()            
+                    if (GetTime() > hide.timer) then
+                        MBB_HideButtons() -- MBB function to hide buttons
+                        hideButton(MBB_MinimapButtonFrame)
+                        hide:SetScript("OnUpdate", nil)
+                    end
+                end)
+            end)
+            
+            hide:RegisterForClicks("LeftButtonDown","RightButtonDown")
+            hide:SetScript("OnClick", function()
+                MBB_OnClick(arg1)
+            end)
         end
     end
 
@@ -209,26 +265,16 @@ module.enable = function(self)
         MinimapZoneText:SetDrawLayer("OVERLAY", 7)        
         MinimapZoneText:SetParent(styleFrame)
 
-        local function removeBackdrop(frame)
-            frame:SetBackdropBorderColor(0,0,0,0)
-            frame:SetBackdropColor(0,0,0,0)
-        end
-
-        local function lock(frame)
-            frame.ClearAllPoints = function() end
-            frame.SetAllPoints = function() end
-            frame.SetPoint = function() end
-            -- frame.SetWidth = function() end
-            -- feame.SetHeight = function() end
-            -- feame.SetScale = function() end            
-        end
+        -- local function removeBackdrop(frame)
+        --     frame:SetBackdropBorderColor(0,0,0,0)
+        --     frame:SetBackdropColor(0,0,0,0)
+        -- end        
 
         -- ShaguTweaks clock
         if MinimapClock then
             -- removeBackdrop(MinimapClock)
             MinimapClock:ClearAllPoints()
             MinimapClock:SetPoint("CENTER", styleFrame, "CENTER", -1, 0)
-            -- lock(MinimapClock)
         end
 
         -- ShaguTweaks-Mods timer
@@ -268,55 +314,7 @@ module.enable = function(self)
             -- PVP
             MiniMapBattlefieldFrame:ClearAllPoints()
             MiniMapBattlefieldFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 2, 8)
-        end
-
-        -- MinimapButtonFrame    
-        if MBB_MinimapButtonFrame then
-            -- reposition MBB to the bottom of the styleFrame (under the minimap)
-            -- show the button OnEnter and hide when OnLeave
-            
-            if IsAddOnLoaded("MinimapButtonBag-TurtleWoW") then
-                MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10_green")
-            else
-                MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10")
-            end            
-
-            MBB_MinimapButtonFrame:ClearAllPoints()
-            MBB_MinimapButtonFrame:SetPoint("CENTER", Minimap, "BOTTOMLEFT", 0, 0)
-            lock(MBB_MinimapButtonFrame)           
-            
-            local function showButton(button)
-                button:SetAlpha(1)
-            end
-
-            local function hideButton(button)
-                button:SetAlpha(0)  
-            end            
-
-            hideButton(MBB_MinimapButtonFrame)
-            local hide = CreateFrame("BUTTON", nil, MBB_MinimapButtonFrame)
-            hide:SetAllPoints(hide:GetParent())
-
-            hide:SetScript("OnEnter", function()
-                showButton(MBB_MinimapButtonFrame)
-            end)
-
-            hide:SetScript("OnLeave", function()
-                hide.timer = GetTime() + 6
-                hide:SetScript("OnUpdate", function()            
-                    if (GetTime() > hide.timer) then
-                        MBB_HideButtons() -- MBB function to hide buttons
-                        hideButton(MBB_MinimapButtonFrame)
-                        hide:SetScript("OnUpdate", nil)
-                    end
-                end)
-            end)
-            
-            hide:RegisterForClicks("LeftButtonDown","RightButtonDown")
-            hide:SetScript("OnClick", function()
-                MBB_OnClick(arg1)
-            end)
-        end
+        end        
     end
 
     local function names()
@@ -352,12 +350,12 @@ module.enable = function(self)
     local events = CreateFrame("Frame", nil, UIParent)	
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
-    events:SetScript("OnEvent", function()
-        addons()
+    events:SetScript("OnEvent", function()        
         buffs()
         buttons()
         minimap()
         names()
         font()
+        addons()
     end)
 end
