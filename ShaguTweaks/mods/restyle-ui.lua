@@ -60,6 +60,9 @@ module.enable = function(self)
 
             SP_ST_offhand:SetTexture(nil)
             SP_ST_offhand:SetWidth(0)
+
+            SP_ST_mainhand:Hide()
+            SP_ST_offhand:Hide()
             -- hide timers
             SP_ST_maintimer:Hide()
             SP_ST_offtimer:Hide()
