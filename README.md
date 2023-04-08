@@ -77,7 +77,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Hides the tooltip while in combat. While in combat, holding shift will show the tooltip.*
 
 - **Hide Unit Frames**    
-*Hide the player and pet frame if full health & mana, happy, no target and out of combat.*
+*Hide the player and pet frame if full health & mana, happy, no target and out of combat. Show on mouseover.*
 
 - **World Chat Hider**    
 *Looks for world chat in the chat frames and hides it while in an instance.*
