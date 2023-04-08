@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
     title = "Hide Unit Frames",
-    description = "Hide the player and pet frame if full health & mana, happy, no target and out of combat. Show on mouseover",
+    description = "Hide the player and pet frame if full health & mana, happy, no target and out of combat. Show on mouseover.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Unit Frames",
     enabled = nil,
