@@ -262,8 +262,8 @@ module.enable = function(self)
         styleFrame:SetWidth(Minimap:GetWidth())
 
         -- Zone Text
-        MinimapZoneText:ClearAllPoints()
-        MinimapZoneText:SetPoint("TOP", Minimap, 0, 13)
+        MinimapZoneTextButton:ClearAllPoints()
+        MinimapZoneTextButton:SetPoint("TOP", Minimap, 0, 13)
         MinimapZoneText:SetFont("Fonts\\skurri.TTF", 14, "OUTLINE")
         MinimapZoneText:SetDrawLayer("OVERLAY", 7)        
         MinimapZoneText:SetParent(styleFrame)
