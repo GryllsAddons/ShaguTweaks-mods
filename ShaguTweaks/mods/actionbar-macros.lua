@@ -10,7 +10,6 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-  local hooked = nil
   local gfind = string.gmatch or string.gfind
 
   local function ButtonMacroScan(bar,actionSlotStart)
