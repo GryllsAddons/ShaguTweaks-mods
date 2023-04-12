@@ -280,12 +280,12 @@ module.enable = function(self)
             MinimapClock:SetPoint("CENTER", styleFrame, "CENTER", -1, 0)
         end
 
-        -- ShaguTweaks-Mods timer
-        if MinimapTimer then
-            -- removeBackdrop(MinimapTimer)
-            MinimapTimer:ClearAllPoints()
-            MinimapTimer:SetPoint("TOP", styleFrame, "BOTTOM")
-        end
+        -- -- ShaguTweaks-Mods timer
+        -- if MinimapTimer then
+        --     -- removeBackdrop(MinimapTimer)
+        --     MinimapTimer:ClearAllPoints()
+        --     MinimapTimer:SetPoint("TOP", styleFrame, "BOTTOM")
+        -- end
 
         -- ShaguTweaks-Mods fps
         if MinimapFPS then
