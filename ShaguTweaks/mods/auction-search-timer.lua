@@ -24,7 +24,7 @@ module.enable = function(self)
             local tenths = floor((t - time) * 10)
             return seconds
         else
-          return 0, 0
+          return 0
         end
     end
 
