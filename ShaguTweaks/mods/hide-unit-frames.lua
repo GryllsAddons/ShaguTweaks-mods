@@ -109,10 +109,9 @@ module.enable = function(self)
     events:RegisterEvent("UNIT_PET")    
 
     events:SetScript("OnEvent", function()
-        if ((event == "SPELLCAST_START") or (event == "SPELLCAST_CHANNEL_START")) then
+        isCasting = nil
+        if ((event == "SPELLCAST_START") or (event == "SPELLCAST_CHANNEL_START") or (event == "SPELLCAST_STOP") or (event == "SPELLCAST_CHANNEL_STOP")) then
             isCasting = true
-        elseif ((event == "SPELLCAST_STOP") or (event == "SPELLCAST_FAILED") or (event == "SPELLCAST_INTERRUPTED") or (event == "SPELLCAST_CHANNEL_STOP")) then
-            isCasting = nil
         end
         CheckConditions()
     end)
