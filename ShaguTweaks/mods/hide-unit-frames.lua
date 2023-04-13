@@ -10,6 +10,7 @@ local module = ShaguTweaks:register({
 
 module.enable = function(self)
     local frames = { PlayerFrame, PetFrame }
+    local isCasting
 
     local function ShowFrames()
         for _, frame in pairs(frames) do
@@ -21,10 +22,6 @@ module.enable = function(self)
         for _, frame in pairs(frames) do
             frame:Hide()
         end
-    end
-
-    local function isCasting()
-        if CastingBarFrame.casting or CastingBarFrame.channeling then return true end
     end
 
     local function FullHealth(unit)
@@ -49,10 +46,9 @@ module.enable = function(self)
     local function PlayerConditions()
         local fullhealth = FullHealth("player")
         local fullmana = FullMana("player")
-        local notcasting = not isCasting()
         local ooc = not UnitAffectingCombat("player")
 
-        if fullhealth and fullmana and notcasting and ooc then return true end
+        if fullhealth and fullmana and (not isCasting) and ooc then return true end
     end
 
     local function CheckConditions()
@@ -76,6 +72,8 @@ module.enable = function(self)
 
         f:SetScript("OnEnter", function()
             parent:Show()
+            ShowTextStatusBarText(getglobal(parent:GetName().."HealthBar"))
+            ShowTextStatusBarText(getglobal(parent:GetName().."ManaBar"))
         end)
 
         f:SetScript("OnLeave", function()
@@ -100,17 +98,22 @@ module.enable = function(self)
     events:RegisterEvent("UNIT_HEALTH", "pet")
     events:RegisterEvent("UNIT_MANA", "player")
     events:RegisterEvent("UNIT_ENERGY", "player")
-    events:RegisterEvent("SPELLCAST_START")
-    events:RegisterEvent("SPELLCAST_CHANNEL_START")
-    events:RegisterEvent("SPELLCAST_STOP")
-    events:RegisterEvent("SPELLCAST_FAILED")
-    events:RegisterEvent("SPELLCAST_INTERRUPTED")
-    events:RegisterEvent("SPELLCAST_CHANNEL_STOP")
+    events:RegisterEvent("SPELLCAST_START", "player")
+    events:RegisterEvent("SPELLCAST_CHANNEL_START", "player")
+    events:RegisterEvent("SPELLCAST_STOP", "player")
+    events:RegisterEvent("SPELLCAST_FAILED", "player")
+    events:RegisterEvent("SPELLCAST_INTERRUPTED", "player")
+    events:RegisterEvent("SPELLCAST_CHANNEL_STOP", "player")
     events:RegisterEvent("PLAYER_REGEN_DISABLED") -- in combat
     events:RegisterEvent("PLAYER_REGEN_ENABLED") -- out of combat
     events:RegisterEvent("UNIT_PET")    
 
     events:SetScript("OnEvent", function()
+        if ((event == "SPELLCAST_START") or (event == "SPELLCAST_CHANNEL_START")) then
+            isCasting = true
+        elseif ((event == "SPELLCAST_STOP") or (event == "SPELLCAST_FAILED") or (event == "SPELLCAST_INTERRUPTED") or (event == "SPELLCAST_CHANNEL_STOP")) then
+            isCasting = nil
+        end
         CheckConditions()
     end)
 end
