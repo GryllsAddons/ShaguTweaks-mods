@@ -72,8 +72,8 @@ module.enable = function(self)
 
         f:SetScript("OnEnter", function()
             parent:Show()
-            ShowTextStatusBarText(getglobal(parent:GetName().."HealthBar"))
-            ShowTextStatusBarText(getglobal(parent:GetName().."ManaBar"))
+            ShowTextStatusBarText(_G[parent:GetName().."HealthBar"])
+            ShowTextStatusBarText(_G[parent:GetName().."ManaBar"])
         end)
 
         f:SetScript("OnLeave", function()
