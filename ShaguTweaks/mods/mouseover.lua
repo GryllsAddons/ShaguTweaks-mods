@@ -70,8 +70,8 @@ module.enable = function(self)
 
     -- HCWarn support
     if HCWarn_nointeract and (unit ~= "player") then
-      if HCWarn_Check(unit) then 
-        UIErrorsFrame:AddMessage("Mouseover unit is PVP flagged",1,0,0)
+      if UnitIsPVP(unit) then 
+          UIErrorsFrame:AddMessage("Mouseover unit is PVP flagged",1,0,0)
         return 
       end
     end
