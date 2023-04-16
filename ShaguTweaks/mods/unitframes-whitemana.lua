@@ -10,7 +10,7 @@ local module = ShaguTweaks:register({
 
 module.enable = function(self)
     local HookUnitFrame_UpdateManaType = UnitFrame_UpdateManaType
-        function UnitFrame_UpdateManaType(uf)
+    function UnitFrame_UpdateManaType(uf)
         HookUnitFrame_UpdateManaType(uf)
         if not uf then uf = this end
         local mb = uf.unit and uf.manabar
