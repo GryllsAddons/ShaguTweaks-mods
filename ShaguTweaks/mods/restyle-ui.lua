@@ -8,8 +8,9 @@ local module = ShaguTweaks:register({
 
 module.enable = function(self)
     local _G = ShaguTweaks.GetGlobalEnv()
+    local restyle = CreateFrame("Frame", nil, UIParent)
 
-    local function addons()
+    function restyle:addons()
         --[[
             Supported Addons:
             SP_SwingTimer (Vanilla/Turtle),
@@ -71,7 +72,7 @@ module.enable = function(self)
             SP_ST_FrameTime2:Hide()
 
             -- add borders
-            local function addBorder(frame)
+            local function border(frame)
                 local x, y, e, i = 4, 2, h, 4
                 f = CreateFrame("Frame", nil, frame)
                 f:SetPoint("TOPLEFT", f:GetParent(), "TOPLEFT", -x, y)
@@ -88,8 +89,8 @@ module.enable = function(self)
                 f:SetBackdropBorderColor(r, g, b, a)
             end           
             
-            addBorder(SP_ST_Frame)
-            addBorder(SP_ST_FrameOFF)            
+            border(SP_ST_Frame)
+            border(SP_ST_FrameOFF)            
         end
 
         -- MinimapButtonFrame    
@@ -141,8 +142,7 @@ module.enable = function(self)
         end
     end
 
-    local function buffs()
-        -- Buff font
+    function restyle:buffs()
         local font, size, outline = "Fonts\\FRIZQT__.TTF", 9, "OUTLINE"
         local yoffset = -5
         local f = CreateFrame("Frame", nil, GryllsMinimap)
@@ -197,8 +197,8 @@ module.enable = function(self)
         end
     end
 
-    local function buttons()
-        local function restyle(button)
+    function restyle:buttons()
+        local function style(button)
             if not button then return end        
 
             local hotkey = _G[button:GetName().."HotKey"]
@@ -218,13 +218,12 @@ module.enable = function(self)
                 local font, size, outline = "Fonts\\frizqt__.TTF", 14, "OUTLINE"
                 count:SetFont(font, size, outline)   
             end
-
         end
         
         for i = 1, 24 do
             local button = _G['BonusActionButton'..i]
             if button then
-                restyle(button)
+                style(button)
             end
         end
 
@@ -238,7 +237,7 @@ module.enable = function(self)
                     _G['MultiBarBottomRightButton'..i],
                 }
             ) do
-                restyle(button)
+                style(button)
             end        
         end 
 
@@ -249,12 +248,12 @@ module.enable = function(self)
                     _G['PetActionButton'..i]
                 }
             ) do
-                restyle(button)
+                style(button)
             end
         end
     end
 
-    local function minimap()
+    function restyle:minimap()
         -- Move minimap elements
         local styleFrame = CreateFrame("Frame", nil, MinimapCluster)
         styleFrame:SetPoint("CENTER", Minimap, "BOTTOM")
@@ -268,35 +267,20 @@ module.enable = function(self)
         MinimapZoneText:SetDrawLayer("OVERLAY", 7)        
         MinimapZoneText:SetParent(styleFrame)
 
-        -- local function removeBackdrop(frame)
-        --     frame:SetBackdropBorderColor(0,0,0,0)
-        --     frame:SetBackdropColor(0,0,0,0)
-        -- end        
-
         -- ShaguTweaks clock
         if MinimapClock then
-            -- removeBackdrop(MinimapClock)
             MinimapClock:ClearAllPoints()
             MinimapClock:SetPoint("CENTER", styleFrame, "CENTER", -1, 0)
         end
 
-        -- -- ShaguTweaks-Mods timer
-        -- if MinimapTimer then
-        --     -- removeBackdrop(MinimapTimer)
-        --     MinimapTimer:ClearAllPoints()
-        --     MinimapTimer:SetPoint("TOP", styleFrame, "BOTTOM")
-        -- end
-
         -- ShaguTweaks-Mods fps
         if MinimapFPS then
-            -- removeBackdrop(MinimapFPS)
             MinimapFPS:ClearAllPoints()
             MinimapFPS:SetPoint("LEFT", styleFrame, "LEFT")
         end
 
         -- ShaguTweaks-Mods ms
         if MinimapMS then
-            -- removeBackdrop(MinimapMS)
             MinimapMS:ClearAllPoints()
             MinimapMS:SetPoint("RIGHT", styleFrame, "RIGHT")
         end
@@ -320,45 +304,60 @@ module.enable = function(self)
         end        
     end
 
-    local function names()
-        local function nameFont(name)
-            local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
+    function restyle:unitnames()
+        local names = {
+            PlayerFrame.name,
+            PetName,
+            TargetFrame.name,
+            TargetofTargetName,
+            PartyMemberFrame1.name,
+            PartyMemberFrame2.name,
+            PartyMemberFrame3.name,
+            PartyMemberFrame4.name,
+            PartyMemberFrame1PetFrame.name,
+            PartyMemberFrame2PetFrame.name,
+            PartyMemberFrame3PetFrame.name,
+            PartyMemberFrame4PetFrame.name
+        }
+
+        local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
+        for _, name in pairs(names) do
             name:SetFont(font, size, outline)
         end
-
-        nameFont(PlayerFrame.name)
-        nameFont(PetName)
-        nameFont(TargetFrame.name)
-        nameFont(TargetofTargetName)
-        nameFont(PartyMemberFrame1.name)
-        nameFont(PartyMemberFrame2.name)
-        nameFont(PartyMemberFrame3.name)
-        nameFont(PartyMemberFrame4.name)
-        nameFont(PartyMemberFrame1PetFrame.name)
-        nameFont(PartyMemberFrame2PetFrame.name)
-        nameFont(PartyMemberFrame3PetFrame.name)
-        nameFont(PartyMemberFrame4PetFrame.name)
     end
 
-    local function font()
-        local chatframes = { ChatFrame1, ChatFrame2, ChatFrame3 }
+    function restyle:chatframes()
+        local frames = {
+            ChatFrame1,
+            ChatFrame2,
+            ChatFrame3
+        }
 
-        for _, chatframe in pairs(chatframes) do
-            local font = "Fonts\\frizqt__.TTF"
-            local _, size, outline = chatframe:GetFont()
-            chatframe:SetFont(font, size, outline)
+        local font = "Fonts\\frizqt__.TTF"
+        for _, frame in pairs(frames) do            
+            local _, size, outline = frame:GetFont()
+            frame:SetFont(font, size, outline)
         end
     end
 
-    local events = CreateFrame("Frame", nil, UIParent)	
-    events:RegisterEvent("PLAYER_ENTERING_WORLD")
+    function restyle:nameplates()
+        if ShaguPlates then return end
 
-    events:SetScript("OnEvent", function()        
-        buffs()
-        buttons()
-        minimap()
-        names()
-        font()
-        addons()
+        table.insert(ShaguTweaks.libnameplate.OnUpdate, function()
+            local font, size, outline = "Fonts\\frizqt__.TTF", 16, "OUTLINE"
+            this.name:SetFont(font, size, outline)
+            this.level:SetFont(font, size, outline)
+        end)
+    end
+    
+    restyle:RegisterEvent("PLAYER_ENTERING_WORLD")
+    restyle:SetScript("OnEvent", function()
+        restyle:addons()           
+        restyle:buffs()
+        restyle:buttons()
+        restyle:minimap()
+        restyle:unitnames()
+        restyle:chatframes()
+        restyle:nameplates()               
     end)
 end
