@@ -8,9 +8,16 @@ local module = ShaguTweaks:register({
     enabled = nil,
 })
 
-module.enable = function(self)    
-    hooksecurefunc("UnitFrame_UpdateManaType", function(unitFrame)
-        if (not unitFrame) or (not UnitExists(unitFrame.unit)) or UnitIsDeadOrGhost(unitFrame.unit) or (not UnitIsConnected(unitFrame.unit)) then return end
-        if UnitPowerType(unitFrame.unit) == 0 then unitFrame.manabar:SetStatusBarColor(1, 1, 1) end
-    end, true)
+module.enable = function(self)
+    local HookUnitFrame_UpdateManaType = UnitFrame_UpdateManaType
+        function UnitFrame_UpdateManaType(uf)
+        HookUnitFrame_UpdateManaType(uf)
+        if not uf then uf = this end
+        local mb = uf.unit and uf.manabar
+        if not mb then return end
+
+        if (UnitPowerType(uf.unit) == 0) then
+            mb:SetStatusBarColor(1, 1, 1)
+        end
+    end
 end
