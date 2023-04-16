@@ -125,6 +125,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Movable Unitframes Extended**    
 *Party frames, Minimap, Buffs, Weapon Buffs and Debuffs can be moved while Shift and Ctrl are pressed together. Drag the first (end) buff or debuff to move.*   
 
+- **Nameplate Low Health**    
+*Changes the nameplate healthbar color when at 20% health or lower.*
+
 - **Pet Name Happiness**    
 *Colors Hunter pet name by happiness level.*
 
@@ -146,8 +149,8 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Unit Frame Energy & Mana Tick**    
 *Adds an energy & mana tick to the player frame.*
 
-- **Unit Frame Healthbar Colors**    
-*Changes the unitframe and nameplate healthbar color when at 20% health or lower.*
+- **Unit Frame Low Health**    
+*Changes the unitframe healthbar color when at 20% health or lower.*
 
 - **Unit Frame White Mana**    
 *Changes unit frame mana color to white.*
