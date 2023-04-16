@@ -41,21 +41,21 @@ module.enable = function(self)
     end)
   end
 
-  hooksecurefunc("UnitFrameHealthBar_Update", function(statusbar, unit)
-    if unit == statusbar.unit then
+  local HookUnitFrameHealthBar_Update = UnitFrameHealthBar_Update
+  function UnitFrameHealthBar_Update(sb, unit)
+    HookUnitFrameHealthBar_Update(sb, unit)
+    if (unit == sb.unit) then
       local hp = UnitHealth(unit)
       local hpmax = UnitHealthMax(unit)
       local percent = hp / hpmax
 
       if percent <= 0.2 then
         if UnitCanAssist("player", unit) then
-          statusbar:SetStatusBarColor(0/255, 204/255, 255/255)
+          sb:SetStatusBarColor(0/255, 204/255, 255/255)
         else
-          statusbar:SetStatusBarColor(255/255, 128/255, 0/255)
+          sb:SetStatusBarColor(255/255, 128/255, 0/255)
         end
-      else
-        statusbar:SetStatusBarColor(0, 1, 0)
       end
     end
-  end, true)
+  end
 end
