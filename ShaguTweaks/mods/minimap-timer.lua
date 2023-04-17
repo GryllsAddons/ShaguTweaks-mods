@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
   title = "MiniMap Timer",
-  description = "Adds a togglable timer to the minimap clock. Left click the clock to toggle the timer. Left click the timer to start/pause or right click to reset. Shift left click to move, shift right click to reset position.",
+  description = "Adds a togglable timer to the minimap clock. Left click the clock to toggle the timer. Left click the timer to start/pause or right click to reset. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "World & MiniMap",
   enabled = nil,
