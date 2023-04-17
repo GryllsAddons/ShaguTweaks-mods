@@ -68,14 +68,6 @@ module.enable = function(self)
       end
     end
 
-    -- HCWarn support
-    if HCWarn_nointeract and (unit ~= "player") then
-      if UnitIsPVP(unit) then 
-          UIErrorsFrame:AddMessage("Mouseover unit is PVP flagged",1,0,0)
-        return 
-      end
-    end
-
     -- If target and mouseover are friendly units, we can't use spell target as it
     -- would cast on the target instead of the mouseover. However, if the mouseover
     -- is friendly and the target is not, we can try to obtain the best unitstring
