@@ -352,12 +352,15 @@ module.enable = function(self)
     
     restyle:RegisterEvent("PLAYER_ENTERING_WORLD")
     restyle:SetScript("OnEvent", function()
-        restyle:addons()           
-        restyle:buffs()
-        restyle:buttons()
-        restyle:minimap()
-        restyle:unitnames()
-        restyle:chatframes()
-        restyle:nameplates()               
+        if not this.loaded then
+            this.loaded = true
+            restyle:addons()           
+            restyle:buffs()
+            restyle:buttons()
+            restyle:minimap()
+            restyle:unitnames()
+            restyle:chatframes()
+            restyle:nameplates()
+        end           
     end)
 end

@@ -204,11 +204,14 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
-        _, _, lowMS = GetNetStats()
-        _, _, highMS = GetNetStats()
-        MinimapMS:Show()
-        lowFPS = floor(GetFramerate())
-        highFPS = floor(GetFramerate())
-        MinimapFPS:Show()
+        if not this.loaded then
+            this.loaded = true
+            _, _, lowMS = GetNetStats()
+            _, _, highMS = GetNetStats()
+            MinimapMS:Show()
+            lowFPS = floor(GetFramerate())
+            highFPS = floor(GetFramerate())
+            MinimapFPS:Show()
+        end
     end)   
 end
