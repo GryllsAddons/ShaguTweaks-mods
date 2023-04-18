@@ -181,7 +181,7 @@ module.enable = function(self)
                 highMS = currMS
             end
 
-            if ((lowMS > currMS) and (currMS > 0)) then
+            if ((lowMS > 0) and (lowMS > currMS) and (currMS > 0)) then
                 lowMS = currMS
             end
     end)
