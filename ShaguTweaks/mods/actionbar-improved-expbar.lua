@@ -31,6 +31,7 @@ module.enable = function(self)
     }
     
     local isMousing
+    local turtle = (TargetHPText or TargetHPPercText)  -- Turtle WoW
 
     local function updateExp(mouseover)
         local playerlevel = UnitLevel("player")
@@ -48,7 +49,7 @@ module.enable = function(self)
                     if exh_perc > 0 then
                         exp.expstring:SetText(exh .. " (" .. exh_perc.."%) rested")
                     end
-                elseif (TargetHPText or TargetHPPercText) then -- Turtle WoW
+                elseif turtle then
                     if exh_perc > 0 then
                         exp.expstring:SetText(exh_perc.."% rested")
                     end
@@ -106,7 +107,7 @@ module.enable = function(self)
     
     local function expHide()
         isMousing = nil
-        if (not IsResting()) and (not (TargetHPText or TargetHPPercText)) then
+        if (not IsResting()) and (not turtle) then
             exp.expstring:Hide()
         else
             updateExp(isMousing)
@@ -177,9 +178,9 @@ module.enable = function(self)
             expHide()
             repHide()
             
-            -- Always show rested % for Turtle WoW
-            if (TargetHPText or TargetHPPercText) then
-                exp.expstring:Show()
+            
+            if turtle then                
+                exp.expstring:Show() -- always show rested %
             end
         elseif event == "PLAYER_UPDATE_RESTING" then
             updateResting()
