@@ -343,8 +343,8 @@ module.enable = function(self)
     function restyle:nameplates()
         if ShaguPlates then return end
 
-        table.insert(ShaguTweaks.libnameplate.OnUpdate, function()
-            local font, size, outline = "Fonts\\frizqt__.TTF", 16, "OUTLINE"
+        local font, size, outline = "Fonts\\frizqt__.TTF", 16, "OUTLINE"
+        table.insert(ShaguTweaks.libnameplate.OnUpdate, function()            
             this.name:SetFont(font, size, outline)
             this.level:SetFont(font, size, outline)
         end)
