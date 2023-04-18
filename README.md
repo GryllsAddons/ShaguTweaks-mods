@@ -128,9 +128,6 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Nameplate Low Health**    
 *Changes the nameplate healthbar color when at 20% health or lower.*
 
-- **Nameplate Tweaks**    
-*Replace totem nameplates with icons and hides healthbar on critters.*
-
 - **Pet Name Happiness**    
 *Colors Hunter pet name by happiness level.*
 
