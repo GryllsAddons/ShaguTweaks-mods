@@ -170,17 +170,18 @@ module.enable = function(self)
 
     events:SetScript("OnEvent", function()
         if event == "PLAYER_ENTERING_WORLD" then
-            MainMenuBarOverlayFrame:Hide()       
-            mouseoverExp()
-            mouseoverRep()            
-            updateExp(isMousing)
-            updateRep()
-            expHide()
-            repHide()
-            
-            
-            if turtle then                
-                exp.expstring:Show() -- always show rested %
+            if not this.loaded then
+                this.loaded = true
+                MainMenuBarOverlayFrame:Hide()       
+                mouseoverExp()
+                mouseoverRep()            
+                updateExp(isMousing)
+                updateRep()
+                expHide()
+                repHide()
+                if turtle then
+                    exp.expstring:Show() -- always show rested %
+                end
             end
         elseif event == "PLAYER_UPDATE_RESTING" then
             updateResting()
