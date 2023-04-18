@@ -7,7 +7,6 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-    ShaguTweaks.MouseoverRight = true
     local _G = ShaguTweaks.GetGlobalEnv()
 
     local timer = CreateFrame("Frame", nil, UIParent)
@@ -19,7 +18,7 @@ module.enable = function(self)
         UIParent_ManageFramePositions()
     end
     
-    local function show(bar)        
+    local function show(bar)
         bar:Show()
         UIParent_ManageFramePositions()
     end
@@ -35,11 +34,10 @@ module.enable = function(self)
             end)
         end
     
-        local tooltipVisible = GameTooltip:IsVisible()
-        if (not tooltipVisible) and (mouseOverButton or mouseOverBar) then
+        if (mouseOverButton or mouseOverBar) then
             timer:SetScript("OnUpdate", nil)
             show(bar)
-        elseif (not tooltipVisible) and (not mouseOverBar) and (not mouseOverButton) then
+        elseif (not mouseOverBar) and (not mouseOverButton) then
             setTimer()
         end
     end
@@ -53,7 +51,7 @@ module.enable = function(self)
     
     local function barLeave(frame, bar)
         frame:SetScript("OnLeave", function()
-            mouseOverBar = false     
+            mouseOverBar = nil     
             mouseover(bar)
         end)
     end
@@ -61,14 +59,14 @@ module.enable = function(self)
     local function buttonEnter(frame, bar)
         frame:SetScript("OnEnter", function()
             mouseOverButton = true
-            frame:EnableMouse(false)
+            frame:EnableMouse(nil)
             mouseover(bar)        
         end)
     end
     
     local function buttonLeave(frame, bar)
         frame:SetScript("OnLeave", function()
-            mouseOverButton = false
+            mouseOverButton = nil
             frame:EnableMouse(true)
             mouseover(bar)
         end)
@@ -87,6 +85,7 @@ module.enable = function(self)
         local frame = CreateFrame("Frame", nil, UIParent)
         frame:SetAllPoints(bar)
         frame:EnableMouse(true)
+        frame:SetFrameStrata("HIGH")
         barEnter(frame, bar) 
         barLeave(frame, bar)
     end
