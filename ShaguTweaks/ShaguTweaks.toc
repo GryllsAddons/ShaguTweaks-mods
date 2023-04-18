@@ -64,6 +64,7 @@ mods\modifier-actions.lua
 mods\mouseover.lua
 mods\move-unitframes-extended.lua
 mods\nameplate-lowhealth.lua
+mods\nameplate-tweaks.lua
 mods\pet-name-happiness.lua
 mods\restyle-ui.lua
 mods\skip-gossip.lua
