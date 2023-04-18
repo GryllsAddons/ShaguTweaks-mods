@@ -225,9 +225,12 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
-        lockframes()
-        castbar()
-        hideart()
-        setup(MultiBarBottomLeft)
+        if not this.loaded then
+            this.loaded = true
+            lockframes()
+            castbar()
+            hideart()
+            setup(MultiBarBottomLeft)
+        end
     end)
 end

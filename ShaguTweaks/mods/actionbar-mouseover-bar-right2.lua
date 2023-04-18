@@ -109,6 +109,9 @@ module.enable = function(self)
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:SetScript("OnEvent", function()
-        setup(MultiBarLeft)
+        if not this.loaded then
+            this.loaded = true
+            setup(MultiBarLeft)
+        end
     end)    
 end
