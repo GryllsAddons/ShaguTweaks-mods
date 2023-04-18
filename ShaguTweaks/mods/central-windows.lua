@@ -1,5 +1,3 @@
-local hooksecurefunc = ShaguTweaks.hooksecurefunc
-
 local module = ShaguTweaks:register({
     title = "Central Interaction Windows",
     description = "Interaction windows will be positioned centrally.",
@@ -9,16 +7,7 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-    local function SetDoublewideFrame()
-        -- DEFAULT_CHAT_FRAME:AddMessage("SetDoublewideFrame")
-        local frame = UIParent.doublewide or nil
-        if frame then
-            frame:ClearAllPoints()
-            frame:SetPoint("CENTER", "UIParent", "CENTER", 0, 0)
-        end
-    end
-
-    local function movePanels(p1, p2)
+    local function move(p1, p2)
         if p1 and p2 then
             p2:ClearAllPoints()
             p2:SetPoint("CENTER", "UIParent", "CENTER", -384, 0)
@@ -33,29 +22,37 @@ module.enable = function(self)
         end
     end
 
-    local function SetLeftFrame()
-        -- DEFAULT_CHAT_FRAME:AddMessage("SetLeftFrame")
-        local left = UIParent.left or nil
-        local center = UIParent.center or nil
-        movePanels(left, center)
+    local HookSetDoublewideFrame = SetDoublewideFrame
+    function SetDoublewideFrame(frame)
+        HookSetDoublewideFrame(frame)
+        local frame = UIParent.doublewide or nil
+        if frame then
+            frame:ClearAllPoints()
+            frame:SetPoint("CENTER", "UIParent", "CENTER", 0, 0)
+        end
     end
 
-    local function MovePanelToLeft()
-        -- DEFAULT_CHAT_FRAME:AddMessage("MovePanelToLeft")
+    local HookSetLeftFrame = SetLeftFrame
+    function SetLeftFrame(frame)
+        HookSetLeftFrame(frame)
         local left = UIParent.left or nil
         local center = UIParent.center or nil
-        movePanels(left, center)
+        move(left, center)
     end
 
-    local function SetCenterFrame()
-        -- DEFAULT_CHAT_FRAME:AddMessage("SetCenterFrame")
+    local HookMovePanelToLeft = MovePanelToLeft
+    function MovePanelToLeft(frame)
+        HookMovePanelToLeft(frame)
         local left = UIParent.left or nil
         local center = UIParent.center or nil
-        movePanels(center, left)
+        move(left, center)
     end
-    
-    hooksecurefunc("SetDoublewideFrame", SetDoublewideFrame, true)
-    hooksecurefunc("SetLeftFrame", SetLeftFrame, true)
-    hooksecurefunc("MovePanelToLeft", MovePanelToLeft, true)
-    hooksecurefunc("SetCenterFrame", SetCenterFrame, true)
+
+    local HookSetCenterFrame = SetCenterFrame
+    function SetCenterFrame(frame)
+        HookSetCenterFrame(frame)
+        local left = UIParent.left or nil
+        local center = UIParent.center or nil
+        move(center, left)
+    end
 end
