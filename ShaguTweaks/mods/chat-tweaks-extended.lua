@@ -145,10 +145,13 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
-        chatscroll()
-        chatbuttons()
-        mouseoverlinks()
-        clicklinks()
-        channelindicators()
+        if not this.loaded then
+            this.loaded = true
+            chatscroll()
+            chatbuttons()
+            mouseoverlinks()
+            clicklinks()
+            channelindicators()
+        end
     end)
 end

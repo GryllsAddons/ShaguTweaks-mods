@@ -81,7 +81,10 @@ module.enable = function(self)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()
-        SetupChat()
-        SetupChannels()
+        if not this.loaded then
+            this.loaded = true
+            SetupChat()
+            SetupChannels()
+        end
     end)
 end
