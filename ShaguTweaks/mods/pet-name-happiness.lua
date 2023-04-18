@@ -1,5 +1,3 @@
-local hooksecurefunc = ShaguTweaks.hooksecurefunc
-
 local module = ShaguTweaks:register({
   title = "Pet Name Happiness",
   description = "Colors Hunter pet name by happiness level.",
@@ -9,9 +7,11 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-  local function PetNameColor()
+  local HookPetFrame_SetHappiness = PetFrame_SetHappiness
+  function PetFrame_SetHappiness()
+    HookPetFrame_SetHappiness()
     local happiness = GetPetHappiness()
-    local _, isHunterPet = HasPetUI();
+    local _, isHunterPet = HasPetUI()
     if ( not happiness or not isHunterPet ) then return end
       
     if (happiness == 1) then -- unhappy
@@ -22,6 +22,4 @@ module.enable = function(self)
       PetName:SetTextColor(0,1,0)
     end
   end
-
-  hooksecurefunc("PetFrame_SetHappiness", PetNameColor, true)
 end

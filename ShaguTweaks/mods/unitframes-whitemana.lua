@@ -1,5 +1,3 @@
-local hooksecurefunc = ShaguTweaks.hooksecurefunc
-
 local module = ShaguTweaks:register({
     title = "Unit Frame White Mana",
     description = "Changes unit frame mana color to white.",
