@@ -51,22 +51,25 @@ end
 
 module.enable = function(self)
     local events = CreateFrame("Frame", nil, UIParent)
-    events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:RegisterEvent("WORLD_MAP_UPDATE")
 
     events.timer = CreateFrame("Frame", nil, UIParent)
+	events.timer:Hide()
     events.timer:SetScript("OnUpdate", function()
-        if GetTime() >= events.timer.time then
+        if GetTime() >= events.time then
+			events.time = nil
 			local inInstance, instanceType = IsInInstance() or 0, "NONE"
 			-- DEBUG:
 			-- DEFAULT_CHAT_FRAME:AddMessage("inInstance: "..inInstance..", instanceType: "..instanceType)
-			WorldChat(inInstance)
+			WorldChat(inInstance)			
 			this:Hide()
         end
     end)
 
     events:SetScript("OnEvent", function()
-        events.timer.time = GetTime()+.25
-        events.timer:Show()       
+        events.time = GetTime() + .25
+		if not events.timer:IsShown() then
+        	events.timer:Show()
+		end
     end)    
 end
