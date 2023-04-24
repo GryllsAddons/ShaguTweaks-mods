@@ -95,7 +95,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Rescales the interface options menu and removes the background.*
 
 - **Improved Roll Frames**   
-*Restyles the roll frames, shows who has clicked need/greed/pass (requires "Detailed Loot information" to be checked in interface options).*
+*Restyles the roll frames, shows who has clicked need/greed/pass (requires "Detailed Loot Information" to be checked in interface options).*
 
 - **Loot Monitor**    
 *Display recent loot text in a central scrolling window.*    
