@@ -8,6 +8,9 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
+  -- HCWarn support (https://github.com/GryllsAddons/HCWarn)
+  local HCWarn = IsAddOnLoaded("HCWarn")
+
   -- pfUI mouseover
 
   -- Prepare a list of units that can be used via SpellTargetUnit
@@ -67,12 +70,12 @@ module.enable = function(self)
         return
       end
     end
-
-    -- HCWarn support
-    if (not HCWarn_interact) and (unit ~= "player") then
-      if UnitIsPVP(unit) and (not IsInInstance()) then 
-          UIErrorsFrame:AddMessage("Mouseover unit is PVP flagged", 1, 0.25, 0)
-        return 
+     
+    if HCWarn and (unit ~= "player") then
+      -- Prevent casts on PvP enemies when outside instances unless you are PvP flagged
+      if UnitIsPVP(unit) and UnitCanAttack("player", unit) and (not IsInInstance()) and (not UnitIsPVP("player")) then
+        UIErrorsFrame:AddMessage("Mouseover unit is PVP flagged", 1, 0.25, 0)
+        return
       end
     end
 
