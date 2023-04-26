@@ -73,7 +73,7 @@ module.enable = function(self)
     -- HCWarn support (https://github.com/GryllsAddons/HCWarn)
     if HCWarn_Mouseover and (unit ~= "player") then
       -- Prevent casts on PvP enemies when outside instances unless you are PvP flagged
-      if UnitIsPVP(unit) and (not UnitCanAttack("player", unit)) and (not IsInInstance()) and (not UnitIsPVP("player")) then
+      if UnitIsPVP(unit) and UnitCanAttack("player", unit) and (not IsInInstance()) and (not UnitIsPVP("player")) then
         UIErrorsFrame:AddMessage("Mouseover unit is PVP flagged", 1, 0.25, 0)
         return
       end
