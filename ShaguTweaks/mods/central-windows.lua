@@ -7,6 +7,18 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
+    local skip = { UIOptionsFrame }
+
+    local function check(frame)
+        for _, f in pairs(skip) do
+            if f == frame then
+                frame:ClearAllPoints()
+                frame:SetAllPoints(UIParent)
+                return true
+            end
+        end
+    end
+
     local function move(p1, p2)
         if p1 and p2 then
             p2:ClearAllPoints()
@@ -25,6 +37,8 @@ module.enable = function(self)
     local HookSetDoublewideFrame = SetDoublewideFrame
     function SetDoublewideFrame(frame)
         HookSetDoublewideFrame(frame)
+        local skip = check(frame)
+        if skip then return end
         local frame = UIParent.doublewide or nil
         if frame then
             frame:ClearAllPoints()
@@ -35,6 +49,8 @@ module.enable = function(self)
     local HookSetLeftFrame = SetLeftFrame
     function SetLeftFrame(frame)
         HookSetLeftFrame(frame)
+        local skip = check(frame)
+        if skip then return end
         local left = UIParent.left or nil
         local center = UIParent.center or nil
         move(left, center)
@@ -43,6 +59,8 @@ module.enable = function(self)
     local HookMovePanelToLeft = MovePanelToLeft
     function MovePanelToLeft(frame)
         HookMovePanelToLeft(frame)
+        local skip = check(frame)
+        if skip then return end
         local left = UIParent.left or nil
         local center = UIParent.center or nil
         move(left, center)
@@ -51,8 +69,10 @@ module.enable = function(self)
     local HookSetCenterFrame = SetCenterFrame
     function SetCenterFrame(frame)
         HookSetCenterFrame(frame)
+        local skip = check(frame)
+        if skip then return end
         local left = UIParent.left or nil
         local center = UIParent.center or nil
         move(center, left)
-    end
+    end    
 end
