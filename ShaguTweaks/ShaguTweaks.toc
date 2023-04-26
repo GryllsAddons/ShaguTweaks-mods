@@ -44,6 +44,7 @@ mods\actionbar-mouseover-bar-right2.lua
 mods\actionbar-quick-actions.lua
 mods\actionbar-range-color.lua
 mods\auction-search-timer.lua
+mods\bag-search.lua
 mods\basic-chat.lua
 mods\camera.lua
 mods\central-windows.lua
