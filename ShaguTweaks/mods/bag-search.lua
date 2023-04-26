@@ -137,10 +137,11 @@ module.enable = function(self)
     end)
 
     search:SetScript("OnShow", function()
-        if ContainerFrame1:GetID() == KEYRING_CONTAINER then
-            search.edit:Hide()
-        else
+        if ContainerFrame1:GetID() == 0 then
+            -- Backpack
             search.edit:Show()
+        else
+            search.edit:Hide()
         end
     end)    
 end
