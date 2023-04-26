@@ -57,6 +57,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Auction Search Timer**    
 *The auction search button will show the time remaining until you can search the auction house.*
 
+- **Bag Search**    
+*Adds a search box to the backpack for searching your bags, keyring and bank. Press Esc or Tab to finish searching.*
+
 - **Basic Chat**    
 *Creates General, Combat Log and 'Loot & Spam' chat boxes and resets chat channels on every login.*
 
