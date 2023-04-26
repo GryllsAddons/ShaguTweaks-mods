@@ -58,6 +58,8 @@ mods\improved-advanced-options.lua
 mods\improved-castbar.lua
 mods\improved-interface-options.lua
 mods\improved-roll-frames.lua
+mods\item-colors-extended.lua
+mods\item-colors-glow.lua
 mods\loot-monitor.lua
 mods\minimap-framerate-latency.lua
 mods\minimap-timer.lua
