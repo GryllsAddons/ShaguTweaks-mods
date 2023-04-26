@@ -27,9 +27,9 @@ module.enable = function(self)
     
     search.button = CreateFrame("Button", nil, search.edit)
     search.button:EnableMouse(true) 
-    search.button:SetWidth(32)
-    search.button:SetHeight(32)
-    search.button:SetPoint("LEFT", search.edit, "RIGHT", -5, 0)
+    search.button:SetWidth(28)
+    search.button:SetHeight(28)
+    search.button:SetPoint("LEFT", search.edit, "RIGHT", -4, -1)
     
     search.icon = search.edit:CreateTexture(nil, "OVERLAY")
     search.icon:SetAllPoints(search.button)
