@@ -7,14 +7,39 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-    local skip = { UIOptionsFrame }
+    local HookSetLeftFrame = SetLeftFrame
+    local HookSetDoublewideFrame = SetDoublewideFrame
+    local HookMovePanelToLeft = MovePanelToLeft
+    local HookSetCenterFrame = SetCenterFrame
+
+    local special = { UIOptionsFrame, MailFrame }
 
     local function check(frame)
-        for _, f in pairs(skip) do
+        for _, f in pairs(special) do
             if f == frame then
                 frame:ClearAllPoints()
-                frame:SetAllPoints(UIParent)
-                return true
+                if frame == UIOptionsFrame then
+                    frame:SetAllPoints(UIParent)
+                    return true
+                elseif frame == MailFrame then                    
+                    frame:SetPoint("CENTER", "UIParent", "CENTER", -384, 0)
+                    HookSetCenterFrame(nil) -- set prev left frame to nil
+                    return true
+                end                
+            end
+        end
+
+        if frame ~= MailFrame then
+            if MailFrame:IsVisible() then            
+                if UIParent.left == MailFrame then
+                    MailFrame:ClearAllPoints()
+                    MailFrame:SetPoint("CENTER", "UIParent", "CENTER", -384, 0)
+                    if frame then
+                        frame:ClearAllPoints()
+                        frame:SetPoint("CENTER", "UIParent", "CENTER", 0, 0)
+                    end
+                    return true
+                end
             end
         end
     end
@@ -34,11 +59,11 @@ module.enable = function(self)
         end
     end
 
-    local HookSetDoublewideFrame = SetDoublewideFrame
+    
     function SetDoublewideFrame(frame)
         HookSetDoublewideFrame(frame)
-        local skip = check(frame)
-        if skip then return end
+        local special = check(frame)
+        if special then return end
         local frame = UIParent.doublewide or nil
         if frame then
             frame:ClearAllPoints()
@@ -46,31 +71,31 @@ module.enable = function(self)
         end
     end
 
-    local HookSetLeftFrame = SetLeftFrame
+    
     function SetLeftFrame(frame)
         HookSetLeftFrame(frame)
-        local skip = check(frame)
-        if skip then return end
+        local special = check(frame)
+        if special then return end
         local left = UIParent.left or nil
         local center = UIParent.center or nil
         move(left, center)
     end
 
-    local HookMovePanelToLeft = MovePanelToLeft
+    
     function MovePanelToLeft(frame)
         HookMovePanelToLeft(frame)
-        local skip = check(frame)
-        if skip then return end
+        local special = check(frame)
+        if special then return end
         local left = UIParent.left or nil
         local center = UIParent.center or nil
         move(left, center)
     end
 
-    local HookSetCenterFrame = SetCenterFrame
+    
     function SetCenterFrame(frame)
         HookSetCenterFrame(frame)
-        local skip = check(frame)
-        if skip then return end
+        local special = check(frame)
+        if special then return end
         local left = UIParent.left or nil
         local center = UIParent.center or nil
         move(center, left)
