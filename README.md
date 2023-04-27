@@ -104,7 +104,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Extends item rarity borders to merchant, craft, tradeskill, mail, trade and loot frames.*
 
 - **Item Rarity Border Glow**   
-*Show item rarity as a glow on bags, bank, character, inspect, merchant, craft, tradeskill, mail, trade and loot frames.*
+*Show item rarity as the border color with a glow on bags, bank, character, inspect, merchant, craft, tradeskill, mail, trade and loot frames.*
 
 - **Loot Monitor**    
 *Display recent loot text in a central scrolling window.*    
