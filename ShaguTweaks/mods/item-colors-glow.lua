@@ -4,7 +4,7 @@ local HookAddonOrVariable = ShaguTweaks.HookAddonOrVariable
 
 local module = ShaguTweaks:register({
   title = "Item Rarity Border Glow",
-  description = "Show item rarity as a glow on bags, bank, character, inspect, merchant, craft, tradeskill, mail, trade and loot frames.",
+  description = "Show item rarity as the border color with a glow on bags, bank, character, inspect, merchant, craft, tradeskill, mail, trade and loot frames.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "Tooltip & Items",
   enabled = false,
