@@ -73,12 +73,12 @@ module.enable = function(self)
       if HCWarn_Hardcore then
         -- Prevent casts on PvP enemies when outside instances unless you are PvP flagged
         if UnitIsPVP(unit) and UnitCanAttack("player", unit) and (not IsInInstance()) and (not UnitIsPVP("player")) then
-          UIErrorsFrame:AddMessage("Mouseover unit is PVP flagged", 1, 0.25, 0)
+          UIErrorsFrame:AddMessage("Unit is PvP flagged", 1, 0.25, 0)
           return
         end
       else
         if UnitIsPVP(unit) and UnitIsPlayer(unit) and (not IsInInstance()) and (not UnitIsPVP("player")) then 
-          UIErrorsFrame:AddMessage("Mouseover unit is PVP flagged", 1, 0.25, 0)
+          UIErrorsFrame:AddMessage("Unit is PvP flagged", 1, 0.25, 0)
           return
         end
       end
