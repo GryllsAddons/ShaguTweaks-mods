@@ -33,8 +33,7 @@ module.enable = function(self)
     
     search.icon = search.edit:CreateTexture(nil, "OVERLAY")
     search.icon:SetAllPoints(search.button)
-    search.icon:SetTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Up")
-    search.icon:SetDesaturated(true)
+    search.icon:SetTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Disabled")
     search.icon:Hide()
 
     local function buttons(alpha)            
