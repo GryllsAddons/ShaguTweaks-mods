@@ -4,7 +4,7 @@ local HookAddonOrVariable = ShaguTweaks.HookAddonOrVariable
 
 local module = ShaguTweaks:register({
   title = "Item Rarity Borders Extended",
-  description = "Extends item rarity borders to merchant, craft, tradeskill, mail, trade and loot frames.",
+  description = "Extends item rarity as the border color to merchant, craft, tradeskill, mail, trade and loot frames.",
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   category = "Tooltip & Items",
   enabled = false,
