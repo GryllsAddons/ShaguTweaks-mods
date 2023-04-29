@@ -174,9 +174,6 @@ module.enable = function(self)
                 updateRep()
                 expHide()
                 repHide()
-                -- if turtle then
-                --     exp.expstring:Show() -- always show rested %
-                -- end
             end
         elseif event == "PLAYER_UPDATE_RESTING" then
             updateResting()
