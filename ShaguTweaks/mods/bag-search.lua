@@ -4,7 +4,7 @@ local module = ShaguTweaks:register({
     title = "Bag Search",
     description = "Adds a search box to the backpack for searching your bags, keyring and bank. Press Esc or Tab to finish searching.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = nil,
+    category = "Tooltip & Items",
     enabled = nil,
 })
   
