@@ -50,6 +50,7 @@ mods\camera.lua
 mods\central-windows.lua
 mods\chat-tweaks-extended.lua
 mods\cursor-tooltip.lua
+mods\free-slots.lua
 mods\health-numbers-extended.lua
 mods\hide-combat-tooltip.lua
 mods\hide-unit-frames.lua
