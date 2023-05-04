@@ -117,6 +117,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Items looted over 1 minute ago will be shown at 50% transparency.*    
 *Items looted over 10 minutes ago will be shown at 25% transparency.*
 
+- **Max Graphics**    
+*Tunes the game's graphics to the max!*
+
 - **MiniMap Framerate & Latency**    
 *Adds a small framerate & latency display to the mini map.*
 
@@ -154,6 +157,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 - **Smaller Errors Frame**    
 *Resizes the error frame to 1 line instead of 3.*
+
+- **Set UI Scale**    
+*Sets the pixel perfect UI scale for your resolution.*
 
 - **Unit Frame Combat Indicator**    
 *Adds a combat indicator to the target frame.*
