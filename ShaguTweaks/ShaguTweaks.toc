@@ -62,6 +62,7 @@ mods\improved-roll-frames.lua
 mods\item-colors-extended.lua
 mods\item-colors-glow.lua
 mods\loot-monitor.lua
+mods\max-graphics.lua
 mods\minimap-framerate-latency.lua
 mods\minimap-timer.lua
 mods\modifier-actions.lua
@@ -72,6 +73,7 @@ mods\pet-name-happiness.lua
 mods\restyle-ui.lua
 mods\skip-gossip.lua
 mods\smaller-errors-frame.lua
+mods\ui-scale.lua
 mods\unitframes-combat-indicator.lua
 mods\unitframes-energy-tick.lua
 mods\unitframes-lowhealth.lua
