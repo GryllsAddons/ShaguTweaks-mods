@@ -64,7 +64,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Creates General, Combat Log and 'Loot & Spam' chat boxes and resets chat channels on every login.*
 
 - **Max Camera Distance**    
-*Increases the maximum zoom out distance of the camera.*    
+*Increases the maximum zoom out distance of the camera and makes zooming faster.*    
 
 - **Central Interaction Windows**    
 *Interaction windows will be positioned centrally.*    
