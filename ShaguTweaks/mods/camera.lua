@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Max Camera Distance",
-    description = "Increases the maximum zoom out distance of the camera.",
+    description = "Increases the maximum zoom out distance of the camera and makes zooming faster.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -8,4 +8,7 @@ local module = ShaguTweaks:register({
   
 module.enable = function(self)
     SlashCmdList["CONSOLE"]("cameraDistanceMax 50")
+    SlashCmdList["CONSOLE"]("cameraDistanceMaxFactor 5")
+    SlashCmdList["CONSOLE"]("cameraDistanceMoveSpeed 50")
+    SlashCmdList["CONSOLE"]("cameraDistanceSmoothSpeed 1")
 end
