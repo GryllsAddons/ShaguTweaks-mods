@@ -15,7 +15,7 @@ module.enable = function(self)
         
     local function hide(bar)
         bar:Hide()
-        UIParent_ManageFramePositions()
+        -- UIParent_ManageFramePositions()
     end
     
     local function show(bar)
