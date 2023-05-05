@@ -7,6 +7,7 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
+    ShaguTweaks.MouseoverRight = true
     local _G = ShaguTweaks.GetGlobalEnv()
 
     local timer = CreateFrame("Frame", nil, UIParent)
@@ -14,13 +15,11 @@ module.enable = function(self)
     local mouseOverButton
         
     local function hide(bar)
-        bar:Hide()
-        -- UIParent_ManageFramePositions()
+        bar:Hide() 
     end
     
     local function show(bar)
         bar:Show()
-        UIParent_ManageFramePositions()
     end
     
     local function mouseover(bar)
@@ -102,6 +101,10 @@ module.enable = function(self)
             end
         end
         mouseoverBar(bar)
+        show(bar)
+        if not ShaguTweaks.MouseoverRight2 then
+            UIParent_ManageFramePositions()
+        end
         hide(bar)
     end
     
