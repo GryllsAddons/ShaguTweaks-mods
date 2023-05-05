@@ -76,8 +76,8 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Cursor Tooltip**    
 *Attaches the tooltip to the cursor.*
 
-- **Free slots**    
-*Adds a free slot count to the backpack button.*
+- **Free Slots Count**    
+*Adds a free slots count to the backpack button. The top left count shows free reagent bag slots, the top right count shows free class bag slots and the bottom count shows the remaining free bag slots.*
 
 - **Real Health Numbers Extended**    
 *Adds health numbers to ToT and party unit frames.*
