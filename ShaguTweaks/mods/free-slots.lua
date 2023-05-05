@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
     title = "Free Slots Count",
-    description = "Adds a free slots count to the backpack button. The top left count shows free reagent bag slots, the top right count shows free class bag slots and the bottom count shows the remaining free bag slots.",
+    description = "Adds a free slots count to the backpack button. The top right count shows free class bag slots, the bottom left count shows free reagent bag slots and the bottom right count shows the remaining free bag slots.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Tooltip & Items",
     enabled = nil,
@@ -23,7 +23,7 @@ module.enable = function(self)
 
     button.reagent = button:CreateFontString("Status", "LOW", "GameFontNormal")
     button.reagent:SetFont(STANDARD_TEXT_FONT, 14, "OUTLINE")
-    button.reagent:SetPoint("TOPLEFT", button, "TOPLEFT", 2, -4)
+    button.reagent:SetPoint("BOTTOMLEFT", button, "BOTTOMLEFT", 2, 4)
     button.reagent:SetJustifyH("LEFT")
     button.reagent:SetFontObject(GameFontWhite)
     button.reagent:SetTextColor(.25, .78, .92)
