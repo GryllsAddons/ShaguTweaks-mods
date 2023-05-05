@@ -171,9 +171,16 @@ module.enable = function(self)
         if (this.tick or 1) > GetTime() then return else this.tick = GetTime() + 1 end
             local _, _, MS = GetNetStats()
             currMS = MS
-
-            local _, _, _, MShex = GetColorGradient(tarMS/MS)
-            MS = MShex .. MS .. "|r"
+            
+            -- color
+            local color = "|cff00ff00"
+            if (currMS > PERFORMANCEBAR_MEDIUM_LATENCY) then
+                color = "|cffff0000"
+            elseif (currMS > PERFORMANCEBAR_LOW_LATENCY) then
+                color = "|cffffff00"
+            end
+            
+            MS = color .. MS .. "|r"
             this.text:SetText(MS.."")
 
             -- check for high / low fps
