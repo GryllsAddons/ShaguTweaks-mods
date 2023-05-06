@@ -149,6 +149,12 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Pet Name Happiness**    
 *Colors Hunter pet name by happiness level.*
 
+- **Reduced Actionbar Bags**    
+*Shows the bag and keyring buttons when using the reduced actionbar. Mouseover the backpack to show the draggable tab. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position.*
+
+- **Reduced Actionbar Microbuttons**    
+*Shows the microbuttons when using the reduced actionbar. Mouseover the help button to show the draggable tab. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position.*
+
 - **Restyle UI**    
 *Restyles supported addons and the minimap. Changes fonts for units, buffs, buttons & chat.*    
 *Supported Addons:*    
