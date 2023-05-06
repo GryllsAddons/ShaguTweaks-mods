@@ -73,6 +73,7 @@ mods\move-unitframes-extended.lua
 mods\nameplate-lowhealth.lua
 mods\pet-name-happiness.lua
 mods\bags-reduced-actionbar.lua
+mods\microbuttons-reduced-actionbar.lua
 mods\restyle-ui.lua
 mods\skip-gossip.lua
 mods\smaller-errors-frame.lua
