@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
     title = "Reduced Actionbar Bags",
-    description = "Shows the bag and keyring buttons when using the reduced actionbar. Mouseover the backpack to show the draggable tab. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position",
+    description = "Shows the bag and keyring buttons when using the reduced actionbar. Mouseover the backpack to show the draggable tab. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
