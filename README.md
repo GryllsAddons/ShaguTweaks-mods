@@ -109,6 +109,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Item Rarity Border Glow**   
 *Show item rarity as the border color with a glow on bags, bank, character, inspect, merchant, craft, tradeskill, mail, trade and loot frames.*
 
+- **Loot Cursor**   
+*Moves the loot frame under the mouse cursor.*
+
 - **Loot Monitor**    
 *Display recent loot text in a central scrolling window.*    
 *Hold Alt or Alt+Shift to scroll*    
