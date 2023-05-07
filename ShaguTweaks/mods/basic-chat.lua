@@ -13,10 +13,23 @@ module.enable = function(self)
         FCF_DockFrame(ChatFrame2)
         FCF_SetWindowName(ChatFrame2, COMBAT_LOG)
     
-        FCF_DockFrame(ChatFrame3)
+        FCF_UnDockFrame(ChatFrame3)
+        FCF_SetTabPosition(ChatFrame3, 0)
         FCF_SetWindowName(ChatFrame3, "Loot & Spam")
-
-        FCF_SelectDockFrame(ChatFrame1)
+        
+        ChatFrame1:ClearAllPoints()
+        ChatFrame1:SetPoint("BOTTOMLEFT", "UIParent", "BOTTOMLEFT", 32, 85)
+        ChatFrame1:SetWidth(400)
+        ChatFrame1:SetHeight(120)
+        ChatFrame1Tab:Hide()
+        FCF_SetButtonSide(ChatFrame1, "left")
+        
+        ChatFrame3:ClearAllPoints()
+        ChatFrame3:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -32, 85)
+        ChatFrame3:SetWidth(ChatFrame1:GetWidth())
+        ChatFrame3:SetHeight(ChatFrame1:GetHeight())
+        ChatFrame3Tab:Hide()
+        FCF_SetButtonSide(ChatFrame3, "right")
     end
     
     local function Channels()
