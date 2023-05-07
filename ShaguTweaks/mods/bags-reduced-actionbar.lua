@@ -122,6 +122,7 @@ module.enable = function(self)
 
     events:SetScript("OnEvent", function()
         if not this.loaded then
+            this.loaded = true
             -- if not reduced action bar end
             if MainMenuBar:GetWidth() > 512 then return end
             setup()
