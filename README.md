@@ -195,9 +195,6 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 ![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp1.png)   
 *Improved Exp Bar*
 
-![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp2.png)   
-*Improved Exp Bar*
-
 ![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp3.png)   
 *Improved Exp Bar*
 
@@ -205,12 +202,6 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Cursor Tooltip*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor1.png)  
-*Loot Monitor*
-
-![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor2.png)  
-*Loot Monitor*
-
-![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor3.png)  
 *Loot Monitor*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png)  
@@ -227,6 +218,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_CombatIndicator.png)  
 *Unit Frame Combat Indicator*
+
+![image](https://user-images.githubusercontent.com/107083057/236672844-e3a425e7-c81d-4592-9f93-21103b73a3e0.png)  
+*Reduced Actionbar Bags / Minibuttons*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_UIRestyle.png)  
 *Restyle UI*
