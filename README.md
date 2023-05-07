@@ -72,6 +72,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Central Interaction Windows**    
 *Interaction windows will be positioned centrally.*    
 
+- **Central UI**    
+*Moves unit frames, minimap, buffs and chat to a central layout.*  
+
 - **Chat Tweaks Extended**    
 *Extends "Chat Tweaks".*    
 *Removes chat buttons, shortens channel names, shows item links on mouseover, adds Alt click chat names to invite and Ctrl click chat names to target.*
