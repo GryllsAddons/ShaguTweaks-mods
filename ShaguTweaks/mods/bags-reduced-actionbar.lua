@@ -53,7 +53,7 @@ module.enable = function(self)
     
     local function defaultPosition()
         holder:ClearAllPoints()
-        holder:SetPoint("LEFT", ActionButton12, "RIGHT", 100, 0)
+        holder:SetPoint("LEFT", ActionButton12, "RIGHT", 350, 0)
     end
     
     local function position()
