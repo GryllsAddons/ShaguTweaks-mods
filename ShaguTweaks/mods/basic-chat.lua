@@ -7,31 +7,6 @@ local module = ShaguTweaks:register({
 })
   
 module.enable = function(self)
-    local function Create()
-        FCF_SetWindowName(ChatFrame1, GENERAL)
-
-        FCF_DockFrame(ChatFrame2)
-        FCF_SetWindowName(ChatFrame2, COMBAT_LOG)
-    
-        FCF_UnDockFrame(ChatFrame3)
-        FCF_SetTabPosition(ChatFrame3, 0)
-        FCF_SetWindowName(ChatFrame3, "Loot & Spam")
-        
-        ChatFrame1:ClearAllPoints()
-        ChatFrame1:SetPoint("BOTTOMLEFT", "UIParent", "BOTTOMLEFT", 32, 85)
-        ChatFrame1:SetWidth(400)
-        ChatFrame1:SetHeight(120)
-        ChatFrame1Tab:Hide()
-        FCF_SetButtonSide(ChatFrame1, "left")
-        
-        ChatFrame3:ClearAllPoints()
-        ChatFrame3:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -32, 85)
-        ChatFrame3:SetWidth(ChatFrame1:GetWidth())
-        ChatFrame3:SetHeight(ChatFrame1:GetHeight())
-        ChatFrame3Tab:Hide()
-        FCF_SetButtonSide(ChatFrame3, "right")
-    end
-    
     local function Channels()
         ChatFrame_RemoveAllMessageGroups(ChatFrame1)
         ChatFrame_RemoveAllMessageGroups(ChatFrame2)
@@ -62,6 +37,35 @@ module.enable = function(self)
         -- ChatFrame_AddChannel(ChatFrame3, "World")
     end
 
+    local function Create()
+        FCF_SetWindowName(ChatFrame1, GENERAL)
+
+        FCF_DockFrame(ChatFrame2)
+        FCF_SetWindowName(ChatFrame2, COMBAT_LOG)
+    
+        FCF_UnDockFrame(ChatFrame3)
+        FCF_SetTabPosition(ChatFrame3, 0)
+        FCF_SetWindowName(ChatFrame3, "Loot & Spam")
+        
+        ChatFrame1:ClearAllPoints()
+        ChatFrame1:SetPoint("BOTTOMLEFT", "UIParent", "BOTTOMLEFT", 32, 85)
+        ChatFrame1:SetWidth(400)
+        ChatFrame1:SetHeight(120)
+        ChatFrame1Tab:Hide()
+        FCF_SetButtonSide(ChatFrame1, "left")
+        
+        ChatFrame3:ClearAllPoints()
+        ChatFrame3:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", -32, 85)
+        ChatFrame3:SetWidth(ChatFrame1:GetWidth())
+        ChatFrame3:SetHeight(ChatFrame1:GetHeight())
+        ChatFrame3Tab:Hide()
+        FCF_SetButtonSide(ChatFrame3, "right")
+        ChatFrame3:Show()
+
+        Channels()        
+        FCF_SelectDockFrame(ChatFrame1)
+    end
+
     local events = CreateFrame("Frame", nil, UIParent)	
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
@@ -69,7 +73,6 @@ module.enable = function(self)
         if not this.loaded then
             this.loaded = true
             Create()
-            Channels()
         end
     end)
 end
