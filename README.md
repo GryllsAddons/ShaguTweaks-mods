@@ -123,6 +123,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Max Graphics**    
 *Tunes the game's graphics to the max!*
 
+- **Max Smoothness**    
+*Optimise the game engine for smoother gameplay.*
+
 - **MiniMap Framerate & Latency**    
 *Adds a small framerate & latency display to the mini map.*
 
