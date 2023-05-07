@@ -7,22 +7,21 @@ local module = ShaguTweaks:register({
 })
   
 module.enable = function(self)
-    -- credit to https://github.com/mrrosh/VanillaGraphicBoost/tree/master
-    -- Vanilla Graphics Boost, Enters the following console commands when the world is loaded.
+    -- https://forum.nostalrius.org/viewtopic.php?t=1100
     SlashCmdList["CONSOLE"]("anisotropic 16")
     SlashCmdList["CONSOLE"]("baseMip 0")
     SlashCmdList["CONSOLE"]("detailDoodadAlpha 100")
-    SlashCmdList["CONSOLE"]("DistCull 888")
+    SlashCmdList["CONSOLE"]("DistCull 888") -- 888 / 500
     SlashCmdList["CONSOLE"]("doodadAnim 1")
     SlashCmdList["CONSOLE"]("farclip 777")
     SlashCmdList["CONSOLE"]("ffx 1")
     SlashCmdList["CONSOLE"]("ffxDeath 1")
     SlashCmdList["CONSOLE"]("ffxGlow 1")
     SlashCmdList["CONSOLE"]("ffxRectangle 1")
-    SlashCmdList["CONSOLE"]("footstepBias 1.0")
+    SlashCmdList["CONSOLE"]("footstepBias 1.0") -- 1 / 0.125
     SlashCmdList["CONSOLE"]("frillDensity 256")
     SlashCmdList["CONSOLE"]("gxColorBits 24")
-    SlashCmdList["CONSOLE"]("gxDepthBits 24")
+    SlashCmdList["CONSOLE"]("gxDepthBits 24")    
     SlashCmdList["CONSOLE"]("horizonfarclip 2112")
     SlashCmdList["CONSOLE"]("lod 0")
     SlashCmdList["CONSOLE"]("lodDist 250")
@@ -48,15 +47,14 @@ module.enable = function(self)
     SlashCmdList["CONSOLE"]("texLodBias -1")
     SlashCmdList["CONSOLE"]("textureLodDist 777")
     SlashCmdList["CONSOLE"]("trilinear 1")
-    SlashCmdList["CONSOLE"]("unitDrawDist 1000")
+    SlashCmdList["CONSOLE"]("unitDrawDist 1000") -- 1000 / 300
     SlashCmdList["CONSOLE"]("waterLOD 0")
     SlashCmdList["CONSOLE"]("waterParticulates 1")
     SlashCmdList["CONSOLE"]("waterRipples 1")
     SlashCmdList["CONSOLE"]("waterSpecular 1")
     SlashCmdList["CONSOLE"]("waterWaves 1")
     SlashCmdList["CONSOLE"]("weatherDensity 3")
-    SlashCmdList["CONSOLE"]("cameraDistanceMax 100")
-    SlashCmdList["CONSOLE"]("gxMultisample 8")
+    SlashCmdList["CONSOLE"]("gxMultisample 8") -- (1 is no anti-alising, 2 is 2x, 4 is 4x, 8 is 8x)
     SlashCmdList["CONSOLE"]("gxMultisampleQuality 1")
     SlashCmdList["CONSOLE"]("showCull")
 end
