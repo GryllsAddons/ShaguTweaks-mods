@@ -11,10 +11,17 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 ## Installation
 #### This addon requires [ShaguTweaks](https://shagu.org/ShaguTweaks/) to be installed.    
 
+#### Automatic Install using [GitAddonsManager](https://woblight.gitlab.io/overview/gitaddonsmanager/)
+- Click the "+" button and enter the url `https://github.com/GryllsAddons/ShaguTweaks-mods.git`
+
+#### Manual Install
 1. Unpack the Zip file included with this download.
 2. Copy the "ShaguTweaks-mods-main" folder to your AddOns folder.
 3. Rename the folder to "ShaguTweaks-mods".
-4. (Optional) The download contains an image file containing alternative high resolution unitframe class icons (UI-Classes-Circles.tga). Copy this file from the "Optional" folder to  "\Interface\AddOns\ShaguTweaks\img".
+
+#### Optional Install
+- The download contains an image file containing alternative high resolution unitframe class icons (UI-Classes-Circles.tga).
+- Copy this file from the "Optional" folder to  "\Interface\AddOns\ShaguTweaks\img".
 
 ## Mods
 
