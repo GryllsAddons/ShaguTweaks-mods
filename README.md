@@ -63,6 +63,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Basic Chat**    
 *Creates General, Combat Log and 'Loot & Spam' chat boxes and resets chat channels on every login.*
 
+- **What Happened to Me?**    
+*Creates a 'What Happened to Me?' style chat tab.*
+
 - **Max Camera Distance**    
 *Increases the maximum zoom out distance of the camera and makes zooming faster.*    
 
