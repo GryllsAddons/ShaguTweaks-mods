@@ -14,7 +14,7 @@ This download contains a mods folder and a .toc file to allow the mods to load.
 
 1. Install [ShaguTweaks](https://shagu.org/ShaguTweaks/) if not already installed.
 2. Unpack the Zip file included with this download.
-3. Copy the "ShaguTweaks" folder within "ShaguTweaks-Mods-main" to "\Interface\AddOns\".    
+3. Copy the "mods" folder and ShaguTweaks.toc within "ShaguTweaks-Mods-main" to "\Interface\AddOns\ShaguTweaks".    
 4. Replace/overwrite any existing files when copying.
 5. Once in game, enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options).
 6. (Optional) The download contains an image file containing alternative high resolution unitframe class icons (UI-Classes-Circles.tga). Copy this file to "\Interface\AddOns\ShaguTweaks\img".
