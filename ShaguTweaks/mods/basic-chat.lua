@@ -7,47 +7,19 @@ local module = ShaguTweaks:register({
 })
   
 module.enable = function(self)
-    local function SetupChat()        
-        local fontsize = 14 -- chat font size
-        local lines = 9 -- number of chat lines
-        local h = (fontsize * (lines*1.1))
-        local w = 400
-        local x = ActionButton1:GetWidth()*4
-        local y = ActionButton1:GetHeight()*4
-    
-        local function setChatFrame(chatframe)
-            FCF_SetLocked(chatframe, 1)
-            FCF_SetWindowColor(chatframe, 0, 0, 0)
-            FCF_SetWindowAlpha(chatframe, 0)
-            FCF_SetChatWindowFontSize(chatframe, fontsize)
-            chatframe:SetWidth(w)
-            chatframe:SetHeight(h)
-            chatframe:ClearAllPoints()
-            chatframe:SetUserPlaced(1)
-            chatframe:SetClampedToScreen(true)
-        end
-    
-        setChatFrame(ChatFrame1)
+    local function Create()
         FCF_SetWindowName(ChatFrame1, GENERAL)
-    
-        setChatFrame(ChatFrame2)
+
         FCF_DockFrame(ChatFrame2)
         FCF_SetWindowName(ChatFrame2, COMBAT_LOG)
     
-        ChatFrame3:Show()
-        FCF_UnDockFrame(ChatFrame3)
-        FCF_SetTabPosition(ChatFrame3, 0)
-        setChatFrame(ChatFrame3)
+        FCF_DockFrame(ChatFrame3)
         FCF_SetWindowName(ChatFrame3, "Loot & Spam")
-    
-        ChatFrame1:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", x, y)    
-        ChatFrame2:SetAllPoints(ChatFrame1)
-        ChatFrame3:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -x, y)     
-    
-        FCF_DockUpdate()
+
+        FCF_SelectDockFrame(ChatFrame1)
     end
     
-    local function SetupChannels()
+    local function Channels()
         ChatFrame_RemoveAllMessageGroups(ChatFrame1)
         ChatFrame_RemoveAllMessageGroups(ChatFrame2)
         ChatFrame_RemoveAllMessageGroups(ChatFrame3)
@@ -83,8 +55,8 @@ module.enable = function(self)
     events:SetScript("OnEvent", function()
         if not this.loaded then
             this.loaded = true
-            SetupChat()
-            SetupChannels()
+            Create()
+            Channels()
         end
     end)
 end
