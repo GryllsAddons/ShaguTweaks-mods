@@ -189,6 +189,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Reveals unexplored areas on the world map.*    
 
 ## Screenshots
+![image](https://user-images.githubusercontent.com/107083057/236672940-779d40c0-75b5-4ae3-8fa9-5f0798561aba.png)  
+*Bag Search*
+
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_ImpCastbar.png)    
 *Improved Castbar*
 
@@ -198,11 +201,11 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 ![preview](https://github.com/GryllsAddons/AddonPreviews/blob/main/ShaguTweaks-Mods/ST_ImpExp3.png)   
 *Improved Exp Bar*
 
+![image](https://user-images.githubusercontent.com/107083057/236673096-bc157861-132f-4ceb-80ad-0950919e05f5.png)  
+*Energy & Mana Tick*
+
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_TooltipCursor.png)  
 *Cursor Tooltip*
-
-![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor1.png)  
-*Loot Monitor*
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_FPSMS2.png)  
 *MiniMap Framerate & Latency*
@@ -221,6 +224,13 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 ![image](https://user-images.githubusercontent.com/107083057/236672844-e3a425e7-c81d-4592-9f93-21103b73a3e0.png)  
 *Reduced Actionbar Bags / Minibuttons*
+
+![image](https://user-images.githubusercontent.com/107083057/236673054-caac4fe5-1702-4a8e-baa6-ce9dbfc1c651.png)  
+*White Mana*
+
+![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor1.png)  
+*Loot Monitor*
+
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_UIRestyle.png)  
 *Restyle UI*
