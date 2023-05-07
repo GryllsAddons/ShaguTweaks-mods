@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
     title = "Central UI",
-    description = "Moves unit frames, minimap and buffs and chat to a central layout.",
+    description = "Moves unit frames, minimap, buffs and chat to a central layout.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
