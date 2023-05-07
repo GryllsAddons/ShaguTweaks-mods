@@ -9,13 +9,12 @@ Code from [pfUI](https://shagu.org/pfUI/)
 Code from [zUI](https://github.com/Ko0z/zUI)
 
 ## Installation
-#### The mods included with this download require [ShaguTweaks](https://shagu.org/ShaguTweaks/) to work.    
+#### This addon requires [ShaguTweaks](https://shagu.org/ShaguTweaks/) to be installed.    
 
 1. Unpack the Zip file included with this download.
 2. Copy the "ShaguTweaks-mods-main" folder to your AddOns folder.
-3. Rename the folder to "ShaguTweaks-mods"
-4. Once in game, enable the mod(s) by selecting them in the ShaguTweaks menu (Esc > Advanced Options).
-5. (Optional) The download contains an image file containing alternative high resolution unitframe class icons (UI-Classes-Circles.tga). Copy this file from the "Optional" folder to  "\Interface\AddOns\ShaguTweaks\img".
+3. Rename the folder to "ShaguTweaks-mods".
+4. (Optional) The download contains an image file containing alternative high resolution unitframe class icons (UI-Classes-Circles.tga). Copy this file from the "Optional" folder to  "\Interface\AddOns\ShaguTweaks\img".
 
 ## Mods
 
