@@ -12,10 +12,10 @@ module.enable = function(self)
     local resolution = GetCVar("gxResolution")
     local _, _, screenwidth, screenheight = strfind(resolution, "(.+)x(.+)")
     screenwidth = tonumber(screenwidth)
-    screenheight = tonumber(screenheight)
-    local res = screenwidth/screenheight
-    local uw
-    if res > 1.78 then uw = true end
+    -- screenheight = tonumber(screenheight)
+    -- local res = screenwidth/screenheight
+    -- local uw
+    -- if res > 1.78 then uw = true end
     
     local function unitframes()    
         -- Player        
