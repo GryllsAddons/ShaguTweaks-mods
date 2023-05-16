@@ -6,7 +6,7 @@ local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
     title = "Chat Tweaks Extended",
-    description = 'Extends "Chat Tweaks". Removes chat buttons, shortens channel names, shows item links on mouseover, adds Alt click chat names to invite and Ctrl click chat names to target.',
+    description = 'Extends "Chat Tweaks". Removes chat buttons, shortens channel names, shows item links on mouseover, adds an ignore on right click, adds Alt click chat names to invite and Ctrl click chat names to target.',
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Social & Chat",
     enabled = nil,
