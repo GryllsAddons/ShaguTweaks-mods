@@ -2,6 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 local scrollspeed = 1
 local gfind = string.gmatch or string.gfind
 local strsplit = ShaguTweaks.strsplit
+local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
     title = "Chat Tweaks Extended",
@@ -139,6 +140,22 @@ local function channelindicators()
     _G.CHAT_WHISPER_INFORM_GET = '[To]' .. default
 end
 
+local function ignore()
+    -- add dropdown menu button to ignore player
+    UnitPopupButtons["IGNORE_PLAYER"] = { text = "Ignore", dist = 0 }
+    for index,value in ipairs(UnitPopupMenus["FRIEND"]) do
+        if value == "GUILD_LEAVE" then
+            table.insert(UnitPopupMenus["FRIEND"], index+1, "IGNORE_PLAYER")
+        end
+    end
+
+    hooksecurefunc("UnitPopup_OnClick", function(self)
+        if this.value == "IGNORE_PLAYER" then
+            AddIgnore(_G[UIDROPDOWNMENU_INIT_MENU].name)
+        end
+    end)
+end
+
 module.enable = function(self)
     -- load after chat tweaks / chat links
     local events = CreateFrame("Frame", nil, UIParent)	
@@ -152,6 +169,7 @@ module.enable = function(self)
             mouseoverlinks()
             clicklinks()
             channelindicators()
+            ignore()
         end
     end)
 end
