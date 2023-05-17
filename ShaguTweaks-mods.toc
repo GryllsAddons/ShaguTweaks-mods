@@ -7,6 +7,7 @@
 
 # ShaguTweaks-Mods
 mods\accept-invites.lua
+mods\actionbar-gryphons.lua
 mods\actionbar-hide-hotkey.lua
 mods\actionbar-hide-macro.lua
 mods\actionbar-improved-expbar.lua
