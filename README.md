@@ -28,6 +28,9 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 - **Accept Group Invites**    
 *Accept group invites from friends and guildies.*
 
+- **Gryphons to Lions**    
+*Change the action bar gryphons to lions*
+
 - **Hide Hotkey Text**    
 *Hides the hotkeys on the action bars.*
 
