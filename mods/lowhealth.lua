@@ -28,7 +28,7 @@ module.enable = function(self)
       local percent = hp / hpmax
 
       if percent <= 0.2 then
-        if UnitCanAssist("player", unit) then
+        if UnitCanAssist("player", unit) and not UnitIsPlayer(unit) then
           sb:SetStatusBarColor(0/255, 204/255, 255/255)
         else
           sb:SetStatusBarColor(255/255, 128/255, 0/255)
@@ -40,9 +40,9 @@ module.enable = function(self)
   local function restore()
     TargetFrame_CheckFaction = _TargetFrame_CheckFaction
     -- player
+    PlayerFrameHealthBar.SetStatusBarColor = _Player_SetStatusBarColor
     if PlayerFrameNameBackground then
-      PlayerFrameHealthBar.SetStatusBarColor = _Player_SetStatusBarColor
-      PlayerFrameHealthBar:_SetStatusBarColor(pr, pg, pb, pa)
+      PlayerFrameHealthBar:SetStatusBarColor(pr, pg, pb, pa)
     end
     -- target
     TargetFrameHealthBar.SetStatusBarColor = _Target_SetStatusBarColor
