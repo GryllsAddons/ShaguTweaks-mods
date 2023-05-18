@@ -20,10 +20,11 @@ mods\actionbar-quick-actions.lua
 mods\actionbar-range-color.lua
 mods\auction-search-timer.lua
 mods\bag-search.lua
-mods\basic-chat.lua
 mods\camera.lua
 mods\central-windows.lua
 mods\central-ui.lua
+mods\chat-basic.lua
+mods\chat-bubbles.lua
 mods\chat-tweaks-extended.lua
 mods\chat-whtm.lua
 mods\cursor-tooltip.lua
@@ -57,6 +58,6 @@ mods\smaller-errors-frame.lua
 mods\ui-scale.lua
 mods\unitframes-combat-indicator.lua
 mods\unitframes-energy-tick.lua
-mods\unitframes-lowhealth.lua
+mods\lowhealth.lua
 mods\unitframes-whitemana.lua
 mods\worldmap-reveal.lua
