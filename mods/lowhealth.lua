@@ -1,6 +1,3 @@
-local GetUnitData = ShaguTweaks.GetUnitData
-local hooksecurefunc = ShaguTweaks.hooksecurefunc
-
 local module = ShaguTweaks:register({
   title = "Unit Frame Low Health",
   description = "Changes the unitframe healthbar color when at 20% health or lower.",
@@ -12,8 +9,7 @@ local module = ShaguTweaks:register({
 module.enable = function(self)  
   local _Player_SetStatusBarColor = PlayerFrameHealthBar.SetStatusBarColor
   local _Target_SetStatusBarColor = TargetFrameHealthBar.SetStatusBarColor
-  local bighealth
- 
+  local bighealth 
 
   local HookUnitFrameHealthBar_Update = UnitFrameHealthBar_Update
   function UnitFrameHealthBar_Update(sb, unit)
