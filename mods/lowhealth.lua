@@ -1,3 +1,6 @@
+local GetUnitData = ShaguTweaks.GetUnitData
+local hooksecurefunc = ShaguTweaks.hooksecurefunc
+
 local module = ShaguTweaks:register({
   title = "Unit Frame Low Health",
   description = "Changes the unitframe healthbar color when at 20% health or lower.",
@@ -7,17 +10,10 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)  
-  -- Big Health Support
-  local _TargetFrame_CheckFaction = TargetFrame_CheckFaction  
   local _Player_SetStatusBarColor = PlayerFrameHealthBar.SetStatusBarColor
   local _Target_SetStatusBarColor = TargetFrameHealthBar.SetStatusBarColor
-
-  -- player
-  if PlayerFrameNameBackground then
-    local pr, pg, pb, pa = PlayerFrameNameBackground:GetVertexColor()
-  end
-  -- target
-  local tr, tg, tb, ta = TargetFrameNameBackground:GetVertexColor()
+  local bighealth
+ 
 
   local HookUnitFrameHealthBar_Update = UnitFrameHealthBar_Update
   function UnitFrameHealthBar_Update(sb, unit)
@@ -27,22 +23,31 @@ module.enable = function(self)
       local hpmax = UnitHealthMax(unit)
       local percent = hp / hpmax
 
-      if percent <= 0.2 then
-          sb:SetStatusBarColor(255/255, 128/255, 0/255)
+      if bighealth then
+        if unit == "player" then
+          local r, g, b = PlayerFrameNameBackground:GetVertexColor()
+          PlayerFrameHealthBar:SetStatusBarColor(r, g, b)
+        elseif unit == "target" then
+          local r, g, b = TargetFrameNameBackground:GetVertexColor()
+          TargetFrameHealthBar:SetStatusBarColor(r, g, b)
+        end
       end
+
+      if percent <= 0.2 then
+        sb:SetStatusBarColor(255/255, 128/255, 0/255)
+      end
+
     end
   end
 
   local function restore()
-    TargetFrame_CheckFaction = _TargetFrame_CheckFaction
-    -- player
-    PlayerFrameHealthBar.SetStatusBarColor = _Player_SetStatusBarColor
-    if PlayerFrameNameBackground then
-      PlayerFrameHealthBar:SetStatusBarColor(pr, pg, pb, pa)
+    if TargetFrameHealthBar._SetStatusBarColor then
+      bighealth = true
+      -- unitframes-bighealth
+      -- restore original functions
+      PlayerFrameHealthBar.SetStatusBarColor = _Player_SetStatusBarColor
+      TargetFrameHealthBar.SetStatusBarColor = _Target_SetStatusBarColor
     end
-    -- target
-    TargetFrameHealthBar.SetStatusBarColor = _Target_SetStatusBarColor
-    TargetFrameHealthBar:SetStatusBarColor(tr, tg, tb, ta)
   end
 
   local timer = CreateFrame("Frame")
@@ -56,10 +61,15 @@ module.enable = function(self)
     end
   end)
 
-  local wait = CreateFrame("Frame")
-  wait:RegisterEvent("PLAYER_ENTERING_WORLD")
-  wait:SetScript("OnEvent", function()
-    timer.time = GetTime() + 1
-    timer:Show()
+  local events = CreateFrame("Frame", nil, UIParent)	
+  events:RegisterEvent("PLAYER_TARGET_CHANGED")
+  events:RegisterEvent("PLAYER_ENTERING_WORLD")
+  events:SetScript("OnEvent", function()
+    if event == "PLAYER_TARGET_CHANGED" then
+      UnitFrameHealthBar_Update(TargetFrameHealthBar, "target")
+    else
+      timer.time = GetTime() + 1
+      timer:Show()
+    end
   end)
 end
