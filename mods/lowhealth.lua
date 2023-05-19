@@ -28,11 +28,7 @@ module.enable = function(self)
       local percent = hp / hpmax
 
       if percent <= 0.2 then
-        if UnitCanAssist("player", unit) and not UnitIsPlayer(unit) then
-          sb:SetStatusBarColor(0/255, 204/255, 255/255)
-        else
           sb:SetStatusBarColor(255/255, 128/255, 0/255)
-        end
       end
     end
   end
