@@ -100,7 +100,7 @@ module.enable = function(self)
 
     local HookChatFrame_OnEvent = ChatFrame_OnEvent
     function ChatFrame_OnEvent(event)
-        if (event == "CHAT_MSG_SAY") or (event == "CHAT_MSG_PARTY") or (event == "CHAT_MSG_YELL") or (event == "CHAT_MSG_MONSTER_SAY") or (event == "CHAT_MSG_MONSTER_YELL") then
+        if (event == "CHAT_MSG_SAY") or (event == "CHAT_MSG_YELL") or (event == "CHAT_MSG_PARTY") or (event == "CHAT_MSG_PARTY_LEADER") or (event == "CHAT_MSG_MONSTER_SAY") or (event == "CHAT_MSG_MONSTER_YELL") or (event == "CHAT_MSG_MONSTER_PARTY") then
             -- arg1: Message that was sent/received.
             -- arg2: Name of the player/monster who sent the message.
             message = arg1
