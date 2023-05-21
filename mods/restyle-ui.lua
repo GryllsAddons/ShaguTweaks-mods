@@ -274,15 +274,15 @@ module.enable = function(self)
         MinimapZoneText:SetFont("Fonts\\skurri.TTF", 14, "OUTLINE")
         MinimapZoneText:SetDrawLayer("OVERLAY", 7)   
         MinimapZoneText:SetParent(styleFrame)
-        MinimapZoneText:Hide()
+        -- MinimapZoneText:Hide()
 
-        Minimap:SetScript("OnEnter", function()
-            MinimapZoneText:Show()
-        end)
+        -- Minimap:SetScript("OnEnter", function()
+        --     MinimapZoneText:Show()
+        -- end)
 
-        Minimap:SetScript("OnLeave", function()
-            MinimapZoneText:Hide()
-        end)
+        -- Minimap:SetScript("OnLeave", function()
+        --     MinimapZoneText:Hide()
+        -- end)
 
         -- ShaguTweaks clock
         if MinimapClock then
