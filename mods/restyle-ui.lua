@@ -9,6 +9,7 @@ local module = ShaguTweaks:register({
 module.enable = function(self)
     local _G = ShaguTweaks.GetGlobalEnv()
     local restyle = CreateFrame("Frame", nil, UIParent)
+    local addonpath = "Interface\\AddOns\\ShaguTweaks-mods"
 
     function restyle:addons()
         --[[
@@ -254,8 +255,15 @@ module.enable = function(self)
     end
 
     function restyle:minimap()
+        -- Change Texture
+        if MinimapBorder:GetTexture() then
+            -- not minimap-square
+            MinimapBorder:SetTexture(addonpath .. "\\img\\UI-MINIMAP-BORDER")
+        end
+
         -- Move minimap elements
-        local styleFrame = CreateFrame("Frame", nil, MinimapCluster)
+        local styleFrame = CreateFrame("Frame", nil, MinimapCluster)        
+        styleFrame:SetFrameStrata("HIGH")    
         styleFrame:SetPoint("CENTER", Minimap, "BOTTOM")
         styleFrame:SetHeight(16)
         styleFrame:SetWidth(Minimap:GetWidth())
@@ -264,8 +272,17 @@ module.enable = function(self)
         MinimapZoneTextButton:ClearAllPoints()
         MinimapZoneTextButton:SetPoint("TOP", Minimap, 0, 13)
         MinimapZoneText:SetFont("Fonts\\skurri.TTF", 14, "OUTLINE")
-        MinimapZoneText:SetDrawLayer("OVERLAY", 7)        
+        MinimapZoneText:SetDrawLayer("OVERLAY", 7)   
         MinimapZoneText:SetParent(styleFrame)
+        MinimapZoneText:Hide()
+
+        Minimap:SetScript("OnEnter", function()
+            MinimapZoneText:Show()
+        end)
+
+        Minimap:SetScript("OnLeave", function()
+            MinimapZoneText:Hide()
+        end)
 
         -- ShaguTweaks clock
         if MinimapClock then
