@@ -9,7 +9,6 @@ local module = ShaguTweaks:register({
 module.enable = function(self)
     local _G = ShaguTweaks.GetGlobalEnv()
     local restyle = CreateFrame("Frame", nil, UIParent)
-    local addonpath = "Interface\\AddOns\\ShaguTweaks-mods"
 
     function restyle:addons()
         --[[
@@ -255,12 +254,6 @@ module.enable = function(self)
     end
 
     function restyle:minimap()
-        -- Change Texture
-        if MinimapBorder:GetTexture() then
-            -- not minimap-square
-            MinimapBorder:SetTexture(addonpath .. "\\img\\UI-MINIMAP-BORDER")
-        end
-
         -- Move minimap elements
         local styleFrame = CreateFrame("Frame", nil, MinimapCluster)        
         styleFrame:SetFrameStrata("HIGH")    
