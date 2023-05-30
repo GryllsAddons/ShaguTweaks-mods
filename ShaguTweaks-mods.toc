@@ -25,6 +25,7 @@ mods\central-windows.lua
 mods\central-ui.lua
 mods\chat-basic.lua
 mods\chat-bubbles.lua
+mods\chat-select-tab.lua
 mods\chat-tweaks-extended.lua
 mods\chat-whtm.lua
 mods\cursor-tooltip.lua
