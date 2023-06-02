@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Max Smoothness",
-    description = "Optimise the game engine for smoother gameplay.",
+    description = "Optimise the game engine for smoother gameplay. Note that this will permanently add settings to the Config.wtf file.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Graphics",
     enabled = nil,

@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Max Graphics",
-    description = "Tunes the game's graphics to the max!",
+    description = "Tunes the game's graphics to the max! Note that this will permanently add settings to the Config.wtf file.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Graphics",
     enabled = nil,
