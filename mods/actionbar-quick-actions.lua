@@ -10,6 +10,14 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
+    local function checked(button)
+        if ( IsCurrentAction(ActionButton_GetPagedID(button)) ) then
+            button:SetChecked(1)
+        else
+            button:SetChecked(0)
+        end
+    end
+
     hooksecurefunc("ActionButtonDown", function(id)
         ActionButtonUp(id)
         if ( BonusActionBarFrame:IsShown() ) then
@@ -23,10 +31,10 @@ module.enable = function(self)
     hooksecurefunc("ActionButtonUp", function(id)
         if ( BonusActionBarFrame:IsShown() ) then
             local button = _G["BonusActionButton"..id]
-            button:SetChecked(0)
+            checked(button)
         end
         local button = _G["ActionButton"..id]    
-        button:SetChecked(0)
+        checked(button)
     end, true)
 
     hooksecurefunc("MultiActionButtonDown", function(bar, id)
@@ -37,7 +45,7 @@ module.enable = function(self)
 
     hooksecurefunc("MultiActionButtonUp", function(bar, id, onSelf)
         local button = _G[bar.."Button"..id]
-        button:SetChecked(0)
+        checked(button)
     end, true)
 
     hooksecurefunc("PetActionButtonDown", function(id)
