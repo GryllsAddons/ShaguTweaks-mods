@@ -68,8 +68,8 @@ module.enable = function(self)
             SP_ST_maintimer:Hide()
             SP_ST_offtimer:Hide()
             -- hide oh
-            SP_ST_FrameOFF:Hide()
-            SP_ST_FrameTime2:Hide()
+            -- SP_ST_FrameOFF:Hide()
+            -- SP_ST_FrameTime2:Hide()
 
             -- add borders
             local function border(frame)
