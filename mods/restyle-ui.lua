@@ -25,6 +25,68 @@ module.enable = function(self)
 
         -- SP_SwingTimer
         if IsAddOnLoaded("SP_SwingTimer") and (not IsAddOnLoaded("GryllsSwingTimer")) then
+            local addonpath = "Interface\\AddOns\\ShaguTweaks-mods"
+
+            local sections  = {
+                'TOPLEFT', 'TOPRIGHT', 'BOTTOMLEFT', 'BOTTOMRIGHT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT'
+            }
+
+            local function skin(f, offset)
+                local t = {}
+                offset = offset or 0
+                    
+                for i = 1, 8 do
+                    local section = sections[i]
+                    local x = f:CreateTexture(nil, 'OVERLAY', nil, 1)
+                    x:SetTexture(addonpath..'\\img\\borders\\'..'border-'..section..'.tga')
+                    t[sections[i]] = x
+                end
+
+                t.TOPLEFT:SetWidth(8)
+                t.TOPLEFT:SetHeight(8)
+                t.TOPLEFT:SetPoint('BOTTOMRIGHT', f, 'TOPLEFT', 4 + offset, -4 - offset)
+
+                t.TOPRIGHT:SetWidth(8)
+                t.TOPRIGHT:SetHeight(8)
+                t.TOPRIGHT:SetPoint('BOTTOMLEFT', f, 'TOPRIGHT', -4 - offset, -4 - offset)
+
+                t.BOTTOMLEFT:SetWidth(8)
+                t.BOTTOMLEFT:SetHeight(8)
+                t.BOTTOMLEFT:SetPoint('TOPRIGHT', f, 'BOTTOMLEFT', 4 + offset, 4 + offset)
+
+                t.BOTTOMRIGHT:SetWidth(8)
+                t.BOTTOMRIGHT:SetHeight(8)
+                t.BOTTOMRIGHT:SetPoint('TOPLEFT', f, 'BOTTOMRIGHT', -4 - offset, 4 + offset)
+
+                t.TOP:SetHeight(8)
+                t.TOP:SetPoint('TOPLEFT', t.TOPLEFT, 'TOPRIGHT', 0, 0)
+                t.TOP:SetPoint('TOPRIGHT', t.TOPRIGHT, 'TOPLEFT', 0, 0)
+
+                t.BOTTOM:SetHeight(8)
+                t.BOTTOM:SetPoint('BOTTOMLEFT', t.BOTTOMLEFT, 'BOTTOMRIGHT', 0, 0)
+                t.BOTTOM:SetPoint('BOTTOMRIGHT', t.BOTTOMRIGHT, 'BOTTOMLEFT', 0, 0)
+
+                t.LEFT:SetWidth(8)
+                t.LEFT:SetPoint('TOPLEFT', t.TOPLEFT, 'BOTTOMLEFT', 0, 0)
+                t.LEFT:SetPoint('BOTTOMLEFT', t.BOTTOMLEFT, 'TOPLEFT', 0, 0)
+
+                t.RIGHT:SetWidth(8)
+                t.RIGHT:SetPoint('TOPRIGHT', t.TOPRIGHT, 'BOTTOMRIGHT', 0, 0)
+                t.RIGHT:SetPoint('BOTTOMRIGHT', t.BOTTOMRIGHT, 'TOPRIGHT', 0, 0)
+
+                f.borderTextures = t
+                f.SetBorderColor = SetBorderColor
+                f.GetBorderColor = GetBorderColor
+            end
+
+            local function skinColor(f, r, g, b, a)
+                local t = f.borderTextures
+                if not  t then return end
+                for  _, v in pairs(t) do
+                    v:SetVertexColor(r or 1, g or 1, b or 1, a or 1)
+                end
+            end
+
             -- local w, h, b = 200, 14, 6
             local h, b = 14, 6
             -- set mainhand
@@ -42,13 +104,13 @@ module.enable = function(self)
             SP_ST_FrameOFF:ClearAllPoints()
 
             SP_ST_Frame:SetPoint("CENTER", 0, -250)
-            SP_ST_FrameOFF:SetPoint("TOP", "SP_ST_Frame", "BOTTOM", 0, -4);
+            SP_ST_FrameOFF:SetPoint("TOP", "SP_ST_Frame", "BOTTOM", 0, -2);
 
             SP_ST_FrameTime:ClearAllPoints()
-	        SP_ST_FrameTime2:ClearAllPoints()            
+            SP_ST_FrameTime2:ClearAllPoints()            
             
             SP_ST_FrameTime:SetPoint("CENTER", "SP_ST_Frame", "CENTER")
-		    SP_ST_FrameTime2:SetPoint("CENTER", "SP_ST_FrameOFF", "CENTER")
+            SP_ST_FrameTime2:SetPoint("CENTER", "SP_ST_FrameOFF", "CENTER")
             -- set time
             -- SP_ST_FrameTime:SetWidth(w)
             SP_ST_FrameTime:SetHeight(h-b)
@@ -69,28 +131,22 @@ module.enable = function(self)
             SP_ST_offtimer:Hide()
             -- hide oh
             -- SP_ST_FrameOFF:Hide()
-            -- SP_ST_FrameTime2:Hide()
-
-            -- add borders
-            local function border(frame)
-                local x, y, e, i = 4, 2, h, 4
-                f = CreateFrame("Frame", nil, frame)
-                f:SetPoint("TOPLEFT", f:GetParent(), "TOPLEFT", -x, y)
-                f:SetPoint("BOTTOMRIGHT", f:GetParent(), "BOTTOMRIGHT", x, -y)
-                
-                f:SetBackdrop({
-                    edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
-                    -- edgeFile = "Interface/DialogFrame/UI-DialogBox-Border",
-                    edgeSize = e,
-                    insets = { left = i, right = i, top = i, bottom = i },
-                })
-
-                local r, g, b, a = .7, .7, .7, .9
-                f:SetBackdropBorderColor(r, g, b, a)
-            end           
+            -- SP_ST_FrameTime2:Hide()       
             
-            border(SP_ST_Frame)
-            border(SP_ST_FrameOFF)            
+            local i = 2
+            skin(SP_ST_Frame, i)
+            skinColor(SP_ST_Frame, 0.4, 0.4, 0.4)
+            skin(SP_ST_FrameOFF, i)
+            skinColor(SP_ST_FrameOFF, 0.4, 0.4, 0.4)
+
+            SP_ST_Frame:SetBackdrop({
+                bgFile = "Interface/DialogFrame/UI-DialogBox-Background",
+                insets = { left = i, right = i, top = i, bottom = i }
+            })
+            SP_ST_FrameOFF:SetBackdrop({
+                bgFile = "Interface/DialogFrame/UI-DialogBox-Background",
+                insets = { left = i, right = i, top = i, bottom = i }
+            })
         end
 
         -- MinimapButtonFrame    
