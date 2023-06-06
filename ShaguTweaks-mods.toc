@@ -42,6 +42,7 @@ mods\item-colors-extended.lua
 mods\item-colors-glow.lua
 mods\loot-cursor.lua
 mods\loot-monitor.lua
+mods\loot-quality.lua
 mods\max-graphics.lua
 mods\max-smoothness.lua
 mods\minimap-framerate-latency.lua
