@@ -59,11 +59,23 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Range Color**    
 *Action buttons will be colored red when out of range.*
 
+- **Reagent Count**    
+*Show the reagent count on action buttons.*
+
 - **Auction Search Timer**    
 *The auction search button will show the time remaining until you can search the auction house.*
 
 - **Bag Search**    
 *Adds a search box to the backpack for searching your bags, keyring and bank. Press Esc or Tab to finish searching.*
+
+- **Max Camera Distance**    
+*Increases the maximum zoom out distance of the camera and makes zooming faster.*    
+
+- **Central UI**    
+*Moves unit frames, minimap, buffs and chat to a central layout.*  
+
+- **Central Interaction Windows**    
+*Interaction windows will be positioned centrally.*    
 
 - **Basic Chat**    
 *Creates General, Combat Log and 'Loot & Spam' chat boxes and resets chat channels on every login.*
@@ -71,21 +83,15 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Chat Bubble Tweaks**    
 *Shows sender names on chat bubbles and removes the background.*
 
-- **What Happened to Me?**    
-*Creates a 'What Happened to Me?' style chat tab.*
-
-- **Max Camera Distance**    
-*Increases the maximum zoom out distance of the camera and makes zooming faster.*    
-
-- **Central Interaction Windows**    
-*Interaction windows will be positioned centrally.*    
-
-- **Central UI**    
-*Moves unit frames, minimap, buffs and chat to a central layout.*  
+- **General Tab on Login**    
+*Selects the 'General' tab when logging in.*
 
 - **Chat Tweaks Extended**    
 *Extends "Chat Tweaks".*    
 *Removes chat buttons, shortens channel names, shows item links on mouseover, adds an ignore on right click, adds Alt click chat names to invite and Ctrl click chat names to target.*
+
+- **What Happened to Me?**    
+*Creates a 'What Happened to Me?' style chat tab.*
 
 - **Cursor Tooltip**    
 *Attaches the tooltip to the cursor.*
@@ -134,11 +140,14 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Items looted over 1 minute ago will be shown at 50% transparency.*    
 *Items looted over 10 minutes ago will be shown at 25% transparency.*
 
+- **Loot Quality**    
+*Sets the loot frame color to the highest item quality.*
+
 - **Max Graphics**    
-*Tunes the game's graphics to the max!*
+*Tunes the game's graphics to the max! Note that this will permanently add settings to the Config.wtf file.*
 
 - **Max Smoothness**    
-*Optimise the game engine for smoother gameplay.*
+*Optimise the game engine for smoother gameplay. Note that this will permanently add settings to the Config.wtf file.*
 
 - **MiniMap Framerate & Latency**    
 *Adds a small framerate & latency display to the mini map.*
@@ -186,6 +195,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 - **Set UI Scale**    
 *Sets the pixel perfect UI scale for your resolution.*
+
+- **Unit Frame Abbreviated Names**    
+*Abbreviates long unit names.*
 
 - **Unit Frame Combat Indicator**    
 *Adds a combat indicator to the target frame.*
@@ -244,7 +256,6 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_LootMonitor1.png)  
 *Loot Monitor*
-
 
 ![preview](https://raw.githubusercontent.com/GryllsAddons/AddonPreviews/main/ShaguTweaks-Mods/ST_UIRestyle.png)  
 *Restyle UI*
