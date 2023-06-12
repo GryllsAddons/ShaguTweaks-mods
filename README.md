@@ -44,7 +44,7 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 - **Macro Icons**    
 *Show macro icons on the action bars.*    
 In order to have the range and mana colors show on macros, you have to write the following line at the top of each macro:    
-***/run --CastSpellByName"SPELLNAME"***
+***/run if nil then CastSpellByName("SPELLNAME"); end***
     
 Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
