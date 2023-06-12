@@ -41,8 +41,8 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 *Shows rested percent while resting and changes color when fully rested.*    
 *Improved exp information on mouseover.*    
 
-- **Macro Icons & Cooldowns**    
-*Show macro icons & cooldowns on the action bars.*    
+- **Macro Icons**    
+*Show macro icons on the action bars.*    
 In order to have the range and mana colors show on macros, you have to write the following line at the top of each macro:    
 ***/run if nil then CastSpellByName("SPELLNAME"); end***    
 Make sure to replace ***SPELLNAME*** with the actual name of your spell.
