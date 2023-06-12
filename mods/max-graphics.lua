@@ -20,7 +20,7 @@ module.enable = function(self)
     SlashCmdList["CONSOLE"]("ffxGlow 1")
     SlashCmdList["CONSOLE"]("ffxRectangle 1")
     SlashCmdList["CONSOLE"]("footstepBias 1.0") -- 1 / 0.125
-    SlashCmdList["CONSOLE"]("frillDensity 256")
+    SlashCmdList["CONSOLE"]("frillDensity 64") -- 256
     SlashCmdList["CONSOLE"]("gxColorBits 24")
     SlashCmdList["CONSOLE"]("gxDepthBits 24")    
     SlashCmdList["CONSOLE"]("horizonfarclip 2112")
