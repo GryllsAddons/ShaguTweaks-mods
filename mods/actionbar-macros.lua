@@ -2,8 +2,8 @@ local _G = ShaguTweaks.GetGlobalEnv()
 local libspell = ShaguTweaks.libspell
 
 local module = ShaguTweaks:register({
-    title = "Macro Icons & Cooldowns",
-    description = "Show macro icons & cooldowns on the action bars.",
+    title = "Macro Icons",
+    description = "Show macro icons on the action bars.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
@@ -97,7 +97,7 @@ module.enable = function(self)
               end
 
               -- cooldown
-              CooldownFrame_SetTimer(cooldown, start, duration, enable)
+              -- CooldownFrame_SetTimer(cooldown, start, duration, enable)
 
               if not texture then break end
               if texture ~= icon:GetTexture() then            
