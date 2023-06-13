@@ -22,10 +22,11 @@ local suffixes = {
 }
 
 local function remove_suffix(item)
-    for _, suffix in ipairs(suffixes) do
-        item = string.gsub(item, "%s" .. suffix .. "$", "")
-    end
-    return item
+  if not item then return end
+  for _, suffix in ipairs(suffixes) do
+      item = string.gsub(item, "%s" .. suffix .. "$", "")
+  end
+  return item
 end
 
 -- https://github.com/shagu/pfUI/blob/ebaebc6304625a47b825779231df9d4a054fd228/api/api.lua
