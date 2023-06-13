@@ -46,7 +46,7 @@ end
 
 module.enable = function(self)
   local dis
-  if IsAddOnLoaded("AdvancedTradeSkillWindow") then
+  if IsAddOnLoaded("lilsparkysworkshop") then
     dis = true
   end
 
