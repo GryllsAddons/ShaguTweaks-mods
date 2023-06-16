@@ -206,6 +206,14 @@ module.enable = function(self)
         GameTooltip:Hide()
     end)
 
+    -- Move battleground button
+    MiniMapBattlefieldFrame:ClearAllPoints()
+    if Minimap.border then
+        MiniMapBattlefieldFrame:SetPoint("CENTER", MinimapFPS, "TOPLEFT", 4, 12)
+    else
+        MiniMapBattlefieldFrame:SetPoint("CENTER", MinimapFPS, "TOP", 0, 12)
+    end
+
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
