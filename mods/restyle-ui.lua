@@ -265,7 +265,7 @@ module.enable = function(self)
 
             local macro = _G[button:GetName().."Name"]  
             if macro then
-                local font, size, outline = "Fonts\\skurri.TTF", 12, "OUTLINE"
+                local font, size, outline = "Fonts\\frizqt__.TTF", 9, "OUTLINE"
                 macro:SetFont(font, size, outline)   
             end
 
@@ -319,8 +319,8 @@ module.enable = function(self)
 
         -- Zone Text
         MinimapZoneTextButton:ClearAllPoints()
-        MinimapZoneTextButton:SetPoint("TOP", Minimap, 0, 13)
-        MinimapZoneText:SetFont("Fonts\\skurri.TTF", 14, "OUTLINE")
+        MinimapZoneTextButton:SetPoint("TOP", Minimap, 0, 15)
+        MinimapZoneText:SetFont("Fonts\\skurri.TTF", 15, "OUTLINE")
         MinimapZoneText:SetDrawLayer("OVERLAY", 7)   
         MinimapZoneText:SetParent(styleFrame)
         -- MinimapZoneText:Hide()
@@ -393,16 +393,41 @@ module.enable = function(self)
     end
 
     function restyle:chatframes()
+        local font = "Fonts\\frizqt__.TTF"
+        local tabfont = "Fonts\\skurri.TTF"
+
         local frames = {
             ChatFrame1,
             ChatFrame2,
-            ChatFrame3
+            ChatFrame3,
+            ChatFrame4
         }
 
-        local font = "Fonts\\frizqt__.TTF"
-        for _, frame in pairs(frames) do            
+        local elements = {
+            "Background",
+            "ResizeTopLeftTexture",
+            "ResizeTopRightTexture",
+            "ResizeBottomLeftTexture",
+            "ResizeBottomRightTexture",
+            "ResizeTopTexture",
+            "ResizeBottomTexture",
+            "ResizeLeftTexture",
+            "ResizeRightTexture",
+
+            "TabLeft",
+            "TabMiddle",
+            "TabRight",
+        }
+
+        for _, frame in pairs(frames) do
             local _, size, outline = frame:GetFont()
             frame:SetFont(font, size, outline)
+            _G[frame:GetName().."Tab"]:SetFont(tabfont, 14, outline)
+            _G[frame:GetName().."Tab"]:SetHighlightTexture(nil)
+
+            for _, element in pairs(elements) do
+                _G[frame:GetName()..element]:SetTexture(nil)
+            end
         end
     end
 
