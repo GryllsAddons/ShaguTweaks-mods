@@ -84,6 +84,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Chat Bubble Tweaks**    
 *Shows sender names on chat bubbles and removes the background.*
 
+- **Block NPC Spam**    
+*Blocks spam messages from NPCs.*
+
 - **General Tab on Login**    
 *Selects the 'General' tab when logging in.*
 
