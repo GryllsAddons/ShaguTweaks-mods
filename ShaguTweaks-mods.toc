@@ -26,6 +26,7 @@ mods\central-windows.lua
 mods\central-ui.lua
 mods\chat-basic.lua
 mods\chat-bubbles.lua
+mods\chat-levels.lua
 mods\chat-select-tab.lua
 mods\chat-npcspam.lua
 mods\chat-tweaks-extended.lua
