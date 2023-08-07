@@ -44,8 +44,8 @@ module.enable = function(self)
 
       if text == message then
         if playerdb[sender] then            
-            level = playerdb[sender].level
-            class = playerdb[sender].class
+            local level = playerdb[sender].level
+            local class = playerdb[sender].class
             local ccolor = RAID_CLASS_COLORS[L["class"][class]] or { 1, 1, 1 }
             local lcolor = GetDifficultyColor(tonumber(level)) or { 1, 1, 1 }
             local cname = rgbhex(ccolor) .. sender .. "|r"
