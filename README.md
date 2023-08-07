@@ -84,6 +84,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Chat Bubble Tweaks**    
 *Shows sender names on chat bubbles and removes the background.*
 
+- **Chat Levels**    
+*Shows player levels in chat.*
+
 - **Block NPC Spam**    
 *Blocks spam messages from NPCs.*
 
