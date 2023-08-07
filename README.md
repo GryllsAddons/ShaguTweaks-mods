@@ -189,7 +189,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Shows the microbuttons when using the reduced actionbar. Mouseover the help button to show the draggable tab. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position.*
 
 - **Restyle UI**    
-*Restyles supported addons and the minimap. Changes fonts for units, buffs, buttons & chat.*    
+*Restyles supported addons, chat frames and the minimap. Changes fonts for units, buffs, buttons & chat.*    
 *Supported Addons:*    
 *[SP_SwingTimer (vanilla)](https://github.com/EinBaum/SP_SwingTimer) / [SP_SwingTimer (TurtleWoW)](https://github.com/geojak/SP_SwingTimer): Changes style and positions bar centrally.*    
 *[MinimapButtonBag (vanilla)](https://github.com/laytya/MinimapButtonBag-vanilla) / [MinimapButtonBag (TurtleWoW)](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW): Changes position to the bottom left of the minimap. The button will be shown on mouseover.*
