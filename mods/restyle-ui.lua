@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Restyle UI",
-    description = "Restyles supported addons and the minimap. Changes fonts for units, buffs, buttons & chat.",
+    description = "Restyles supported addons, chat frames and the minimap. Changes fonts for units, buffs, buttons & chat.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
