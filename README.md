@@ -166,7 +166,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 - **Modifier Actions**    
 *Use Ctrl (C), Alt (A) & Shift (S) for in game actions.*    
-*S: Sell & Repair, A: Accept Release/Resurrect/Summon/Invite/Battleground, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, CAS: Logout.*
+*S: Sell & Repair, A: Accept/Complete Resurrect/Quest/Summon/Invite/Battleground, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, CAS: Logout.*
 
 - **Mouseover Cast**    
 *Adds /stcast and /stcastself functions for use in macros ([HCWarn](https://github.com/GryllsAddons/HCWarn) supported).*    
