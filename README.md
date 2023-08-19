@@ -87,6 +87,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Chat Levels**    
 *Shows player levels in chat.*
 
+- **Block Guild Spam**    
+*Blocks guild joining & leaving messages.*
+
 - **Block NPC Spam**    
 *Blocks spam messages from NPCs.*
 
