@@ -7,7 +7,7 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-    local loot = CreateFrame("Frame", "ShaguControllerLoot", LootFrame)
+    local loot = CreateFrame("Frame", "ShaguTweaksLoot", LootFrame)
     loot:SetScript("OnUpdate", function()
     if GetNumLootItems() == 0 then HideUIPanel(LootFrame) return end
 
