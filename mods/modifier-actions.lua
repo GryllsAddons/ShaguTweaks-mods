@@ -269,18 +269,12 @@ module.enable = function(self)
                         break
                     end
                 end                
-            end
-
-            if QuestFrameAcceptButton:IsVisible() and QuestFrameAcceptButton:IsEnabled() then
+            elseif QuestFrameAcceptButton:IsVisible() and QuestFrameAcceptButton:IsEnabled() then
                 AcceptQuest()
-            end
-
-            if QuestFrameCompleteButton:IsVisible() and QuestFrameCompleteButton:IsEnabled() then
+            elseif QuestFrameCompleteButton:IsVisible() and QuestFrameCompleteButton:IsEnabled() then
                 -- proceed to rewards
-                CompleteQuest()
-            end
-        
-            if QuestFrameCompleteQuestButton:IsVisible() and QuestFrameCompleteQuestButton:IsEnabled() then
+                CompleteQuest()        
+            elseif QuestFrameCompleteQuestButton:IsVisible() and QuestFrameCompleteQuestButton:IsEnabled() then
                 -- get the reward unless multiple rewards
                 if (QuestFrameRewardPanel.itemChoice == 0 and GetNumQuestChoices() > 0) then
                     -- limit reward error spam      
