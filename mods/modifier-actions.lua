@@ -2,13 +2,14 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
     title = "Modifier Actions",
-    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. S: Sell & Repair, A: Accept/Complete Resurrect/Quest/Summon/Invite/Battleground, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, CAS: Logout.",
+    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. S: Sell & Repair/Quick Complete or Accept Quest, A: Confirm Resurrect/Quest/Summon/Invite/Battleground Popups, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, CAS: Logout.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
 })
 
 local processed = {}
+local msgtime = 1
 
 local function CreateGoldString(money)
     if type(money) ~= "number" then return "-" end
@@ -53,12 +54,18 @@ module.enable = function(self)
     local actions = CreateFrame("Frame", nil, UIParent)
     local autovendor = CreateFrame("Frame", nil, nil)
 
-    function actions:SetTime()
-       actions.time = GetTime() + 0.75
+    function actions:SetTime(time)
+        if not time then time = 0.75 end
+        if actions.quest then time = 0.1 end
+        actions.time = GetTime() + time
     end
 
+    actions.errormsgtime = 0
     function actions:Error(msg)
-        UIErrorsFrame:AddMessage(msg, 1, 0, 0)
+        if actions.errormsgtime < GetTime() then
+            actions.errormsgtime = GetTime() + msgtime
+            UIErrorsFrame:AddMessage(msg, 1, 0, 0)
+        end
     end
 
     function actions:Merchant()
@@ -79,53 +86,53 @@ module.enable = function(self)
         end
     end
 
-    local function selljunk()
+    do
         autovendor:Hide()
 
         autovendor:SetScript("OnShow", function()
-        processed = {}
-        this.price = 0
-        this.count = 0
+            processed = {}
+            this.price = 0
+            this.count = 0
         end)
 
         autovendor:SetScript("OnHide", function()
-        if this.count > 0 then
-            DEFAULT_CHAT_FRAME:AddMessage("Your grey items were sold for " .. CreateGoldString(this.price))
-        end
+            if this.count > 0 then
+                DEFAULT_CHAT_FRAME:AddMessage("Your grey items were sold for " .. CreateGoldString(this.price))
+            end
         end)
 
         autovendor:SetScript("OnUpdate", function()
-        -- throttle to to one item per .1 second
-        if ( this.tick or 1) > GetTime() then return else this.tick = GetTime() + .1 end
+            -- throttle to to one item per .1 second
+            if ( this.tick or 1) > GetTime() then return else this.tick = GetTime() + .1 end
 
-        -- scan for the next grey item
-        local bag, slot = GetNextGreyItem()
-        if not bag or not slot then
-            this:Hide()
-            return
-        end
+            -- scan for the next grey item
+            local bag, slot = GetNextGreyItem()
+            if not bag or not slot then
+                this:Hide()
+                return
+            end
 
-        -- double check to only sell grey
-        local name = GetContainerItemLink(bag,slot)
-        if not name or not string.find(name,"ff9d9d9d") then
-            return
-        end
+            -- double check to only sell grey
+            local name = GetContainerItemLink(bag,slot)
+            if not name or not string.find(name,"ff9d9d9d") then
+                return
+            end
 
-        -- get value
-        local _, icount = GetContainerItemInfo(bag, slot)
-        local _, _, id = string.find(GetContainerItemLink(bag, slot), "item:(%d+):%d+:%d+:%d+")
-        local price = ShaguTweaks.SellValueDB[tonumber(id)] or 0
-        if this.price then
-            this.price = this.price + ( price * ( icount or 1 ) )
-            this.count = this.count + 1
-        end
+            -- get value
+            local _, icount = GetContainerItemInfo(bag, slot)
+            local _, _, id = string.find(GetContainerItemLink(bag, slot), "item:(%d+):%d+:%d+:%d+")
+            local price = ShaguTweaks.SellValueDB[tonumber(id)] or 0
+            if this.price then
+                this.price = this.price + ( price * ( icount or 1 ) )
+                this.count = this.count + 1
+            end
 
-        -- abort if the merchant window disappeared
-        if not actions.merchant then return end
+            -- abort if the merchant window disappeared
+            if not actions.merchant then return end
 
-        -- clear cursor and sell the item
-        ClearCursor()
-        UseContainerItem(bag, slot)
+            -- clear cursor and sell the item
+            ClearCursor()
+            UseContainerItem(bag, slot)
         end)
     end
 
@@ -219,21 +226,10 @@ module.enable = function(self)
         return false
     end
 
+    actions.rewardmsgtime = 0
     function actions:Quest()        
         if actions.quest then
-            if QuestFrameCompleteQuestButton:IsVisible() and QuestFrameCompleteQuestButton:IsEnabled() then
-                -- get the reward
-                if (QuestFrameRewardPanel.itemChoice == 0 and GetNumQuestChoices() > 0) then
-                    QuestChooseRewardError()
-                else
-                    GetQuestReward(QuestFrameRewardPanel.itemChoice)
-                end
-            elseif QuestFrameCompleteButton:IsVisible() and QuestFrameCompleteButton:IsEnabled() then
-                -- proceed to rewards
-                CompleteQuest()
-            elseif QuestFrameAcceptButton:IsVisible() and QuestFrameAcceptButton:IsEnabled() then
-                AcceptQuest()
-            elseif QuestFrameGreetingPanel:IsShown() then
+            if QuestFrameGreetingPanel:IsShown() then
                 -- check for active quests
                 for i = 1, MAX_NUM_QUESTS do
                     local questTitleButton = _G["QuestTitleButton" .. i]
@@ -274,6 +270,28 @@ module.enable = function(self)
                     end
                 end                
             end
+
+            if QuestFrameAcceptButton:IsVisible() and QuestFrameAcceptButton:IsEnabled() then
+                AcceptQuest()
+            end
+
+            if QuestFrameCompleteButton:IsVisible() and QuestFrameCompleteButton:IsEnabled() then
+                -- proceed to rewards
+                CompleteQuest()
+            end
+        
+            if QuestFrameCompleteQuestButton:IsVisible() and QuestFrameCompleteQuestButton:IsEnabled() then
+                -- get the reward unless multiple rewards
+                if (QuestFrameRewardPanel.itemChoice == 0 and GetNumQuestChoices() > 0) then
+                    -- limit reward error spam      
+                    if actions.rewardmsgtime < GetTime() then
+                        actions.rewardmsgtime = GetTime() + msgtime
+                        QuestChooseRewardError()
+                    end
+                else
+                    GetQuestReward(QuestFrameRewardPanel.itemChoice)
+                end
+            end
         end
     end
 
@@ -311,9 +329,7 @@ module.enable = function(self)
             actions:Error(GetUnitName(unit).." is too far away to "..action)
             return false
         end
-    end    
-    
-    selljunk()
+    end
 
     actions:RegisterEvent("TRADE_SHOW")
     actions:RegisterEvent("TRADE_CLOSED")
@@ -378,7 +394,8 @@ module.enable = function(self)
                 end
             end
         elseif (event == "GOSSIP_SHOW" or event == "QUEST_GREETING" or event == "QUEST_DETAIL" or event == "QUEST_PROGRESS" or event == "QUEST_COMPLETE") then
-            actions.quest = true
+            actions.quest = true     
+            actions:SetTime()
         elseif (event == "GOSSIP_CLOSED" or event == "QUEST_FINISHED") then
             actions.quest = nil
         elseif (event == "QUEST_ACCEPT_CONFIRM") then
@@ -387,8 +404,7 @@ module.enable = function(self)
     end)
     
     actions:SetScript("OnUpdate", function()
-        if GetTime() < actions.time then return end
-        actions:SetTime()
+        if GetTime() < actions.time then return end       
         actions.shift = IsShiftKeyDown()
 	    actions.ctrl = IsControlKeyDown()
 	    actions.alt = IsAltKeyDown()        
@@ -403,14 +419,16 @@ module.enable = function(self)
             actions:Inspect()
         elseif (actions.alt) then
             actions:Resurrect()
-            actions:QuestConfirm()
-            actions:Quest()
+            actions:QuestConfirm()           
             actions:Summon()
             actions:Group()
             actions:Battleground()            
         elseif (actions.shift) then
             actions:Merchant()
+            actions:Quest()
         end
+
+        actions:SetTime()
     end)
 
     actions:SetTime()
