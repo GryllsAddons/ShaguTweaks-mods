@@ -1,12 +1,17 @@
 local module = ShaguTweaks:register({
-    title = "Block Guild Spam",
-    description = "Blocks guild joining & leaving messages.",
+    title = "Block TWoW Guild Spam",
+    description = "Blocks guild joining & leaving messages for Turtle WoW starter guilds.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Social & Chat",
     enabled = nil,
 })
   
 module.enable = function(self)
+    local turtle = (TargetHPText or TargetHPPercText)
+    local guildName = GetGuildInfo("player")    
+    if not turtle then return end
+    if not (guildName == "Newcomers" or guildName == "Still Alive") then return end
+
     local msg
 
     local events = {
