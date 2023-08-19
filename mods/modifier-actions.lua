@@ -1,6 +1,8 @@
+local _G = ShaguTweaks.GetGlobalEnv()
+
 local module = ShaguTweaks:register({
     title = "Modifier Actions",
-    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. S: Sell & Repair, A: Accept Release/Resurrect/Summon/Invite/Battleground, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, CAS: Logout.",
+    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. S: Sell & Repair, A: Accept/Complete Resurrect/Quest/Summon/Invite/Battleground, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, CAS: Logout.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -24,28 +26,28 @@ local function CreateGoldString(money)
 end
 
 local function HasGreyItems()
-    for bag = 0, 4, 1 do
-      for slot = 1, GetContainerNumSlots(bag), 1 do
-        local name = GetContainerItemLink(bag,slot)
-        if name and string.find(name,"ff9d9d9d") then return true end
+  for bag = 0, 4, 1 do
+    for slot = 1, GetContainerNumSlots(bag), 1 do
+      local name = GetContainerItemLink(bag,slot)
+      if name and string.find(name,"ff9d9d9d") then return true end
+    end
+  end
+  return nil
+end
+
+local function GetNextGreyItem()
+  for bag = 0, 4, 1 do
+    for slot = 1, GetContainerNumSlots(bag), 1 do
+      local name = GetContainerItemLink(bag,slot)
+      if name and string.find(name,"ff9d9d9d") and not processed[bag.."x"..slot] then
+        processed[bag.."x"..slot] = true
+        return bag, slot
       end
     end
-    return nil
   end
-  
-  local function GetNextGreyItem()
-    for bag = 0, 4, 1 do
-      for slot = 1, GetContainerNumSlots(bag), 1 do
-        local name = GetContainerItemLink(bag,slot)
-        if name and string.find(name,"ff9d9d9d") and not processed[bag.."x"..slot] then
-          processed[bag.."x"..slot] = true
-          return bag, slot
-        end
-      end
-    end
-  
-    return nil, nil
-  end
+
+  return nil, nil
+end
 
 module.enable = function(self)
     local actions = CreateFrame("Frame", nil, UIParent)
@@ -63,7 +65,7 @@ module.enable = function(self)
         if actions.merchant then
              -- sell
             if GetTime() > autovendor.cd  then
-                if not autovendor:IsVisible() then
+                if HasGreyItems() and (not autovendor:IsVisible()) then
                     autovendor:Show()
                     autovendor.cd = GetTime()+5
                 end
@@ -148,34 +150,129 @@ module.enable = function(self)
     end
 
     function actions:Resurrect()
-        if UnitIsDeadOrGhost("player") then
-            AcceptResurrect()
-        elseif UnitIsGhost("player") then
-            RetrieveCorpse()
-        elseif UnitIsDead("player") then
-            RepopMe()        
+        if actions.dead then
+            if UnitIsDeadOrGhost("player") then
+                AcceptResurrect()
+            elseif UnitIsGhost("player") then
+                RetrieveCorpse()
+            elseif UnitIsDead("player") then
+                UseSoulstone()
+                RepopMe()
+            end            
         end
-        StaticPopup_Hide("RESURRECT_NO_TIMER")
-        StaticPopup_Hide("RESURRECT_NO_SICKNESS")
-        StaticPopup_Hide("RESURRECT")
     end
 
     function actions:Summon()
-        ConfirmSummon()
-        StaticPopup_Hide("CONFIRM_SUMMON")
+        if actions.summon then
+            if GetSummonConfirmSummoner() and (not UnitAffectingCombat("player")) then
+                ConfirmSummon()                
+            end
+
+            if (not GetSummonConfirmSummoner()) then
+                actions.summon = nil
+                StaticPopup_Hide("CONFIRM_SUMMON")                
+            end
+        end
     end
 
     function actions:Group()
-        AcceptGroup()
-        StaticPopup_Hide("PARTY_INVITE")
+        if actions.group then
+            AcceptGroup()       
+        end
     end
 
     function actions:Battleground()
-        for i=1, MAX_BATTLEFIELD_QUEUES do
-            status, mapName, instanceID = GetBattlefieldStatus(i)
-            if status == "confirm" then
-                AcceptBattlefieldPort(i,1)
-                StaticPopup_Hide("CONFIRM_BATTLEFIELD_ENTRY")
+        if actions.battleground then
+            for i=1, MAX_BATTLEFIELD_QUEUES do
+                local status, mapName, instanceID = GetBattlefieldStatus(i)                
+                if status == "confirm" then
+                    AcceptBattlefieldPort(i,1)
+                    break
+                elseif status == "active" then
+                    if GetBattlefieldWinner() then
+                        LeaveBattlefield()
+                        break
+                    end
+                end
+            end
+        end
+    end
+
+    function actions:QuestConfirm()
+        if actions.questconfirm then
+            local _, numQuests = GetNumQuestLogEntries()
+            if numQuests < MAX_QUESTS then
+                actions.questconfirm = nil
+                ConfirmAcceptQuest()
+                StaticPopup_Hide("QUEST_ACCEPT")
+            end
+        end
+    end
+
+    function actions:CheckQuestCompleted(quest)
+        for i = 1, GetNumQuestLogEntries() do
+            local title, _, _, _, _, complete = GetQuestLogTitle(i)
+            if (title == quest) and (complete == 1) then
+                return true
+            end            
+        end
+        return false
+    end
+
+    function actions:Quest()        
+        if actions.quest then
+            if QuestFrameCompleteQuestButton:IsVisible() and QuestFrameCompleteQuestButton:IsEnabled() then
+                -- get the reward
+                if (QuestFrameRewardPanel.itemChoice == 0 and GetNumQuestChoices() > 0) then
+                    QuestChooseRewardError()
+                else
+                    GetQuestReward(QuestFrameRewardPanel.itemChoice)
+                end
+            elseif QuestFrameCompleteButton:IsVisible() and QuestFrameCompleteButton:IsEnabled() then
+                -- proceed to rewards
+                CompleteQuest()
+            elseif QuestFrameAcceptButton:IsVisible() and QuestFrameAcceptButton:IsEnabled() then
+                AcceptQuest()
+            elseif QuestFrameGreetingPanel:IsShown() then
+                -- check for active quests
+                for i = 1, MAX_NUM_QUESTS do
+                    local questTitleButton = _G["QuestTitleButton" .. i]
+                    if questTitleButton.isActive == 1 then
+                        local quest = questTitleButton:GetText()
+                        if actions:CheckQuestCompleted(quest) then
+                            SelectActiveQuest(questTitleButton:GetID())
+                            break
+                        end
+                    end
+                end
+                -- check for available quests
+                for i = 1, MAX_NUM_QUESTS do
+                    local questTitleButton = _G["QuestTitleButton" .. i]
+                    if questTitleButton.isActive == 0 then
+                        SelectAvailableQuest(questTitleButton:GetID())
+                        break
+                    end
+                end
+            elseif GossipFrame:IsShown() then
+                -- check for active quests
+                for i = 1, NUMGOSSIPBUTTONS do
+                    local titleButton = _G["GossipTitleButton" .. i]
+                    if titleButton.type == "Active" then
+                        local quest = titleButton:GetText()
+                        if actions:CheckQuestCompleted(quest) then
+                            SelectGossipActiveQuest(titleButton:GetID())
+                            break
+                        end
+                    end
+                end                
+                -- check for available quests
+                for i = 1, NUMGOSSIPBUTTONS do
+                    local titleButton = _G["GossipTitleButton" .. i]
+                    if titleButton.type == "Available" then
+                        SelectGossipAvailableQuest(titleButton:GetID())
+                        break
+                    end
+                end                
             end
         end
     end
@@ -217,10 +314,25 @@ module.enable = function(self)
     end    
     
     selljunk()
+
     actions:RegisterEvent("TRADE_SHOW")
     actions:RegisterEvent("TRADE_CLOSED")
     actions:RegisterEvent("MERCHANT_SHOW")
     actions:RegisterEvent("MERCHANT_CLOSED")
+    actions:RegisterEvent("CONFIRM_SUMMON")
+    actions:RegisterEvent("PLAYER_DEAD")
+    actions:RegisterEvent("PLAYER_ALIVE")
+    actions:RegisterEvent("PARTY_INVITE_REQUEST")
+    actions:RegisterEvent("PARTY_INVITE_CANCEL")
+    actions:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
+    actions:RegisterEvent("GOSSIP_SHOW")
+    actions:RegisterEvent("GOSSIP_CLOSED")
+    actions:RegisterEvent("QUEST_GREETING")
+    actions:RegisterEvent("QUEST_DETAIL")
+    actions:RegisterEvent("QUEST_PROGRESS")
+    actions:RegisterEvent("QUEST_COMPLETE")
+    actions:RegisterEvent("QUEST_ACCEPT_CONFIRM")
+    actions:RegisterEvent("QUEST_FINISHED")
 
     actions:SetScript("OnEvent", function() 
         if (event == "TRADE_SHOW") then
@@ -233,6 +345,44 @@ module.enable = function(self)
         elseif (event == "MERCHANT_CLOSED") then
             actions.merchant = nil
             autovendor:Hide()
+        elseif (event == "CONFIRM_SUMMON") then
+            actions.summon = true
+        elseif (event == "PLAYER_DEAD") then
+            actions.dead = true
+        elseif (event == "PLAYER_ALIVE") then
+            actions.dead = nil
+            StaticPopup_Hide("RESURRECT_NO_TIMER")
+            StaticPopup_Hide("RESURRECT_NO_SICKNESS")
+            StaticPopup_Hide("RESURRECT")
+            StaticPopup_Hide("DEATH")
+        elseif (event == "PARTY_INVITE_REQUEST") then
+            actions.group = true
+            actions:RegisterEvent("PARTY_MEMBERS_CHANGED")  
+        elseif (event == "PARTY_INVITE_CANCEL" or event == "PARTY_MEMBERS_CHANGED") then            
+            actions.group = nil
+            actions:UnregisterEvent("PARTY_MEMBERS_CHANGED")
+            StaticPopup_Hide("PARTY_INVITE")
+        elseif (event == "UPDATE_BATTLEFIELD_STATUS") then
+            for i=1, MAX_BATTLEFIELD_QUEUES do
+                local status, mapName, instanceID = GetBattlefieldStatus(i)
+                if (status == "none") then
+                    actions.battleground = nil
+                    break                
+                elseif (status == "queued")  then
+                    actions.battleground = true
+                    break
+                elseif (status == "active") then
+                    actions.battleground = true
+                    StaticPopup_Hide("CONFIRM_BATTLEFIELD_ENTRY")
+                    break
+                end
+            end
+        elseif (event == "GOSSIP_SHOW" or event == "QUEST_GREETING" or event == "QUEST_DETAIL" or event == "QUEST_PROGRESS" or event == "QUEST_COMPLETE") then
+            actions.quest = true
+        elseif (event == "GOSSIP_CLOSED" or event == "QUEST_FINISHED") then
+            actions.quest = nil
+        elseif (event == "QUEST_ACCEPT_CONFIRM") then
+            actions.questconfirm = true
         end
     end)
     
@@ -253,9 +403,11 @@ module.enable = function(self)
             actions:Inspect()
         elseif (actions.alt) then
             actions:Resurrect()
+            actions:QuestConfirm()
+            actions:Quest()
             actions:Summon()
             actions:Group()
-            actions:Battleground()
+            actions:Battleground()            
         elseif (actions.shift) then
             actions:Merchant()
         end
