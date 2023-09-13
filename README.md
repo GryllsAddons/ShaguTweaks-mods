@@ -87,8 +87,8 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Chat Levels**    
 *Shows player levels in chat.*
 
-- **Block Guild Spam**    
-*Blocks guild joining & leaving messages.*
+- **Block TWoW Guild Spam**    
+*Blocks guild joining & leaving messages for Turtle WoW starter guilds.*
 
 - **Block NPC Spam**    
 *Blocks spam messages from NPCs.*
