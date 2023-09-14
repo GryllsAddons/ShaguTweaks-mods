@@ -440,6 +440,26 @@ module.enable = function(self)
             this.level:SetFont(font, size, outline)
         end)
     end
+
+    function restyle:debufftimer()
+        -- move Debuff Timer up out of the way of the debuff stacks
+        local HookTargetDebuffButton_Update = TargetDebuffButton_Update
+        TargetDebuffButton_Update = function()
+            HookTargetDebuffButton_Update()
+
+            for i=1, MAX_TARGET_DEBUFFS do                
+                local button = _G["TargetFrameDebuff"..i]
+                local cooldown = button.cd
+                if not cooldown then return end
+
+                if cooldown.readable and cooldown.readable.text:IsShown() and not cooldown.restyle then
+                    cooldown.readable.text:ClearAllPoints()
+                    cooldown.readable.text:SetPoint("CENTER", cooldown.readable, "CENTER", 0, 4)
+                    cooldown.restyle = true
+                end
+            end
+        end
+    end
     
     restyle:RegisterEvent("PLAYER_ENTERING_WORLD")
     restyle:SetScript("OnEvent", function()
@@ -452,6 +472,7 @@ module.enable = function(self)
             restyle:unitnames()
             restyle:chatframes()
             restyle:nameplates()
+            restyle:debufftimer()
         end           
     end)
 end
