@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Restyle UI",
-    description = "Restyles supported addons, chat frames and the minimap. Changes fonts for units, buffs, buttons & chat.",
+    description = "Restyles supported addons, reduced actionbar, buffs, chat frames and the minimap. Changes fonts for units, buffs, buttons & chat.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -10,6 +10,80 @@ module.enable = function(self)
     local _G = ShaguTweaks.GetGlobalEnv()
     local restyle = CreateFrame("Frame", nil, UIParent)
 
+    local function lock(frame)
+        frame.ClearAllPoints = function() end
+        frame.SetAllPoints = function() end
+        frame.SetPoint = function() end         
+    end
+
+    local addonpath = "Interface\\AddOns\\ShaguTweaks-mods"
+
+    local sections  = {
+        'TOPLEFT', 'TOPRIGHT', 'BOTTOMLEFT', 'BOTTOMRIGHT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT'
+    }
+
+    local function skin(f, offset, x, y)
+        local t = {}
+        offset = offset or 0
+        x = x or 0
+        y = y or 0
+            
+        for i = 1, 8 do
+            local section = sections[i]
+            local x = f:CreateTexture(nil, 'OVERLAY', nil, 1)
+            x:SetTexture(addonpath..'\\img\\borders\\'..'border-'..section..'.tga')
+            t[sections[i]] = x
+        end
+
+        t.TOPLEFT:SetWidth(8)
+        t.TOPLEFT:SetHeight(8)
+        t.TOPLEFT:SetPoint('BOTTOMRIGHT', f, 'TOPLEFT', 4 + offset + x, -4 - offset + y)
+
+        t.TOPRIGHT:SetWidth(8)
+        t.TOPRIGHT:SetHeight(8)
+        t.TOPRIGHT:SetPoint('BOTTOMLEFT', f, 'TOPRIGHT', -4 - offset + x, -4 - offset + y)
+
+        t.BOTTOMLEFT:SetWidth(8)
+        t.BOTTOMLEFT:SetHeight(8)
+        t.BOTTOMLEFT:SetPoint('TOPRIGHT', f, 'BOTTOMLEFT', 4 + offset + x, 4 + offset + y)
+
+        t.BOTTOMRIGHT:SetWidth(8)
+        t.BOTTOMRIGHT:SetHeight(8)
+        t.BOTTOMRIGHT:SetPoint('TOPLEFT', f, 'BOTTOMRIGHT', -4 - offset + x, 4 + offset + y)
+
+        t.TOP:SetHeight(8)
+        t.TOP:SetPoint('TOPLEFT', t.TOPLEFT, 'TOPRIGHT')
+        t.TOP:SetPoint('TOPRIGHT', t.TOPRIGHT, 'TOPLEFT')
+
+        t.BOTTOM:SetHeight(8)
+        t.BOTTOM:SetPoint('BOTTOMLEFT', t.BOTTOMLEFT, 'BOTTOMRIGHT')
+        t.BOTTOM:SetPoint('BOTTOMRIGHT', t.BOTTOMRIGHT, 'BOTTOMLEFT')
+
+        t.LEFT:SetWidth(8)
+        t.LEFT:SetPoint('TOPLEFT', t.TOPLEFT, 'BOTTOMLEFT')
+        t.LEFT:SetPoint('BOTTOMLEFT', t.BOTTOMLEFT, 'TOPLEFT')
+
+        t.RIGHT:SetWidth(8)
+        t.RIGHT:SetPoint('TOPRIGHT', t.TOPRIGHT, 'BOTTOMRIGHT')
+        t.RIGHT:SetPoint('BOTTOMRIGHT', t.BOTTOMRIGHT, 'TOPRIGHT')
+
+        f.borderTextures = t
+        f.SetBorderColor = SetBorderColor
+        f.GetBorderColor = GetBorderColor
+    end
+
+    local function skinColor(f, r, g, b, a)
+        if ShaguTweaks.DarkMode then
+            r,g,b = .3, .3, .3
+        end
+
+        local t = f.borderTextures
+        if not  t then return end
+        for  _, v in pairs(t) do
+            v:SetVertexColor(r or 1, g or 1, b or 1, a or 1)
+        end
+    end
+
     function restyle:addons()
         --[[
             Supported Addons:
@@ -17,76 +91,8 @@ module.enable = function(self)
             MinimapButtonBag (Vanilla/Turtle)
         ]]
 
-        local function lock(frame)
-            frame.ClearAllPoints = function() end
-            frame.SetAllPoints = function() end
-            frame.SetPoint = function() end         
-        end
-
         -- SP_SwingTimer
         if IsAddOnLoaded("SP_SwingTimer") and (not IsAddOnLoaded("GryllsSwingTimer")) then
-            local addonpath = "Interface\\AddOns\\ShaguTweaks-mods"
-
-            local sections  = {
-                'TOPLEFT', 'TOPRIGHT', 'BOTTOMLEFT', 'BOTTOMRIGHT', 'TOP', 'BOTTOM', 'LEFT', 'RIGHT'
-            }
-
-            local function skin(f, offset)
-                local t = {}
-                offset = offset or 0
-                    
-                for i = 1, 8 do
-                    local section = sections[i]
-                    local x = f:CreateTexture(nil, 'OVERLAY', nil, 1)
-                    x:SetTexture(addonpath..'\\img\\borders\\'..'border-'..section..'.tga')
-                    t[sections[i]] = x
-                end
-
-                t.TOPLEFT:SetWidth(8)
-                t.TOPLEFT:SetHeight(8)
-                t.TOPLEFT:SetPoint('BOTTOMRIGHT', f, 'TOPLEFT', 4 + offset, -4 - offset)
-
-                t.TOPRIGHT:SetWidth(8)
-                t.TOPRIGHT:SetHeight(8)
-                t.TOPRIGHT:SetPoint('BOTTOMLEFT', f, 'TOPRIGHT', -4 - offset, -4 - offset)
-
-                t.BOTTOMLEFT:SetWidth(8)
-                t.BOTTOMLEFT:SetHeight(8)
-                t.BOTTOMLEFT:SetPoint('TOPRIGHT', f, 'BOTTOMLEFT', 4 + offset, 4 + offset)
-
-                t.BOTTOMRIGHT:SetWidth(8)
-                t.BOTTOMRIGHT:SetHeight(8)
-                t.BOTTOMRIGHT:SetPoint('TOPLEFT', f, 'BOTTOMRIGHT', -4 - offset, 4 + offset)
-
-                t.TOP:SetHeight(8)
-                t.TOP:SetPoint('TOPLEFT', t.TOPLEFT, 'TOPRIGHT', 0, 0)
-                t.TOP:SetPoint('TOPRIGHT', t.TOPRIGHT, 'TOPLEFT', 0, 0)
-
-                t.BOTTOM:SetHeight(8)
-                t.BOTTOM:SetPoint('BOTTOMLEFT', t.BOTTOMLEFT, 'BOTTOMRIGHT', 0, 0)
-                t.BOTTOM:SetPoint('BOTTOMRIGHT', t.BOTTOMRIGHT, 'BOTTOMLEFT', 0, 0)
-
-                t.LEFT:SetWidth(8)
-                t.LEFT:SetPoint('TOPLEFT', t.TOPLEFT, 'BOTTOMLEFT', 0, 0)
-                t.LEFT:SetPoint('BOTTOMLEFT', t.BOTTOMLEFT, 'TOPLEFT', 0, 0)
-
-                t.RIGHT:SetWidth(8)
-                t.RIGHT:SetPoint('TOPRIGHT', t.TOPRIGHT, 'BOTTOMRIGHT', 0, 0)
-                t.RIGHT:SetPoint('BOTTOMRIGHT', t.BOTTOMRIGHT, 'TOPRIGHT', 0, 0)
-
-                f.borderTextures = t
-                f.SetBorderColor = SetBorderColor
-                f.GetBorderColor = GetBorderColor
-            end
-
-            local function skinColor(f, r, g, b, a)
-                local t = f.borderTextures
-                if not  t then return end
-                for  _, v in pairs(t) do
-                    v:SetVertexColor(r or 1, g or 1, b or 1, a or 1)
-                end
-            end
-
             -- local w, h, b = 200, 14, 6
             local h, b = 14, 6
             -- set mainhand
@@ -274,6 +280,11 @@ module.enable = function(self)
                 local font, size, outline = "Fonts\\frizqt__.TTF", 14, "OUTLINE"
                 count:SetFont(font, size, outline)   
             end
+
+            if not ShaguTweaks.DarkMode then
+                skin(button, 0)
+                skinColor(button, .7, .7, .7)
+            end
         end
         
         for i = 1, 24 do
@@ -305,6 +316,19 @@ module.enable = function(self)
                 }
             ) do
                 style(button)
+            end
+        end
+
+        for i = 0, 16 do
+            for _, button in pairs(
+                {
+                    _G['BuffButton'..i]
+                }
+            ) do
+                if not ShaguTweaks.DarkMode then
+                    skin(button, 0)
+                    skinColor(button, .7, .7, .7)
+                end
             end
         end
     end
@@ -439,7 +463,7 @@ module.enable = function(self)
             this.name:SetFont(font, size, outline)
             this.level:SetFont(font, size, outline)
         end)
-    end
+    end    
 
     function restyle:debufftimer()
         -- move Debuff Timer up out of the way of the debuff stacks
@@ -460,6 +484,113 @@ module.enable = function(self)
             end
         end
     end
+
+    function restyle:reducedactionbar()
+        -- if not reduced action bar end
+        if MainMenuExpBar:GetWidth() > 512 then return end
+
+        local move = { 
+            MainMenuBar, MultiBarBottomLeft, MultiBarBottomRight, 
+            MainMenuExpBar, ReputationWatchBar,
+            MainMenuBarLeftEndCap, MainMenuBarRightEndCap
+        }
+
+        for id, frame in pairs(move) do 
+            frame:ClearAllPoints()
+        end
+
+        local hide = { 
+            MainMenuBarTexture0, MainMenuBarTexture1,
+            MainMenuXPBarTexture0, MainMenuXPBarTexture1,
+            ReputationXPBarTexture0, ReputationXPBarTexture1, ReputationXPBarTexture2, ReputationXPBarTexture3,
+            ReputationWatchBarTexture0, ReputationWatchBarTexture1,
+        }
+
+        for id, frame in pairs(hide) do 
+            frame:Hide()
+            frame.Show = function() end         
+        end
+
+        -- action bar (bottom)
+        MainMenuBar:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 45)        
+
+        -- MultiBarBottomLeft (middle)
+        MultiBarBottomLeft:SetPoint("BOTTOM", MainMenuBar, "TOP", 2, -1)
+
+        -- MultiBarBottomRight (top)
+        MultiBarBottomRight:SetPoint("BOTTOM", MultiBarBottomLeft, "TOP", 0, 5)
+
+        -- experience bar
+        MainMenuExpBar:SetPoint("TOPLEFT", ActionButton1, "BOTTOMLEFT", -5, -12)
+        MainMenuExpBar:SetPoint("TOPRIGHT", ActionButton12, "BOTTOMRIGHT", 5, -12)
+        
+        -- reputation bar
+        ReputationWatchBar:SetPoint("TOP", MainMenuExpBar, "BOTTOM", 0, -6)  
+
+        -- gryphon textures
+        local x, y = 22, 8
+        if ShaguTweaks.dfgryphons then
+            x, y = 33, 30
+        elseif ShaguTweaks.dfwyverns then
+            x, y = 33, 22      
+        end
+        local c = .7
+        MainMenuBarLeftEndCap:SetVertexColor(c,c,c)
+        MainMenuBarRightEndCap:SetVertexColor(c,c,c)
+        MainMenuBarLeftEndCap:SetPoint("BOTTOMRIGHT", ActionButton1, "BOTTOMLEFT", x, -y)
+        MainMenuBarRightEndCap:SetPoint("BOTTOMLEFT", ActionButton12, "BOTTOMRIGHT", -x, -y)
+
+        -- action bar bg
+        local mmbg = CreateFrame("Frame", nil, MainMenuBar)
+        mmbg:SetFrameStrata("LOW")
+        local i = 10
+        mmbg:SetPoint("TOPLEFT", ActionButton1, "TOPLEFT", -i, i)
+        mmbg:SetPoint("BOTTOMRIGHT", ActionButton12, "BOTTOMRIGHT", i, -i-1)
+        -- mmbg:Hide()
+
+        -- action bar empty buttons
+        for i = 1, 12 do            
+            for _, button in pairs(
+                    {
+                    _G['ActionButton'..i],
+                }
+            ) do
+                local t = MainMenuBar:CreateTexture(nil, "OVERLAY", nil, 1)
+                local i = 12
+                t:SetPoint("TOPLEFT", button, "TOPLEFT", -i, i-1)
+                t:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", i, -i-1)
+                t:SetTexture("Interface\\Buttons\\UI-EmptySlot-White")
+                t:SetVertexColor(.5,.5,.5,1)
+            end        
+        end        
+
+        -- skin
+        local function bg(frame, i, c, a)
+            frame:SetBackdrop({
+                bgFile = "Interface\\TabardFrame\\TabardFrameBackground",
+                -- edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
+                -- tile = true, tileSize = 12, edgeSize = 22, 
+                insets = { left = i, right = i, top = i, bottom = i }
+            })
+            frame:SetBackdropColor(c,c,c,a)
+        end
+        
+        bg(mmbg, 4, 1, .7)
+        skin(mmbg, 5)
+        skinColor(mmbg, .7, .7, .7)
+        
+        skin(MainMenuExpBar, 0)
+        skinColor(MainMenuExpBar, .7, .7, .7)
+
+        skin(ReputationWatchBar, 1, 0, 1)
+        skinColor(ReputationWatchBar, .7, .7, .7)  
+
+        -- prevent bars from moving
+        for id, frame in pairs(move) do 
+            lock(frame)
+        end
+
+    end
     
     restyle:RegisterEvent("PLAYER_ENTERING_WORLD")
     restyle:SetScript("OnEvent", function()
@@ -473,6 +604,7 @@ module.enable = function(self)
             restyle:chatframes()
             restyle:nameplates()
             restyle:debufftimer()
+            restyle:reducedactionbar()
         end           
     end)
 end
