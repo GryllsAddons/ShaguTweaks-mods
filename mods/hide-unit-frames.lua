@@ -82,7 +82,9 @@ module.enable = function(self)
 
         f:SetScript("OnLeave", function()
             this:Show()
-            CheckConditions()       
+            HideTextStatusBarText(_G[parent:GetName().."HealthBar"])
+            HideTextStatusBarText(_G[parent:GetName().."ManaBar"])
+            CheckConditions() 
         end)
 
         f:SetScript("OnClick", function()
