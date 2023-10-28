@@ -453,6 +453,17 @@ module.enable = function(self)
                 _G[frame:GetName()..element]:SetTexture(nil)
             end
         end
+
+        -- if not reduced action bar end
+        if MainMenuExpBar:GetWidth() > 512 then return end
+
+        ChatFrame1:ClearAllPoints()
+        ChatFrame1:SetPoint("BOTTOMRIGHT", "MainMenuExpBar", "TOPLEFT", -32, 15)
+        lock(ChatFrame1)
+
+        ChatFrame3:ClearAllPoints()
+        ChatFrame3:SetPoint("BOTTOMLEFT", "MainMenuExpBar", "TOPRIGHT", 32, 15)
+        lock(ChatFrame3)
     end
 
     function restyle:nameplates()
