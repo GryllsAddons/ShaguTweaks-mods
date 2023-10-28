@@ -600,7 +600,12 @@ module.enable = function(self)
         for id, frame in pairs(move) do 
             lock(frame)
         end
+    end
 
+    function restyle:castbar()
+        CastingBarFrame:ClearAllPoints()
+        CastingBarFrame:SetPoint("BOTTOM", "MultiBarBottomRight", "TOP", 0, 15)
+        lock(CastingBarFrame)
     end
     
     restyle:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -616,6 +621,7 @@ module.enable = function(self)
             restyle:nameplates()
             restyle:debufftimer()
             restyle:reducedactionbar()
+            restyle:castbar()
         end           
     end)
 end
