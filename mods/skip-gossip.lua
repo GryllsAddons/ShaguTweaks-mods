@@ -17,10 +17,15 @@ module.enable = function(self)
     }
 
     local phrases = {
+        -- Vanilla
         "Teleport me to the Molten Core",
+
         -- Turtle WoW
+        -- Alliance
         "Please open a portal to Alah'Thalas",
-        "Please open a portal to Stormwind"
+        "Please open a portal to Stormwind",
+        -- Horde
+        "Open a portal to Amani'Alor",
     }
 
     function actions:Gossip()        
