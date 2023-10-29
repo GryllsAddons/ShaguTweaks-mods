@@ -13,10 +13,14 @@ module.enable = function(self)
         "battlemaster",
         "taxi",
         "trainer",
-        "vendor"
+        "vendor",
+        "banker",
     }
 
     local phrases = {
+        -- Bank
+        "I would like to check my deposit box",
+        
         -- Vanilla
         "Teleport me to the Molten Core",
 
@@ -24,7 +28,7 @@ module.enable = function(self)
         -- Alliance
         "Please open a portal to Alah'Thalas",
         "Please open a portal to Stormwind",
-        -- Horde
+        -- Horde        
         "Open a portal to Amani'Alor",
     }
 
