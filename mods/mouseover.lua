@@ -57,7 +57,7 @@ module.enable = function(self)
       if frame.label and frame.id then
         unit = frame.label .. frame.id
       elseif frame.unit then -- default unitframe support (self)
-          unit = frame.unit
+        unit = frame.unit
       elseif UnitExists("target") then
         unit = "target"
       elseif GetCVar("autoSelfCast") == "1" then
