@@ -110,10 +110,16 @@ module.enable = function(self)
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
+    events:RegisterEvent("CVAR_UPDATE")
+
     events:SetScript("OnEvent", function()
-        if not this.loaded then
-            this.loaded = true
-            setup(MultiBarRight)
+        if event == "CVAR_UPDATE" then
+            mouseover(MultiBarRight)
+        else
+            if not this.loaded then
+                this.loaded = true
+                setup(MultiBarRight)
+            end
         end
     end)    
 end

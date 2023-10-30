@@ -222,14 +222,19 @@ module.enable = function(self)
     local ReducedActionbar
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
+    events:RegisterEvent("CVAR_UPDATE")    
 
     events:SetScript("OnEvent", function()
-        if not this.loaded then
-            this.loaded = true
-            lockframes()
-            castbar()
-            hideart()
-            setup(MultiBarBottomLeft)
+        if event == "CVAR_UPDATE" then
+            mouseover(MultiBarBottomLeft)
+        else
+            if not this.loaded then
+                this.loaded = true
+                lockframes()
+                castbar()
+                hideart()
+                setup(MultiBarBottomLeft)
+            end
         end
     end)
 end

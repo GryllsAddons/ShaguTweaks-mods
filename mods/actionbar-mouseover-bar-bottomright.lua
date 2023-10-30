@@ -207,15 +207,21 @@ module.enable = function(self)
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
+    events:RegisterEvent("CVAR_UPDATE")    
+
     events:SetScript("OnEvent", function()
-        if not this.loaded then
-            this.loaded = true
-            if not ShaguTweaks.MouseoverBottomLeft then
-                lockframes()
-                castbar()
-                hideart()
+        if event == "CVAR_UPDATE" then
+            mouseover(MultiBarBottomRight)
+        else
+            if not this.loaded then
+                this.loaded = true
+                if not ShaguTweaks.MouseoverBottomLeft then
+                    lockframes()
+                    castbar()
+                    hideart()
+                end
+                setup(MultiBarBottomRight)
             end
-            setup(MultiBarBottomRight)
         end
     end)    
 end
