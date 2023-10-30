@@ -46,6 +46,10 @@ module.enable = function(self)
   _G.SLASH_STCASTHARM1 = "/stcastharm"
 
   local function MouseoverUnit()
+    -- mute targeting sounds
+    local _PlaySound = PlaySound
+    PlaySound = function() end
+
     local unit = "mouseover"
 
     if not UnitExists(unit) then
@@ -63,14 +67,13 @@ module.enable = function(self)
       end
     end
 
+    -- unmute
+    PlaySound = _PlaySound
+
     return unit
   end 
 
   function SlashCmdList.STCAST(msg)
-    -- mute targeting sounds
-    local _PlaySound = PlaySound
-    PlaySound = function() end
-
     local restore_target = true
     local func = loadstring(msg or "")
     local unit = MouseoverUnit()
@@ -126,9 +129,6 @@ module.enable = function(self)
     if restore_target then
       TargetLastTarget()
     end
-
-    -- unmute
-    PlaySound = _PlaySound
   end
 
   function SlashCmdList.STCASTSELF(msg)
