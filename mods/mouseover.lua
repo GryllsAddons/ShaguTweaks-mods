@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
   title = "Mouseover Cast",
-  description = "Adds /stcast and /stcastself functions for use in macros.",
+  description = "Adds /stcast, /stcastself, /stcasthelp and /stcastharm for use in macros.",
   expansions = { ["vanilla"] = true, ["tbc"] = false },
   enabled = false,
 })
@@ -42,15 +42,10 @@ module.enable = function(self)
 
   _G.SLASH_STCAST1 = "/stcast"
   _G.SLASH_STCASTSELF1 = "/stcastself"
+  _G.SLASH_STCASTHELP1 = "/stcasthelp"
+  _G.SLASH_STCASTHARM1 = "/stcastharm"
 
-
-  function SlashCmdList.STCAST(msg)
-    -- mute targeting sounds
-    local _PlaySound = PlaySound
-    PlaySound = function() end
-
-    local restore_target = true
-    local func = loadstring(msg or "")
+  local function MouseoverUnit()
     local unit = "mouseover"
 
     if not UnitExists(unit) then
@@ -64,9 +59,22 @@ module.enable = function(self)
       elseif GetCVar("autoSelfCast") == "1" then
         unit = "player"
       else
-        return
+        unit = nil
       end
     end
+
+    return unit
+  end 
+
+  function SlashCmdList.STCAST(msg)
+    -- mute targeting sounds
+    local _PlaySound = PlaySound
+    PlaySound = function() end
+
+    local restore_target = true
+    local func = loadstring(msg or "")
+    local unit = MouseoverUnit()
+    if not unit then return end    
 
     -- HCWarn support (https://github.com/GryllsAddons/HCWarn)
     if HCWarn_Mouseover and (unit ~= "player") then
@@ -126,4 +134,17 @@ module.enable = function(self)
   function SlashCmdList.STCASTSELF(msg)
     CastSpellByName(msg, 1)
   end
+
+  function SlashCmdList.STCASTHELP(msg)
+    if UnitCanAssist("player", MouseoverUnit()) then 
+      SlashCmdList.STCAST(msg)
+    end
+  end
+
+  function SlashCmdList.STCASTHARM(msg)
+    if UnitCanAttack("player", MouseoverUnit()) then
+      SlashCmdList.STCAST(msg)
+    end
+  end
+
 end
