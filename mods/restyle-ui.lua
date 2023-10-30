@@ -30,7 +30,7 @@ module.enable = function(self)
             
         for i = 1, 8 do
             local section = sections[i]
-            local x = f:CreateTexture(nil, 'OVERLAY', nil, 1)
+            local x = f:CreateTexture(nil, 'BORDER', nil, 1)
             x:SetTexture(addonpath..'\\img\\borders\\'..'border-'..section..'.tga')
             t[sections[i]] = x
         end
