@@ -136,7 +136,11 @@ module.enable = function(self)
             class = RAID_CLASS_COLORS[class]
             local alpha = LootMonitor:GetTimeAlpha(updatetime, cachetime)
             LootMonitor[i]:SetText(player.." "..item)
-            LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
+            if player == "You" then
+              LootMonitor[i]:SetTextColor(1, 0, 0, alpha)
+            else
+              LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
+            end
           end
         end
       else
@@ -148,7 +152,11 @@ module.enable = function(self)
             class = RAID_CLASS_COLORS[class]
             local alpha = LootMonitor:GetTimeAlpha(updatetime, cachetime)
             LootMonitor[i]:SetText(player.." "..item)
-            LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
+            if player == "You" then
+              LootMonitor[i]:SetTextColor(1, 0, 0, alpha)
+            else
+              LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
+            end
           end
         end
       end
