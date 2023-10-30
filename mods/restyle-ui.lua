@@ -428,7 +428,7 @@ module.enable = function(self)
         }
 
         local elements = {
-            "Background",
+            -- "Background",
             "ResizeTopLeftTexture",
             "ResizeTopRightTexture",
             "ResizeBottomLeftTexture",
