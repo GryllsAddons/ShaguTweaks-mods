@@ -458,11 +458,11 @@ module.enable = function(self)
         if MainMenuExpBar:GetWidth() > 512 then return end
 
         ChatFrame1:ClearAllPoints()
-        ChatFrame1:SetPoint("BOTTOMRIGHT", "MainMenuExpBar", "TOPLEFT", -32, 15)
+        ChatFrame1:SetPoint("BOTTOMRIGHT", "MainMenuExpBar", "TOPLEFT", -100, 15)
         lock(ChatFrame1)
 
         ChatFrame3:ClearAllPoints()
-        ChatFrame3:SetPoint("BOTTOMLEFT", "MainMenuExpBar", "TOPRIGHT", 32, 15)
+        ChatFrame3:SetPoint("BOTTOMLEFT", "MainMenuExpBar", "TOPRIGHT", 100, 15)
         lock(ChatFrame3)
     end
 
