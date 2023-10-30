@@ -178,9 +178,15 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 * S: Sell & Repair, A: Confirm/Accept Resurrect/Quest/Summon/Invite/Battleground Popups, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, CAS: Logout.*
 
 - **Mouseover Cast**    
-*Adds /stcast and /stcastself functions for use in macros ([HCWarn](https://github.com/GryllsAddons/HCWarn) supported).*    
-*/stcast functions like /pfcast in pfUI (same as /cast but for mouseover units). /stcastself will always cast the spell on yourself.*    
-*examples: /stcast spellname, /stcastself spellname*
+*Adds /stcast, /stcastself, /stcasthelp and /stcastharm for use in macros ([HCWarn](https://github.com/GryllsAddons/HCWarn) supported).*    
+*/stcast functions like /pfcast in pfUI (same as /cast but for mouseover units).*    
+*/stcastself will always cast the spell on yourself.*    
+*/stcasthelp will cast the spell if you can assist the unit.*    
+*/stcastharm will cast the spell if you can attack the unit.*    
+*You can use /stcasthelp and /stcastharm in the same macro to cast a spell depending on the unit's reaction.*    
+*examples: /stcast spellname, /stcastself spellname, /stcasthelp spellname, /stcastharm spellname*    
+
+*/stcasthelp Holy Light; /stcastharm Judgement*
 
 - **Movable Unitframes Extended**    
 *Party frames, Minimap, Buffs, Weapon Buffs and Debuffs can be moved while Shift and Ctrl are pressed together. Drag the first (end) buff or debuff to move.*   
