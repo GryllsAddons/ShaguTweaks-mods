@@ -9,18 +9,18 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
-    local frames = { PlayerFrame, PetFrame }
+    local frames = { PlayerFrame, PlayerFrameHealthBar, PlayerFrameManaBar, PetFrame }
     local isCasting
 
     local function ShowFrames()
         for _, frame in pairs(frames) do
-            frame:Show()
+            frame:SetAlpha(1)
         end
     end
 
     local function HideFrames()
         for _, frame in pairs(frames) do
-            frame:Hide()
+            frame:SetAlpha(0)
         end
     end
 
@@ -55,6 +55,12 @@ module.enable = function(self)
         if fullhealth and fullmana and (not isCasting) and ooc then return true end
     end
 
+    local function CheckResting()
+        if IsResting() then
+            PlayerRestGlow:SetAlpha(PlayerFrame:GetAlpha())
+        end
+    end
+
     local function CheckConditions()
         local notarget = not UnitExists("target")
         local player = PlayerConditions()
@@ -62,39 +68,26 @@ module.enable = function(self)
 
         if notarget and player and pet then 
             HideFrames()
+            CheckResting()
         else
             ShowFrames()
+            CheckResting()
         end
     end
 
-    local function overlay(parent)
-        local f = CreateFrame("Button")
-        f:SetAllPoints(parent)
-        f:EnableMouse(true)
-        f:RegisterForClicks('LeftButtonUp', 'RightButtonUp',
-        'MiddleButtonUp', 'Button4Up', 'Button5Up')
-
-        f:SetScript("OnEnter", function()
-            parent:Show()
-            ShowTextStatusBarText(_G[parent:GetName().."HealthBar"])
-            ShowTextStatusBarText(_G[parent:GetName().."ManaBar"])
-        end)
-
-        f:SetScript("OnLeave", function()
-            this:Show()
-            HideTextStatusBarText(_G[parent:GetName().."HealthBar"])
-            HideTextStatusBarText(_G[parent:GetName().."ManaBar"])
-            CheckConditions() 
-        end)
-
-        f:SetScript("OnClick", function()
-            this:Hide()
-            _G[parent:GetName().."_OnClick"](arg1)
-        end)
-    end
-
     for _, frame in pairs(frames) do
-        overlay(frame)
+        local enter = frame:GetScript("OnEnter")
+        frame:SetScript("OnEnter", function()
+            ShowFrames()
+            CheckResting()          
+            enter()
+        end)
+
+        local leave = frame:GetScript("OnLeave")
+        frame:SetScript("OnLeave", function()
+            leave()            
+            CheckConditions()
+        end)        
     end
 
     local events = CreateFrame("Frame", nil, UIParent)	
@@ -112,13 +105,15 @@ module.enable = function(self)
     events:RegisterEvent("SPELLCAST_CHANNEL_STOP", "player")
     events:RegisterEvent("PLAYER_REGEN_DISABLED") -- in combat
     events:RegisterEvent("PLAYER_REGEN_ENABLED") -- out of combat
-    events:RegisterEvent("UNIT_PET")    
+    events:RegisterEvent("UNIT_PET")
 
     events:SetScript("OnEvent", function()
         isCasting = nil
         if ((event == "SPELLCAST_START") or (event == "SPELLCAST_CHANNEL_START") or (event == "SPELLCAST_STOP") or (event == "SPELLCAST_CHANNEL_STOP")) then
             isCasting = true
         end
-        CheckConditions()
+        CheckConditions()   
     end)
+
+    
 end
