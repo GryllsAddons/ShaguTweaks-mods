@@ -121,9 +121,9 @@ local function clicklinks()
 end
 
 local function channelindicators()
+    -- shorten chat channels
     local left = "["
-    local right = "]"
-    -- shorten chat channel indicators
+    local right = "]"    
     local default = " " .. "%s" .. "|r:" .. "\32"
     _G.CHAT_CHANNEL_GET = "%s" .. "|r:" .. "\32"
     _G.CHAT_GUILD_GET = left .. "G" .. right .. default
@@ -138,6 +138,27 @@ local function channelindicators()
     _G.CHAT_YELL_GET = left .. "Y" .. right ..default
     _G.CHAT_WHISPER_GET = '[From]' .. default
     _G.CHAT_WHISPER_INFORM_GET = '[To]' .. default
+
+    local function AddMessage(frame, text, a1, a2, a3, a4, a5)
+        if not text then return end
+
+        -- reduce channel name to number
+        local channel = string.gsub(text, ".*%[(.-)%]%s+(.*|Hplayer).+", "%1")
+        if string.find(channel, "%d+%. ") then
+          channel = string.gsub(channel, "(%d+)%..*", "channel%1")
+          channel = string.gsub(channel, "channel", "")
+          text = string.gsub(text, "%[%d+%..-%]%s+(.*|Hplayer)", left .. channel .. right .. " %1")
+        end
+
+        frame:HookAddMessage(text, a1, a2, a3, a4, a5)
+    end
+
+    for i=1,NUM_CHAT_WINDOWS do
+        if not _G["ChatFrame"..i].STHookAddMessage then
+            _G["ChatFrame"..i].STHookAddMessage = _G["ChatFrame"..i].AddMessage
+            _G["ChatFrame"..i].AddMessage = AddMessage
+        end
+    end
 end
 
 local function ignore()
