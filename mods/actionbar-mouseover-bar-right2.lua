@@ -16,10 +16,12 @@ module.enable = function(self)
        
     local function hide(bar)
         bar:Hide()
+        UIParent_ManageFramePositions()
     end
     
     local function show(bar)
-        bar:Show()        
+        bar:Show()
+        UIParent_ManageFramePositions()    
     end
     
     local function mouseover(bar)

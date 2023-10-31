@@ -15,11 +15,13 @@ module.enable = function(self)
     local mouseOverButton
         
     local function hide(bar)
-        bar:Hide() 
+        bar:Hide()
+        UIParent_ManageFramePositions()
     end
     
     local function show(bar)
         bar:Show()
+        UIParent_ManageFramePositions()
     end
     
     local function mouseover(bar)
