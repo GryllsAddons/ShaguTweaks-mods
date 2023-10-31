@@ -57,8 +57,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Mouseover Bars**    
 *Hides the relevant action bar and shows on mouseover.*    
 *The action bar must be enabled in 'Interface Options' > 'Advanced Options'.*    
-*Please reload the UI after enabling or disabling the action bar.*    
-*The pet/shapeshift/aura/stance bars will not be clickable if in the same position as the mouseover bar.*   
+*Please reload the UI after enabling or disabling the action bar.*     
 
 - **Quick Actions**    
 *Action buttons will be activated on key down.*
