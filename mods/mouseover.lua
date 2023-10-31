@@ -54,10 +54,13 @@ module.enable = function(self)
 
     if not UnitExists(unit) then
       local frame = GetMouseFocus()
+      local fparent = frame:GetParent()
       if frame.label and frame.id then
         unit = frame.label .. frame.id
       elseif frame.unit then -- default unitframe support (self)
         unit = frame.unit
+      elseif fparent and fparent.unit then -- CRF support
+        unit = fparent.unit
       elseif UnitExists("target") then
         unit = "target"
       elseif GetCVar("autoSelfCast") == "1" then
