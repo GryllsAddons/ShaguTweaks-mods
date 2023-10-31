@@ -1,6 +1,6 @@
 local module = ShaguTweaks:register({
     title = "Mouseover Bottom Right",
-    description = "Hide the Bottom Right ActionBar and show on mouseover. The pet/shapeshift/aura/stance bars will not be clickable if in the same position as the mouseover bar.",
+    description = "Hide the Bottom Right ActionBar and show on mouseover.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
@@ -13,32 +13,48 @@ module.enable = function(self)
     local timer = CreateFrame("Frame", nil, UIParent)
     local mouseOverBar
     local mouseOverButton
-    local _, class = UnitClass("player")
 
-    local function hidebars()
-        if (class == "HUNTER") or (class == "WARLOCK") then
-            PetActionBarFrame:Hide()
-        elseif (class == "DRUID") or (class == "ROGUE") or (class == "WARRIOR") or (class == "PALADIN") then
-            ShapeshiftBarFrame:Hide()
-        end
-    end
+    local function positionExtraBars()
+        -- move pet actionbar above other actionbars
+        PetActionBarFrame:ClearAllPoints()
+        local anchor = MainMenuBarArtFrame
+        anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
+        PetActionBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 3)
 
-    local function showbars()
-        if (class == "HUNTER") or (class == "WARLOCK") then
-            PetActionBarFrame:Show()
-        elseif (class == "DRUID") or (class == "ROGUE") or (class == "WARRIOR") or (class == "PALADIN") then
-            ShapeshiftBarFrame:Show()
+        -- ShapeshiftBarFrame
+        ShapeshiftBarFrame:ClearAllPoints()
+        local offset = 0
+        local anchor = ActionButton1
+        anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
+
+        offset = anchor == ActionButton1 and ( MainMenuExpBar:IsVisible() or ReputationWatchBar:IsVisible() ) and 6 or 0
+        offset = anchor == ActionButton1 and offset + 6 or offset
+        ShapeshiftBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 8, 2 + offset)
+
+        -- move castbar ontop of other bars
+        local anchor = MainMenuBarArtFrame
+        anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
+        local pet_offset = PetActionBarFrame:IsVisible() and 40 or 0
+        CastingBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 10 + pet_offset)
+
+        -- SP_SwingTimer / zUI SwingTimer / GryllsSwingTimer support
+        if SP_ST_Frame then
+            SP_ST_Frame:ClearAllPoints()
+            SP_ST_Frame:SetPoint("BOTTOM", CastingBarFrame, "TOP", 0, 14)
         end
     end
         
     local function hide(bar)
         bar:Hide()
-        showbars()
+        positionExtraBars()
     end
     
     local function show(bar)
         bar:Show()    
-        hidebars()
+        positionExtraBars()
     end
     
     local function mouseover(bar)
@@ -158,52 +174,6 @@ module.enable = function(self)
         for id, frame in pairs(textures) do hide(frame, 1) end
         for id, frame in pairs(normtextures) do hide(frame, 2) end
     end
-
-    local function lockframes()
-        local function lock(frame)
-            frame.ClearAllPoints = function() end
-            frame.SetAllPoints = function() end
-            frame.SetPoint = function() end
-        end
-
-        PetActionBarFrame:ClearAllPoints()
-        ShapeshiftBarFrame:ClearAllPoints()
-
-        local w, h = ActionButton1:GetWidth(), ActionButton1:GetHeight()
-        local anchor = MultiBarBottomLeft
-
-        PetActionBarFrame:SetPoint("CENTER", anchor, "CENTER", w, h*1.25)
-        ShapeshiftBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 8, h*0.1)
-
-        lock(PetActionBarFrame)
-        lock(ShapeshiftBarFrame)
-    end
-
-    local function castbar()
-        local ReducedActionbar        
-        if MainMenuBar:GetWidth() <= 512 then
-            ReducedActionbar = true
-        end
-
-        local function lock(frame)
-            frame.ClearAllPoints = function() end
-            frame.SetAllPoints = function() end
-            frame.SetPoint = function() end
-        end
-
-        local h = ActionButton1:GetHeight()
-
-        CastingBarFrame:ClearAllPoints()
-        CastingBarFrame:SetPoint("BOTTOM", MainMenuBar, "TOP", 0, h*2.5)
-        lock(CastingBarFrame)
-
-        -- SP_SwingTimer / zUI SwingTimer / GryllsSwingTimer support
-        if SP_ST_Frame then
-            SP_ST_Frame:ClearAllPoints()
-            SP_ST_Frame:SetPoint("BOTTOM", CastingBarFrame, "TOP", 0, 14)
-            lock(SP_ST_Frame)      
-        end
-    end
     
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
@@ -216,8 +186,6 @@ module.enable = function(self)
             if not this.loaded then
                 this.loaded = true
                 if not ShaguTweaks.MouseoverBottomLeft then
-                    lockframes()
-                    castbar()
                     hideart()
                 end
                 setup(MultiBarBottomRight)
