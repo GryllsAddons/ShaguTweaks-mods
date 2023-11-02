@@ -15,23 +15,26 @@ module.enable = function(self)
     local mouseOverButton
 
     local function positionExtraBars()
-        -- move pet actionbar above other actionbars
-        PetActionBarFrame:ClearAllPoints()
-        local anchor = MainMenuBarArtFrame
-        anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
-        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
-        PetActionBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 3)
+        -- if not reduced action bar
+        if MainMenuExpBar:GetWidth() > 512 then 
+            -- move pet actionbar above other actionbars
+            PetActionBarFrame:ClearAllPoints()
+            local anchor = MainMenuBarArtFrame
+            anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+            anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
+            PetActionBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 3)
 
-        -- ShapeshiftBarFrame
-        ShapeshiftBarFrame:ClearAllPoints()
-        local offset = 0
-        local anchor = ActionButton1
-        anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
-        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
+            -- ShapeshiftBarFrame
+            ShapeshiftBarFrame:ClearAllPoints()
+            local offset = 0
+            local anchor = ActionButton1
+            anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+            anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
 
-        offset = anchor == ActionButton1 and ( MainMenuExpBar:IsVisible() or ReputationWatchBar:IsVisible() ) and 6 or 0
-        offset = anchor == ActionButton1 and offset + 6 or offset
-        ShapeshiftBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 8, 2 + offset)
+            offset = anchor == ActionButton1 and ( MainMenuExpBar:IsVisible() or ReputationWatchBar:IsVisible() ) and 6 or 0
+            offset = anchor == ActionButton1 and offset + 6 or offset
+            ShapeshiftBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 8, 2 + offset)
+        end
 
         -- move castbar ontop of other bars
         local anchor = MainMenuBarArtFrame
