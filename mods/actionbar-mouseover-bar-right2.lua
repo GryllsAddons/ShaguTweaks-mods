@@ -16,12 +16,10 @@ module.enable = function(self)
        
     local function hide(bar)
         bar:Hide()
-        UIParent_ManageFramePositions()
     end
     
     local function show(bar)
         bar:Show()
-        UIParent_ManageFramePositions()    
     end
     
     local function mouseover(bar)
@@ -74,24 +72,24 @@ module.enable = function(self)
     end
     
     local function mouseoverButton(button, bar)
-        local frame = CreateFrame("Frame", nil, UIParent)    
-        frame:SetAllPoints(button)
-        frame:EnableMouse(true)
-        frame:SetFrameStrata("DIALOG")    
-        buttonEnter(frame, bar)
-        buttonLeave(frame, bar)
+        button.mouseover = CreateFrame("Frame", nil, UIParent)
+        button.mouseover:SetAllPoints(button)
+        button.mouseover:EnableMouse(true)
+        button.mouseover:SetFrameStrata("DIALOG")
+        buttonEnter(button.mouseover, bar)
+        buttonLeave(button.mouseover, bar)
     end
     
     local function mouseoverBar(bar)
-        local frame = CreateFrame("Frame", nil, UIParent)
-        frame:SetAllPoints(bar)
-        frame:EnableMouse(true)
-        barEnter(frame, bar) 
-        barLeave(frame, bar)
+        bar.mouseover = CreateFrame("Frame", nil, UIParent)
+        bar.mouseover:SetAllPoints(bar)
+        bar.mouseover:EnableMouse(true)
+        barEnter(bar.mouseover, bar) 
+        barLeave(bar.mouseover, bar)
     end
     
     local function setup(bar)
-        if not bar:IsVisible() then return end           
+        if not bar:IsVisible() then return end 
         for i = 1, 12 do
             for _, button in pairs(
                     {
@@ -102,9 +100,25 @@ module.enable = function(self)
             end
         end
         mouseoverBar(bar)
-        show(bar)
         UIParent_ManageFramePositions()
-        hide(bar)
+    end
+
+    local function reset(bar)
+        for i = 1, 12 do
+            for _, button in pairs(
+                    {
+                    _G[bar:GetName()..'Button'..i],
+                }
+            ) do
+                if button.mouseover then
+                    button.mouseover:Hide()
+                end
+            end
+        end
+        
+        if bar.mouseover then
+            bar.mouseover:Hide()
+        end
     end
     
     local events = CreateFrame("Frame", nil, UIParent)
@@ -112,13 +126,21 @@ module.enable = function(self)
     events:RegisterEvent("CVAR_UPDATE")
 
     events:SetScript("OnEvent", function()
-        if event == "CVAR_UPDATE" then
-            mouseover(MultiBarLeft)
+        local bar = MultiBarLeft
+        this.enabled = SHOW_MULTI_ACTIONBAR_4 -- MultiBarLeft
+
+        if not this.enabled then
+            reset(bar)
+            return
         else
             if not this.loaded then
                 this.loaded = true
-                setup(MultiBarLeft)
+                setup(bar)
+            end
+    
+            if event == "CVAR_UPDATE" then
+                mouseover(bar)
             end
         end
-    end)    
+    end)
 end
