@@ -22,7 +22,7 @@ module.enable = function(self)
         bar:Show()
     end
     
-    local function mouseover(bar)
+    local function mouseover(bar, upd)
         local function setTimer()
             timer.time = GetTime() + 2
             timer:SetScript("OnUpdate", function()
@@ -36,7 +36,7 @@ module.enable = function(self)
         if (mouseOverButton or mouseOverBar) then
             timer:SetScript("OnUpdate", nil)
             show(bar)
-        elseif (not mouseOverBar) and (not mouseOverButton) then
+        elseif (not mouseOverBar) and (not mouseOverButton) or upd then
             setTimer()
         end
     end
@@ -136,10 +136,11 @@ module.enable = function(self)
             if not this.loaded then
                 this.loaded = true
                 setup(bar)
+                mouseover(bar, true)
             end
     
             if event == "CVAR_UPDATE" then
-                mouseover(bar)
+                mouseover(bar, true)
             end
         end
     end)

@@ -15,14 +15,33 @@ module.enable = function(self)
     local mouseOverButton
 
     local function positionExtraBars()
-        -- if not reduced action bar
-        if MainMenuExpBar:GetWidth() > 512 then 
+        -- DEFAULT_CHAT_FRAME:AddMessage("mouseover bottom left")
+        -- will only trigger when mouseover bottom left bar
+        if MainMenuExpBar:GetWidth() > 512 then
+            -- if not reduced action bar
+            -- move pet actionbar above other actionbars
+            PetActionBarFrame:ClearAllPoints()
+            local anchor = MainMenuBarArtFrame
+            anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+            PetActionBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 36, 3);
+
+            -- ShapeshiftBarFrame
+            ShapeshiftBarFrame:ClearAllPoints()
+            local offset = 0
+            local anchor = ActionButton1
+            anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+
+            offset = anchor == ActionButton1 and ( MainMenuExpBar:IsVisible() or ReputationWatchBar:IsVisible() ) and 6 or 0
+            offset = anchor == ActionButton1 and offset + 6 or offset
+            ShapeshiftBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 8, 2 + offset)
+        else
+            -- if reduced action bar
             -- move pet actionbar above other actionbars
             PetActionBarFrame:ClearAllPoints()
             local anchor = MainMenuBarArtFrame
             anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
             anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
-            PetActionBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 3)
+            PetActionBarFrame:SetPoint("BOTTOM", anchor, "TOP", 35, 3)
 
             -- ShapeshiftBarFrame
             ShapeshiftBarFrame:ClearAllPoints()
@@ -34,14 +53,14 @@ module.enable = function(self)
             offset = anchor == ActionButton1 and ( MainMenuExpBar:IsVisible() or ReputationWatchBar:IsVisible() ) and 6 or 0
             offset = anchor == ActionButton1 and offset + 6 or offset
             ShapeshiftBarFrame:SetPoint("BOTTOMLEFT", anchor, "TOPLEFT", 8, 2 + offset)
-        end
 
-        -- move castbar ontop of other bars
-        local anchor = MainMenuBarArtFrame
-        anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
-        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
-        local pet_offset = PetActionBarFrame:IsVisible() and 40 or 0
-        CastingBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 10 + pet_offset)
+            -- move castbar ontop of other bars
+            local anchor = MainMenuBarArtFrame
+            anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
+            anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
+            local pet_offset = PetActionBarFrame:IsVisible() and 40 or 0
+            CastingBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 10 + pet_offset)
+        end
 
         -- SP_SwingTimer / zUI SwingTimer / GryllsSwingTimer support
         if SP_ST_Frame then
@@ -60,7 +79,7 @@ module.enable = function(self)
         positionExtraBars()
     end
     
-    local function mouseover(bar)
+    local function mouseover(bar, upd)
         local function setTimer()
             timer.time = GetTime() + 2
             timer:SetScript("OnUpdate", function()
@@ -74,7 +93,7 @@ module.enable = function(self)
         if (mouseOverButton or mouseOverBar) then
             timer:SetScript("OnUpdate", nil)
             show(bar)
-        elseif (not mouseOverBar) and (not mouseOverButton) then
+        elseif (not mouseOverBar) and (not mouseOverButton) or upd then
             setTimer()
         end
     end
@@ -137,7 +156,7 @@ module.enable = function(self)
                 mouseoverButton(button, bar)
             end
         end
-        mouseoverBar(bar)
+        mouseoverBar(bar)        
         hide(bar)
     end
     
@@ -213,10 +232,11 @@ module.enable = function(self)
                 this.loaded = true
                 hideart()
                 setup(bar)
+                mouseover(bar, true)
             end
     
             if event == "CVAR_UPDATE" then
-                mouseover(bar)
+                mouseover(bar, true)
             end
         end
     end)

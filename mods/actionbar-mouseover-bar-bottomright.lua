@@ -15,12 +15,17 @@ module.enable = function(self)
     local mouseOverButton
 
     local function positionExtraBars()
+        -- DEFAULT_CHAT_FRAME:AddMessage("mouseover bottom right")
+        -- will only trigger when mouseover bottom right bar
+        if MainMenuExpBar:GetWidth() > 512 then return end -- if not reduced action bar return
+        -- if reduced action bar
+
         -- move pet actionbar above other actionbars
         PetActionBarFrame:ClearAllPoints()
         local anchor = MainMenuBarArtFrame
         anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
-        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
-        PetActionBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 3)
+        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor        
+        PetActionBarFrame:SetPoint("BOTTOM", anchor, "TOP", 35, 3)
 
         -- ShapeshiftBarFrame
         ShapeshiftBarFrame:ClearAllPoints()
@@ -36,7 +41,7 @@ module.enable = function(self)
         -- move castbar ontop of other bars
         local anchor = MainMenuBarArtFrame
         anchor = MultiBarBottomLeft:IsVisible() and MultiBarBottomLeft or anchor
-        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor
+        anchor = MultiBarBottomRight:IsVisible() and MultiBarBottomRight or anchor        
         local pet_offset = PetActionBarFrame:IsVisible() and 40 or 0
         CastingBarFrame:SetPoint("BOTTOM", anchor, "TOP", 0, 10 + pet_offset)
 
@@ -57,7 +62,7 @@ module.enable = function(self)
         positionExtraBars()
     end
     
-    local function mouseover(bar)
+    local function mouseover(bar, upd)
         local function setTimer()
             timer.time = GetTime() + 2
             timer:SetScript("OnUpdate", function()
@@ -71,7 +76,7 @@ module.enable = function(self)
         if (mouseOverButton or mouseOverBar) then
             timer:SetScript("OnUpdate", nil)
             show(bar)
-        elseif (not mouseOverBar) and (not mouseOverButton) then
+        elseif (not mouseOverBar) and (not mouseOverButton) or upd then
             setTimer()
         end
     end
@@ -134,7 +139,7 @@ module.enable = function(self)
                 mouseoverButton(button, bar)
             end
         end
-        mouseoverBar(bar)
+        mouseoverBar(bar)        
         hide(bar)
     end
 
@@ -208,13 +213,14 @@ module.enable = function(self)
             if not this.loaded then
                 this.loaded = true
                 if not ShaguTweaks.MouseoverBottomLeft then
-                    hideart()
+                    -- hideart()
                 end
                 setup(bar)
+                mouseover(bar, true)
             end
 
             if event == "CVAR_UPDATE" then
-                mouseover(bar)
+                mouseover(bar, true)
             end
         end
     end)    
