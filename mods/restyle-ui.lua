@@ -205,7 +205,7 @@ module.enable = function(self)
     end
 
     function restyle:buffs()
-        local font, size, outline = "Fonts\\FRIZQT__.TTF", 9, "OUTLINE"
+        local font, size, outline = "Fonts\\frizqt__.TTF", 9, "OUTLINE"
         local yoffset = -5
         local f = CreateFrame("Frame", nil, GryllsMinimap)
         f:SetFrameStrata("HIGH")
@@ -477,6 +477,7 @@ module.enable = function(self)
     end    
 
     function restyle:debufftimer()
+        if not pfCooldownFrame then return end
         -- move Debuff Timer up out of the way of the debuff stacks
         local HookTargetDebuffButton_Update = TargetDebuffButton_Update
         TargetDebuffButton_Update = function()
@@ -526,14 +527,14 @@ module.enable = function(self)
         MainMenuBar:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 45)        
 
         -- MultiBarBottomLeft (middle)
-        MultiBarBottomLeft:SetPoint("BOTTOM", MainMenuBar, "TOP", 2, -1)
+        MultiBarBottomLeft:SetPoint("BOTTOM", MainMenuBar, "TOP", 2, -6)
 
         -- MultiBarBottomRight (top)
         MultiBarBottomRight:SetPoint("BOTTOM", MultiBarBottomLeft, "TOP", 0, 5)
 
         -- experience bar
-        MainMenuExpBar:SetPoint("TOPLEFT", ActionButton1, "BOTTOMLEFT", -5, -12)
-        MainMenuExpBar:SetPoint("TOPRIGHT", ActionButton12, "BOTTOMRIGHT", 5, -12)
+        MainMenuExpBar:SetPoint("TOPLEFT", ActionButton1, "BOTTOMLEFT", -5, -10)
+        MainMenuExpBar:SetPoint("TOPRIGHT", ActionButton12, "BOTTOMRIGHT", 5, -10)
         
         -- reputation bar
         ReputationWatchBar:SetPoint("TOP", MainMenuExpBar, "BOTTOM", 0, -6)  
@@ -552,12 +553,11 @@ module.enable = function(self)
         MainMenuBarRightEndCap:SetPoint("BOTTOMLEFT", ActionButton12, "BOTTOMRIGHT", -x, -y)
 
         -- action bar bg
-        local mmbg = CreateFrame("Frame", nil, MainMenuBar)
-        mmbg:SetFrameStrata("LOW")
-        local i = 10
-        mmbg:SetPoint("TOPLEFT", ActionButton1, "TOPLEFT", -i, i)
-        mmbg:SetPoint("BOTTOMRIGHT", ActionButton12, "BOTTOMRIGHT", i, -i-1)
-        -- mmbg:Hide()
+        -- local mmbg = CreateFrame("Frame", nil, MainMenuBar)
+        -- mmbg:SetFrameStrata("LOW")
+        -- local i = 10
+        -- mmbg:SetPoint("TOPLEFT", ActionButton1, "TOPLEFT", -i, i)
+        -- mmbg:SetPoint("BOTTOMRIGHT", ActionButton12, "BOTTOMRIGHT", i, -i-1)
 
         -- action bar empty buttons
         for i = 1, 12 do            
@@ -576,21 +576,21 @@ module.enable = function(self)
         end        
 
         -- skin
-        local function bg(frame, i, c, a)
-            frame:SetBackdrop({
-                bgFile = "Interface\\TabardFrame\\TabardFrameBackground",
-                -- edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
-                -- tile = true, tileSize = 12, edgeSize = 22, 
-                insets = { left = i, right = i, top = i, bottom = i }
-            })
-            frame:SetBackdropColor(c,c,c,a)
-        end
+        -- local function bg(frame, i, c, a)
+        --     frame:SetBackdrop({
+        --         bgFile = "Interface\\TabardFrame\\TabardFrameBackground",
+        --         -- edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
+        --         -- tile = true, tileSize = 12, edgeSize = 22, 
+        --         insets = { left = i, right = i, top = i, bottom = i }
+        --     })
+        --     frame:SetBackdropColor(c,c,c,a)
+        -- end
         
-        bg(mmbg, 4, 1, .7)
-        skin(mmbg, 5)
-        skinColor(mmbg, .7, .7, .7)
+        -- bg(mmbg, 4, 1, .7)
+        -- skin(mmbg, 5)
+        -- skinColor(mmbg, .7, .7, .7)
         
-        skin(MainMenuExpBar, 0)
+        skin(MainMenuExpBar, -1)
         skinColor(MainMenuExpBar, .7, .7, .7)
 
         skin(ReputationWatchBar, 1, 0, 1)
@@ -603,6 +603,20 @@ module.enable = function(self)
     end
 
     function restyle:castbar()
+        CastingBarFrame:SetScale(1)
+        skin(CastingBarFrame, 0, 0, 1)
+
+        CastingBarBorder:SetTexture(nil)
+        CastingBarFlash:SetTexture(nil)
+
+        CastingBarSpark:ClearAllPoints()
+        CastingBarSpark:SetPoint("CENTER", "CastingBarFrame", "CENTER", 0, -20)
+
+        CastingBarText:ClearAllPoints()
+        CastingBarText:SetPoint("CENTER", CastingBarFrame, "CENTER", 0, 2)
+        local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
+        CastingBarText:SetFont(font, size, outline)
+
         CastingBarFrame:ClearAllPoints()
         CastingBarFrame:SetPoint("BOTTOM", "MultiBarBottomRight", "TOP", 0, 15)
         lock(CastingBarFrame)
