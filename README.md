@@ -53,9 +53,8 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 - **Macro Icons**    
 *Show macro icons on the action bars.*    
 In order to have the range and mana colors show on macros, you have to write the following line at the top of each macro:    
-***/run if nil then CastSpellByName("SPELLNAME"); end***
-    
-Make sure to replace ***SPELLNAME*** with the actual name of your spell.
+***/run if nil then CastSpellByName("SPELLNAME"); end***    
+Make sure to replace ***SPELLNAME*** with the actual name of your spell.    
 
 - **Mouseover Bars**    
 *Hides the relevant action bar and shows on mouseover.*    
@@ -182,7 +181,6 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 */stcastharm will cast the spell if you can attack the unit.*    
 *You can use /stcasthelp and /stcastharm in the same macro to cast a spell depending on the unit's reaction.*    
 *examples: /stcast spellname, /stcastself spellname, /stcasthelp spellname, /stcastharm spellname*    
-
 */stcasthelp Holy Light; /stcastharm Judgement*
 
 - **Movable Unitframes Extended**    
