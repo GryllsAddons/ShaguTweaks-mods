@@ -9,7 +9,8 @@
 mods\accept-invites.lua
 mods\actionbar-dfgryphons.lua
 mods\actionbar-dfwyverns.lua
-mods\actionbar-gryphons.lua
+mods\actionbar-lions.lua
+mods\actionbar-front-gryphons.lua
 mods\actionbar-hide-hotkey.lua
 mods\actionbar-hide-macro.lua
 mods\actionbar-improved-expbar.lua
@@ -35,7 +36,6 @@ mods\chat-tweaks-extended.lua
 mods\chat-whtm.lua
 mods\cursor-tooltip.lua
 mods\free-slots.lua
-mods\front-gryphons.lua
 mods\health-numbers-extended.lua
 mods\hide-combat-tooltip.lua
 mods\hide-unit-frames.lua
