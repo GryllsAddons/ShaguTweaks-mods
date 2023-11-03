@@ -215,7 +215,6 @@ module.enable = function(self)
         for id, frame in pairs(normtextures) do hide(frame, 2) end
     end
 
-    local ReducedActionbar
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:RegisterEvent("CVAR_UPDATE")    
