@@ -85,7 +85,7 @@ module.enable = function(self)
             f.frame.player:SetFont(font, size, outline)
             f.frame.player:SetJustifyH("LEFT")
             f.frame.player:SetJustifyV("LEFT")
-            f.frame.player:SetPoint("TOPLEFT", f.frame.text, "TOPLEFT", 0, -10)
+            f.frame.player:SetPoint("TOPLEFT", f.frame.text, "TOPLEFT", 0, -8)
             
             chat:ProcessBubble(f)
   
