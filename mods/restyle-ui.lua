@@ -523,6 +523,11 @@ module.enable = function(self)
             frame.Show = function() end         
         end
 
+        -- cast bar
+        CastingBarFrame:ClearAllPoints()
+        CastingBarFrame:SetPoint("BOTTOM", "MultiBarBottomRight", "TOP", 0, 50)
+        lock(CastingBarFrame)
+
         -- action bar (bottom)
         MainMenuBar:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 45)        
 
@@ -552,13 +557,6 @@ module.enable = function(self)
         MainMenuBarLeftEndCap:SetPoint("BOTTOMRIGHT", ActionButton1, "BOTTOMLEFT", x, -y)
         MainMenuBarRightEndCap:SetPoint("BOTTOMLEFT", ActionButton12, "BOTTOMRIGHT", -x, -y)
 
-        -- action bar bg
-        -- local mmbg = CreateFrame("Frame", nil, MainMenuBar)
-        -- mmbg:SetFrameStrata("LOW")
-        -- local i = 10
-        -- mmbg:SetPoint("TOPLEFT", ActionButton1, "TOPLEFT", -i, i)
-        -- mmbg:SetPoint("BOTTOMRIGHT", ActionButton12, "BOTTOMRIGHT", i, -i-1)
-
         -- action bar empty buttons
         for i = 1, 12 do            
             for _, button in pairs(
@@ -573,22 +571,7 @@ module.enable = function(self)
                 t:SetTexture("Interface\\Buttons\\UI-EmptySlot-White")
                 t:SetVertexColor(.5,.5,.5,1)
             end        
-        end        
-
-        -- skin
-        -- local function bg(frame, i, c, a)
-        --     frame:SetBackdrop({
-        --         bgFile = "Interface\\TabardFrame\\TabardFrameBackground",
-        --         -- edgeFile = "Interface/Tooltips/UI-Tooltip-Border", 
-        --         -- tile = true, tileSize = 12, edgeSize = 22, 
-        --         insets = { left = i, right = i, top = i, bottom = i }
-        --     })
-        --     frame:SetBackdropColor(c,c,c,a)
-        -- end
-        
-        -- bg(mmbg, 4, 1, .7)
-        -- skin(mmbg, 5)
-        -- skinColor(mmbg, .7, .7, .7)
+        end
         
         skin(MainMenuExpBar, -1)
         skinColor(MainMenuExpBar, .7, .7, .7)
@@ -617,9 +600,14 @@ module.enable = function(self)
         local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
         CastingBarText:SetFont(font, size, outline)
 
-        CastingBarFrame:ClearAllPoints()
-        CastingBarFrame:SetPoint("BOTTOM", "MultiBarBottomRight", "TOP", 0, 15)
-        lock(CastingBarFrame)
+        -- improved castbar
+        if STImprovedCastbar then
+            STImprovedCastbar.spellText:ClearAllPoints()
+            STImprovedCastbar.spellText:SetPoint("CENTER", CastingBarFrame, "CENTER", 0, 2)
+
+            STImprovedCastbar.timerText:ClearAllPoints()
+            STImprovedCastbar.timerText:SetPoint("RIGHT", CastingBarFrame, "RIGHT", -5, 2)
+        end
     end
     
     restyle:RegisterEvent("PLAYER_ENTERING_WORLD")
