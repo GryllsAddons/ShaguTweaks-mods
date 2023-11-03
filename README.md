@@ -37,6 +37,9 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 - **Gryphons to DF Wyverns**    
 *Change the action bar gryphons to Dragonflight wyverns.*
 
+- **Gryphons in Front**    
+*Puts the gryphons in front of the action buttons.*
+
 - **Hide Hotkey Text**    
 *Hides the hotkeys on the action bars.*
 
@@ -89,9 +92,6 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 - **Chat Levels**    
 *Shows player levels in chat.*
-
-- **Block TWoW Guild Spam**    
-*Blocks guild joining & leaving messages for Turtle WoW starter guilds.*
 
 - **Block NPC Spam**    
 *Blocks spam messages from NPCs.*
@@ -200,8 +200,8 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **Reduced Actionbar Microbuttons**    
 *Shows the microbuttons when using the reduced actionbar. Mouseover the help button to show the draggable tab. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position.*
 
-- **Restyle UI**    
-*Restyles supported addons, reduced actionbar, buffs, chat frames and the minimap. Changes fonts for units, buffs, buttons & chat.*    
+- **Grylls Restyle**    
+*Restyles supported addons and UI elements.*    
 *Supported Addons:*    
 *[SP_SwingTimer (vanilla)](https://github.com/EinBaum/SP_SwingTimer) / [SP_SwingTimer (TurtleWoW)](https://github.com/geojak/SP_SwingTimer): Changes style and positions bar centrally.*    
 *[MinimapButtonBag (vanilla)](https://github.com/laytya/MinimapButtonBag-vanilla) / [MinimapButtonBag (TurtleWoW)](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW): Changes position to the bottom left of the minimap. The button will be shown on mouseover.*
@@ -214,6 +214,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 - **Set UI Scale**    
 *Sets the pixel perfect UI scale for your resolution.*
+
+- **Target Buffs Extended**    
+*Show up to 16 buffs on the target unit frame.*
 
 - **Unit Frame Abbreviated Names**    
 *Abbreviates long unit names.*
