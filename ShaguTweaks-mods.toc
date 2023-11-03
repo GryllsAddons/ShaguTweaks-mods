@@ -67,6 +67,7 @@ mods\ui-scale.lua
 mods\unitframes-combat-indicator.lua
 mods\unitframes-energy-tick.lua
 mods\unitframes-abbrev-names.lua
+mods\unitframes-target-buffs.lua
 mods\lowhealth.lua
 mods\unitframes-whitemana.lua
 mods\worldmap-reveal.lua
