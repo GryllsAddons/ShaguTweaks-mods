@@ -94,12 +94,12 @@ module.enable = function(self)
 		-- debuffs
 		local debuff, debuffApplication, debuffCount
 		for i=1, buffButtons do
-			debuff, debuffCount = UnitDebuff("target", i)
+			debuff, debuffApplications = UnitDebuff("target", i)
 			button = getglobal("TargetFrameDebuff"..i)
 			if (debuff) then
 				debuffCount = getglobal("TargetFrameDebuff"..i.."Count")
-				if (debuffCount > 1) then
-					debuffCount:SetText(debuffCount)
+				if (debuffApplications > 1) then
+					debuffCount:SetText(debuffApplications)
 					debuffCount:Show()
 				else
 					debuffCount:Hide()
