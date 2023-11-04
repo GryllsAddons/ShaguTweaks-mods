@@ -18,6 +18,19 @@ module.enable = function(self)
 		end
 	end
 
+	local function resize()
+		-- resize debuffs to full size
+		local button, debuffFrame
+		for i=1, debuffButtons do
+			button = getglobal("TargetFrameDebuff"..i)
+			debuffFrame = getglobal("TargetFrameDebuff"..i.."Border")
+			button:SetWidth(21)
+			button:SetHeight(21)
+			debuffFrame:SetWidth(23)
+			debuffFrame:SetHeight(23)
+		end
+	end
+
 	local function layout(frame, numButtons, rowLimit)
 		-- layout buffs in rows attached to the first buff/debuff
 		local rowBuff = 1 -- the first buff on the last row of buffs/debuffs
@@ -134,4 +147,5 @@ module.enable = function(self)
 	
 	TargetDebuffButton_Update()
 	TargetDebuffButton_Update = TargetDebuffButtonExtended_Update
+	resize()
 end
