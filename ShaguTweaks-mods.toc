@@ -32,6 +32,7 @@ mods\chat-bubbles.lua
 mods\chat-levels.lua
 mods\chat-select-tab.lua
 mods\chat-npcspam.lua
+mods\chat-timestamps.lua
 mods\chat-tweaks-extended.lua
 mods\chat-whtm.lua
 mods\cursor-tooltip.lua
