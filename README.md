@@ -98,6 +98,9 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 - **General Tab on Login**    
 *Selects the 'General' tab when logging in.*
 
+- **Chat Timestamps**    
+*Adds timestamps to chat messages.*    
+
 - **Chat Tweaks Extended**    
 *Extends "Chat Tweaks".*    
 *Removes chat buttons, shortens channel names, shows item links on mouseover, adds an ignore on right click, adds Alt click chat names to invite and Ctrl click chat names to target.*
