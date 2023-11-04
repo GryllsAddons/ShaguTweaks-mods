@@ -3,7 +3,7 @@ local rgbhex = ShaguTweaks.rgbhex
 
 local module = ShaguTweaks:register({
     title = "Chat Timestamps",
-    description = "Adds a timestamp to chat messages.",
+    description = "Adds timestamps to chat messages.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Social & Chat",
     enabled = nil,
