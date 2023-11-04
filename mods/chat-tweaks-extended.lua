@@ -2,6 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 local scrollspeed = 1
 local gfind = string.gmatch or string.gfind
 local strsplit = ShaguTweaks.strsplit
+local rgbhex = ShaguTweaks.rgbhex
 local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
@@ -124,6 +125,7 @@ local function channelindicators()
     -- shorten chat channels
     local left = "["
     local right = "]"    
+
     local default = " " .. "%s" .. "|r:" .. "\32"
     _G.CHAT_CHANNEL_GET = "%s" .. "|r:" .. "\32"
     _G.CHAT_GUILD_GET = left .. "G" .. right .. default
@@ -139,8 +141,17 @@ local function channelindicators()
     _G.CHAT_WHISPER_GET = '[From]' .. default
     _G.CHAT_WHISPER_INFORM_GET = '[To]' .. default
 
+
+    local timecolor = .8,.8,.8,1
+    local timecolorhex = rgbhex(timecolor)
+
     local function AddMessage(frame, text, a1, a2, a3, a4, a5)
         if not text then return end
+
+        if ShaguTweaks.ChatTimestamps then
+            -- show timestamp in chat
+            text = timecolorhex .. left .. date("%H:%M") .. right .. "|r " .. text
+        end
 
         -- reduce channel name to number
         local channel = string.gsub(text, ".*%[(.-)%]%s+(.*|Hplayer).+", "%1")
@@ -153,11 +164,8 @@ local function channelindicators()
         frame:HookAddMessage(text, a1, a2, a3, a4, a5)
     end
 
-    for i=1,NUM_CHAT_WINDOWS do
-        if not _G["ChatFrame"..i].STHookAddMessage then
-            _G["ChatFrame"..i].STHookAddMessage = _G["ChatFrame"..i].AddMessage
-            _G["ChatFrame"..i].AddMessage = AddMessage
-        end
+    for i=1,NUM_CHAT_WINDOWS do        
+        _G["ChatFrame"..i].AddMessage = AddMessage
     end
 end
 
@@ -178,7 +186,8 @@ local function ignore()
 end
 
 module.enable = function(self)
-    -- load after chat tweaks / chat links
+    ShaguTweaks.ChatTweaksExtended = true
+    -- load after chat tweaks / chat links /timestamps
     local events = CreateFrame("Frame", nil, UIParent)	
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
