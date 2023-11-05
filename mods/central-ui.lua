@@ -17,29 +17,56 @@ module.enable = function(self)
     -- local uw
     -- if res > 1.78 then uw = true end
     
-    local function unitframes()    
-        -- Player        
-        PlayerFrame:SetClampedToScreen(true)
-        PlayerFrame:ClearAllPoints()
-        PlayerFrame:SetPoint("RIGHT", UIParent, "CENTER", -20, -150)
+    local function unitframes()
+        local unmoved
+       
+        -- Player
+        unmoved = nil
+        local attachedPoint, _, _, xOfs, yOfs = PlayerFrame:GetPoint()
+        if (attachedPoint == "TOPLEFT") and (xOfs < -18) and (xOfs > -20) and (yOfs == -4) then unmoved = true end
+        if unmoved then
+            -- DEFAULT_CHAT_FRAME:AddMessage("PlayerFrame is unmoved")
+            PlayerFrame:SetClampedToScreen(true)
+            PlayerFrame:ClearAllPoints()
+            PlayerFrame:SetPoint("RIGHT", UIParent, "CENTER", -20, -150)
+        -- else
+        --     DEFAULT_CHAT_FRAME:AddMessage("PlayerFrame has moved")
+        end
     
-        -- Target        
-        TargetFrame:SetClampedToScreen(true)
-        TargetFrame:ClearAllPoints()
-        TargetFrame:SetPoint("LEFT", UIParent, "CENTER", 20, -150)
-    
+        -- Target
+        unmoved = nil
+        attachedPoint, _, _, xOfs, yOfs = TargetFrame:GetPoint()
+        if (attachedPoint == "TOPLEFT") and (xOfs > 250) and (xOfs < 251) and (yOfs == -4) then unmoved = true end
+        if unmoved then
+            -- DEFAULT_CHAT_FRAME:AddMessage("TargetFrame is unmoved")
+            TargetFrame:SetClampedToScreen(true)
+            TargetFrame:ClearAllPoints()
+            TargetFrame:SetPoint("LEFT", UIParent, "CENTER", 20, -150)
+        -- else
+        --     DEFAULT_CHAT_FRAME:AddMessage("TargetFrame has moved")
+        end
     
         -- Party
-        local scale = 1.2        
-        PartyMemberFrame1:SetClampedToScreen(true)
-        PartyMemberFrame1:SetScale(scale)
-        PartyMemberFrame2:SetScale(scale)
-        PartyMemberFrame3:SetScale(scale)
-        PartyMemberFrame4:SetScale(scale)
+        -- unmoved = nil
+        -- local attachedPoint, _, _, xOfs, yOfs = PartyMemberFrame1:GetPoint()
+        -- if (attachedPoint == "TOPLEFT") and (yOfs == -128) and (not xOfs) then unmoved = true end
+        -- if unmoved then
+        if not PartyMemberFrame1:IsUserPlaced() then
+            -- DEFAULT_CHAT_FRAME:AddMessage("PartyMemberFrame1 is unmoved")
 
-        PartyMemberFrame1:ClearAllPoints()
-        PartyMemberFrame1:SetPoint("RIGHT", UIParent, "CENTER", -200, 100)
-        -- PartyMemberFrame2/3/4 moves with PartyMemberFrame1
+            local scale = 1.2
+            local partyframes = { PartyMemberFrame1, PartyMemberFrame2, PartyMemberFrame3, PartyMemberFrame4 }
+            for _, frame in pairs(partyframes) do        
+                frame:SetScale(scale)
+            end
+
+            PartyMemberFrame1:SetClampedToScreen(true)
+            PartyMemberFrame1:ClearAllPoints()
+            PartyMemberFrame1:SetPoint("RIGHT", UIParent, "CENTER", -200, 100)
+            -- PartyMemberFrame2/3/4 moves with PartyMemberFrame1
+        -- else
+        --     DEFAULT_CHAT_FRAME:AddMessage("PartyMemberFrame1 has moved")
+        end
     end
     
     local function minimap()
@@ -57,6 +84,7 @@ module.enable = function(self)
         -- Debuffs are aligned underneath the TemporaryEnchantFrame    
         TemporaryEnchantFrame:ClearAllPoints()
         TemporaryEnchantFrame:SetPoint("TOPLEFT", MinimapCluster, -15, -28)
+        
     
         -- prevent TemporaryEnchantFrame from moving
         TemporaryEnchantFrame.ClearAllPoints = function() end
