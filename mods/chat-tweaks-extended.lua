@@ -7,45 +7,11 @@ local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
     title = "Chat Tweaks Extended",
-    description = 'Extends "Chat Tweaks". Removes chat buttons, shortens channel names, shows item links on mouseover, adds an ignore on right click, adds Alt click chat names to invite and Ctrl click chat names to target.',
+    description = 'Extends "Chat Tweaks". Shortens channel names, shows item links on mouseover, adds an ignore on right click, adds Alt click chat names to invite and Ctrl click chat names to target.',
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Social & Chat",
     enabled = nil,
 })
-
-local function chatbuttons()
-    for i=1, NUM_CHAT_WINDOWS do
-        -- hide buttons
-        _G["ChatFrame" .. i .. "UpButton"]:Hide()
-        _G["ChatFrame" .. i .. "UpButton"].Show = function() return end
-        _G["ChatFrame" .. i .. "DownButton"]:Hide()
-        _G["ChatFrame" .. i .. "DownButton"].Show = function() return end
-        _G["ChatFrame" .. i .. "BottomButton"]:Hide()
-        _G["ChatFrameMenuButton"]:Hide()
-        _G["ChatFrameMenuButton"].Show = function() return end
-
-        -- hide BottomButton on click
-        _G["ChatFrame" .. i .. "BottomButton"]:SetScript("OnClick", function()
-            this:GetParent():ScrollToBottom()
-            this:Hide()
-        end)
-
-    end
-
-    -- Hook FCF_DockUpdate
-    if not HookFCF_DockUpdate then
-        local HookFCF_DockUpdate = FCF_DockUpdate
-        function _G.FCF_DockUpdate() 
-            for i=1, NUM_CHAT_WINDOWS do
-                if not _G["ChatFrame" .. i].scroll then
-                    _G["ChatFrame" .. i]:ScrollToBottom()
-                    _G["ChatFrame" .. i .. "BottomButton"]:Hide()
-                end             
-            end
-            HookFCF_DockUpdate()
-        end
-    end
-end
 
 local function ChatOnMouseWheel()
     if arg1 > 0 then
@@ -195,7 +161,6 @@ module.enable = function(self)
         if not this.loaded then
             this.loaded = true
             chatscroll()
-            chatbuttons()
             mouseoverlinks()
             clicklinks()
             channelindicators()

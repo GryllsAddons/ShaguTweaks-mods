@@ -265,7 +265,7 @@ module.enable = function(self)
             local b = _G['TargetFrameBuff'..i]
             if not b then break end
             if not ShaguTweaks.DarkMode then
-                skin(b)
+                skin(b, 0)
                 skinColor(b, .7, .7, .7)
             end
         end
@@ -479,6 +479,40 @@ module.enable = function(self)
         lock(ChatFrame3)
     end
 
+    function restyle:chatbuttons()
+        for i=1, NUM_CHAT_WINDOWS do
+            -- hide buttons
+            _G["ChatFrame" .. i .. "UpButton"]:Hide()
+            _G["ChatFrame" .. i .. "UpButton"].Show = function() return end
+            _G["ChatFrame" .. i .. "DownButton"]:Hide()
+            _G["ChatFrame" .. i .. "DownButton"].Show = function() return end
+            _G["ChatFrame" .. i .. "BottomButton"]:Hide()
+            _G["ChatFrameMenuButton"]:Hide()
+            _G["ChatFrameMenuButton"].Show = function() return end
+    
+            -- hide BottomButton on click
+            _G["ChatFrame" .. i .. "BottomButton"]:SetScript("OnClick", function()
+                this:GetParent():ScrollToBottom()
+                this:Hide()
+            end)
+    
+        end
+    
+        -- Hook FCF_DockUpdate
+        if not HookFCF_DockUpdate then
+            local HookFCF_DockUpdate = FCF_DockUpdate
+            function _G.FCF_DockUpdate() 
+                for i=1, NUM_CHAT_WINDOWS do
+                    if not _G["ChatFrame" .. i].scroll then
+                        _G["ChatFrame" .. i]:ScrollToBottom()
+                        _G["ChatFrame" .. i .. "BottomButton"]:Hide()
+                    end             
+                end
+                HookFCF_DockUpdate()
+            end
+        end
+    end
+
     function restyle:nameplates()
         if ShaguPlates then return end
 
@@ -634,6 +668,7 @@ module.enable = function(self)
             restyle:minimap()
             restyle:unitnames()
             restyle:chatframes()
+            restyle:chatbuttons()
             restyle:nameplates()
             restyle:debufftimer()
             restyle:reducedactionbar()
