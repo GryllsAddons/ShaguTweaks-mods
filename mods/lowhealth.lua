@@ -20,10 +20,10 @@ module.enable = function(self)
       local percent = hp / hpmax
 
       if bighealth then
-        if unit == "player" then
+        if unit == "player" and PlayerFrameNameBackground then
           local r, g, b = PlayerFrameNameBackground:GetVertexColor()
           PlayerFrameHealthBar:SetStatusBarColor(r, g, b)
-        elseif unit == "target" then
+        elseif unit == "target" and TargetFrameNameBackground then
           local r, g, b = TargetFrameNameBackground:GetVertexColor()
           TargetFrameHealthBar:SetStatusBarColor(r, g, b)
         end
