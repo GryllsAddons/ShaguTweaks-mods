@@ -103,7 +103,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 
 - **Chat Tweaks Extended**    
 *Extends "Chat Tweaks".*    
-*Removes chat buttons, shortens channel names, shows item links on mouseover, adds an ignore on right click, adds Alt click chat names to invite and Ctrl click chat names to target.*
+*Shortens channel names, shows item links on mouseover, adds an ignore on right click, adds Alt click chat names to invite and Ctrl click chat names to target.*
 
 - **What Happened to Me?**    
 *Creates a 'What Happened to Me?' style chat tab.*
