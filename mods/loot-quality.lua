@@ -68,7 +68,7 @@ module.enable = function(self)
             end            
         end        
 
-        if highestQuality > minQuality then
+        if highestQuality >= minQuality then
             local color = ITEM_QUALITY_COLORS[highestQuality]        
             lootColor(color.r,color.g,color.b)
         else
