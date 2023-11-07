@@ -116,7 +116,7 @@ local function channelindicators()
 
         if ShaguTweaks.ChatTimestamps then
             -- show timestamp in chat
-            text = timecolorhex .. left .. date("%H:%M") .. right .. "|r " .. text
+            text = timecolorhex .. left .. date("%H:%M:%S") .. right .. "|r " .. text
         end
 
         -- reduce channel name to number

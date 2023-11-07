@@ -19,7 +19,7 @@ local function timestamps()
         if not text then return end
 
         -- show timestamp in chat
-        text = timecolorhex .. left .. date("%H:%M") .. right .. "|r " .. text
+        text = timecolorhex .. left .. date("%H:%M:%S") .. right .. "|r " .. text
 
         frame:HookAddMessage(text, a1, a2, a3, a4, a5)
     end
