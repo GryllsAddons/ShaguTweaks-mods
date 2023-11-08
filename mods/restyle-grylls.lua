@@ -87,8 +87,9 @@ module.enable = function(self)
     function restyle:addons()
         --[[
             Supported Addons:
-            SP_SwingTimer (Vanilla/Turtle),
+            SP_SwingTimer (Vanilla/Turtle)
             MinimapButtonBag (Vanilla/Turtle)
+            MinimapButtonFrame
         ]]
 
         -- SP_SwingTimer
@@ -155,9 +156,9 @@ module.enable = function(self)
             })
         end
 
-        -- MinimapButtonFrame    
+        -- MinimapButtonBag    
         if MBB_MinimapButtonFrame then
-            -- reposition MBB to the bottom of the styleFrame (under the minimap)
+            -- reposition to the bottom left corner of the minimap
             -- show the button OnEnter and hide when OnLeave
             
             if IsAddOnLoaded("MinimapButtonBag-TurtleWoW") then
@@ -202,6 +203,51 @@ module.enable = function(self)
                 MBB_OnClick(arg1)
             end)
         end
+
+        -- MinimapButtonFrame
+        if MinimapButtonFrame then
+            -- reposition to the bottom left corner of the minimap
+            -- show the button OnEnter and hide when OnLeave
+            
+            MBFButtonIcon:SetTexture("Interface\\Icons\\Inv_misc_bag_10")
+
+            MBFButton:ClearAllPoints()
+            MBFButton:SetPoint("CENTER", Minimap, "BOTTOMLEFT", 0, 0)
+            lock(MBFButton)           
+            
+            local function showButton(button)
+                button:SetAlpha(1)
+            end
+
+            local function hideButton(button)
+                button:SetAlpha(0)  
+            end
+
+            hideButton(MBFButton)
+            local hide = CreateFrame("BUTTON", nil, MBFButton)
+            hide:SetAllPoints(hide:GetParent())
+
+            hide:SetScript("OnEnter", function()
+                showButton(MBFButton)
+            end)
+
+            hide:SetScript("OnLeave", function()
+                hide.timer = GetTime() + 2
+                hide:SetScript("OnUpdate", function()            
+                    if (GetTime() > hide.timer) then
+                        -- MBB_HideButtons() -- MBB function to hide buttons
+                        hideButton(MBFButton)
+                        hide:SetScript("OnUpdate", nil)
+                    end
+                end)
+            end)
+            
+            hide:RegisterForClicks("LeftButtonDown","RightButtonDown")
+            hide:SetScript("OnClick", function()
+                MBFC_Visible(1)
+            end)
+        end
+
     end
 
     function restyle:buffs()
