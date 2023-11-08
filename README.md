@@ -205,7 +205,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Restyles supported addons and UI elements.*    
 *Supported Addons:*    
 *[SP_SwingTimer (vanilla)](https://github.com/EinBaum/SP_SwingTimer) / [SP_SwingTimer (TurtleWoW)](https://github.com/geojak/SP_SwingTimer): Changes style and positions bar centrally.*    
-*[MinimapButtonBag (vanilla)](https://github.com/laytya/MinimapButtonBag-vanilla) / [MinimapButtonBag (TurtleWoW)](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW): Changes position to the bottom left of the minimap. The button will be shown on mouseover.*
+*[MinimapButtonBag (vanilla)](https://github.com/laytya/MinimapButtonBag-vanilla) / [MinimapButtonBag (TurtleWoW)](https://github.com/McPewPew/MinimapButtonBag-TurtleWoW) / [MinimapButtonFrame (vanilla)](https://github.com/laytya/MinimapButtonFrame-vanilla): Changes position to the bottom left of the minimap. The button will be shown on mouseover.*
 
 - **Skip Gossip Text**    
 *Skip gossip text when interacting with NPCs unless holding shift.*
