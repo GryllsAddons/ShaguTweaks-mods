@@ -168,28 +168,30 @@ module.enable = function(self)
     MinimapMS.text:SetFontObject(GameFontWhite)
     MinimapMS:SetScript("OnUpdate", function()
         if (this.tick or 1) > GetTime() then return else this.tick = GetTime() + 1 end
-            local _, _, MS = GetNetStats()
-            currMS = MS
-            
-            -- color
-            local color = "|cff00ff00"
-            if (currMS > PERFORMANCEBAR_MEDIUM_LATENCY) then
-                color = "|cffff0000"
-            elseif (currMS > PERFORMANCEBAR_LOW_LATENCY) then
-                color = "|cffffff00"
-            end
-            
-            MS = color .. MS .. "|r"
-            this.text:SetText(MS.."")
+        if not lowFPS then lowFPS = floor(GetFramerate()) end
+        if not highFPS then highFPS = floor(GetFramerate()) end
+        local _, _, MS = GetNetStats()
+        currMS = MS
+        
+        -- color
+        local color = "|cff00ff00"
+        if (currMS > PERFORMANCEBAR_MEDIUM_LATENCY) then
+            color = "|cffff0000"
+        elseif (currMS > PERFORMANCEBAR_LOW_LATENCY) then
+            color = "|cffffff00"
+        end
+        
+        MS = color .. MS .. "|r"
+        this.text:SetText(MS.."")
 
-            -- check for high / low fps
-            if (highMS < currMS) then
-                highMS = currMS
-            end
+        -- check for high / low fps
+        if (highMS < currMS) then
+            highMS = currMS
+        end
 
-            if ((lowMS > 0) and (lowMS > currMS) and (currMS > 0)) then
-                lowMS = currMS
-            end
+        if ((lowMS > 0) and (lowMS > currMS) and (currMS > 0)) then
+            lowMS = currMS
+        end
     end)
 
     MinimapMS:SetScript("OnEnter", function()
@@ -222,9 +224,7 @@ module.enable = function(self)
             this.loaded = true
             _, _, lowMS = GetNetStats()
             _, _, highMS = GetNetStats()
-            MinimapMS:Show()
-            lowFPS = floor(GetFramerate())
-            highFPS = floor(GetFramerate())
+            MinimapMS:Show()            
             MinimapFPS:Show()
         end
     end)   
