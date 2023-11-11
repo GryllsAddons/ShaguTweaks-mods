@@ -51,8 +51,8 @@ Code from [zUI](https://github.com/Ko0z/zUI)
 *Improved exp information on mouseover.*    
 
 - **Macro Icons**    
-*Show macro icons on the action bars.*    
-In order to have the range and mana colors show on macros, you have to write the following line at the top of each macro:    
+*Finds spell icons in casting macros and show them on the action button.*    
+In order to have the cooldown, range and mana colors show on macros, you have to write the following line at the top of each macro:    
 ***/run if nil then CastSpellByName("SPELLNAME"); end***    
 Make sure to replace ***SPELLNAME*** with the actual name of your spell.    
 
