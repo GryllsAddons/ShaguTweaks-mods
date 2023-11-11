@@ -217,7 +217,7 @@ Make sure to replace ***SPELLNAME*** with the actual name of your spell.
 *Sets the pixel perfect UI scale for your resolution.*
 
 - **Target Buffs Extended**    
-*Show up to 16 buffs on the target unit frame.*
+*Show up to 16 buffs on the target unit frame and detect enemy buffs.*
 
 - **Unit Frame Abbreviated Names**    
 *Abbreviates long unit names.*
