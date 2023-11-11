@@ -609,6 +609,7 @@ module.enable = function(self)
             MainMenuXPBarTexture0, MainMenuXPBarTexture1,
             ReputationXPBarTexture0, ReputationXPBarTexture1, ReputationXPBarTexture2, ReputationXPBarTexture3,
             ReputationWatchBarTexture0, ReputationWatchBarTexture1,
+            BonusActionBarTexture0, BonusActionBarTexture1
         }
 
         for id, frame in pairs(hide) do 
