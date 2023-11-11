@@ -24,19 +24,14 @@ module.enable = function(self)
     else
       prefix = bar:GetName()
     end
-    -- DEFAULT_CHAT_FRAME:AddMessage("prefix = "..tostring(prefix)) -- DEBUG
 
-    local button, icon, cooldown
+    local button, icon
     -- scan all 12 slots in bar
     for slot = 1, 12 do
       button = _G[prefix.."Button"..slot]
-      if not button then 
-        -- DEFAULT_CHAT_FRAME:AddMessage("no button for prefix = "..tostring(prefix)..", actionSlotStart = "..actionSlotStart) -- DEBUG
-        break 
-      end
+      if not button then break end
 
       icon = _G[prefix.."Button"..slot.."Icon"]
-      cooldown = _G[prefix.."Button"..slot.."Cooldown"]
 
       local macro = GetActionText(actionSlot)
       if actionSlot > actionSlotEnd then
@@ -73,6 +68,18 @@ module.enable = function(self)
   
             if not match then
               _, _, match = string.find(line, '^/stcast (.+)')
+            end
+
+            if not match then
+              _, _, match = string.find(line, '^/stcastself (.+)')
+            end    
+
+            if not match then
+              _, _, match = string.find(line, '^/stcasthelp (.+)')
+            end    
+
+            if not match then
+              _, _, match = string.find(line, '^/stcastharm (.+)')
             end    
 
             if not match then
@@ -87,17 +94,9 @@ module.enable = function(self)
               -- icon
               -- overwrite with spell macro texture where possible
               local texture = GetActionTexture(slot)
-              local start, duration, enable
               if button.spellslot and button.booktype then
                 texture = GetSpellTexture(button.spellslot, button.booktype)
-                start, duration = GetSpellCooldown(button.spellslot, button.booktype)
-                enable = 1
-              else
-                start, duration, enable = GetActionCooldown(slot)
               end
-
-              -- cooldown
-              -- CooldownFrame_SetTimer(cooldown, start, duration, enable)
 
               if not texture then break end
               if texture ~= icon:GetTexture() then            
@@ -147,14 +146,8 @@ module.enable = function(self)
   events:RegisterEvent("PLAYER_ENTERING_WORLD")
   events:RegisterEvent("ACTIONBAR_SLOT_CHANGED")
   events:RegisterEvent("ACTIONBAR_PAGE_CHANGED")
-  events:RegisterEvent("ACTIONBAR_SHOWGRID")
-  events:RegisterEvent("UPDATE_BONUS_ACTIONBAR")  
-  events:RegisterEvent("PLAYER_AURAS_CHANGED")
-  events:RegisterEvent("UPDATE_SHAPESHIFT_FORMS")
-
-  events:RegisterEvent("ACTIONBAR_UPDATE_COOLDOWN")
-  events:RegisterEvent("ACTIONBAR_UPDATE_USABLE")
-  events:RegisterEvent("ACTIONBAR_UPDATE_STATE")
+  events:RegisterEvent("UPDATE_BONUS_ACTIONBAR") -- forms
+  events:RegisterEvent("ACTIONBAR_SHOWGRID") -- drag to bar
 
   events:SetScript("OnEvent", function()
     ScanBars()
