@@ -9,6 +9,8 @@ local module = ShaguTweaks:register({
 })
 
 module.enable = function(self)
+    local start = 0
+
     local function round(input, places)
         if not places then places = 0 end
         if type(input) == "number" and type(places) == "number" then
@@ -108,22 +110,26 @@ module.enable = function(self)
     MinimapFPS.text:SetAllPoints(MinimapFPS)
     MinimapFPS.text:SetFontObject(GameFontWhite)
     MinimapFPS:SetScript("OnUpdate", function()
-        if ( this.tick or 1) > GetTime() then return else this.tick = GetTime() + 1 end
-            local FPS = floor(GetFramerate())
-            currFPS = FPS
+        if (this.tick or 1) > GetTime() then return else this.tick = GetTime() + 1 end
+        if this.tick < start then return end
+        if not lowFPS then lowFPS = floor(GetFramerate()) end
+        if not highFPS then highFPS = floor(GetFramerate()) end
+        
+        local FPS = floor(GetFramerate())
+        currFPS = FPS
 
-            local _, _, _, FPShex = GetColorGradient(FPS/tarFPS)
-            FPS = FPShex .. FPS .. "|r"
-            this.text:SetText(FPS.."")
+        local _, _, _, FPShex = GetColorGradient(FPS/tarFPS)
+        FPS = FPShex .. FPS .. "|r"
+        this.text:SetText(FPS.."")
 
-            -- check for high / low FPS
-            if (highFPS < currFPS) then
-                highFPS = currFPS
-            end
+        -- check for high / low FPS
+        if (highFPS < currFPS) then
+            highFPS = currFPS
+        end
 
-            if ((lowFPS > currFPS) and (currFPS > 0)) then
-                lowFPS = currFPS
-            end
+        if ((lowFPS > currFPS) and (currFPS > 0)) then
+            lowFPS = currFPS
+        end
     end)
 
     MinimapFPS:SetScript("OnEnter", function()
@@ -168,8 +174,10 @@ module.enable = function(self)
     MinimapMS.text:SetFontObject(GameFontWhite)
     MinimapMS:SetScript("OnUpdate", function()
         if (this.tick or 1) > GetTime() then return else this.tick = GetTime() + 1 end
-        if not lowFPS then lowFPS = floor(GetFramerate()) end
-        if not highFPS then highFPS = floor(GetFramerate()) end
+        if this.tick < 1 then return end
+        if not lowMS then _, _, lowMS = GetNetStats() end
+        if not highMS then  _, _, highMS = GetNetStats() end
+
         local _, _, MS = GetNetStats()
         currMS = MS
         
@@ -222,8 +230,7 @@ module.enable = function(self)
     events:SetScript("OnEvent", function()
         if not this.loaded then
             this.loaded = true
-            _, _, lowMS = GetNetStats()
-            _, _, highMS = GetNetStats()
+            start = GetTime() + 1         
             MinimapMS:Show()            
             MinimapFPS:Show()
         end
