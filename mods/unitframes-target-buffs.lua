@@ -1,13 +1,68 @@
 local module = ShaguTweaks:register({
     title = "Target Buffs Extended",
-    description = "Show up to 16 buffs on the target unit frame.",
+    description = "Show up to 16 buffs on the target unit frame and detect enemy buffs.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Unit Frames",
     enabled = nil,
 })
 
 module.enable = function(self)
-	-- Note: The default target frame shows 5 buffs and 16 debuffs
+	-- detect target buffs
+	local L = ShaguTweaks.L
+	-- register tooltip scanner
+	local scanner = ShaguTweaks.libtipscan:GetScanner("unitframes")
+
+	local detect_icon, detect_name
+	local function DetectBuff(name, id)
+		if not name or not id then return end
+		-- clear previously assigned
+		detect_icon, detect_name = nil, nil
+
+		-- make sure the icon cache exists
+		ShaguTweaks_cache.buff_icons = ShaguTweaks_cache.buff_icons or {}
+
+		-- check the regular way
+		detect_icon = UnitBuff(name, id)
+		if detect_icon then
+			if not L["spells"][detect_name] and not ShaguTweaks_cache.buff_icons[detect_icon] then
+			-- read buff name and cache it
+			scanner:SetUnitBuff(name, id)
+			detect_name = scanner:Line(1)
+
+			if detect_name then
+				ShaguTweaks_cache.buff_icons[detect_icon] = detect_name
+			end
+			end
+
+			-- return the regular function
+			return UnitBuff(name, id)
+		end
+
+		-- try to guess the buff based on tooltips and icon caches
+		scanner:SetUnitBuff(name, id)
+		detect_name = scanner:Line(1)
+
+		if detect_name then
+			-- try to find the spell icon in locales
+			if L["spells"][detect_name] then
+			return "Interface\\Icons\\" .. L["spells"][detect_name].icon, 1
+			end
+
+			-- try to find the spell icon in caches
+			for icon, name in pairs(ShaguTweaks_cache.buff_icons) do
+			if name == detect_name then return icon, 1 end
+			end			
+
+			-- return fallback image
+			return "interface\\icons\\inv_misc_questionmark", 1
+		end
+
+		-- nothing found
+		return nil
+	end
+
+	-- extend target buffs
+	-- note: The default target frame shows 5 buffs and 16 debuffs
 	local buffButtons = 16
 	local debuffButtons = 16
 
@@ -31,8 +86,8 @@ module.enable = function(self)
 		end
 	end
 
-	local function layout(frame, numButtons, rowLimit)
-		-- layout buffs in rows attached to the first buff/debuff
+	local function BuffRows(frame, numButtons, rowLimit)
+		-- position buffs in rows attached to the first buff/debuff
 		local rowBuff = 1 -- the first buff on the last row of buffs/debuffs
 		local added = 1 -- we have already got one buff in the row when we start
 		for i = 2, numButtons do
@@ -52,50 +107,31 @@ module.enable = function(self)
 		return rowBuff
 	end
 
-	local function layoutFriendly(num_buff, num_debuff, rowLimit)
+	local function BuffPositions(num_buff, num_debuff, rowLimit)
+		-- position debuffs depending on if there are any buffs
+		-- fill buffs and debuffs in rows
+		TargetFrameDebuff1:ClearAllPoints()
 		if num_buff > 0 then
-			local rowBuff = layout("TargetFrameBuff", num_buff, rowLimit) -- layout buffs
+			local rowBuff = BuffRows("TargetFrameBuff", num_buff, rowLimit) -- position buffs in rows
 			TargetFrameDebuff1:SetPoint("TOPLEFT", "TargetFrameBuff"..rowBuff, "BOTTOMLEFT", 0, -3) -- set debuff anchor
 		else
-			TargetFrameDebuff1:SetPoint("TOPLEFT", "TargetFrame", "BOTTOMLEFT", 5, 32)
+			TargetFrameDebuff1:SetPoint("TOPLEFT", "TargetFrame", "BOTTOMLEFT", 5, 32) -- set default anchor
 		end
-		layout("TargetFrameDebuff", num_debuff, rowLimit) -- layout debuffs
-	end
 
-	local function layoutHostile(num_buff, num_debuff, rowLimit)
 		if num_debuff > 0 then
-			local rowBuff = layout("TargetFrameDebuff", num_debuff, rowLimit) -- layout debuffs
-			TargetFrameBuff1:SetPoint("TOPLEFT", "TargetFrameDebuff"..rowBuff, "BOTTOMLEFT", 0, -3) -- set buff anchor
-		else
-			TargetFrameBuff1:SetPoint("TOPLEFT", "TargetFrame", "BOTTOMLEFT", 5, 32)
+			BuffRows("TargetFrameDebuff", num_debuff, rowLimit) -- position debuffs in rows
 		end
-		layout("TargetFrameBuff", num_buff, rowLimit) -- layout buffs
 	end
 
 	local function TargetFrameBuff_Position(num_buff, num_debuff)
-		-- position buffs/debuffs depending on whether the targeted unit is friendly or not
-		if (UnitIsFriend("player", "target")) then
-			-- unit is friendly, show buffs first then debuffs
-			TargetFrameBuff1:ClearAllPoints()
-			TargetFrameBuff1:SetPoint("TOPLEFT", "TargetFrame", "BOTTOMLEFT", 5, 32) -- set position of first buff	
-			if not UnitExists("targettarget") then
-				-- show rows of 5 buffs/debuffs if no target of target
-				layoutFriendly(num_buff, num_debuff, 5)
-			else
-				-- show rows of 4 buffs/debuffs if target of target
-				layoutFriendly(num_buff, num_debuff, 4)
-			end
+		TargetFrameBuff1:ClearAllPoints()
+		TargetFrameBuff1:SetPoint("TOPLEFT", "TargetFrame", "BOTTOMLEFT", 5, 32) -- set default anchor
+		if not UnitExists("targettarget") then
+			-- show rows of 5 buffs/debuffs if no target of target
+			BuffPositions(num_buff, num_debuff, 5)
 		else
-			-- unit is hostile, show debuffs first then buffs
-			TargetFrameDebuff1:ClearAllPoints()
-			TargetFrameDebuff1:SetPoint("TOPLEFT", "TargetFrame", "BOTTOMLEFT", 5, 32) -- set position of first debuff
-			if not UnitExists("targettarget") then
-				-- show rows of 5 buffs/debuffs if no target of target
-				layoutHostile(num_buff, num_debuff, 5)
-			else
-				-- show rows of 4 buffs/debuffs if target of target
-				layoutHostile(num_buff, num_debuff, 4)
-			end
+			-- show rows of 4 buffs/debuffs if target of target
+			BuffPositions(num_buff, num_debuff, 4)
 		end
 	end
 	
@@ -107,7 +143,7 @@ module.enable = function(self)
 
 		-- buffs
 		for i=1, buffButtons do
-			buff = UnitBuff("target", i)
+			buff = DetectBuff("target", i)
 			button = getglobal("TargetFrameBuff"..i)
 			if (buff) then
 				getglobal("TargetFrameBuff"..i.."Icon"):SetTexture(buff)
