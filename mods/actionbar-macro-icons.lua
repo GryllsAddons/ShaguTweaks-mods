@@ -3,7 +3,7 @@ local libspell = ShaguTweaks.libspell
 
 local module = ShaguTweaks:register({
     title = "Macro Icons",
-    description = "Finds spell icons in casting macros and show them on the action button.",
+    description = "Finds spell icons in casting macros and shows them on the action button.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = "Action Bar",
     enabled = nil,
