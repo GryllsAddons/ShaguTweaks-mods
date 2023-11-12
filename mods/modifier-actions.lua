@@ -2,7 +2,7 @@ local _G = ShaguTweaks.GetGlobalEnv()
 
 local module = ShaguTweaks:register({
     title = "Modifier Actions",
-    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. S: Sell & Repair, A: Confirm/Accept Resurrect/Quest/Summon/Invite/Battleground Popups, CA: Initiate/Accept Trade, CS: Follow, AS: Inspect, CAS: Logout.",
+    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. S: Sell & Repair, AC: Initiate/Accept Trade, Confirm/Accept Resurrect/Quest/Summon/Invite/Battleground, CS: Follow, AS: Inspect, CAS: Logout.",
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -407,17 +407,17 @@ module.enable = function(self)
             Logout()
         elseif (actions.ctrl and actions.alt) then            
             actions:Trade()
-        elseif (actions.ctrl and actions.shift) then
-            actions:Follow()
-        elseif (actions.alt and actions.shift) then
-            actions:Inspect()
-        elseif (actions.alt) then            
             actions:Resurrect()
             actions:Quest()
             actions:QuestConfirm()           
             actions:Summon()
             actions:Group()
-            actions:Battleground()          
+            actions:Battleground()
+        elseif (actions.ctrl and actions.shift) then
+            actions:Follow()
+        elseif (actions.alt and actions.shift) then
+            actions:Inspect()
+        -- elseif (actions.alt) then            
         elseif (actions.shift) then
             actions:Merchant()            
         end
