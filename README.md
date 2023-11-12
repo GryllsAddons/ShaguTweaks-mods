@@ -178,13 +178,21 @@ Make sure to replace ***SPELL*** with the actual name of your spell.
 
 - **Mouseover Cast**    
 *Adds /stcast, /stcastself, /stcasthelp and /stcastharm for use in macros ([HCWarn](https://github.com/GryllsAddons/HCWarn) supported).*    
-*/stcast functions like /pfcast in pfUI (same as /cast but for mouseover units).*    
-*/stcastself will always cast the spell on yourself.*    
+*/stcast functions like /pfcast in pfUI (same as /cast but uses mouseover logic to determine the unit.*    
 */stcasthelp will cast the spell if you can assist the unit.*    
 */stcastharm will cast the spell if you can attack the unit.*    
 *You can use /stcasthelp and /stcastharm in the same macro to cast a spell depending on the unit's reaction.*    
-*examples: /stcast spellname, /stcastself spellname, /stcasthelp spellname, /stcastharm spellname*    
-*/stcasthelp Holy Light; /stcastharm Judgement*
+***examples:***    
+*cast the spell on the unit:*    
+`/stcast spellname`    
+*always cast the spell on yourself:*    
+`/stcastself spellname`    
+*cast the spell if you can assist the unit:*    
+`/stcasthelp spellname`    
+*cast the spell if you can attack the unit:*    
+`/stcastharm spellname`    
+*cast Holy light if you can assist the unit, otherwise cast Judgement if you can attack the unit:*    
+`/stcasthelp Holy Light; /stcastharm Judgement`    
 
 - **Movable Unitframes Extended**    
 *Party frames, Minimap, Buffs, Weapon Buffs and Debuffs can be moved while Shift and Ctrl are pressed together. Drag the first (end) buff or debuff to move.*   
