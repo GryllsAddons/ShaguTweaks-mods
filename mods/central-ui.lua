@@ -51,11 +51,9 @@ module.enable = function(self)
         -- local attachedPoint, _, _, xOfs, yOfs = PartyMemberFrame1:GetPoint()
         -- if (attachedPoint == "TOPLEFT") and (yOfs == -128) and (not xOfs) then unmoved = true end
         -- if unmoved then
-        local partyframes = { PartyMemberFrame1, PartyMemberFrame2, PartyMemberFrame3, PartyMemberFrame4 }
-
         if not PartyMemberFrame1:IsUserPlaced() then
             -- DEFAULT_CHAT_FRAME:AddMessage("PartyMemberFrame1 is unmoved")
-
+            local partyframes = { PartyMemberFrame1, PartyMemberFrame2, PartyMemberFrame3, PartyMemberFrame4 }
             local scale = 1.2
             for _, frame in pairs(partyframes) do        
                 frame:SetScale(scale)
