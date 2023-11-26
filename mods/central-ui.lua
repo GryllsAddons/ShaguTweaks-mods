@@ -51,11 +51,12 @@ module.enable = function(self)
         -- local attachedPoint, _, _, xOfs, yOfs = PartyMemberFrame1:GetPoint()
         -- if (attachedPoint == "TOPLEFT") and (yOfs == -128) and (not xOfs) then unmoved = true end
         -- if unmoved then
+        local partyframes = { PartyMemberFrame1, PartyMemberFrame2, PartyMemberFrame3, PartyMemberFrame4 }
+
         if not PartyMemberFrame1:IsUserPlaced() then
             -- DEFAULT_CHAT_FRAME:AddMessage("PartyMemberFrame1 is unmoved")
 
             local scale = 1.2
-            local partyframes = { PartyMemberFrame1, PartyMemberFrame2, PartyMemberFrame3, PartyMemberFrame4 }
             for _, frame in pairs(partyframes) do        
                 frame:SetScale(scale)
             end
@@ -63,9 +64,15 @@ module.enable = function(self)
             PartyMemberFrame1:SetClampedToScreen(true)
             PartyMemberFrame1:ClearAllPoints()
             PartyMemberFrame1:SetPoint("RIGHT", UIParent, "CENTER", -200, 100)
-            -- PartyMemberFrame2/3/4 moves with PartyMemberFrame1
         -- else
         --     DEFAULT_CHAT_FRAME:AddMessage("PartyMemberFrame1 has moved")
+        end
+
+        for i = 2, 4 do
+            local frame = _G["PartyMemberFrame"..i]
+            local fparent = _G["PartyMemberFrame"..(i-1).."PetFrame"]
+            frame:ClearAllPoints()
+            frame:SetPoint("TOPLEFT", fparent, "BOTTOMLEFT", -23, -10)
         end
     end
     
