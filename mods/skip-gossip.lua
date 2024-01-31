@@ -42,7 +42,6 @@ module.enable = function(self)
             local name = GossipFrameNpcNameText:GetText()
             local GossipOptions = {}
             local title
-            local skip
             title,GossipOptions[1],_,GossipOptions[2],_,GossipOptions[3],_,GossipOptions[4],_,GossipOptions[5] = GetGossipOptions()
 
             if name then
