@@ -63,7 +63,7 @@ module.enable = function(self)
 
       local item = ShaguTweaks.cmatch(arg1, LOOT_ITEM_SELF)
       if item then
-        local player = "You"
+        local player = T["You"]
         -- DEBUG:
         -- DEFAULT_CHAT_FRAME:AddMessage("LOOT_ITEM_SELF")
         -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player)..", item = "..tostring(item)..", class = "..tostring(class)..", cachetime = "..cachetime)
@@ -138,7 +138,7 @@ module.enable = function(self)
             class = RAID_CLASS_COLORS[class]
             local alpha = LootMonitor:GetTimeAlpha(updatetime, cachetime)
             LootMonitor[i]:SetText(player.." "..item)
-            if player == "You" then
+            if player == T["You"] then
               LootMonitor[i]:SetTextColor(1, 0, 0, alpha)
             else
               LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
@@ -154,7 +154,7 @@ module.enable = function(self)
             class = RAID_CLASS_COLORS[class]
             local alpha = LootMonitor:GetTimeAlpha(updatetime, cachetime)
             LootMonitor[i]:SetText(player.." "..item)
-            if player == "You" then
+            if player == T["You"] then
               LootMonitor[i]:SetTextColor(1, 0, 0, alpha)
             else
               LootMonitor[i]:SetTextColor(class.r, class.g, class.b, alpha)
@@ -185,19 +185,19 @@ module.enable = function(self)
     function LootMonitor:GetItemQuality(q)
       -- (https://wowpedia.fandom.com/wiki/Enum.ItemQuality)
       if q == -1 then
-        return "All loot"
+        return T["All loot"]
       elseif q == 0 then
-        return "Poor loot"
+        return T["Poor loot"]
       elseif q == 1 then
-        return "Common loot"
+        return T["Common loot"]
       elseif q == 2 then
-        return "Uncommon loot"
+        return T["Uncommon loot"]
       elseif q == 3 then
-        return "Rare loot"
+        return T["Rare loot"]
       elseif q == 4 then
-        return "Epic loot"
+        return T["Epic loot"]
       elseif q == 5 then
-        return "Legendary loot"
+        return T["Legendary loot"]
       end
     end
 
