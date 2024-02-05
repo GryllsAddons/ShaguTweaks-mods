@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Unit Frame White Mana",
-    description = "Changes unit frame mana color to white.",
+    title = T["Unit Frame White Mana"],
+    description = T["Changes unit frame mana color to white."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Unit Frames",
+    category = T["Unit Frames"],
     enabled = nil,
 })
 

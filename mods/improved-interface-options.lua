@@ -1,14 +1,16 @@
 -- Based on zUI skinning (https://github.com/Ko0z/zUI)
 -- Credit to Ko0z (https://github.com/Ko0z/)
 
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Improved Interface Options",
-    description = "Rescales the interface options menu and removes the background.",
+    title = T["Improved Interface Options"],
+    description = T["Rescales the interface options menu and removes the background."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
 })
-  
+
 module.enable = function(self)
     UIOptionsFrame:SetScript("OnShow", function()
         -- default events

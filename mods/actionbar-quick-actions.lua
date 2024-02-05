@@ -1,11 +1,12 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
-    title = "Quick Actions",
-    description = "Action buttons will be activated on key down.",
+    title = T["Quick Actions"],
+    description = T["Action buttons will be activated on key down."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
+    category = T["Action Bar"],
     enabled = nil,
 })
 

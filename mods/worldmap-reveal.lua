@@ -1,11 +1,12 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 local hooksecurefunc = hooksecurefunc or ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
-  title = "WorldMap Reveal",
-  description = "Reveals unexplored areas on the world map.",
+  title = T["WorldMap Reveal"],
+  description = T["Reveals unexplored areas on the world map."],
   expansions = { ["vanilla"] = true, ["tbc"] = true },
-  category = "World & MiniMap",
+  category = T["World & MiniMap"],
   enabled = true,
 })
 
@@ -106,7 +107,7 @@ module.enable = function(self)
   local exploreEnter = function()
     GameTooltip:ClearLines()
     GameTooltip:SetOwner(this, "ANCHOR_TOP")
-    GameTooltip:AddLine("Explore:", .3, 1, .8)
+    GameTooltip:AddLine(T["Explore:"], .3, 1, .8)
     GameTooltip:AddLine(this.name, 1, 1, 1)
     GameTooltip:Show()
 

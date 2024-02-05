@@ -1,9 +1,10 @@
+local T = ShaguTweaks.T
 local GetUnitData = ShaguTweaks.GetUnitData
 local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
-  title = "Nameplate Low Health",
-  description = "Changes the nameplate healthbar color when at 20% health or lower.",
+  title = T["Nameplate Low Health"],
+  description = T["Changes the nameplate healthbar color when at 20% health or lower."],
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
   enabled = nil,
 })

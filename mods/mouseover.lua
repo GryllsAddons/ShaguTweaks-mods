@@ -1,8 +1,9 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-  title = "Mouseover Cast",
-  description = "Adds /stcast, /stcastself, /stcasthelp and /stcastharm for use in macros.",
+  title = T["Mouseover Cast"],
+  description = T["Adds /stcast, /stcastself, /stcasthelp and /stcastharm for use in macros."],
   expansions = { ["vanilla"] = true, ["tbc"] = false },
   enabled = false,
 })
@@ -80,20 +81,20 @@ module.enable = function(self)
     local restore_target = true
     local func = loadstring(msg or "")
     local unit = MouseoverUnit()
-    if not unit then return end    
+    if not unit then return end
 
     -- HCWarn support (https://github.com/GryllsAddons/HCWarn)
     if HCWarn_Mouseover and (unit ~= "player") then
       if HCWarn_Hardcore then
         -- prevent casts if NPC is PvP and attackable when outside instances unless you are PvP flagged
         if (not UnitIsPlayer(unit)) and UnitIsPVP(unit) and UnitCanAttack("player", unit) and (not IsInInstance()) and (not UnitIsPVP("player")) then
-          UIErrorsFrame:AddMessage("Unit is PvP flagged", 1, 0.25, 0)
+          UIErrorsFrame:AddMessage(T["Unit is PvP flagged"], 1, 0.25, 0)
           return
         end
       else
         -- prevent casts if player is PvP when outside instances unless you are PvP flagged
         if UnitIsPlayer(unit) and UnitIsPVP(unit) and (not IsInInstance()) and (not UnitIsPVP("player")) then 
-          UIErrorsFrame:AddMessage("Unit is PvP flagged", 1, 0.25, 0)
+          UIErrorsFrame:AddMessage(T["Unit is PvP flagged"], 1, 0.25, 0)
           return
         end
       end

@@ -1,10 +1,11 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Gryphons to Lions",
-    description = "Change the action bar gryphons to lions.",
+    title = T["Gryphons to Lions"],
+    description = T["Change the action bar gryphons to lions."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
+    category = T["Action Bar"],
     enabled = nil,
 })
 

@@ -1,8 +1,10 @@
+local L, T = ShaguTweaks.L, ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Block NPC Spam",
-    description = "Blocks spam messages from NPCs.",
+    title = T["Block NPC Spam"],
+    description = T["Blocks spam messages from NPCs."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Social & Chat",
+    category = T["Social & Chat"],
     enabled = nil,
 })
   
@@ -18,15 +20,27 @@ module.enable = function(self)
     }
 
     local npcs = {
+        --enUS
         "Tansy Sparkpen",
         "Fara Boltbreaker",
         "Shellcoin Promoter",
+
+        --ruRU
+        "Зазывала ярмарки Новолуния", --Darkmoon Faire
+        "Томас Миллер", --SW
+        "Уильям", --SW
+        "Донна", --SW
+        "Жюстина Демалье", --SW
+        "Мерлис Малаган", --SW
+        "Лиана Пирс", --SW
+        "Сюзанна", --SW
+        "Джейни Аншип", --SW
     }
 
     local blocks = {
         { "shellcoin", "invest" },
         { "shells", "trade" },
-        { "shells", "money" },    
+        { "shells", "money" },
     }
 
     local prepare = function(msg)

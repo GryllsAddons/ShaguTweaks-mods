@@ -1,6 +1,8 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Improved Castbar",
-    description = "Adds a spell icon and remaining cast time to the cast bar.",
+    title = T["Improved Castbar"],
+    description = T["Adds a spell icon and remaining cast time to the cast bar."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     enabled = nil,
 })
@@ -71,7 +73,7 @@ module.enable = function(self)
             cur = cur < 0 and 0 or cur
 
             local rem = max - cur
-            rem = string.format("%.1fs", rem)
+            rem = string.format("%.1f"..T["s"], rem)
 
             castbar.spellText:SetText(cast)
             castbar.timerText:SetText(rem)
@@ -81,7 +83,7 @@ module.enable = function(self)
                 castbar.texture.icon:Show()
             else
                 castbar.texture.icon:Hide()
-            end            
+            end
         else
             if ( alpha == 0 ) then
                 castbar:Hide()

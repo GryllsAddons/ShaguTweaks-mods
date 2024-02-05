@@ -1,15 +1,16 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "What Happened to Me?",
-    description = "Creates a 'What Happened to Me?' style chat tab.",
+    title = T["What Happened to Me?"],
+    description = T["Creates a 'What Happened to Me?' style chat tab."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Social & Chat",
+    category = T["Social & Chat"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
-    local tabname = "What Happened to Me?"
+    local tabname = T["What Happened to Me?"]
     -- Credit to @ericschn for the idea
     local function Create(frame)
         FCF_DockFrame(frame)
@@ -43,7 +44,7 @@ module.enable = function(self)
             "SPELL_PERIODIC_SELF_DAMAGE", -- when you are debuffed, disarmed, silenced etc
             "SPELL_PERIODIC_SELF_BUFFS", -- when a buff is cast on you
         }
-        
+
         for _,group in pairs(combat) do
             ChatFrame_AddMessageGroup(frame, group)
         end
@@ -62,7 +63,7 @@ module.enable = function(self)
                 free = _G["ChatFrame"..i]
             end
             if tabname == name then
-                found = true                
+                found = true
                 break
             end
         end
@@ -72,7 +73,7 @@ module.enable = function(self)
         end
     end
 
-    local events = CreateFrame("Frame", nil, UIParent)	
+    local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()

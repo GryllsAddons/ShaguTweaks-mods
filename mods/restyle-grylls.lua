@@ -1,6 +1,8 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Grylls Restyle",
-    description = "Restyles supported addons and UI elements.",
+    title = T["Grylls Restyle"],
+    description = T["Restyles supported addons and UI elements."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -13,7 +15,7 @@ module.enable = function(self)
     local function lock(frame)
         frame.ClearAllPoints = function() end
         frame.SetAllPoints = function() end
-        frame.SetPoint = function() end         
+        frame.SetPoint = function() end
     end
 
     local addonpath = "Interface\\AddOns\\ShaguTweaks-mods"
@@ -27,7 +29,7 @@ module.enable = function(self)
         offset = offset or 0
         x = x or 0
         y = y or 0
-            
+
         for i = 1, 8 do
             local section = sections[i]
             local x = f:CreateTexture(nil, 'BORDER', nil, 1)
@@ -114,8 +116,8 @@ module.enable = function(self)
             SP_ST_FrameOFF:SetPoint("TOP", "SP_ST_Frame", "BOTTOM", 0, -2);
 
             SP_ST_FrameTime:ClearAllPoints()
-            SP_ST_FrameTime2:ClearAllPoints()            
-            
+            SP_ST_FrameTime2:ClearAllPoints()
+
             SP_ST_FrameTime:SetPoint("CENTER", "SP_ST_Frame", "CENTER")
             SP_ST_FrameTime2:SetPoint("CENTER", "SP_ST_FrameOFF", "CENTER")
             -- set time
@@ -138,8 +140,8 @@ module.enable = function(self)
             SP_ST_offtimer:Hide()
             -- hide oh
             -- SP_ST_FrameOFF:Hide()
-            -- SP_ST_FrameTime2:Hide()       
-            
+            -- SP_ST_FrameTime2:Hide()
+
             local i = 2
             skin(SP_ST_Frame, i)
             skinColor(SP_ST_Frame, 0.4, 0.4, 0.4)
@@ -156,28 +158,28 @@ module.enable = function(self)
             })
         end
 
-        -- MinimapButtonBag    
+        -- MinimapButtonBag
         if MBB_MinimapButtonFrame then
             -- reposition to the bottom left corner of the minimap
             -- show the button OnEnter and hide when OnLeave
-            
+
             if IsAddOnLoaded("MinimapButtonBag-TurtleWoW") then
                 MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10_green")
             else
                 MBB_MinimapButtonFrame_Texture:SetTexture("Interface\\Icons\\Inv_misc_bag_10")
-            end            
+            end
 
             MBB_MinimapButtonFrame:ClearAllPoints()
             MBB_MinimapButtonFrame:SetPoint("CENTER", Minimap, "BOTTOMLEFT", 0, 0)
-            lock(MBB_MinimapButtonFrame)           
-            
+            lock(MBB_MinimapButtonFrame)
+
             local function showButton(button)
                 button:SetAlpha(1)
             end
 
             local function hideButton(button)
-                button:SetAlpha(0)  
-            end            
+                button:SetAlpha(0)
+            end
 
             hideButton(MBB_MinimapButtonFrame)
             local hide = CreateFrame("BUTTON", nil, MBB_MinimapButtonFrame)
@@ -189,7 +191,7 @@ module.enable = function(self)
 
             hide:SetScript("OnLeave", function()
                 hide.timer = GetTime() + 6
-                hide:SetScript("OnUpdate", function()            
+                hide:SetScript("OnUpdate", function()
                     if (GetTime() > hide.timer) then
                         MBB_HideButtons() -- MBB function to hide buttons
                         hideButton(MBB_MinimapButtonFrame)
@@ -197,7 +199,7 @@ module.enable = function(self)
                     end
                 end)
             end)
-            
+
             hide:RegisterForClicks("LeftButtonDown","RightButtonDown")
             hide:SetScript("OnClick", function()
                 MBB_OnClick(arg1)
@@ -208,19 +210,19 @@ module.enable = function(self)
         if MinimapButtonFrame then
             -- reposition to the bottom left corner of the minimap
             -- show the button OnEnter and hide when OnLeave
-            
+
             MBFButtonIcon:SetTexture("Interface\\Icons\\Inv_misc_bag_10")
 
             MBFButton:ClearAllPoints()
             MBFButton:SetPoint("CENTER", Minimap, "BOTTOMLEFT", 0, 0)
-            lock(MBFButton)           
-            
+            lock(MBFButton)
+
             local function showButton(button)
                 button:SetAlpha(1)
             end
 
             local function hideButton(button)
-                button:SetAlpha(0)  
+                button:SetAlpha(0)
             end
 
             hideButton(MBFButton)
@@ -233,7 +235,7 @@ module.enable = function(self)
 
             hide:SetScript("OnLeave", function()
                 hide.timer = GetTime() + 2
-                hide:SetScript("OnUpdate", function()            
+                hide:SetScript("OnUpdate", function()
                     if (GetTime() > hide.timer) then
                         -- MBB_HideButtons() -- MBB function to hide buttons
                         hideButton(MBFButton)
@@ -241,7 +243,7 @@ module.enable = function(self)
                     end
                 end)
             end)
-            
+
             hide:RegisterForClicks("LeftButtonDown","RightButtonDown")
             hide:SetScript("OnClick", function()
                 MBFC_Visible(1)
@@ -276,7 +278,7 @@ module.enable = function(self)
                 v:SetFont(font, size, outline)
                 v:ClearAllPoints()
                 v:SetPoint("CENTER", b, "BOTTOM", 0, yoffset)
-                v:SetParent(f)            
+                v:SetParent(f)
 
                 local f = CreateFrame("Frame", nil, b)
                 f:SetScript("OnUpdate", function()
@@ -296,7 +298,7 @@ module.enable = function(self)
                 v:SetFont(font, size, outline)
                 v:ClearAllPoints()
                 v:SetPoint("CENTER", b, "BOTTOM", 0, yoffset)
-                v:SetParent(f)            
+                v:SetParent(f)
 
                 local f = CreateFrame("Frame", nil, b)
                 f:SetScript("OnUpdate", function()
@@ -319,7 +321,7 @@ module.enable = function(self)
 
     function restyle:buttons()
         local function style(button)
-            if not button then return end        
+            if not button then return end
 
             local hotkey = _G[button:GetName().."HotKey"]
             if hotkey then
@@ -327,16 +329,16 @@ module.enable = function(self)
                 hotkey:SetFont(font, size, outline)
             end
 
-            local macro = _G[button:GetName().."Name"]  
+            local macro = _G[button:GetName().."Name"]
             if macro then
                 local font, size, outline = "Fonts\\frizqt__.TTF", 9, "OUTLINE"
-                macro:SetFont(font, size, outline)   
+                macro:SetFont(font, size, outline)
             end
 
             local count = _G[button:GetName()..'Count']
             if count then
                 local font, size, outline = "Fonts\\frizqt__.TTF", 14, "OUTLINE"
-                count:SetFont(font, size, outline)   
+                count:SetFont(font, size, outline)
             end
 
             if not ShaguTweaks.DarkMode then
@@ -344,7 +346,7 @@ module.enable = function(self)
                 skinColor(button, .7, .7, .7)
             end
         end
-        
+
         for i = 1, 24 do
             local button = _G['BonusActionButton'..i]
             if button then
@@ -363,8 +365,8 @@ module.enable = function(self)
                 }
             ) do
                 style(button)
-            end        
-        end 
+            end
+        end
 
         for i = 1, 10 do
             for _, button in pairs(
@@ -394,8 +396,8 @@ module.enable = function(self)
 
     function restyle:minimap()
         -- Move minimap elements
-        local styleFrame = CreateFrame("Frame", nil, MinimapCluster)        
-        styleFrame:SetFrameStrata("HIGH")    
+        local styleFrame = CreateFrame("Frame", nil, MinimapCluster)
+        styleFrame:SetFrameStrata("HIGH")
         styleFrame:SetPoint("CENTER", Minimap, "BOTTOM")
         styleFrame:SetHeight(16)
         styleFrame:SetWidth(Minimap:GetWidth())
@@ -404,7 +406,7 @@ module.enable = function(self)
         MinimapZoneTextButton:ClearAllPoints()
         MinimapZoneTextButton:SetPoint("TOP", Minimap, 0, 15)
         MinimapZoneText:SetFont("Fonts\\skurri.TTF", 15, "OUTLINE")
-        MinimapZoneText:SetDrawLayer("OVERLAY", 7)   
+        MinimapZoneText:SetDrawLayer("OVERLAY", 7)
         MinimapZoneText:SetParent(styleFrame)
         -- MinimapZoneText:Hide()
 
@@ -450,7 +452,7 @@ module.enable = function(self)
             -- PVP
             MiniMapBattlefieldFrame:ClearAllPoints()
             MiniMapBattlefieldFrame:SetPoint("BOTTOMLEFT", Minimap, "BOTTOMLEFT", 2, 8)
-        end        
+        end
     end
 
     function restyle:unitnames()
@@ -535,24 +537,24 @@ module.enable = function(self)
             _G["ChatFrame" .. i .. "BottomButton"]:Hide()
             _G["ChatFrameMenuButton"]:Hide()
             _G["ChatFrameMenuButton"].Show = function() return end
-    
+
             -- hide BottomButton on click
             _G["ChatFrame" .. i .. "BottomButton"]:SetScript("OnClick", function()
                 this:GetParent():ScrollToBottom()
                 this:Hide()
             end)
-    
+
         end
-    
+
         -- Hook FCF_DockUpdate
         if not HookFCF_DockUpdate then
             local HookFCF_DockUpdate = FCF_DockUpdate
-            function _G.FCF_DockUpdate() 
+            function _G.FCF_DockUpdate()
                 for i=1, NUM_CHAT_WINDOWS do
                     if not _G["ChatFrame" .. i].scroll then
                         _G["ChatFrame" .. i]:ScrollToBottom()
                         _G["ChatFrame" .. i .. "BottomButton"]:Hide()
-                    end             
+                    end
                 end
                 HookFCF_DockUpdate()
             end
@@ -563,11 +565,11 @@ module.enable = function(self)
         if ShaguPlates then return end
 
         local font, size, outline = "Fonts\\frizqt__.TTF", 16, "OUTLINE"
-        table.insert(ShaguTweaks.libnameplate.OnUpdate, function()            
+        table.insert(ShaguTweaks.libnameplate.OnUpdate, function()
             this.name:SetFont(font, size, outline)
             this.level:SetFont(font, size, outline)
         end)
-    end    
+    end
 
     function restyle:debufftimer()
         if not pfCooldownFrame then return end
@@ -576,7 +578,7 @@ module.enable = function(self)
         TargetDebuffButton_Update = function()
             HookTargetDebuffButton_Update()
 
-            for i=1, MAX_TARGET_DEBUFFS do                
+            for i=1, MAX_TARGET_DEBUFFS do
                 local button = _G["TargetFrameDebuff"..i]
                 local cooldown = button.cd
                 if not cooldown then return end
@@ -594,17 +596,17 @@ module.enable = function(self)
         -- if not reduced action bar end
         if MainMenuExpBar:GetWidth() > 512 then return end
 
-        local move = { 
-            MainMenuBar, MultiBarBottomLeft, MultiBarBottomRight, 
+        local move = {
+            MainMenuBar, MultiBarBottomLeft, MultiBarBottomRight,
             MainMenuExpBar, ReputationWatchBar,
             MainMenuBarLeftEndCap, MainMenuBarRightEndCap
         }
 
-        for id, frame in pairs(move) do 
+        for id, frame in pairs(move) do
             frame:ClearAllPoints()
         end
 
-        local hide = { 
+        local hide = {
             MainMenuBarTexture0, MainMenuBarTexture1,
             MainMenuXPBarTexture0, MainMenuXPBarTexture1,
             ReputationXPBarTexture0, ReputationXPBarTexture1, ReputationXPBarTexture2, ReputationXPBarTexture3,
@@ -612,9 +614,9 @@ module.enable = function(self)
             BonusActionBarTexture0, BonusActionBarTexture1
         }
 
-        for id, frame in pairs(hide) do 
+        for id, frame in pairs(hide) do
             frame:Hide()
-            frame.Show = function() end         
+            frame.Show = function() end
         end
 
         -- cast bar
@@ -623,7 +625,7 @@ module.enable = function(self)
         lock(CastingBarFrame)
 
         -- action bar (bottom)
-        MainMenuBar:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 45)        
+        MainMenuBar:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 45)
 
         -- MultiBarBottomLeft (middle)
         MultiBarBottomLeft:SetPoint("BOTTOM", MainMenuBar, "TOP", 2, -6)
@@ -634,16 +636,16 @@ module.enable = function(self)
         -- experience bar
         MainMenuExpBar:SetPoint("TOPLEFT", ActionButton1, "BOTTOMLEFT", -5, -10)
         MainMenuExpBar:SetPoint("TOPRIGHT", ActionButton12, "BOTTOMRIGHT", 5, -10)
-        
+
         -- reputation bar
-        ReputationWatchBar:SetPoint("TOP", MainMenuExpBar, "BOTTOM", 0, -6)  
+        ReputationWatchBar:SetPoint("TOP", MainMenuExpBar, "BOTTOM", 0, -6)
 
         -- gryphon textures
         local x, y = 22, 8
         if ShaguTweaks.dfgryphons then
             x, y = 33, 30
         elseif ShaguTweaks.dfwyverns then
-            x, y = 33, 22      
+            x, y = 33, 22
         end
         local c = .7
         MainMenuBarLeftEndCap:SetVertexColor(c,c,c)
@@ -652,7 +654,7 @@ module.enable = function(self)
         MainMenuBarRightEndCap:SetPoint("BOTTOMLEFT", ActionButton12, "BOTTOMRIGHT", -x, -y)
 
         -- action bar empty buttons
-        for i = 1, 12 do            
+        for i = 1, 12 do
             for _, button in pairs(
                     {
                     _G['ActionButton'..i],
@@ -664,17 +666,17 @@ module.enable = function(self)
                 t:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", i, -i-1)
                 t:SetTexture("Interface\\Buttons\\UI-EmptySlot-White")
                 t:SetVertexColor(.5,.5,.5,1)
-            end        
+            end
         end
-        
+
         skin(MainMenuExpBar, -1)
         skinColor(MainMenuExpBar, .7, .7, .7)
 
         skin(ReputationWatchBar, 1, 0, 1)
-        skinColor(ReputationWatchBar, .7, .7, .7)  
+        skinColor(ReputationWatchBar, .7, .7, .7)
 
         -- prevent bars from moving
-        for id, frame in pairs(move) do 
+        for id, frame in pairs(move) do
             lock(frame)
         end
     end
@@ -703,12 +705,12 @@ module.enable = function(self)
             STImprovedCastbar.timerText:SetPoint("RIGHT", CastingBarFrame, "RIGHT", -5, 2)
         end
     end
-    
+
     restyle:RegisterEvent("PLAYER_ENTERING_WORLD")
     restyle:SetScript("OnEvent", function()
         if not this.loaded then
             this.loaded = true
-            restyle:addons()           
+            restyle:addons()
             restyle:buffs()
             restyle:targetbuffs()
             restyle:buttons()
@@ -720,6 +722,6 @@ module.enable = function(self)
             restyle:debufftimer()
             restyle:reducedactionbar()
             restyle:castbar()
-        end           
+        end
     end)
 end

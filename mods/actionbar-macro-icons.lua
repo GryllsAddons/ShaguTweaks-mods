@@ -1,11 +1,12 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 local libspell = ShaguTweaks.libspell
 
 local module = ShaguTweaks:register({
-    title = "Macro Icons",
-    description = "Finds spell icons in casting macros and shows them on the action button.",
+    title = T["Macro Icons"],
+    description = T["Finds spell icons in casting macros and shows them on the action button."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
+    category = T["Action Bar"],
     enabled = nil,
 })
 
@@ -99,13 +100,13 @@ module.enable = function(self)
               end
 
               if not texture then break end
-              if texture ~= icon:GetTexture() then            
+              if texture ~= icon:GetTexture() then
                 icon:SetTexture(texture)
               end 
             end
           end
         end
-      end      
+      end
     end
   end
 
@@ -142,7 +143,7 @@ module.enable = function(self)
     ButtonMacroScan(MultiBarBottomLeft,61)
   end
 
-  local events = CreateFrame("Frame", nil, UIParent)	
+  local events = CreateFrame("Frame", nil, UIParent)
   events:RegisterEvent("PLAYER_ENTERING_WORLD")
   events:RegisterEvent("ACTIONBAR_SLOT_CHANGED")
   events:RegisterEvent("ACTIONBAR_PAGE_CHANGED")

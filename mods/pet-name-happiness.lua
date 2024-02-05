@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-  title = "Pet Name Happiness",
-  description = "Colors Hunter pet name by happiness level.",
+  title = T["Pet Name Happiness"],
+  description = T["Colors Hunter pet name by happiness level."],
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
-  category = "Unit Frames",
+  category = T["Unit Frames"],
   enabled = nil,
 })
 

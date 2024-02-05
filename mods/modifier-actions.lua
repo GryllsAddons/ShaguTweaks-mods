@@ -1,8 +1,9 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Modifier Actions",
-    description = "Use Ctrl (C), Alt (A) & Shift (S) for in game actions. S: Sell & Repair, AC: Initiate/Accept Trade, Confirm/Accept Resurrect/Quest/Summon/Invite/Battleground, CS: Follow, AS: Inspect, CAS: Logout.",
+    title = T["Modifier Actions"],
+    description = T["Use Ctrl (C), Alt (A) & Shift (S) for in game actions. S: Sell & Repair, AC: Initiate/Accept Trade, Confirm/Accept Resurrect/Quest/Summon/Invite/Battleground, CS: Follow, AS: Inspect, CAS: Logout."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -79,9 +80,9 @@ module.enable = function(self)
             end
             -- repair
             local repairAllCost, canRepair = GetRepairAllCost()
-	        if canRepair and (GetMoney() > repairAllCost) then
+            if canRepair and (GetMoney() > repairAllCost) then
                 RepairAllItems()
-                DEFAULT_CHAT_FRAME:AddMessage("Your items were repaired for " .. CreateGoldString(repairAllCost))
+                DEFAULT_CHAT_FRAME:AddMessage(T["Your items were repaired for "] .. CreateGoldString(repairAllCost))
             end
         end
     end
@@ -97,7 +98,7 @@ module.enable = function(self)
 
         autovendor:SetScript("OnHide", function()
             if this.count > 0 then
-                DEFAULT_CHAT_FRAME:AddMessage("Your grey items were sold for " .. CreateGoldString(this.price))
+                DEFAULT_CHAT_FRAME:AddMessage(T["Your grey items were sold for "] .. CreateGoldString(this.price))
             end
         end)
 
@@ -165,26 +166,26 @@ module.enable = function(self)
             elseif UnitIsDead("player") then
                 UseSoulstone()
                 RepopMe()
-            end            
+            end
         end
     end
 
     function actions:Summon()
         if actions.summon then
             if GetSummonConfirmSummoner() and (not UnitAffectingCombat("player")) then
-                ConfirmSummon()                
+                ConfirmSummon()
             end
 
             if (not GetSummonConfirmSummoner()) then
                 actions.summon = nil
-                StaticPopup_Hide("CONFIRM_SUMMON")                
+                StaticPopup_Hide("CONFIRM_SUMMON")
             end
         end
     end
 
     function actions:Group()
         if actions.group then
-            AcceptGroup()       
+            AcceptGroup()
         end
     end
 
@@ -221,13 +222,13 @@ module.enable = function(self)
             local title, _, _, _, _, complete = GetQuestLogTitle(i)
             if (title == quest) and (complete == 1) then
                 return true
-            end            
+            end
         end
         return false
     end
 
     actions.rewardmsgtime = 0
-    function actions:Quest()        
+    function actions:Quest()
         if actions.quest then
             if QuestFrameGreetingPanel:IsShown() then
                 -- check for active quests
@@ -260,7 +261,7 @@ module.enable = function(self)
                             break
                         end
                     end
-                end                
+                end
                 -- check for available quests
                 for i = 1, NUMGOSSIPBUTTONS do
                     local titleButton = _G["GossipTitleButton" .. i]
@@ -268,12 +269,12 @@ module.enable = function(self)
                         SelectGossipAvailableQuest(titleButton:GetID())
                         break
                     end
-                end                
+                end
             elseif QuestFrameAcceptButton:IsVisible() and QuestFrameAcceptButton:IsEnabled() then
                 AcceptQuest()
             elseif QuestFrameCompleteButton:IsVisible() and QuestFrameCompleteButton:IsEnabled() then
                 -- proceed to rewards
-                CompleteQuest()        
+                CompleteQuest()
             elseif QuestFrameCompleteQuestButton:IsVisible() and QuestFrameCompleteQuestButton:IsEnabled() then
                 -- get the reward unless multiple rewards
                 if (QuestFrameRewardPanel.itemChoice == 0 and GetNumQuestChoices() > 0) then
@@ -312,7 +313,7 @@ module.enable = function(self)
             if action == "trade" or action == "duel" then
                 action = action.." with"
             end
-            actions:Error("Unable to "..action.." "..GetUnitName(unit))
+            actions:Error(T["Unable to "]..action.." "..GetUnitName(unit))
             return false
         end
         
@@ -320,7 +321,7 @@ module.enable = function(self)
         if inRange then
             return true
         else
-            actions:Error(GetUnitName(unit).." is too far away to "..action)
+            actions:Error(GetUnitName(unit)..T[" is too far away to "]..action)
             return false
         end
     end
@@ -377,7 +378,7 @@ module.enable = function(self)
                 local status, mapName, instanceID = GetBattlefieldStatus(i)
                 if (status == "none") then
                     actions.battleground = nil
-                    break                
+                    break
                 elseif (status == "queued")  then
                     actions.battleground = true
                     break
@@ -388,7 +389,7 @@ module.enable = function(self)
                 end
             end
         elseif (event == "GOSSIP_SHOW" or event == "QUEST_GREETING" or event == "QUEST_DETAIL" or event == "QUEST_PROGRESS" or event == "QUEST_COMPLETE") then
-            actions.quest = true     
+            actions.quest = true
             actions:SetTime()
         elseif (event == "GOSSIP_CLOSED" or event == "QUEST_FINISHED") then
             actions.quest = nil
@@ -398,18 +399,18 @@ module.enable = function(self)
     end)
     
     actions:SetScript("OnUpdate", function()
-        if GetTime() < actions.time then return end       
+        if GetTime() < actions.time then return end
         actions.shift = IsShiftKeyDown()
 	    actions.ctrl = IsControlKeyDown()
-	    actions.alt = IsAltKeyDown()        
+	    actions.alt = IsAltKeyDown()
 
         if (actions.ctrl and actions.alt and actions.shift) then
             Logout()
-        elseif (actions.ctrl and actions.alt) then            
+        elseif (actions.ctrl and actions.alt) then
             actions:Trade()
             actions:Resurrect()
             actions:Quest()
-            actions:QuestConfirm()           
+            actions:QuestConfirm()
             actions:Summon()
             actions:Group()
             actions:Battleground()
@@ -417,9 +418,9 @@ module.enable = function(self)
             actions:Follow()
         elseif (actions.alt and actions.shift) then
             actions:Inspect()
-        -- elseif (actions.alt) then            
+        -- elseif (actions.alt) then
         elseif (actions.shift) then
-            actions:Merchant()            
+            actions:Merchant()
         end
 
         actions:SetTime()

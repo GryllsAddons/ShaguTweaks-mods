@@ -1,20 +1,22 @@
+local L, T = ShaguTweaks.L, ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Loot Monitor",
-    description = "Display recent loot text in a central scrolling window. Hold Alt or Alt+Shift to scroll. Hold Alt+Ctrl while scrolling to filter by quality.",
+    title = T["Loot Monitor"],
+    description = T["Display recent loot text in a central scrolling window. Hold Alt or Alt+Shift to scroll. Hold Alt+Ctrl while scrolling to filter by quality."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
 })
-  
-module.enable = function(self)    
+
+module.enable = function(self)
     local width, height = 300, 10
-    
+
     local LootMonitor = CreateFrame("Frame")
     LootMonitor:SetPoint("TOP", UIErrorsFrame, "BOTTOM", 85, 0)
     LootMonitor:SetHeight(height)
     LootMonitor:SetWidth(width)
 
-    LootMonitor.info = CreateFrame("Frame", nil, LootMonitor)    
+    LootMonitor.info = CreateFrame("Frame", nil, LootMonitor)
     LootMonitor.info:SetHeight(height)
     LootMonitor.info:SetWidth(width)
 
@@ -36,20 +38,20 @@ module.enable = function(self)
     end
 
     LootMonitor.info:SetPoint("TOP", LootMonitor[1], "BOTTOM")
-    LootMonitor.text:SetPoint("LEFT", LootMonitor.info, "LEFT")    
-    
+    LootMonitor.text:SetPoint("LEFT", LootMonitor.info, "LEFT")
+
     -- https://wowwiki-archive.fandom.com/wiki/Talk:WoW_constants
     local LOOT_ITEM_SELF = string.gsub(LOOT_ITEM_SELF, "%%s|Hitem:%%d:%%d:%%d:%%d|h%[%%s%]|h%%s", "%%s")
     -- "You receive loot: %s."
     local LOOT_ITEM = string.gsub(LOOT_ITEM, "%%s|Hitem:%%d:%%d:%%d:%%d|h%[%%s%]|h%%s", "%%s")
     -- "%s receives loot: %s."
-    
+
     LootMonitor.cache = {}
-    LootMonitor.cindex = 0  
+    LootMonitor.cindex = 0
     LootMonitor.sindex = LootMonitor.lines
     LootMonitor.timedelay = 10
     LootMonitor.itemQuality = -1
-    
+
     local GetUnitData = ShaguTweaks.GetUnitData
     local strsplit = ShaguTweaks.strsplit
     local _, pclass = UnitClass("player")
@@ -60,12 +62,12 @@ module.enable = function(self)
       local cachetime = GetTime()
 
       local item = ShaguTweaks.cmatch(arg1, LOOT_ITEM_SELF)
-      if item then        
+      if item then
         local player = "You"
         -- DEBUG:
         -- DEFAULT_CHAT_FRAME:AddMessage("LOOT_ITEM_SELF")
         -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player)..", item = "..tostring(item)..", class = "..tostring(class)..", cachetime = "..cachetime)
-        LootMonitor:AddCache(item, player, pclass, cachetime)        
+        LootMonitor:AddCache(item, player, pclass, cachetime)
         return
       end
 
@@ -77,26 +79,26 @@ module.enable = function(self)
         -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player)..", item = "..tostring(item)..", class = "..tostring(class)..", cachetime = "..cachetime)
         LootMonitor:AddCache(item, player, class, cachetime)
         return
-      end      
+      end
     end)
 
-    function LootMonitor:AddCache(hyperlink, player, class, cachetime)      
+    function LootMonitor:AddCache(hyperlink, player, class, cachetime)
       local _, _, itemLink = string.find(hyperlink, "(item:%d+:%d+:%d+:%d+)")
       local _, _, itemQuality = GetItemInfo(itemLink)
       itemQuality = tonumber(itemQuality)
-      
+
       LootMonitor.cindex = LootMonitor.cindex + 1
       table.insert(LootMonitor.cache, LootMonitor.cindex, hyperlink..","..itemQuality..","..player..","..class..","..cachetime)
-      LootMonitor:UpdateLoot(LootMonitor.cindex)      
+      LootMonitor:UpdateLoot(LootMonitor.cindex)
 
       -- DEBUG:
       -- DEFAULT_CHAT_FRAME:AddMessage("LootMonitor:AddCache")
-      -- DEFAULT_CHAT_FRAME:AddMessage("LootMonitor.cindex = "..LootMonitor.cindex)  
+      -- DEFAULT_CHAT_FRAME:AddMessage("LootMonitor.cindex = "..LootMonitor.cindex)
       -- DEFAULT_CHAT_FRAME:AddMessage("hyperlink = "..tostring(hyperlink))
       -- DEFAULT_CHAT_FRAME:AddMessage("itemQuality = "..tostring(itemQuality))
       -- DEFAULT_CHAT_FRAME:AddMessage("player = "..tostring(player))
       -- DEFAULT_CHAT_FRAME:AddMessage("class = "..tostring(class))
-      -- DEFAULT_CHAT_FRAME:AddMessage("cachetime = "..tostring(cachetime))  
+      -- DEFAULT_CHAT_FRAME:AddMessage("cachetime = "..tostring(cachetime))
     end
 
     function LootMonitor:GetLoot(i)
@@ -184,20 +186,20 @@ module.enable = function(self)
       -- (https://wowpedia.fandom.com/wiki/Enum.ItemQuality)
       if q == -1 then
         return "All loot"
-      elseif q == 0 then        
+      elseif q == 0 then
         return "Poor loot"
-      elseif q == 1 then        
+      elseif q == 1 then
         return "Common loot"
-      elseif q == 2 then        
+      elseif q == 2 then
         return "Uncommon loot"
-      elseif q == 3 then        
+      elseif q == 3 then
         return "Rare loot"
-      elseif q == 4 then        
+      elseif q == 4 then
         return "Epic loot"
-      elseif q == 5 then        	
+      elseif q == 5 then
         return "Legendary loot"
       end
-    end    
+    end
 
     -- scrolling
     local function incrementIndex()
@@ -260,15 +262,15 @@ module.enable = function(self)
       end
     end
 
-    
+
     local function LootMonitorOnMouseWheel()
       if IsAltKeyDown() then
         if arg1 > 0 then -- scroll up
           if IsShiftKeyDown() then
-            firstIndex()          
+            firstIndex()
           elseif IsControlKeyDown() then
-            incrementQuality()     
-          else            
+            incrementQuality()
+          else
             decrementIndex()
           end
         elseif arg1 < 0 then -- scroll down
@@ -276,7 +278,7 @@ module.enable = function(self)
             lastIndex()
           elseif IsControlKeyDown() then
             decrementQuality()
-          else           
+          else
               incrementIndex()
           end
         end

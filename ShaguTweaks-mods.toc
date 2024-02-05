@@ -2,8 +2,28 @@
 ## Title: |cffffcc00Shagu|cffffffffTweaks-mods
 ## Author: Grylls
 ## Notes: Adds additional vanilla 1.12 custom mods to ShaguTweaks.
+## Notes-ruRU: Добавляет дополнительные пользовательские моды Vanilla 1.12 в ShaguTweaks.
 ## Version: GIT
 ## Dependencies: ShaguTweaks
+
+# locales
+#locales\locales_deDE.lua
+#locales\locales_enUS.lua
+#locales\locales_esES.lua
+#locales\locales_frFR.lua
+#locales\locales_koKR.lua
+#locales\locales_ruRU.lua
+#locales\locales_zhCN.lua
+
+# translations
+#locales\translations_deDE.lua
+locales\translations_enUS.lua
+#locales\translations_esES.lua
+#locales\translations_frFR.lua
+#locales\translations_koKR.lua
+locales\translations_ruRU.lua
+#locales\translations_zhCN.lua
+#locales\translations_zhTW.lua
 
 # ShaguTweaks-Mods
 mods\accept-invites.lua

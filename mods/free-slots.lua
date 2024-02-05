@@ -1,15 +1,16 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local L, T = ShaguTweaks.L, ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Free Slots Count",
-    description = "Adds a free slots count to the backpack button. The top right count shows free class bag slots, the bottom left count shows free reagent bag slots and the bottom right count shows the remaining free bag slots.",
+    title = T["Free Slots Count"],
+    description = T["Adds a free slots count to the backpack button. The top right count shows free class bag slots, the bottom left count shows free reagent bag slots and the bottom right count shows the remaining free bag slots."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Tooltip & Items",
+    category = T["Tooltip & Items"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
-    local button = MainMenuBarBackpackButton   
+    local button = MainMenuBarBackpackButton
 
     button.class = button:CreateFontString("Status", "LOW", "GameFontNormal")
     button.class:SetFont(STANDARD_TEXT_FONT, 14, "OUTLINE")
@@ -19,7 +20,7 @@ module.enable = function(self)
 
     local _, class = UnitClass("player")
     local class = RAID_CLASS_COLORS[class] or { r = .5, g = .5, b = .5, a = 1 }
-    button.class:SetTextColor(class.r, class.g, class.b)    
+    button.class:SetTextColor(class.r, class.g, class.b)
 
     button.reagent = button:CreateFontString("Status", "LOW", "GameFontNormal")
     button.reagent:SetFont(STANDARD_TEXT_FONT, 14, "OUTLINE")
@@ -32,7 +33,7 @@ module.enable = function(self)
     button.count:SetFont(STANDARD_TEXT_FONT, 14, "OUTLINE")
     button.count:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", -2, 4)
     button.count:SetJustifyH("RIGHT")
-    button.count:SetFontObject(GameFontWhite)    
+    button.count:SetFontObject(GameFontWhite)
 
     -- class
     local soul = { "Core Felcloth Bag", "D'Sak's Small bag", "Felcloth Bag", "Box of Souls", "Small Soul Pouch", "Soul Pouch" }
@@ -54,7 +55,7 @@ module.enable = function(self)
             end
             return false
         end
-           
+
         local found
         local free = 0
         for i = 0, 4 do
@@ -63,17 +64,17 @@ module.enable = function(self)
                 found = true
                 for slot = 1, GetContainerNumSlots(i) do
                     local link = GetContainerItemLink(i, slot)
-                    if not (link) then 
-                        free = free + 1 
+                    if not (link) then
+                        free = free + 1
                     end
                 end
             end
         end
 
         freeClass = free
-        
+
         if found then
-            button.class:SetText(free)            
+            button.class:SetText(free)
         else
             button.class:SetText("")
         end
@@ -89,26 +90,26 @@ module.enable = function(self)
             end
             return false
         end
-           
+
         local found
-        local free = 0        
+        local free = 0
         for i = 0, 4 do
             local name = GetBagName(i)
             if name and (findName(name, herb) or findName(name, ench)) then
                 found = true
                 for slot = 1, GetContainerNumSlots(i) do
                     local link = GetContainerItemLink(i, slot)
-                    if not (link) then 
-                        free = free + 1 
+                    if not (link) then
+                        free = free + 1
                     end
                 end
             end
         end
 
         freeReagent = free
-        
+
         if found then
-            button.reagent:SetText(free)            
+            button.reagent:SetText(free)
         else
             button.reagent:SetText("")
         end
@@ -121,14 +122,14 @@ module.enable = function(self)
         for i = 0, 4 do
             for slot = 1, GetContainerNumSlots(i) do
                 local link = GetContainerItemLink(i, slot)
-				if not (link) then 
-					free = free + 1 
+				if not (link) then
+					free = free + 1
 				end
             end
         end
         button.count:SetText(free-freeClass-freeReagent)
     end
-    freeSlots() 
+    freeSlots()
 
     local events = CreateFrame("Frame")
     events:RegisterEvent("BAG_UPDATE")
@@ -136,6 +137,6 @@ module.enable = function(self)
     events:SetScript("OnEvent", function()
         classSlots()
         reagentSlots()
-        freeSlots()        
+        freeSlots()
     end)
 end

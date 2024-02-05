@@ -1,19 +1,20 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Bag Search",
-    description = "Adds a search box to the backpack for searching your bags, keyring and bank. Press Esc or Tab to finish searching.",
+    title = T["Bag Search"],
+    description = T["Adds a search box to the backpack for searching your bags, keyring and bank. Press Esc or Tab to finish searching."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Tooltip & Items",
+    category = T["Tooltip & Items"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
     local search = CreateFrame("Frame", nil, ContainerFrame1)
 	search:SetPoint("BOTTOMLEFT", ContainerFrame1Item15, "TOPLEFT", 3, 2)
     search:SetPoint("BOTTOMRIGHT", ContainerFrame1Item13, "TOP", 1, 2)
     search:SetHeight(20)
-    	
+
     search.text = search:CreateFontString(nil, "HIGH", "GameTooltipTextSmall")
 	local font, size = search.text:GetFont()
 
@@ -22,21 +23,21 @@ module.enable = function(self)
 	search.edit:SetAllPoints(search)
     search.edit:SetFont(font, size, "OUTLINE")
     search.edit:SetAutoFocus(false)
-    search.edit:SetText("Search")
+    search.edit:SetText(T["Search"])
     search.edit:SetTextColor(1,1,1,1)
-    
+
     search.button = CreateFrame("Button", nil, search.edit)
-    search.button:EnableMouse(true) 
+    search.button:EnableMouse(true)
     search.button:SetWidth(28)
     search.button:SetHeight(28)
     search.button:SetPoint("LEFT", search.edit, "RIGHT", -4, -1)
-    
+
     search.icon = search.edit:CreateTexture(nil, "OVERLAY")
     search.icon:SetAllPoints(search.button)
     search.icon:SetTexture("Interface\\Buttons\\UI-Panel-MinimizeButton-Disabled")
     search.icon:Hide()
 
-    local function buttons(alpha)            
+    local function buttons(alpha)
         -- bags & keyring
         for i = 1, 12 do
             local frame = _G["ContainerFrame"..i]
@@ -64,7 +65,7 @@ module.enable = function(self)
             end
         end
     end
-        
+
     local function searchBags()
         -- bags & keyring
         for i = 1, 12 do
@@ -83,7 +84,7 @@ module.enable = function(self)
                         end
                     end
                 end
-            end            
+            end
         end
 
         -- bank
@@ -102,8 +103,8 @@ module.enable = function(self)
         end
     end
 
-    local function reset()        
-        search.edit:SetText("Search")
+    local function reset()
+        search.edit:SetText(T["Search"])
         buttons(1)
         search.icon:Hide()
     end
@@ -127,7 +128,7 @@ module.enable = function(self)
     end)
 
     search.edit:SetScript("OnTextChanged", function()
-        if this:GetText() == "Search" then return end        
+        if this:GetText() == T["Search"] then return end
         buttons(.25)
         searchBags()
         if not search.icon:IsVisible() then
@@ -142,5 +143,5 @@ module.enable = function(self)
         else
             search.edit:Hide()
         end
-    end)    
+    end)
 end

@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Loot Cursor",
-    description = "Moves the loot frame under the mouse cursor.",
+    title = T["Loot Cursor"],
+    description = T["Moves the loot frame under the mouse cursor."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Tooltip & Items",
+    category = T["Tooltip & Items"],
     enabled = nil,
 })
 

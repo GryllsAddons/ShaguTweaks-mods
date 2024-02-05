@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-  title = "Unit Frame Low Health",
-  description = "Changes the unitframe healthbar color when at 20% health or lower.",
+  title = T["Unit Frame Low Health"],
+  description = T["Changes the unitframe healthbar color when at 20% health or lower."],
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
-  category = "Unit Frames",
+  category = T["Unit Frames"],
   enabled = nil,
 })
 
@@ -57,7 +59,7 @@ module.enable = function(self)
     end
   end)
 
-  local events = CreateFrame("Frame", nil, UIParent)	
+  local events = CreateFrame("Frame", nil, UIParent)
   events:RegisterEvent("PLAYER_TARGET_CHANGED")
   events:RegisterEvent("PLAYER_ENTERING_WORLD")
   events:SetScript("OnEvent", function()

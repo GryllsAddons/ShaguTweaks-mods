@@ -1,6 +1,8 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Improved Roll Frames",
-    description = "Smaller roll frames with roll tracking.",
+    title = T["Improved Roll Frames"],
+    description = T["Smaller roll frames with roll tracking."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -92,7 +94,7 @@ module.enable = function(self)
     local esize = 20
     local f = CreateFrame("Frame", "STLootRollFrame" .. id, UIParent)
 
-    local function CreateBackdrop(f,b,a)        
+    local function CreateBackdrop(f,b,a)
         if not f then return end
         f.backdrop = CreateFrame("Frame", nil, f)
         f.backdrop:SetPoint("TOPLEFT", f, "TOPLEFT", -b, b)
@@ -103,7 +105,7 @@ module.enable = function(self)
             edgeSize = 12,
             insets = { left = 4, right = 4, top = 4, bottom = 4 },
         })
-        
+
         f.backdrop:SetBackdropColor(0, 0, 0, a)
         f.backdrop:SetBackdropBorderColor(1, 1, 1, a)
     end
@@ -352,5 +354,5 @@ module.enable = function(self)
         -- UpdateMovable(ShaguTweaks.roll.frames[i])
         ShaguTweaks.roll.frames[i]:Hide()
     end
-    end      
+    end
 end

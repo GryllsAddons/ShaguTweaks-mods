@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Mouseover Bottom Left",
-    description = "Hide the Bottom Left ActionBar and show on mouseover.",
+    title = T["Mouseover Bottom Left"],
+    description = T["Hide the Bottom Left ActionBar and show on mouseover."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
+    category = T["Action Bar"],
     enabled = nil,
 })
 

@@ -1,10 +1,11 @@
+local T = ShaguTweaks.T
 local tarFPS = 60 -- target FPS (default 60)
 
 local module = ShaguTweaks:register({
-  title = "MiniMap Framerate & Latency",
-  description = "Adds a small framerate & latency display to the mini map.",
+  title = T["MiniMap Framerate & Latency"],
+  description = T["Adds a small framerate & latency display to the mini map."],
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
-  category = "World & MiniMap",
+  category = T["World & MiniMap"],
   enabled = nil,
 })
 
@@ -100,7 +101,7 @@ module.enable = function(self)
     MinimapFPS:SetBackdropColor(.4,.4,.4,1)
 
     MinimapFPS:EnableMouse(true)
-    
+
     local currFPS
     local lowFPS
     local highFPS
@@ -114,7 +115,7 @@ module.enable = function(self)
         if this.tick < start then return end
         if not lowFPS then lowFPS = floor(GetFramerate()) end
         if not highFPS then highFPS = floor(GetFramerate()) end
-        
+
         local FPS = floor(GetFramerate())
         currFPS = FPS
 
@@ -136,9 +137,9 @@ module.enable = function(self)
         GameTooltip:ClearLines()
         GameTooltip:SetOwner(this, ANCHOR_BOTTOMLEFT)
 
-        GameTooltip:AddLine("Framerate")
-        GameTooltip:AddDoubleLine("High", highFPS.." fps", 1,1,1,1,1,1)
-        GameTooltip:AddDoubleLine("Low", lowFPS.." fps", 1,1,1,1,1,1)
+        GameTooltip:AddLine(T["Framerate"])
+        GameTooltip:AddDoubleLine(T["High"], highFPS.." "..T["fps"], 1,1,1,1,1,1)
+        GameTooltip:AddDoubleLine(T["Low"], lowFPS.." "..T["fps"], 1,1,1,1,1,1)
         GameTooltip:Show()
     end)
 
@@ -163,7 +164,7 @@ module.enable = function(self)
     MinimapMS:SetBackdropColor(.4,.4,.4,1)
 
     MinimapMS:EnableMouse(true)
-    
+
     local currMS
     local lowMS
     local highMS
@@ -180,7 +181,7 @@ module.enable = function(self)
 
         local _, _, MS = GetNetStats()
         currMS = MS
-        
+
         -- color
         local color = "|cff00ff00"
         if (currMS > PERFORMANCEBAR_MEDIUM_LATENCY) then
@@ -188,7 +189,7 @@ module.enable = function(self)
         elseif (currMS > PERFORMANCEBAR_LOW_LATENCY) then
             color = "|cffffff00"
         end
-        
+
         MS = color .. MS .. "|r"
         this.text:SetText(MS.."")
 
@@ -206,9 +207,9 @@ module.enable = function(self)
         GameTooltip:ClearLines()
         GameTooltip:SetOwner(this, ANCHOR_BOTTOMLEFT)
 
-        GameTooltip:AddLine("Latency")
-        GameTooltip:AddDoubleLine("High", highMS.." ms", 1,1,1,1,1,1)
-        GameTooltip:AddDoubleLine("Low", lowMS.." ms", 1,1,1,1,1,1)
+        GameTooltip:AddLine(T["Latency"])
+        GameTooltip:AddDoubleLine(T["High"], highMS.." "..T["ms"], 1,1,1,1,1,1)
+        GameTooltip:AddDoubleLine(T["Low"], lowMS.." "..T["ms"], 1,1,1,1,1,1)
         GameTooltip:Show()
     end)
 
@@ -230,9 +231,9 @@ module.enable = function(self)
     events:SetScript("OnEvent", function()
         if not this.loaded then
             this.loaded = true
-            start = GetTime() + 1         
-            MinimapMS:Show()            
+            start = GetTime() + 1
+            MinimapMS:Show()
             MinimapFPS:Show()
         end
-    end)   
+    end)
 end

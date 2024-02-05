@@ -1,10 +1,11 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Loot Quality",
-    description = "Sets the loot frame color to the highest item quality.",
+    title = T["Loot Quality"],
+    description = T["Sets the loot frame color to the highest item quality."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Tooltip & Items",
+    category = T["Tooltip & Items"],
     enabled = nil,
 })
 
@@ -65,19 +66,19 @@ module.enable = function(self)
                 if quality > highestQuality then
                     highestQuality = quality
                 end
-            end            
-        end        
+            end
+        end
 
         if highestQuality >= minQuality then
             local color = ITEM_QUALITY_COLORS[highestQuality]        
             lootColor(color.r,color.g,color.b)
         else
             lootTextColor(1,.82,0)
-        end        
+        end
     end
     
     local loot = CreateFrame("Frame", nil, LootFrame)
     loot:RegisterEvent("LOOT_OPENED")
     loot:RegisterEvent("LOOT_SLOT_CLEARED")
-    loot:SetScript("OnEvent", quality)    
+    loot:SetScript("OnEvent", quality)
 end

@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-  title = "Unit Frame Energy & Mana Tick",
-  description = "Adds an energy & mana tick to the player frame.",
+  title = T["Unit Frame Energy & Mana Tick"],
+  description = T["Adds an energy & mana tick to the player frame."],
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
-  category = "Unit Frames",
+  category = T["Unit Frames"],
   enabled = nil,
 })
 
@@ -30,7 +32,7 @@ module.enable = function(self)
     end
 
     if event == "PLAYER_ENTERING_WORLD" then
-      this.lastMana = UnitMana("player")      
+      this.lastMana = UnitMana("player")
     end
 
     if (this.mode == "ENERGY") or ((event == "UNIT_MANA" or event == "UNIT_ENERGY") and arg1 == "player") then
@@ -51,12 +53,12 @@ module.enable = function(self)
       elseif this.mode == "ENERGY" and diff >= 0 then
         this.target = 2
       end
-      this.lastMana = this.currentMana      
+      this.lastMana = this.currentMana
     end
   end)
 
 local pheight, pwidth = PlayerFrameManaBar:GetHeight(), PlayerFrameManaBar:GetWidth()
-energytick:SetScript("OnUpdate", function()    
+energytick:SetScript("OnUpdate", function()
   if this.target then
     this.start, this.max = GetTime(), this.target
     this.target = nil

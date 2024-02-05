@@ -1,10 +1,11 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Gryphons to DF Wyverns",
-    description = "Change the action bar gryphons to Dragonflight wyverns.",
+    title = T["Gryphons to DF Wyverns"],
+    description = T["Change the action bar gryphons to Dragonflight wyverns."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
+    category = T["Action Bar"],
     enabled = nil,
 })
 

@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Target Buffs Extended",
-    description = "Show up to 16 buffs on the target unit frame and detect enemy buffs.",
+    title = T["Target Buffs Extended"],
+    description = T["Show up to 16 buffs on the target unit frame and detect enemy buffs."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Unit Frames",
+    category = T["Unit Frames"],
     enabled = nil,
 })
 
@@ -51,7 +53,7 @@ module.enable = function(self)
 			-- try to find the spell icon in caches
 			for icon, name in pairs(ShaguTweaks_cache.buff_icons) do
 			if name == detect_name then return icon, 1 end
-			end			
+			end
 
 			-- return fallback image
 			return "interface\\icons\\inv_misc_questionmark", 1
@@ -66,7 +68,7 @@ module.enable = function(self)
 	local buffButtons = 16
 	local debuffButtons = 16
 
-	do -- create 11 additional buff buttons		
+	do -- create 11 additional buff buttons
 		for i = 6, buffButtons do
 			local button = CreateFrame("Button", "TargetFrameBuff"..i, TargetFrame, "TargetBuffButtonTemplate")
 			button:SetID(i)
@@ -134,7 +136,7 @@ module.enable = function(self)
 			BuffPositions(num_buff, num_debuff, 4)
 		end
 	end
-	
+
 	local function TargetDebuffButtonExtended_Update()
 		-- update the target buffs/debuffs (code from FrameXML/TargetFrame.lua)
 		local num_buff = 0
@@ -154,7 +156,7 @@ module.enable = function(self)
 				button:Hide()
 			end
 		end
-	
+
 		-- debuffs
 		local debuff, debuffApplication, debuffCount
 		for i=1, debuffButtons do
@@ -180,7 +182,7 @@ module.enable = function(self)
 		-- position the buffs/debuffs
 		TargetFrameBuff_Position(num_buff, num_debuff)
 	end
-	
+
 	TargetDebuffButton_Update()
 	TargetDebuffButton_Update = TargetDebuffButtonExtended_Update
 	resize()
