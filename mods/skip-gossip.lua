@@ -34,12 +34,12 @@ module.enable = function(self)
         "Open a portal to Amani'Alor",
 
         -- ruRU
-        --"I would like to check my deposit box", -- Need translation, Bank
+        "Я хотел бы проверить свою ячейку.", -- Bank
         "*Прикоснуться к нестабильному кристаллу Провала.*", -- MC entrance
         "\*Положить руку на сферу.\*", -- BWL entrance
-        --"Thank you, Stable Master. Please take the animal.", -- Need translation, AV quest
-        "Благодарю тебя. Пожалуйста, возьми питомца.", --AV quest
-        "С удовольствием. Уж очень они воняют!", --AV quest
+        --"Thank you, Stable Master. Please take the animal.", -- AV quest locales_broadcast_text id6681
+        "Благодарю тебя. Пожалуйста, возьми питомца.", -- AV quest locales_broadcast_text id6681
+        "С удовольствием. Уж очень они воняют!", -- AV quest
         "Конфета или Жизнь!",
     }
 
