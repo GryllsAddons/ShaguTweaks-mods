@@ -1,6 +1,8 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Auction Search Timer",
-    description = "The auction search button will show the time remaining until you can search the auction house.",
+    title = T["Auction Search Timer"],
+    description = T["The auction search button will show the time remaining until you can search the auction house."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -70,7 +72,7 @@ module.enable = function(self)
             if (not buttonscript) then
                 BrowseSearchButton:SetScript("OnClick", function()
                     starttimer()
-                    AuctionFrameBrowse_Search()                    
+                    AuctionFrameBrowse_Search()
                 end)
                 buttonscript = true
             end

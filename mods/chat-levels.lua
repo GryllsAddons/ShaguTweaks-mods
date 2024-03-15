@@ -1,16 +1,17 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 local gfind = string.gmatch or string.gfind
 local rgbhex = ShaguTweaks.rgbhex
 local strsplit = ShaguTweaks.strsplit
 
 local module = ShaguTweaks:register({
-    title = "Chat Levels",
-    description = "Shows player levels in chat.",
+    title = T["Chat Levels"],
+    description = T["Shows player levels in chat."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Social & Chat",
+    category = T["Social & Chat"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
   local playerdb = ShaguTweaks_cache["players"]
   do -- add player level to chat

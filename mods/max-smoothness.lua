@@ -1,11 +1,13 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Max Smoothness",
-    description = "Optimise the game engine for smoother gameplay. Note that this will permanently add settings to the Config.wtf file.",
+    title = T["Max Smoothness"],
+    description = T["Optimise the game engine for smoother gameplay. Note that this will permanently add settings to the Config.wtf file."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Graphics",
+    category = T["Graphics"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
     -- https://forum.nostalrius.org/viewtopic.php?t=1100&f=32#
     SlashCmdList["CONSOLE"]("bspcache 1")

@@ -1,13 +1,14 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Unit Frame Combat Indicator",
-    description = "Adds a combat indicator to the target and party frames.",
+    title = T["Unit Frame Combat Indicator"],
+    description = T["Adds a combat indicator to the target and party frames."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Unit Frames",
+    category = T["Unit Frames"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
     local function createTargetIndicator()
         local f = CreateFrame("Frame", "TargetCombatIndicator", TargetFrame)
@@ -68,7 +69,7 @@ module.enable = function(self)
             TargetCombatIndicator:Hide()
         end
     end
-    
+
     local function createPartyIndicators()
         for i = 1, MAX_PARTY_MEMBERS do
             local frame = _G["PartyMemberFrame"..i]
@@ -92,7 +93,7 @@ module.enable = function(self)
                     this.lastUpdate = GetTime()
 
                     local id = this:GetParent():GetID()
-	                local unit = "party"..id
+                    local unit = "party"..id
 
                     local inCombat = UnitAffectingCombat(unit)
                     if inCombat then
@@ -100,7 +101,7 @@ module.enable = function(self)
                         p.indicator:Show()
                     else
                         -- DEFAULT_CHAT_FRAME:AddMessage(unit.." NOT inCombat")
-                        p.indicator:Hide()                        
+                        p.indicator:Hide()
                     end
                 end
             end)

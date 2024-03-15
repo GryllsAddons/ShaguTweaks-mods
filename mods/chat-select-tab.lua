@@ -1,15 +1,16 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "General Tab on Login",
-    description = "Selects the 'General' tab when logging in.",
+    title = T["General Tab on Login"],
+    description = T["Selects the 'General' tab when logging in."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Social & Chat",
+    category = T["Social & Chat"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
-    local events = CreateFrame("Frame", nil, UIParent)	
+    local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()

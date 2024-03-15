@@ -1,12 +1,14 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Improved Exp Bar",
-    description = "Improved exp information on mouseover. Shows rested percent while resting and changes color when fully rested.",
+    title = T["Improved Exp Bar"],
+    description = T["Improved exp information on mouseover. Shows rested percent while resting and changes color when fully rested."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
+    category = T["Action Bar"],
     enabled = nil,
 })
 
-module.enable = function(self)    
+module.enable = function(self)
     local exp = CreateFrame("Frame", "exp", UIParent)
     exp:SetFrameStrata("HIGH")
     local font, size, outline = "Fonts\\frizqt__.TTF", 12, "OUTLINE"
@@ -16,7 +18,7 @@ module.enable = function(self)
     exp.expstring:SetPoint("CENTER", MainMenuExpBar, "CENTER", 0, 2)
     exp.expstring:SetJustifyH("CENTER")
     exp.expstring:SetTextColor(1,1,1)
-    
+
     exp.repstring = exp:CreateFontString(nil, "OVERLAY", "GameFontWhite")
     exp.repstring:SetFont(font, size, outline)
     exp.repstring:ClearAllPoints()
@@ -25,11 +27,11 @@ module.enable = function(self)
     exp.repstring:SetTextColor(1,1,1)
 
     local expArt = {
-        ExhaustionTick, 
-        MainMenuXPBarTexture0, MainMenuXPBarTexture1, MainMenuXPBarTexture2, MainMenuXPBarTexture3, 
+        ExhaustionTick,
+        MainMenuXPBarTexture0, MainMenuXPBarTexture1, MainMenuXPBarTexture2, MainMenuXPBarTexture3,
         ReputationWatchBarTexture0, ReputationWatchBarTexture1, ReputationWatchBarTexture2, ReputationWatchBarTexture3
     }
-    
+
     local isMousing
 
     local function updateExp(mouseover)
@@ -43,19 +45,19 @@ module.enable = function(self)
         remaining = ShaguTweaks.Abbreviate(remaining, 1)
 
         if playerlevel < 60 then
-            if (not mouseover) then              
-                if IsResting() then                    
+            if (not mouseover) then
+                if IsResting() then
                     if exh_perc > 0 then
-                        exp.expstring:SetText(exh .. " (" .. exh_perc.."%) rested")
+                        exp.expstring:SetText(exh .. " (" .. exh_perc.."%) "..T["rested"])
                     end
                 else
                     exp.expstring:SetText("")
                 end
             else
                 if (exh == 0) then
-                    exp.expstring:SetText("Level "..playerlevel.." - "..remaining.." ("..remaining_perc.."%) remaining")            
+                    exp.expstring:SetText(T["Level"].." "..playerlevel.." - "..remaining.." ("..remaining_perc.."%) " .. T["remaining"])
                 else
-                    exp.expstring:SetText("Level "..playerlevel.." - "..remaining.." ("..remaining_perc.."%) remaining - "..exh.." ("..exh_perc.."%) rested")
+                    exp.expstring:SetText(T["Level"].." "..playerlevel.." - "..remaining.." ("..remaining_perc.."%) " .. T["remaining"] .. " - "..exh.." ("..exh_perc.."%) " .. T["rested"])
                 end
             end
         end
@@ -69,9 +71,9 @@ module.enable = function(self)
             end
 		elseif (rested == 2) then
 			MainMenuExpBar:SetStatusBarColor(0.58, 0.0, 0.55, 1.0)
-        end        
+        end
     end
-    
+
     local function updateRep()
         local name, standing, min, max, value = GetWatchedFactionInfo()
         local max = max - min
@@ -83,9 +85,9 @@ module.enable = function(self)
         local level = UnitLevel("player")
         remaining = ShaguTweaks.round(remaining)
         remaining = ShaguTweaks.Abbreviate(remaining, 1)
-    
+
         if name then -- watching a faction
-            exp.repstring:SetText(name .. " (" .. repvalues[standing] .. ") " .. percentFloor .. "% - "  .. remaining .. " remaining")
+            exp.repstring:SetText(name .. " (" .. repvalues[standing] .. ") " .. percentFloor .. "% - "  .. remaining .. " " .. T["remaining"])
         else
             exp.repstring:SetText("")
         end
@@ -99,7 +101,7 @@ module.enable = function(self)
             element:SetAlpha(0.25)
         end
     end
-    
+
     local function expHide()
         isMousing = nil
         if not IsResting() then
@@ -111,7 +113,7 @@ module.enable = function(self)
             element:SetAlpha(1)
         end
     end
-    
+
     local function mouseoverExp()
         local expMouse = CreateFrame("Frame")
         expMouse:SetAllPoints(MainMenuExpBar)
@@ -120,7 +122,7 @@ module.enable = function(self)
         expMouse:SetScript("OnEnter", expShow)
         expMouse:SetScript("OnLeave", expHide)
     end
-    
+
     local function repShow()
         isMousing = true
         updateRep()
@@ -129,7 +131,7 @@ module.enable = function(self)
             element:SetAlpha(0.25)
         end
     end
-    
+
     local function repHide()
         isMousing = nil
         exp.repstring:Hide()
@@ -137,7 +139,7 @@ module.enable = function(self)
             element:SetAlpha(1)
         end
     end
-    
+
     local function mouseoverRep()
         local repMouse = CreateFrame("Frame")
         repMouse:SetAllPoints(ReputationWatchBar)
@@ -155,21 +157,21 @@ module.enable = function(self)
             expHide()
         end
     end
-    
+
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:RegisterEvent("PLAYER_UPDATE_RESTING")
     events:RegisterEvent("UPDATE_EXHAUSTION")
-    events:RegisterEvent("PLAYER_XP_UPDATE")    
+    events:RegisterEvent("PLAYER_XP_UPDATE")
     events:RegisterEvent("UPDATE_FACTION")
 
     events:SetScript("OnEvent", function()
         if event == "PLAYER_ENTERING_WORLD" then
             if not this.loaded then
                 this.loaded = true
-                MainMenuBarOverlayFrame:Hide()       
+                MainMenuBarOverlayFrame:Hide()
                 mouseoverExp()
-                mouseoverRep()            
+                mouseoverRep()
                 updateExp(isMousing)
                 updateRep()
                 expHide()

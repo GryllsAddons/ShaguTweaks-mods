@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Set UI Scale",
-    description = "Sets the pixel perfect UI scale for your resolution.",
+    title = T["Set UI Scale"],
+    description = T["Sets the pixel perfect UI scale for your resolution."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Graphics",
+    category = T["Graphics"],
     enabled = nil,
 })
 

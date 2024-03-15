@@ -1,11 +1,12 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
-  title = "Real Health Numbers Extended",
-  description = "Adds health numbers on ToT and party unit frames.",
+  title = T["Real Health Numbers Extended"],
+  description = T["Adds health numbers on ToT and party unit frames."],
   expansions = { ["vanilla"] = true, ["tbc"] = true },
-  category = "Unit Frames",
+  category = T["Unit Frames"],
   enabled = false,
 })
 

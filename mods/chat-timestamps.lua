@@ -1,11 +1,12 @@
 local _G = ShaguTweaks.GetGlobalEnv()
 local rgbhex = ShaguTweaks.rgbhex
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Chat Timestamps",
-    description = "Adds timestamps to chat messages.",
+    title = T["Chat Timestamps"],
+    description = T["Adds timestamps to chat messages."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Social & Chat",
+    category = T["Social & Chat"],
     enabled = nil,
 })
 

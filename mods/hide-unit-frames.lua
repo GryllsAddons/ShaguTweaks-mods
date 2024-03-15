@@ -1,10 +1,11 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local L, T = ShaguTweaks.L, ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Hide Unit Frames",
-    description = "Hide the player and pet frame if full health & mana, not casting a spell, happy, no target and out of combat. The frames will show on mouseover.",
+    title = T["Hide Unit Frames"],
+    description = T["Hide the player and pet frame if full health & mana, not casting a spell, happy, no target and out of combat. The frames will show on mouseover."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Unit Frames",
+    category = T["Unit Frames"],
     enabled = nil,
 })
 
@@ -35,9 +36,9 @@ module.enable = function(self)
     end
 
     local function HappyPet()
-        if not (UnitCreatureType("pet") == "Beast") then 
+        if not (UnitCreatureType("pet") == T["Beast"]) then
             return true
-        elseif (GetPetHappiness() > 1) then 
+        elseif (GetPetHappiness() > 1) then
             return true
         end
     end
@@ -66,7 +67,7 @@ module.enable = function(self)
         local player = PlayerConditions()
         local pet = PetConditions()
 
-        if notarget and player and pet then 
+        if notarget and player and pet then
             HideFrames()
             CheckResting()
         else
@@ -79,18 +80,18 @@ module.enable = function(self)
         local enter = frame:GetScript("OnEnter")
         frame:SetScript("OnEnter", function()
             ShowFrames()
-            CheckResting()          
+            CheckResting()
             enter()
         end)
 
         local leave = frame:GetScript("OnLeave")
         frame:SetScript("OnLeave", function()
-            leave()            
+            leave()
             CheckConditions()
-        end)        
+        end)
     end
 
-    local events = CreateFrame("Frame", nil, UIParent)	
+    local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:RegisterEvent("PLAYER_TARGET_CHANGED")
     events:RegisterEvent("UNIT_HEALTH", "player")
@@ -112,8 +113,8 @@ module.enable = function(self)
         if ((event == "SPELLCAST_START") or (event == "SPELLCAST_CHANNEL_START") or (event == "SPELLCAST_STOP") or (event == "SPELLCAST_CHANNEL_STOP")) then
             isCasting = true
         end
-        CheckConditions()   
+        CheckConditions()
     end)
 
-    
+
 end

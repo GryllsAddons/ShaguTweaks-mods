@@ -1,15 +1,15 @@
 local _G = ShaguTweaks.GetGlobalEnv()
-local L = ShaguTweaks.L
+local L, T = ShaguTweaks.L, ShaguTweaks.T
 local rgbhex = ShaguTweaks.rgbhex
 
 local module = ShaguTweaks:register({
-    title = "Chat Bubble Tweaks",
-    description = "Shows sender names on chat bubbles and removes the background.",
+    title = T["Chat Bubble Tweaks"],
+    description = T["Shows sender names on chat bubbles and removes the background."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Social & Chat",
+    category = T["Social & Chat"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
     local message, sender
     local playerdb = ShaguTweaks_cache["players"]
@@ -23,17 +23,17 @@ module.enable = function(self)
     chat:RegisterEvent("CHAT_MSG_MONSTER_SAY")
     chat:RegisterEvent("CHAT_MSG_MONSTER_YELL")
     chat:RegisterEvent("CHAT_MSG_MONSTER_PARTY")
-  
+
     chat:SetScript("OnEvent", function()
       chat:SetScript("OnUpdate", chat.ScanBubbles)
     end)
-  
+
     function chat:IsBubble(f)
         if f:GetName() then return end
         if not f:GetRegions() then return end
         return f:GetRegions().GetTexture and f:GetRegions():GetTexture() == "Interface\\Tooltips\\ChatBubble-Background"
     end
-  
+
     function chat:ProcessBubble(f)
       f.text:Hide()
       f.text:SetFont(font, size * UIParent:GetScale(), outline)
@@ -43,7 +43,7 @@ module.enable = function(self)
       f.frame.text:SetTextColor(r,g,b,a)
 
       if text == message then
-        if playerdb[sender] then            
+        if playerdb[sender] then
             local level = playerdb[sender].level
             local class = playerdb[sender].class
             local ccolor = RAID_CLASS_COLORS[L["class"][class]] or { 1, 1, 1 }
@@ -57,7 +57,7 @@ module.enable = function(self)
         end
       end
     end
- 
+
     function chat:ScanBubbles()
       local childs = { WorldFrame:GetChildren() }
       for _, f in pairs(childs) do
@@ -70,11 +70,11 @@ module.enable = function(self)
                 f.text = object
               end
             end
-  
+
             f.frame = CreateFrame("Frame", nil, f)
             f.frame:SetScale(UIParent:GetScale())
             f.frame:SetAllPoints(f)
-  
+
             f.frame.text = f.frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
             f.frame.text:SetFont(font, size, outline)
             f.frame.text:SetJustifyH("LEFT")
@@ -86,15 +86,15 @@ module.enable = function(self)
             f.frame.player:SetJustifyH("LEFT")
             f.frame.player:SetJustifyV("LEFT")
             f.frame.player:SetPoint("TOPLEFT", f.frame.text, "TOPLEFT", 0, -8)
-            
+
             chat:ProcessBubble(f)
-  
+
             f:SetScript("OnShow", function()
               chat:ProcessBubble(this)
             end)
           end
       end
-  
+
       chat:SetScript("OnUpdate", nil)
     end
 

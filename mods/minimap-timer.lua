@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-  title = "MiniMap Timer",
-  description = "Adds a togglable timer to the minimap clock. Left click the clock to toggle the timer. Left click the timer to start/pause or right click to reset. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position.",
+  title = T["MiniMap Timer"],
+  description = T["Adds a togglable timer to the minimap clock. Left click the clock to toggle the timer. Left click the timer to start/pause or right click to reset. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position."],
   expansions = { ["vanilla"] = true, ["tbc"] = nil },
-  category = "World & MiniMap",
+  category = T["World & MiniMap"],
   enabled = nil,
 })
 
@@ -134,20 +136,20 @@ module.enable = function(self)
   MinimapTimer:SetScript("OnClick", function()
     if (arg1 == "LeftButton") then
       if timerpaused then
-        continuetimer()          
+        continuetimer()
       elseif not timerstarted then
         starttimer()
       else
         pausetimer()
-      end        
+      end
     elseif (arg1 == "RightButton") then
       if (IsShiftKeyDown() and IsControlKeyDown()) then
         this:SetUserPlaced(false)
         this:Hide()
-        resettimer()     
+        resettimer()
         positiontimer()
         timervisibility()
-      else          
+      else
         resettimer()
       end
     end
@@ -165,6 +167,6 @@ module.enable = function(self)
 
   timerscripts()
   resettimer()
-  positiontimer()    
+  positiontimer()
   timervisibility()
 end

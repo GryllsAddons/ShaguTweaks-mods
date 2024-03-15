@@ -1,17 +1,18 @@
 local _G = ShaguTweaks.GetGlobalEnv()
 local ChatFrameWorld
 local ChatFrameLeftWorld
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "World Chat Hider",
-    description = "Looks for world chat in the chat frames and hides it while in an instance.",
+    title = T["World Chat Hider"],
+    description = T["Looks for world chat in the chat frames and hides it while in an instance."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Social & Chat",
+    category = T["Social & Chat"],
     enabled = nil,
 })
 
 local function WorldChat(inInstance)
-	local findChannel = function(ChatFrame, name)  
+	local findChannel = function(ChatFrame, name)
 		for index, value in ChatFrame.channelList do
 			if (strupper(name) == strupper(value)) then
 				return true
@@ -28,14 +29,14 @@ local function WorldChat(inInstance)
 		local id, name = GetChannelName("world")
 		if not name then return end
 		for i = 1, NUM_CHAT_WINDOWS do
-			local ChatFrame = _G["ChatFrame"..i]			
+			local ChatFrame = _G["ChatFrame"..i]
 			if findChannel(ChatFrame, name) then
 				ChatFrameWorld = ChatFrame
 				break
 			end
 		end
 	end
-	
+
 	if ChatFrameWorld then
 		if (inInstance == 1) then
 			ChatFrame_RemoveChannel(ChatFrameWorld, "world")
@@ -61,7 +62,7 @@ module.enable = function(self)
 			local inInstance, instanceType = IsInInstance() or 0, "NONE"
 			-- DEBUG:
 			-- DEFAULT_CHAT_FRAME:AddMessage("inInstance: "..inInstance..", instanceType: "..instanceType)
-			WorldChat(inInstance)			
+			WorldChat(inInstance)
 			this:Hide()
         end
     end)
@@ -71,5 +72,5 @@ module.enable = function(self)
 		if not events.timer:IsShown() then
         	events.timer:Show()
 		end
-    end)    
+    end)
 end

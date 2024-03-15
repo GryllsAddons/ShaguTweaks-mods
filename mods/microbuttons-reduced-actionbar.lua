@@ -1,8 +1,9 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Reduced Actionbar Microbuttons",
-    description = "Shows the microbuttons when using the reduced actionbar. Mouseover the help button to show the draggable tab. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position.",
+    title = T["Reduced Actionbar Microbuttons"],
+    description = T["Shows the microbuttons when using the reduced actionbar. Mouseover the help button to show the draggable tab. Hold Ctrl & Shift then drag to move, hold Ctrl & Shift then right click to reset position."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -31,7 +32,7 @@ module.enable = function(self)
     local name = holder:GetName()
     local width = 210
 
-    local function setup() 
+    local function setup()
         holder:SetWidth(width)
         holder:SetHeight(44)
         holder:SetFrameLevel(64)
@@ -57,7 +58,7 @@ module.enable = function(self)
         holder:ClearAllPoints()
         holder:SetPoint("LEFT", ActionButton12, "RIGHT", 100, 0)
     end
-    
+
     local function position()
         if movedb[name] then
             holder:ClearAllPoints()
@@ -71,7 +72,7 @@ module.enable = function(self)
         holder:SetScript("OnClick", function()
             if arg1 == "RightButton" then
                 if (IsShiftKeyDown() and IsControlKeyDown()) then
-                    holder:SetUserPlaced(false)        
+                    holder:SetUserPlaced(false)
                     defaultPosition()
                 end
             end
@@ -117,13 +118,13 @@ module.enable = function(self)
             frame.Show = frame:Show()
             frame:Show()
         end
-        
+
         HelpMicroButton:SetScript("OnEnter", function()
             holder:SetWidth(width+20)
-        end)        
+        end)
     end
 
-    local events = CreateFrame("Frame", nil, UIParent)	
+    local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()

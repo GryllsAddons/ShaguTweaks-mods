@@ -1,8 +1,9 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Central UI",
-    description = "Moves unit frames, minimap, buffs and chat to a central layout.",
+    title = T["Central UI"],
+    description = T["Moves unit frames, minimap, buffs and chat to a central layout."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
@@ -16,10 +17,10 @@ module.enable = function(self)
     -- local res = screenwidth/screenheight
     -- local uw
     -- if res > 1.78 then uw = true end
-    
+
     local function unitframes()
         local unmoved
-       
+
         -- Player
         unmoved = nil
         local attachedPoint, _, _, xOfs, yOfs = PlayerFrame:GetPoint()
@@ -32,7 +33,7 @@ module.enable = function(self)
         -- else
         --     DEFAULT_CHAT_FRAME:AddMessage("PlayerFrame has moved")
         end
-    
+
         -- Target
         unmoved = nil
         attachedPoint, _, _, xOfs, yOfs = TargetFrame:GetPoint()
@@ -45,7 +46,7 @@ module.enable = function(self)
         -- else
         --     DEFAULT_CHAT_FRAME:AddMessage("TargetFrame has moved")
         end
-    
+
         -- Party
         -- unmoved = nil
         -- local attachedPoint, _, _, xOfs, yOfs = PartyMemberFrame1:GetPoint()
@@ -55,7 +56,7 @@ module.enable = function(self)
             -- DEFAULT_CHAT_FRAME:AddMessage("PartyMemberFrame1 is unmoved")
             local partyframes = { PartyMemberFrame1, PartyMemberFrame2, PartyMemberFrame3, PartyMemberFrame4 }
             local scale = 1.2
-            for _, frame in pairs(partyframes) do        
+            for _, frame in pairs(partyframes) do
                 frame:SetScale(scale)
             end
 
@@ -73,7 +74,7 @@ module.enable = function(self)
             frame:SetPoint("TOPLEFT", fparent, "BOTTOMLEFT", -23, -10)
         end
     end
-    
+
     local function minimap()
         local x = screenwidth/8
         local y = -10
@@ -83,14 +84,14 @@ module.enable = function(self)
         MinimapCluster.ClearAllPoints = function() end
         MinimapCluster.SetPoint = function() end
     end
-    
+
     local function buffs()
         -- Buffs start with TemporaryEnchantFrame
-        -- Debuffs are aligned underneath the TemporaryEnchantFrame    
+        -- Debuffs are aligned underneath the TemporaryEnchantFrame
         TemporaryEnchantFrame:ClearAllPoints()
         TemporaryEnchantFrame:SetPoint("TOPLEFT", MinimapCluster, -15, -28)
-        
-    
+
+
         -- prevent TemporaryEnchantFrame from moving
         TemporaryEnchantFrame.ClearAllPoints = function() end
         TemporaryEnchantFrame.SetPoint = function() end
@@ -122,7 +123,7 @@ module.enable = function(self)
             local name = tab:GetText()
             -- check for "Loot & Spam" chat frame
             if name == "Loot & Spam" then
-                found = true                
+                found = true
                 break
             end
         end
@@ -142,8 +143,8 @@ module.enable = function(self)
 
         FCF_SelectDockFrame(ChatFrame1)
     end
-    
-    local events = CreateFrame("Frame", nil, UIParent)	
+
+    local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()

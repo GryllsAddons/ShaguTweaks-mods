@@ -1,14 +1,16 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Hide Hotkey Text",
-    description = "Hides hotkey text",
+    title = T["Hide Hotkey Text"],
+    description = T["Hides hotkey text."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
+    category = T["Action Bar"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
     local _G = ShaguTweaks.GetGlobalEnv()
-    
+
     local function hidehotkeys(button)
         if not button then return end
 
@@ -17,7 +19,7 @@ module.enable = function(self)
             hotkey:SetAlpha(0)
         end
     end
-    
+
     for i = 1, 24 do
         local button = _G['BonusActionButton'..i]
         if button then
@@ -36,8 +38,8 @@ module.enable = function(self)
             }
         ) do
             hidehotkeys(button)
-        end        
-    end 
+        end
+    end
 
     for i = 1, 10 do
         for _, button in pairs(

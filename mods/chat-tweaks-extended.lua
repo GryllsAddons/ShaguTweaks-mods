@@ -1,4 +1,5 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 local scrollspeed = 1
 local gfind = string.gmatch or string.gfind
 local strsplit = ShaguTweaks.strsplit
@@ -6,10 +7,10 @@ local rgbhex = ShaguTweaks.rgbhex
 local hooksecurefunc = ShaguTweaks.hooksecurefunc
 
 local module = ShaguTweaks:register({
-    title = "Chat Tweaks Extended",
-    description = 'Extends "Chat Tweaks". Shortens channel names, shows item links on mouseover, adds an ignore on right click, adds Alt click chat names to invite and Ctrl click chat names to target.',
+    title = T["Chat Tweaks Extended"],
+    description = T['Extends "Chat Tweaks". Shortens channel names, shows item links on mouseover, adds an ignore on right click, adds Alt click chat names to invite and Ctrl click chat names to target.'],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Social & Chat",
+    category = T["Social & Chat"],
     enabled = nil,
 })
 
@@ -27,10 +28,10 @@ local function ChatOnMouseWheel()
         this:ScrollToBottom()
       else
         for i=1, scrollspeed do
-          this:ScrollDown()          
+          this:ScrollDown()
         end
       end
-    end    
+    end
     if ( this:AtBottom() ) then
         _G[this:GetName().."BottomButton"]:Hide()
         this.scroll = nil
@@ -51,7 +52,7 @@ end
 
 local function mouseoverlinks()
     for i=1, NUM_CHAT_WINDOWS do
-        local frame = _G["ChatFrame" .. i]   
+        local frame = _G["ChatFrame" .. i]
         frame:SetScript("OnHyperlinkEnter", function()
             local _, _, linktype = string.find(arg1, "^(.-):(.+)$")
             if linktype == "item" then
@@ -68,7 +69,7 @@ end
 
 local function clicklinks()
     for i=1, NUM_CHAT_WINDOWS do
-        local frame = _G["ChatFrame" .. i]   
+        local frame = _G["ChatFrame" .. i]
         frame:SetScript("OnHyperlinkClick", function()
             local _, _, playerLink = string.find(arg1, "(player:.+)")
             if playerLink then
@@ -90,7 +91,7 @@ end
 local function channelindicators()
     -- shorten chat channels
     local left = "["
-    local right = "]"    
+    local right = "]"
 
     local default = " " .. "%s" .. "|r:" .. "\32"
     _G.CHAT_CHANNEL_GET = "%s" .. "|r:" .. "\32"
@@ -130,7 +131,7 @@ local function channelindicators()
         frame:HookAddMessage(text, a1, a2, a3, a4, a5)
     end
 
-    for i=1,NUM_CHAT_WINDOWS do        
+    for i=1,NUM_CHAT_WINDOWS do
         _G["ChatFrame"..i].AddMessage = AddMessage
     end
 end
@@ -154,7 +155,7 @@ end
 module.enable = function(self)
     ShaguTweaks.ChatTweaksExtended = true
     -- load after chat tweaks / chat links /timestamps
-    local events = CreateFrame("Frame", nil, UIParent)	
+    local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
 
     events:SetScript("OnEvent", function()

@@ -1,11 +1,13 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Max Graphics",
-    description = "Tunes the game's graphics to the max! Note that this will permanently add settings to the Config.wtf file.",
+    title = T["Max Graphics"],
+    description = T["Tunes the game's graphics to the max! Note that this will permanently add settings to the Config.wtf file."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Graphics",
+    category = T["Graphics"],
     enabled = nil,
 })
-  
+
 module.enable = function(self)
     -- https://docs.google.com/spreadsheets/d/17bXs9WhOkP8Zknl1GYXCFVdHYOdgxoRFrIe7Os3BtRo/edit#gid=0
     -- https://forum.nostalrius.org/viewtopic.php?t=1100
@@ -22,7 +24,7 @@ module.enable = function(self)
     SlashCmdList["CONSOLE"]("footstepBias 1.0") -- 1 / 0.125
     SlashCmdList["CONSOLE"]("frillDensity 64") -- 256
     SlashCmdList["CONSOLE"]("gxColorBits 24")
-    SlashCmdList["CONSOLE"]("gxDepthBits 24")    
+    SlashCmdList["CONSOLE"]("gxDepthBits 24")
     SlashCmdList["CONSOLE"]("horizonfarclip 2112")
     SlashCmdList["CONSOLE"]("lod 0")
     -- SlashCmdList["CONSOLE"]("lodDist 250") -- 100 / 250
@@ -70,7 +72,7 @@ module.enable = function(self)
     function graphics:quality()
         SlashCmdList["CONSOLE"]("DistCull 888") -- 500 / 888
         SlashCmdList["CONSOLE"]("farclip 777") -- 500 / 777
-        SlashCmdList["CONSOLE"]("lodDist 250") -- 100 / 250        
+        SlashCmdList["CONSOLE"]("lodDist 250") -- 100 / 250
     end
 
     function graphics:mapUpdate()
@@ -78,9 +80,9 @@ module.enable = function(self)
         if graphics.zone ~= zone then
             graphics.zone = zone
             if IsInInstance() then
-                graphics:performance()                
+                graphics:performance()
             else
-                graphics:quality()               
+                graphics:quality()
             end
         end
     end

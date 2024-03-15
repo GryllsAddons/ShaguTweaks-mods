@@ -1,10 +1,11 @@
 local _G = ShaguTweaks.GetGlobalEnv()
+local T = ShaguTweaks.T
 
 local module = ShaguTweaks:register({
-    title = "Reagent Count",
-    description = "Show the reagent count on action buttons.",
+    title = T["Reagent Count"],
+    description = T["Show the reagent count on action buttons."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
+    category = T["Action Bar"],
     enabled = nil,
 })
 
@@ -30,7 +31,7 @@ module.enable = function(self)
             end
         end
         end
-    
+
         return count
     end
 
@@ -71,7 +72,7 @@ module.enable = function(self)
                     end
                 end
             end
-        end        
+        end
     end)
 
     -- limit bag events to one per second

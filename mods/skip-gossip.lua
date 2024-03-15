@@ -1,11 +1,13 @@
+local L, T = ShaguTweaks.L, ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Skip Gossip Text",
-    description = "Skip gossip text when interacting with NPCs unless holding shift.",
+    title = T["Skip Gossip Text"],
+    description = T["Skip gossip text when interacting with NPCs unless holding shift."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
     category = nil,
     enabled = nil,
 })
-  
+
 module.enable = function(self)
     local actions = CreateFrame("Frame", nil, UIParent)
 
@@ -15,12 +17,12 @@ module.enable = function(self)
         "trainer",
         "vendor",
         "banker",
-    }    
+    }
 
     local phrases = {
         -- Bank
         "I would like to check my deposit box",
-        
+
         -- Vanilla
         "Teleport me to the Molten Core",
 
@@ -28,8 +30,17 @@ module.enable = function(self)
         -- Alliance
         "Please open a portal to Alah'Thalas",
         "Please open a portal to Stormwind",
-        -- Horde        
+        -- Horde
         "Open a portal to Amani'Alor",
+
+        -- ruRU
+        "Я хотел бы проверить свою ячейку.", -- Bank
+        "*Прикоснуться к нестабильному кристаллу Провала.*", -- MC entrance
+        "\*Положить руку на сферу.\*", -- BWL entrance
+        --"Thank you, Stable Master. Please take the animal.", -- AV quest locales_broadcast_text id6681
+        "Благодарю тебя. Пожалуйста, возьми питомца.", -- AV quest locales_broadcast_text id6681
+        "С удовольствием. Уж очень они воняют!", -- AV quest
+        "Конфета или Жизнь!",
     }
 
     local ignore = {
@@ -37,7 +48,7 @@ module.enable = function(self)
         "Goblin Brainwashing Device",
     }
 
-    function actions:Gossip()        
+    function actions:Gossip()
         if actions.gossip then
             local name = GossipFrameNpcNameText:GetText()
             local GossipOptions = {}
@@ -47,17 +58,17 @@ module.enable = function(self)
             if name then
                 for _, npc in pairs(ignore) do
                     if name == npc then
-                        return true 
+                        return true
                     end
-                end               
+                end
             end
 
             for i = 1, 5 do
-                if not GossipOptions[i] then break end              
+                if not GossipOptions[i] then break end
                 if GossipOptions[i] == "gossip" then
                     title = string.gsub(title, "%W", "")
                     for _, phrase in pairs(phrases) do
-                        phrase = string.gsub(phrase, "%W", "")                        
+                        phrase = string.gsub(phrase, "%W", "")
                         if phrase == title then
                             SelectGossipOption(i)
                             break
@@ -86,7 +97,7 @@ module.enable = function(self)
                 actions:Gossip()
             end
         elseif (event == "GOSSIP_CLOSED") then
-            actions.gossip = nil        
+            actions.gossip = nil
         end
-    end)    
+    end)
 end

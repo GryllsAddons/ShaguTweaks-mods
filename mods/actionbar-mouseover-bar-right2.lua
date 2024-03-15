@@ -1,8 +1,10 @@
+local T = ShaguTweaks.T
+
 local module = ShaguTweaks:register({
-    title = "Mouseover Right 2",
-    description = "Hide the Right ActionBar 2 and show on mouseover.",
+    title = T["Mouseover Right 2"],
+    description = T["Hide the Right ActionBar 2 and show on mouseover."],
     expansions = { ["vanilla"] = true, ["tbc"] = nil },
-    category = "Action Bar",
+    category = T["Action Bar"],
     enabled = nil,
 })
 
@@ -12,16 +14,16 @@ module.enable = function(self)
 
     local timer = CreateFrame("Frame", nil, UIParent)
     local mouseOverBar
-    local mouseOverButton        
-       
+    local mouseOverButton
+
     local function hide(bar)
         bar:Hide()
     end
-    
+
     local function show(bar)
         bar:Show()
     end
-    
+
     local function mouseover(bar, upd)
         local function setTimer()
             timer.time = GetTime() + 2
@@ -32,7 +34,7 @@ module.enable = function(self)
                 end
             end)
         end
-    
+
         if (mouseOverButton or mouseOverBar) then
             timer:SetScript("OnUpdate", nil)
             show(bar)
@@ -40,29 +42,29 @@ module.enable = function(self)
             setTimer()
         end
     end
-    
+
     local function barEnter(frame, bar)
         frame:SetScript("OnEnter", function()
             mouseOverBar = true
             mouseover(bar)
         end)
     end
-    
+
     local function barLeave(frame, bar)
         frame:SetScript("OnLeave", function()
-            mouseOverBar = nil     
+            mouseOverBar = nil
             mouseover(bar)
         end)
     end
-    
+
     local function buttonEnter(frame, bar)
         frame:SetScript("OnEnter", function()
             mouseOverButton = true
             frame:EnableMouse(nil)
-            mouseover(bar)        
+            mouseover(bar)
         end)
     end
-    
+
     local function buttonLeave(frame, bar)
         frame:SetScript("OnLeave", function()
             mouseOverButton = nil
@@ -70,7 +72,7 @@ module.enable = function(self)
             mouseover(bar)
         end)
     end
-    
+
     local function mouseoverButton(button, bar)
         button.mouseover = CreateFrame("Frame", nil, UIParent)
         button.mouseover:SetAllPoints(button)
@@ -79,17 +81,17 @@ module.enable = function(self)
         buttonEnter(button.mouseover, bar)
         buttonLeave(button.mouseover, bar)
     end
-    
+
     local function mouseoverBar(bar)
         bar.mouseover = CreateFrame("Frame", nil, UIParent)
         bar.mouseover:SetAllPoints(bar)
         bar.mouseover:EnableMouse(true)
-        barEnter(bar.mouseover, bar) 
+        barEnter(bar.mouseover, bar)
         barLeave(bar.mouseover, bar)
     end
-    
+
     local function setup(bar)
-        if not bar:IsVisible() then return end 
+        if not bar:IsVisible() then return end
         for i = 1, 12 do
             for _, button in pairs(
                     {
@@ -115,12 +117,12 @@ module.enable = function(self)
                 end
             end
         end
-        
+
         if bar.mouseover then
             bar.mouseover:Hide()
         end
     end
-    
+
     local events = CreateFrame("Frame", nil, UIParent)
     events:RegisterEvent("PLAYER_ENTERING_WORLD")
     events:RegisterEvent("CVAR_UPDATE")
@@ -138,7 +140,7 @@ module.enable = function(self)
                 setup(bar)
                 mouseover(bar, true)
             end
-    
+
             if event == "CVAR_UPDATE" then
                 mouseover(bar, true)
             end
