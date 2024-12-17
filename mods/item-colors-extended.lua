@@ -46,6 +46,16 @@ local function GetItemLinkByName(name)
   end
 end
 
+-- HerrTiSo / That Guy Turtles addition: Disable low quality item glow
+local function SetGlowForQuality(button, quality, defaultColor)
+  if quality and quality > 1 then
+    local r, g, b = GetItemQualityColor(quality)
+    button.ShaguTweaks_border:SetBackdropBorderColor(r, g, b, 1)
+  else
+    button.ShaguTweaks_border:SetBackdropBorderColor(defaultColor[1], defaultColor[2], defaultColor[3], 0)
+  end
+end
+
 module.enable = function(self)
   local dis
   if IsAddOnLoaded("lilsparkysworkshop") then
@@ -76,8 +86,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
               if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["merchant"])
               end
             end
           end
@@ -95,8 +104,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
               if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["merchant"])
               end
             end
           end
@@ -114,8 +122,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
               if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["merchant"])
               end
             end
           end
@@ -155,8 +162,7 @@ module.enable = function(self)
             local _, _, istring = string.find(link, "|H(.+)|h")
             local _, _, q = GetItemInfo(istring)
             if q then
-              local r, g, b = GetItemQualityColor(q)
-              button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+              SetGlowForQuality(button, q, defcolor["tradeskill"])
             end
           end
         end
@@ -187,8 +193,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
                 if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["tradeskill"])
               end
             end
           end
@@ -229,8 +234,7 @@ module.enable = function(self)
             local _, _, istring = string.find(link, "|H(.+)|h")
             local _, _, q = GetItemInfo(istring)
             if q then
-              local r, g, b = GetItemQualityColor(q)
-              button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+              SetGlowForQuality(button, q, defcolor["craft"])
             end
           end
         end
@@ -262,8 +266,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
               if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["craft"])
               end
             end
           end
@@ -299,8 +302,7 @@ module.enable = function(self)
 
           local _, _, _, q = GetInboxItem(i)
           if q then
-            local r, g, b = GetItemQualityColor(q)
-            button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+            SetGlowForQuality(button, q, defcolor["mail"])
           end
         end
       end
@@ -312,8 +314,7 @@ module.enable = function(self)
 
         local _, _, _, q = GetInboxItem(InboxFrame.openMailID)
         if q then
-          local r, g, b = GetItemQualityColor(q)
-          button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+          SetGlowForQuality(button, q, defcolor["mail"])
         end
       end
     end
@@ -343,8 +344,7 @@ module.enable = function(self)
 
           local n, _, _, q = GetTradeTargetItemInfo(i)
           if n and q then
-            local r, g, b = GetItemQualityColor(q)
-            button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+            SetGlowForQuality(button, q, defcolor["trade"])
           end
         end
       end
@@ -362,8 +362,7 @@ module.enable = function(self)
             local _, _, istring  = string.find(link, "|H(.+)|h")
             local _, _, q = GetItemInfo(istring)
             if q then
-              local r, g, b = GetItemQualityColor(q)
-              button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+              SetGlowForQuality(button, q, defcolor["trade"])
             end
           end
         end
@@ -403,8 +402,7 @@ module.enable = function(self)
 
           local _, _, _, q = GetLootSlotInfo(i)
           if q then
-            local r, g, b = GetItemQualityColor(q)
-            button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
+            SetGlowForQuality(button, q, defcolor["loot"])
           end
         end
       end

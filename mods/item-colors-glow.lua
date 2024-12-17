@@ -98,6 +98,18 @@ local function GetItemLinkByName(name)
   end
 end
 
+-- HerrTiSo / That Guy Turtles addition: Disable glow on low quality items
+local function SetGlowForQuality(button, quality, defaultColor)
+  if quality and quality > 1 then
+    local r, g, b = GetItemQualityColor(quality)
+    button.ShaguTweaks_border:SetBackdropBorderColor(r, g, b, 1)
+    button.ShaguTweaks_texture:SetVertexColor(r, g, b, 1)
+  else
+    button.ShaguTweaks_border:SetBackdropBorderColor(defaultColor[1], defaultColor[2], defaultColor[3], 0)
+    button.ShaguTweaks_texture:SetVertexColor(defaultColor[1], defaultColor[2], defaultColor[3], 0)
+  end
+end
+
 module.enable = function(self)
   local dis
   if IsAddOnLoaded("lilsparkysworkshop") then
@@ -127,9 +139,7 @@ module.enable = function(self)
 
           local quality = GetInventoryItemQuality("player", i)
           if quality then
-            local r, g, b = GetItemQualityColor(quality)
-            border:SetBackdropBorderColor(r,g,b,1)
-            texture:SetVertexColor(r,g,b,1)
+            SetGlowForQuality(button, quality, defcolor["bag"])
           else
             border:SetBackdropBorderColor(defcolor["paperdoll"][1], defcolor["paperdoll"][2], defcolor["paperdoll"][3], 1)
             texture:SetVertexColor(defcolor["paperdoll"][1], defcolor["paperdoll"][2], defcolor["paperdoll"][3], 0)
@@ -172,9 +182,7 @@ module.enable = function(self)
           local _, _, istring = string.find(link, "|H(.+)|h")
           local _, _, quality = GetItemInfo(istring)
           if quality then
-            local r, g, b = GetItemQualityColor(quality)
-            border:SetBackdropBorderColor(r,g,b,1)
-            texture:SetVertexColor(r,g,b,1)
+            SetGlowForQuality(button, quality, defcolor["bag"])
           end
         end
       end
@@ -228,9 +236,7 @@ module.enable = function(self)
                 button.ShaguTweaks_border:SetBackdropBorderColor(1,1,0)
                 button.ShaguTweaks_texture:SetVertexColor(1,1,0,1)
               elseif quality then
-                local r, g, b = GetItemQualityColor(quality)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b)
-                button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+                SetGlowForQuality(button, quality, defcolor["bag"])
               end
             end
           end
@@ -271,9 +277,7 @@ module.enable = function(self)
             local _, _, istring = string.find(link, "|H(.+)|h")
             local _, _, q = GetItemInfo(istring)
             if q and q > 1 then
-              local r, g, b = GetItemQualityColor(q)
-              button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b)
-              button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+              SetGlowForQuality(button, q, defcolor["bank"])
             end
           end
         end
@@ -337,9 +341,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
               if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-                button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["merchant"])
               end
             end
           end
@@ -358,9 +360,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
               if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-                button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["merchant"])
               end
             end
           end
@@ -379,9 +379,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
               if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-                button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["merchant"])
               end
             end
           end
@@ -428,9 +426,7 @@ module.enable = function(self)
             local _, _, istring = string.find(link, "|H(.+)|h")
             local _, _, q = GetItemInfo(istring)
             if q then
-              local r, g, b = GetItemQualityColor(q)
-              button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-              button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+              SetGlowForQuality(button, q, defcolor["tradeskill"])
             end
           end
         end
@@ -471,9 +467,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
                 if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-                button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["tradeskill"])
               end
             end
           end
@@ -523,9 +517,7 @@ module.enable = function(self)
             local _, _, istring = string.find(link, "|H(.+)|h")
             local _, _, q = GetItemInfo(istring)
             if q then
-              local r, g, b = GetItemQualityColor(q)
-              button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-              button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+              SetGlowForQuality(button, q, defcolor["craft"])
             end
           end
         end
@@ -567,9 +559,7 @@ module.enable = function(self)
               local _, _, istring = string.find(link, "|H(.+)|h")
               local _, _, q = GetItemInfo(istring)
               if q then
-                local r, g, b = GetItemQualityColor(q)
-                button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-                button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+                SetGlowForQuality(button, q, defcolor["craft"])
               end
             end
           end
@@ -608,9 +598,7 @@ module.enable = function(self)
 
           local _, _, _, q = GetInboxItem(i)
           if q then
-            local r, g, b = GetItemQualityColor(q)
-            button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-            button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+            SetGlowForQuality(button, q, defcolor["mail"])
           end
         end
       end
@@ -623,9 +611,7 @@ module.enable = function(self)
 
         local _, _, _, q = GetInboxItem(InboxFrame.openMailID)
         if q then
-          local r, g, b = GetItemQualityColor(q)
-          button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-          button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+          SetGlowForQuality(button, q, defcolor["mail"])
         end
       end
     end
@@ -659,9 +645,7 @@ module.enable = function(self)
 
           local n, _, _, q = GetTradeTargetItemInfo(i)
           if n and q then
-            local r, g, b = GetItemQualityColor(q)
-            button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-            button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+            SetGlowForQuality(button, q, defcolor["trade"])
           end
         end
       end
@@ -680,9 +664,7 @@ module.enable = function(self)
             local _, _, istring  = string.find(link, "|H(.+)|h")
             local _, _, q = GetItemInfo(istring)
             if q then
-              local r, g, b = GetItemQualityColor(q)
-              button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-              button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+              SetGlowForQuality(button, q, defcolor["trade"])
             end
           end
         end
@@ -724,9 +706,7 @@ module.enable = function(self)
 
           local _, _, _, q = GetLootSlotInfo(i)
           if q then
-            local r, g, b = GetItemQualityColor(q)
-            button.ShaguTweaks_border:SetBackdropBorderColor(r,g,b,1)
-            button.ShaguTweaks_texture:SetVertexColor(r,g,b,1)
+            SetGlowForQuality(button, q, defcolor["loot"])
           end
         end
       end
