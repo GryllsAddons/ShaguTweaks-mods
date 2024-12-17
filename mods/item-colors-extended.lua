@@ -234,7 +234,8 @@ module.enable = function(self)
             local _, _, istring = string.find(link, "|H(.+)|h")
             local _, _, q = GetItemInfo(istring)
             if q then
-              SetGlowForQuality(button, q, defcolor["craft"])            end
+              SetGlowForQuality(button, q, defcolor["craft"])
+            end
           end
         end
 
